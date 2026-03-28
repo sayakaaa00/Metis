@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(ccbench LANGUAGES CXX)
+project(ccbench LANGUAGES C CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
+# Define platform macros used in the source (e.g., #ifdef Linux)
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  add_definitions(-DLinux)
+endif ()
 
 set(THIRD_PARTY_DIR "${PROJECT_SOURCE_DIR}/third_party/")
 

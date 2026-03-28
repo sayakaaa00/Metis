@@ -1,9 +1,13 @@
 #pragma once
 
 #include <cpuid.h>
+#include <sched.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
 #include <unistd.h>
+
+#include <cstdio>
+#include <vector>
 
 #include "debug.hh"
 
@@ -27,16 +31,121 @@
   }
 
 #ifdef Linux
+// NUMA ソケットを跨がないように、まずソケット 0 を優先して埋め、
+// それを超えたスレッドは他ソケットの CPU を順に使う。
+//   - /sys/devices/system/cpu/cpu*/topology/physical_package_id から
+//     package_id を読み取り、socket0 とその他の CPU を分類する。
+//   - ordered_cpus = [socket0 の CPU 群] + [その他の CPU 群]
+//   - myid に対して ordered_cpus[myid % ordered_cpus.size()] を割り当てる。
+//   - /sys が読めない場合などは 0..N-1 を ordered_cpus として扱う。
+
+static int chooseSocketAwareCpu(const int myid) {
+  static bool inited = false;
+  static std::vector<int> ordered_cpus;
+  static long nprocs = 1;
+
+  if (!inited) {
+    nprocs = sysconf(_SC_NPROCESSORS_CONF);
+    if (nprocs < 1) nprocs = 1;
+
+    std::vector<int> socket0_cpus;
+    std::vector<int> other_cpus;
+
+    for (long cpu = 0; cpu < nprocs; ++cpu) {
+      char path[256];
+      std::snprintf(path, sizeof(path),
+                    "/sys/devices/system/cpu/cpu%ld/topology/physical_package_id",
+                    cpu);
+      FILE *fp = std::fopen(path, "r");
+      if (!fp) continue;
+      int pkg = -1;
+      if (std::fscanf(fp, "%d", &pkg) == 1) {
+        if (pkg == 0)
+          socket0_cpus.push_back(static_cast<int>(cpu));
+        else
+          other_cpus.push_back(static_cast<int>(cpu));
+      }
+      std::fclose(fp);
+    }
+
+    if (!socket0_cpus.empty() || !other_cpus.empty()) {
+      ordered_cpus.reserve(socket0_cpus.size() + other_cpus.size());
+      ordered_cpus.insert(ordered_cpus.end(), socket0_cpus.begin(), socket0_cpus.end());
+      ordered_cpus.insert(ordered_cpus.end(), other_cpus.begin(), other_cpus.end());
+    }
+
+    // もし何も取れなければ、従来どおり 0..N-1 を候補とする
+    if (ordered_cpus.empty()) {
+      for (long cpu = 0; cpu < nprocs; ++cpu) {
+        ordered_cpus.push_back(static_cast<int>(cpu));
+      }
+    }
+
+    inited = true;
+  }
+
+  if (!ordered_cpus.empty()) {
+    int idx = myid % static_cast<int>(ordered_cpus.size());
+    return ordered_cpus[idx];
+  }
+
+  // フォールバック（理論上ここには来ない想定）
+  return myid % static_cast<int>(nprocs);
+}
+
+// プロセス全体の CPU アフィニティを、"ソケット0だけ" に制限するヘルパ。
+// TotalThreadNum がソケット0の論理 CPU 数以下のときだけ適用することで、
+// thread_num ≤ socket0 コア数なら必ず node0 だけを使うポリシーを実現する。
+static void setProcessAffinitySocket0IfFits(int total_threads) {
+  static bool applied = false;
+  if (applied) return;
+
+  long nprocs = sysconf(_SC_NPROCESSORS_CONF);
+  if (nprocs < 1) nprocs = 1;
+
+  std::vector<int> socket0_cpus;
+
+  for (long cpu = 0; cpu < nprocs; ++cpu) {
+    char path[256];
+    std::snprintf(path, sizeof(path),
+                  "/sys/devices/system/cpu/cpu%ld/topology/physical_package_id",
+                  cpu);
+    FILE *fp = std::fopen(path, "r");
+    if (!fp) continue;
+    int pkg = -1;
+    if (std::fscanf(fp, "%d", &pkg) == 1 && pkg == 0) {
+      socket0_cpus.push_back(static_cast<int>(cpu));
+    }
+    std::fclose(fp);
+  }
+
+  if (socket0_cpus.empty()) return;
+
+  // thread_num ≤ ソケット0の論理 CPU 数のときだけ、node0 に閉じ込める
+  if (total_threads <= static_cast<int>(socket0_cpus.size())) {
+    cpu_set_t cpu_set;
+    CPU_ZERO(&cpu_set);
+    for (int cpu : socket0_cpus) {
+      CPU_SET(cpu, &cpu_set);
+    }
+
+    pid_t pid = getpid();
+    if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
+
+    applied = true;
+  }
+}
+
 static void setThreadAffinity(const int myid) {
   pid_t pid = syscall(SYS_gettid);
   cpu_set_t cpu_set;
 
   CPU_ZERO(&cpu_set);
-  CPU_SET(myid % sysconf(_SC_NPROCESSORS_CONF), &cpu_set);
+  int cpu = chooseSocketAwareCpu(myid);
+  CPU_SET(cpu, &cpu_set);
 
   if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
 
-  // printf("thread affinity (id==%d) [ok]\n", myid);
   return;
 }
 #endif  // Linux

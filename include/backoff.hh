@@ -10,15 +10,27 @@
 #include "result.hh"
 #include "tsc.hh"
 #include "util.hh"
+#include "gflags/gflags.h"  
 
 using namespace std;
+
+// AdaBO parameters as gflags
+#ifdef GLOBAL_VALUE_DEFINE
+DEFINE_uint64(backoff_update_period_us, 5000,
+              "AdaBO update period in microseconds (how often to adjust backoff)");
+DEFINE_double(backoff_step_us, 0.5,
+              "AdaBO increase/decrease step in microseconds when updating backoff");
+#else
+DECLARE_uint64(backoff_update_period_us);
+DECLARE_double(backoff_step_us);
+#endif
 
 class Backoff {
 public:
   static std::atomic<double> Backoff_;
   static constexpr double kMinBackoff = 0;
   static constexpr double kMaxBackoff = 1000;
-  static constexpr double kIncrBackoff = 100;
+  static constexpr double kIncrBackoff = 0.5;
   //static constexpr double kIncrBackoff = 0.5;
 
   uint64_t last_committed_txs_ = 0;
@@ -37,7 +49,8 @@ public:
   }
 
   bool check_update_backoff() {
-    if (chkClkSpan(last_time_, rdtscp(), clocks_per_us_ * 10))
+    uint64_t period_cycles = static_cast<uint64_t>(FLAGS_backoff_update_period_us) * clocks_per_us_;
+    if (chkClkSpan(last_time_, rdtscp(), period_cycles))
       return true;
     else
       return false;
@@ -74,16 +87,16 @@ public:
     else
       gradient = 0;
 
+    double step = FLAGS_backoff_step_us;
     if (gradient < 0)
-      new_backoff -= kIncrBackoff;
+      new_backoff -= step;
     else if (gradient > 0)
-      new_backoff += kIncrBackoff;
+      new_backoff += step;
     else {
-      if ((committed_txs & 1) == 0 ||
-          new_backoff == kMaxBackoff)  // 確率はおよそ 1/2, すなわちランダム．
-        new_backoff -= kIncrBackoff;
+      if ((committed_txs & 1) == 0 || new_backoff == kMaxBackoff)  // 確率はおよそ 1/2, すなわちランダム．
+        new_backoff -= step;
       else if ((committed_txs & 1) == 1 || new_backoff == kMinBackoff)
-        new_backoff += kIncrBackoff;
+        new_backoff += step;
     }
 
     if (new_backoff < kMinBackoff)
