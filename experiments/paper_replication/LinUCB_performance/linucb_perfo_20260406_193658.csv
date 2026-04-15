@@ -1,0 +1,6 @@
+phase1_skew,phase2_skew,phase3_skew,phase1_sec,phase2_sec,phase3_sec,trial,overall_tps,overall_abort,overall_latency,opt_threads,time_to_opt_sec,time_at_opt_sec,phase1_mean_tps,phase1_tput_std,phase2_mean_tps,phase2_tput_std,phase3_mean_tps,phase3_tput_std
+0.8,0.7,0.99,20,20,20,1,2629076,0.5644,24343.1533,32,,,,,,,,
+0.8,0.7,0.99,20,20,20,2,2641826,0.5717,24225.6682,32,,,,,,,,
+0.8,0.7,0.99,20,20,20,3,2630962,0.5913,24325.7029,32,,,,,,,,
+0.8,0.7,0.99,20,20,20,4,2678541,0.5677,23893.6048,32,,,,,,,,
+0.8,0.7,0.99,20,20,20,5,2641924,0.5830,24224.7695,32,,,,,,,,

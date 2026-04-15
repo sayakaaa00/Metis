@@ -2,23 +2,23 @@
 set -euo pipefail
 
 THREADS=${THREADS:-64}
-EXTIME=${EXTIME:-60}
-TUPLE_NUM=${TUPLE_NUM:-1000000}
+EXTIME=${EXTIME:-10}
+TUPLE_NUM=${TUPLE_NUM:-10000}
 MAX_OPE=${MAX_OPE:-10}
 RRATIO=${RRATIO:-50}
-REPEATS=${REPEATS:-3}
+REPEATS=${REPEATS:-1}
 
 SKEWS=(${SKEWS_OVERRIDE:-0.7 0.8 0.9 0.99})
 UPDATE_PERIODS_US=(${UPDATE_US_OVERRIDE:-10 5000 50000})
 STEPS_US=(${STEP_US_OVERRIDE:-0.5 1 5})
 
 REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
-BUILD_DIR="$REPO_ROOT/build"
+BUILD_DIR="$REPO_ROOT/build_release"
 BIN="$BUILD_DIR/silo/silo_with_backoff"
 
 OUT_ROOT="$REPO_ROOT/experiments/paper_replication/adaBO_scan_results"
-SUMMARY_FILE="$OUT_ROOT/summary.csv"
-BEST_REPORT="$OUT_ROOT/best_by_skew.txt"
+SUMMARY_FILE="$OUT_ROOT/summary_tuple10000_release.csv"
+BEST_REPORT="$OUT_ROOT/best_by_skew_tuple10000_release.txt"
 
 mkdir -p "$OUT_ROOT"
 

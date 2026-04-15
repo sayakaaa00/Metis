@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
 
 
@@ -21,7 +22,7 @@ def main():
             print(f"ディレクトリが存在しないためスキップします： {target_dir}")
             continue
 
-        summary_path = os.path.join(target_dir, "summary.csv")
+        summary_path = os.path.join(target_dir, "summary_compare_v1.csv")
         if not os.path.isfile(summary_path):
             print(f"summary.csvが見つかりませんでした： {summary_path}")
             continue
@@ -56,12 +57,20 @@ def main():
         sys.exit(1)
 
     
-    plt.xlabel('Skew')
-    plt.ylabel('Throughput (tps)')
-    plt.title('Throughput vs Skew for Different Algorithms')
-    plt.xticks(np.arange(0, 1.01, 0.1))
+    # 軸ラベルを太字・より大きめのフォントにし、y 軸ラベルは縦方向に表示
+    plt.xlabel('Skew', fontsize=25, fontweight='bold')
+    plt.ylabel('Throughput (tps)', fontsize=25, fontweight='bold', rotation=90)
+
+    # Y 軸の数値を 0.5×10⁶ のような表記にする（10 の右上に 6）
+    def y_axis_formatter(x, pos):
+        # x は tps（たとえば 500000 など）なので、10⁶ で正規化して表示
+        return f"{x / 1e6:.1f}×10⁶"
+
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(y_axis_formatter))
+    plt.xticks(np.arange(0.7, 1.00, 0.05))
     plt.grid(True)
-    plt.legend()
+    # 凡例の文字も大きめに
+    plt.legend(fontsize=15)
     plt.tight_layout()
 
     plt.savefig('throughput_vs_skew.png', dpi=300)

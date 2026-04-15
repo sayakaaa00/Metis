@@ -3,19 +3,19 @@ set -euo pipefail
 
 THREADS=${THREADS:-64}
 EXTIME=${EXTIME:-10}
-TUPLE_NUM=${TUPLE_NUM:-1000}
+TUPLE_NUM=${TUPLE_NUM:-10000}
 MAX_OPE=${MAX_OPE:-10}
 RRATIO=${RRATIO:-50}
 
 
-SKEWS=(${SKEWS_OVERRIDE:-0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.99})
+SKEWS=(${SKEWS_OVERRIDE:-0.7 0.8 0.9 0.99})
 
 REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 BUILD_DIR="$REPO_ROOT/build"
 BIN="$BUILD_DIR/silo/silo_without_backoff"
 
 OUT_ROOT="$REPO_ROOT/experiments/paper_replication/silo_noBO"
-SUMMARY_FILE="$OUT_ROOT/summary_tuple1000.csv"
+SUMMARY_FILE="$OUT_ROOT/summary_tuple10000_build.csv"
 
 mkdir -p "$OUT_ROOT"
 

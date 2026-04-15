@@ -33,6 +33,10 @@
 
 using namespace std;
 
+// YCSB のワークロードで参照される Zipf skew のグローバル状態
+// include/ycsb.hh で extern 宣言されているものの定義をここで与える。
+std::atomic<double> g_current_ycsb_skew{0.0};
+
 void worker(size_t thid, char &ready, const bool &start, const bool &quit) {
   Backoff backoff(FLAGS_clocks_per_us); // Cicada's backoff opt.
   TxExecutor trans(thid, backoff, (Result *) &ErmiaResult[thid], quit);
@@ -66,6 +70,8 @@ int main(int argc, char *argv[]) try {
   gflags::SetUsageMessage("ERMIA benchmark.");
   gflags::ParseCommandLineFlags(&argc, &argv, true);
   chkArg();
+  // 初期 skew をグローバルに反映しておく（必要に応じて将来の in-run 変更にも対応可能）。
+  g_current_ycsb_skew.store(FLAGS_ycsb_zipf_skew, std::memory_order_release);
   YcsbWorkload::displayWorkloadParameter();
   YcsbWorkload::makeDB<Tuple,void>(nullptr);
 

@@ -2,6 +2,8 @@
 #include "./../include/atomic_wrapper.hh"
 #include "./../include/util.hh"
 
+#include <sched.h>
+
 bool chkSpan(struct timeval &start, struct timeval &stop, long threshold) {
   long diff = 0;
   diff += (stop.tv_sec - start.tv_sec) * 1000 * 1000 +
@@ -16,8 +18,21 @@ size_t decideParallelBuildNumber(size_t tuple_num) {
   // if table size is very small, it builds by single thread.
   if (tuple_num < 1000) return 1;
 
-  // else
-  for (size_t i = std::thread::hardware_concurrency(); i > 0; --i) {
+  // else: use the number of CPUs that are actually available to this
+  // process (current affinity) as an upper bound, to avoid creating
+  // many more build threads than runnable CPUs when process-level
+  // pinning (sched_setaffinity) has restricted the mask.
+  size_t hw = std::thread::hardware_concurrency();
+  if (hw == 0) hw = 1;
+
+  cpu_set_t set;
+  CPU_ZERO(&set);
+  if (sched_getaffinity(0, sizeof(set), &set) == 0) {
+    int aff = CPU_COUNT(&set);
+    if (aff > 0 && static_cast<size_t>(aff) < hw) hw = static_cast<size_t>(aff);
+  }
+
+  for (size_t i = hw; i > 0; --i) {
     if (tuple_num % i == 0) {
       return i;
     }

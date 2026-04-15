@@ -2,6 +2,7 @@
 
 #include <thread>
 #include <vector>
+#include <atomic>
 
 #include "config.hh"
 #include "debug.hh"
@@ -15,6 +16,10 @@
 #include "zipf.hh"
 
 #include "gflags/gflags.h"
+
+// 現在の YCSB の Zipf skew を run 中に動的に変更するためのグローバル。
+// 実体は ycsb_silo.cc 側で定義し、ここでは extern 宣言のみ行う。
+extern std::atomic<double> g_current_ycsb_skew;
 
 #ifdef GLOBAL_VALUE_DEFINE
 DEFINE_bool(ycsb_rmw, false, "True means read modify write, false means blind write.");
@@ -86,15 +91,26 @@ class YcsbWorkload {
 public:
     Xoroshiro128Plus rnd_;
     FastZipf zipf_;
+  // 直近に zipf_ を初期化したときの skew 値（g_current_ycsb_skew と比較する）
+  double current_skew_;
 
     YcsbWorkload() {
         rnd_.init();
-        FastZipf zipf(&rnd_, FLAGS_ycsb_zipf_skew, FLAGS_ycsb_tuple_num);
-        zipf_ = zipf;
+    // 初期 skew は FLAGS_ycsb_zipf_skew とする
+    current_skew_ = FLAGS_ycsb_zipf_skew;
+    FastZipf zipf(&rnd_, current_skew_, FLAGS_ycsb_tuple_num);
+    zipf_ = zipf;
     }
 
     template <typename TxExecutor, typename TransactionStatus>
     void run(TxExecutor& tx) {
+    // run 中に skew が変更された場合は、ここで検知して Zipf 分布を再初期化する。
+    double global_skew = g_current_ycsb_skew.load(std::memory_order_acquire);
+    if (global_skew != current_skew_) {
+      current_skew_ = global_skew;
+      FastZipf zipf(&rnd_, current_skew_, FLAGS_ycsb_tuple_num);
+      zipf_ = zipf;
+    }
 #if ADD_ANALYSIS
         uint64_t start = rdtscp();
 #endif

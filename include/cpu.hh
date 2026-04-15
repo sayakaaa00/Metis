@@ -6,7 +6,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <algorithm>
+#include <cstdlib>
+#include <cstring>
 #include <cstdio>
+#include <mutex>
 #include <vector>
 
 #include "debug.hh"
@@ -31,6 +35,7 @@
   }
 
 #ifdef Linux
+
 // NUMA ソケットを跨がないように、まずソケット 0 を優先して埋め、
 // それを超えたスレッドは他ソケットの CPU を順に使う。
 //   - /sys/devices/system/cpu/cpu*/topology/physical_package_id から
@@ -40,11 +45,13 @@
 //   - /sys が読めない場合などは 0..N-1 を ordered_cpus として扱う。
 
 static int chooseSocketAwareCpu(const int myid) {
-  static bool inited = false;
+  static std::once_flag cpu_init_flag;
   static std::vector<int> ordered_cpus;
   static long nprocs = 1;
+  static int socket0_count = 0;       // how many entries at the head of
+                                      // ordered_cpus belong to socket 0
 
-  if (!inited) {
+  std::call_once(cpu_init_flag, [&]() {
     nprocs = sysconf(_SC_NPROCESSORS_CONF);
     if (nprocs < 1) nprocs = 1;
 
@@ -69,6 +76,8 @@ static int chooseSocketAwareCpu(const int myid) {
     }
 
     if (!socket0_cpus.empty() || !other_cpus.empty()) {
+      socket0_count = static_cast<int>(socket0_cpus.size());
+
       ordered_cpus.reserve(socket0_cpus.size() + other_cpus.size());
       ordered_cpus.insert(ordered_cpus.end(), socket0_cpus.begin(), socket0_cpus.end());
       ordered_cpus.insert(ordered_cpus.end(), other_cpus.begin(), other_cpus.end());
@@ -79,13 +88,37 @@ static int chooseSocketAwareCpu(const int myid) {
       for (long cpu = 0; cpu < nprocs; ++cpu) {
         ordered_cpus.push_back(static_cast<int>(cpu));
       }
+      socket0_count = static_cast<int>(ordered_cpus.size());
     }
-
-    inited = true;
-  }
+  });
 
   if (!ordered_cpus.empty()) {
-    int idx = myid % static_cast<int>(ordered_cpus.size());
+    // スレッド ID に基づく決定的なマッピングで CPU を割り当てる。
+    // - ソケット0に属する CPU が存在する場合、myid が socket0_count 以下なら
+    //   ソケット0の CPU を優先的に利用する。
+    // - それ以降のスレッドは、残りの CPU 群（他ソケット）を round-robin で使う。
+
+    const int total = static_cast<int>(ordered_cpus.size());
+    if (socket0_count > 0) {
+      if (myid < socket0_count) {
+        // thread_num <= socket0_count の範囲では、ソケット0内で 1:1 に近い割り当て。
+        int idx = myid % socket0_count;
+        return ordered_cpus[idx];
+      } else {
+        int other_cnt = total - socket0_count;
+        if (other_cnt > 0) {
+          int idx = socket0_count + ((myid - socket0_count) % other_cnt);
+          return ordered_cpus[idx];
+        } else {
+          // ソケット0しかない場合は、ソケット0内で round-robin。
+          int idx = myid % socket0_count;
+          return ordered_cpus[idx];
+        }
+      }
+    }
+
+    // ソケット0が存在しない場合は、全 CPU を対象に単純な round-robin を行う。
+    int idx = myid % total;
     return ordered_cpus[idx];
   }
 

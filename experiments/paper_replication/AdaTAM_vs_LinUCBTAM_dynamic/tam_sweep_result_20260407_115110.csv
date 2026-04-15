@@ -1,0 +1,7 @@
+phase1_skew,phase2_skew,phase3_skew,trial,winner,winner_tps,loser,loser_tps,diff_tps,diff_pct,ada_tps,ada_abort,ada_latency,linucb_tps,linucb_abort,linucb_latency
+0.8,0.7,0.99,1,LinUCBTAM,2626553,AdaTAM,2625374,1179,0.04,2625374,0.5693,24377.4792,2626553,0.6008,24366.5367
+0.8,0.7,0.99,2,LinUCBTAM,2661216,AdaTAM,2640208,21008,0.80,2640208,0.5684,24240.5144,2661216,0.5655,24049.1565
+0.8,0.7,0.99,3,LinUCBTAM,2668319,AdaTAM,2640712,27607,1.05,2640712,0.5670,24235.8879,2668319,0.5550,23985.1382
+===== 集計（全 skew 合計） =====
+LinUCBTAM wins: 3 runs, avg diff = 16598 tps, avg advantage = 0.63%
+AdaTAM   wins: 0 runs

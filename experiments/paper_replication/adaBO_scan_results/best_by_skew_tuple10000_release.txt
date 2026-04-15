@@ -1,0 +1,5 @@
+Best combos per skew (by throughput):
+  skew=0.7 update_us=50000 step_us=1 run=1 throughput=3833047 abort_rate=0.5093
+  skew=0.8 update_us=5000 step_us=1 run=2 throughput=2021519 abort_rate=0.6013
+  skew=0.9 update_us=5000 step_us=1 run=2 throughput=1157131 abort_rate=0.6550
+  skew=0.99 update_us=5000 step_us=1 run=2 throughput=768570 abort_rate=0.6782
