@@ -1129,6 +1129,7 @@ bool TxExecutor::commit() {
     if (!validation_occ()) { return false; }
     writePhase();
     mainte();
+    Backoff::reset();
     return true;
   }
 
@@ -1141,6 +1142,7 @@ bool TxExecutor::commit() {
   if (occ_guard_required_ && !validation_occ()) { return false; }
   writePhase();
   mainte();
+  Backoff::reset();
   return true;
 }
 

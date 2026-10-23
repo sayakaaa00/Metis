@@ -626,6 +626,7 @@ bool TxExecutor::commit() {
    * Maintenance phase
    */
   mainte();
+  Backoff::reset();
   return true;
 }
 

@@ -1074,6 +1074,7 @@ void TxExecutor::writePhase() {
 bool TxExecutor::commit() {
   if (validation()) {
     writePhase();
+    Backoff::reset();
     return true;
   } else {
     return false;

@@ -683,6 +683,7 @@ void TxExecutor::unlockWriteSet(std::vector<SetElement<Tuple>>::iterator end) {
 bool TxExecutor::commit() {
   if (validationPhase()) {
     writePhase();
+    Backoff::reset();
     return true;
   } else {
     return false;

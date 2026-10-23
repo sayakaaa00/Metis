@@ -464,6 +464,7 @@ bool TxExecutor::commit() {
    */
   if (this->is_ronly_) {
     read_set_.clear();
+    Backoff::reset();
     return true;
   } else {
     /**
@@ -480,6 +481,7 @@ bool TxExecutor::commit() {
      * Maintenance phase
      */
     maintenance();
+    Backoff::reset();
     return true;
   }
 }

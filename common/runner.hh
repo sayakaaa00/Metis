@@ -149,6 +149,23 @@ struct NoOpHook {
   void operator()(Tx&, std::size_t) const noexcept {}
 };
 
+/// Default per-transaction gate: every worker remains active.
+struct AlwaysRunWorker {
+  bool operator()(std::size_t) const noexcept { return true; }
+};
+
+/// Default benchmark control loop used by non-adaptive binaries.
+struct DefaultControlLoop {
+  void operator()(std::uint64_t /*start_tsc*/) const {
+    for (std::size_t i = 0; i < FLAGS_extime; ++i) { sleepMs(1000); }
+  }
+};
+
+/// Default post-run hook.
+struct NoOpAfterRun {
+  void operator()() const noexcept {}
+};
+
 namespace runner_detail {
 
 template <typename W, typename Tx>
@@ -167,12 +184,14 @@ concept HasPrepare = requires(W w, Tx& trans) {
 /// `Backoff&` on the worker's stack (used by cicada / ermia / mvto /
 /// oze / si, ignored by silo / mocc / ss2pl / tictoc / d2pl).
 template <typename Tx, typename TransactionStatus, typename Workload,
-          typename MakeTx, typename WorkerInit, typename WorkerAfterStart>
+          typename MakeTx, typename WorkerInit, typename WorkerAfterStart,
+          typename WorkerGate>
 requires TxExecutorLike<Tx>
 void worker_body(std::size_t thid, char& ready, const bool& start,
                  const bool& quit, const MakeTx& make_tx,
                  const WorkerInit& worker_init,
-                 const WorkerAfterStart& worker_after_start) {
+                 const WorkerAfterStart& worker_after_start,
+                 const WorkerGate& worker_gate) {
   // `Backoff` on the worker's stack so its lifetime covers `trans`.
   // Constructed even for protocols that don't use it (silo etc.) - the
   // ctor is one integer multiply, not worth a template branch.
@@ -190,6 +209,10 @@ void worker_body(std::size_t thid, char& ready, const bool& start,
   while (!loadAcquire(start)) _mm_pause();
   worker_after_start(trans, thid);
   while (!loadAcquire(quit)) {
+    if (!worker_gate(thid)) {
+      _mm_pause();
+      continue;
+    }
     workload.template run<Tx, TransactionStatus>(trans);
   }
 }
@@ -262,12 +285,18 @@ void worker_body(std::size_t thid, char& ready, const bool& start,
  */
 template <typename Tx, typename TransactionStatus, typename Workload,
           typename MakeTx, typename WorkerInit = NoOpHook,
-          typename WorkerAfterStart = NoOpHook>
+          typename WorkerAfterStart = NoOpHook,
+          typename WorkerGate = AlwaysRunWorker,
+          typename ControlLoop = DefaultControlLoop,
+          typename AfterRun = NoOpAfterRun>
 requires TxExecutorLike<Tx>
 void run(std::size_t thread_num, const RunnerOptions& opts,
          const MakeTx& make_tx, const WorkerInit& worker_init = WorkerInit{},
          const WorkerAfterStart& worker_after_start = WorkerAfterStart{},
-         BombDispatcherFn bomb_dispatcher_fn = nullptr) {
+         BombDispatcherFn bomb_dispatcher_fn = nullptr,
+         const WorkerGate& worker_gate = WorkerGate{},
+         const ControlLoop& control_loop = ControlLoop{},
+         const AfterRun& after_run = AfterRun{}) {
   alignas(CACHE_LINE_SIZE) bool start = false;
   alignas(CACHE_LINE_SIZE) bool quit = false;
 
@@ -282,7 +311,7 @@ void run(std::size_t thread_num, const RunnerOptions& opts,
     thv.emplace_back([&, thid = i]() {
       runner_detail::worker_body<Tx, TransactionStatus, Workload>(
           thid, readys[thid], start, quit, make_tx, worker_init,
-          worker_after_start);
+          worker_after_start, worker_gate);
     });
   }
   if (spawn_dispatcher) {
@@ -294,10 +323,11 @@ void run(std::size_t thread_num, const RunnerOptions& opts,
   waitForReady(readys);
   const std::uint64_t start_tsc = rdtscp();
   storeRelease(start, true);
-  for (std::size_t i = 0; i < FLAGS_extime; ++i) { sleepMs(1000); }
+  control_loop(start_tsc);
   storeRelease(quit, true);
   for (auto& th : thv) th.join();
   const std::uint64_t end_tsc = rdtscp();
+  after_run();
 
   // `actual_extime` matches the legacy formula exactly: TSC delta
   // converted to seconds via `FLAGS_clocks_per_us`, rounded to an

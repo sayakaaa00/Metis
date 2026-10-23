@@ -315,13 +315,15 @@ bool run_new_order(TxExecutor& tx, TPCCQuery::NewOrder* query) {
     uint32_t ol_i_id = query->items[ol_num].ol_i_id;
     uint16_t ol_supply_w_id = query->items[ol_num].ol_supply_w_id;
     uint8_t ol_quantity = query->items[ol_num].ol_quantity;
+    const bool line_remote = ol_supply_w_id != w_id;
 
     const Item* item;
     if (!get_item<TxExecutor, TxStatus>(tx, ol_i_id, item)) return false;
 
     Stock sto;
     if (!get_and_update_stock<TxExecutor, TxStatus>(tx, ol_supply_w_id, ol_i_id,
-                                                    ol_quantity, remote, sto))
+                                                    ol_quantity, line_remote,
+                                                    sto))
       return false;
 
     double i_price = item->I_PRICE;

@@ -12,6 +12,31 @@ ccbench_add_protocol(silo
     INSERT_BATCH_DELAY_MS=${CCBENCH_INSERT_BATCH_DELAY_MS}
 )
 
+# Backward-compatible research binaries. They use the same current Silo
+# implementation and common runner as the standard targets; only BACK_OFF and
+# the adaptive-variant pinning policy differ. Keep the historical output path
+# so existing experiment scripts continue to work unchanged.
+function(add_silo_research_variant target source backoff)
+  add_executable(${target} ${source} transaction.cc util.cc)
+  target_link_libraries(${target} PRIVATE
+    ccbench_common ccbench::masstree ccbench::mimalloc)
+
+  get_target_property(_defs ycsb_silo.exe COMPILE_DEFINITIONS)
+  list(FILTER _defs EXCLUDE REGEX "^BACK_OFF=")
+  list(APPEND _defs BACK_OFF=${backoff} ADAPTIVE_VARIANT=1)
+  target_compile_definitions(${target} PRIVATE ${_defs})
+  set_compile_options(${target})
+  set_target_properties(${target} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/silo")
+endfunction()
+
+add_silo_research_variant(silo_with_TAM ycsb_silo.cc 0)
+add_silo_research_variant(ycsb_metis_paper ycsb_silo.cc 0)
+add_silo_research_variant(tpcc_with_TAM tpcc_silo.cc 0)
+add_silo_research_variant(tpcc_metis_paper tpcc_silo.cc 0)
+add_silo_research_variant(silo_with_backoff ycsb_silo.cc 1)
+add_silo_research_variant(silo_without_backoff ycsb_silo.cc 0)
+
 # Standalone replay test — not parameterized by workload. It still needs
 # the universal -DVAL_SIZE etc. that ccbench_add_protocol applies to the
 # workload binaries, so reuse the same helper to assemble them.

@@ -934,6 +934,7 @@ bool TxExecutor::commit() {
   if (this->is_ronly_) {
     read_set_.clear();
     node_map_.clear();
+    Backoff::reset();
     return true;
   } else {
     /**
@@ -953,6 +954,7 @@ bool TxExecutor::commit() {
 #else
     mainte();
 #endif
+    Backoff::reset();
     return true;
   }
 }

@@ -1,9 +1,11 @@
 #pragma once
 
+#include <atomic>
 #include <thread>
 #include <vector>
 
 #include "config.hh"
+#include "adaptive_state.hh"
 #include "debug.hh"
 #include "heap_object.hh"
 #include "procedure.hh"
@@ -87,15 +89,24 @@ class YcsbWorkload {
 public:
   Xoroshiro128Plus rnd_;
   FastZipf zipf_;
+  double current_skew_;
 
   YcsbWorkload() {
     rnd_.init();
-    FastZipf zipf(&rnd_, FLAGS_ycsb_zipf_skew, FLAGS_ycsb_tuple_num);
+    current_skew_ = FLAGS_ycsb_zipf_skew;
+    FastZipf zipf(&rnd_, current_skew_, FLAGS_ycsb_tuple_num);
     zipf_ = zipf;
   }
 
   template <typename TxExecutor, typename TransactionStatus>
   void run(TxExecutor& tx) {
+    const double requested_skew =
+        g_current_ycsb_skew.load(std::memory_order_acquire);
+    if (requested_skew >= 0.0 && requested_skew != current_skew_) {
+      current_skew_ = requested_skew;
+      FastZipf zipf(&rnd_, current_skew_, FLAGS_ycsb_tuple_num);
+      zipf_ = zipf;
+    }
 #if ADD_ANALYSIS
     uint64_t start = rdtscp();
 #endif

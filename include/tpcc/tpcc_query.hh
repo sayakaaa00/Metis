@@ -10,8 +10,9 @@
 #if 1
 #define FIXED_WAREHOUSE_PER_THREAD
 // In TPC-C specification 5.11, there exists the following explanation:
-// "2.5.1.1 For any given terminal, the home warehouse number (W_ID) is constant over the whole measurement interval.",
-// so each thread can use just one w_id.
+// "2.5.1.1 For any given terminal, the home warehouse number (W_ID) is constant over the whole measurement interval."
+// A physical worker may host multiple logical terminals; each transaction is
+// generated for one terminal home, and retries retain that same home.
 #else
 #undef FIXED_WAREHOUSE_PER_THREAD
 #endif
@@ -85,37 +86,109 @@ public:
   std::uint8_t rbk;
   bool remote;
   std::uint8_t ol_cnt;
+  bool hot_transaction;
+
+  static std::uint32_t generate_item_id(const Option& opt,
+                                        bool* selected_hot = nullptr) {
+    constexpr std::uint64_t kRatioScale = 1000000;
+    const auto hot_threshold = static_cast<std::uint64_t>(
+        FLAGS_tpcc_hot_item_ratio * static_cast<double>(kRatioScale));
+    const bool select_hot =
+        hot_threshold > 0 && random_int(0, kRatioScale - 1) < hot_threshold;
+    if (selected_hot != nullptr) *selected_hot = select_hot;
+
+    if (FLAGS_tpcc_hot_item_stats ||
+        FLAGS_tpcc_hot_item_validation_samples > 0) {
+      g_tpcc_item_selections.fetch_add(1, std::memory_order_relaxed);
+      if (select_hot) {
+        g_tpcc_hot_branch_selections.fetch_add(1,
+                                                std::memory_order_relaxed);
+      }
+    }
+
+    if (select_hot) {
+      return static_cast<std::uint32_t>(
+          random_int(ID_START, FLAGS_tpcc_hot_item_count));
+    }
+    return static_cast<std::uint32_t>(
+        non_uniform_random<8191>(ID_START, opt.max_items));
+  }
+
+  std::uint32_t generate_unique_item_id(const Option& opt,
+                                        unsigned int item_index,
+                                        const bool select_hot) {
+    std::uint32_t item_id = 0;
+    bool duplicate = false;
+    do {
+      item_id = select_hot
+                    ? static_cast<std::uint32_t>(
+                          random_int(ID_START, FLAGS_tpcc_hot_item_count))
+                    : static_cast<std::uint32_t>(
+                          non_uniform_random<8191>(ID_START, opt.max_items));
+      duplicate = false;
+      for (unsigned int previous = 0; previous < item_index; ++previous) {
+        if (items[previous].ol_i_id == item_id) {
+          duplicate = true;
+          break;
+        }
+      }
+    } while (duplicate);
+    return item_id;
+  }
 
   void generate([[maybe_unused]] uint16_t w_id0, Option& opt) {
-#ifdef FIXED_WAREHOUSE_PER_THREAD
     w_id = w_id0;
-#else
-    w_id = random_int(ID_START, opt.num_wh);
-#endif
-    d_id = random_int(ID_START, opt.dist_per_ware);
+    constexpr std::uint64_t kRatioScale = 1000000;
+    const auto hot_threshold = static_cast<std::uint64_t>(
+        FLAGS_tpcc_hot_transaction_ratio * static_cast<double>(kRatioScale));
+    hot_transaction = FLAGS_tpcc_hot_transaction_mode && hot_threshold > 0 &&
+                      random_int(0, kRatioScale - 1) < hot_threshold;
+    const bool keep_tpcc_routing =
+        FLAGS_tpcc_hot_transaction_keep_tpcc_routing;
+    if (hot_transaction && !keep_tpcc_routing) {
+      w_id = static_cast<std::uint16_t>(FLAGS_tpcc_hot_warehouse_id);
+    }
+    d_id = hot_transaction && !keep_tpcc_routing
+               ? random_int(ID_START, FLAGS_tpcc_hot_district_count)
+               : random_int(ID_START, opt.dist_per_ware);
     c_id = non_uniform_random<1023>(ID_START, opt.cust_per_dist);
     rbk = random_int(1, 100);
     ol_cnt = random_int(5, 15);
+    remote = false;
+
+    if (FLAGS_tpcc_hot_transaction_stats) {
+      g_tpcc_neworder_transactions.fetch_add(1, std::memory_order_relaxed);
+      if (hot_transaction) {
+        g_tpcc_hot_neworder_transactions.fetch_add(1,
+                                                    std::memory_order_relaxed);
+        g_tpcc_hot_district_counts[d_id - ID_START].fetch_add(
+            1, std::memory_order_relaxed);
+      }
+      g_tpcc_neworder_lines.fetch_add(ol_cnt, std::memory_order_relaxed);
+    }
 
     for (unsigned int i = 0; i < ol_cnt; ++i) {
-#if 0 // ol_i_id is no need to be unique.
-      { redo1:
-        items[i].ol_i_id = non_uniform_random<8191>(ID_START, opt.max_items);
-        for (unsigned int j=0; j<i; ++j) {
-          if (items[i].ol_i_id == items[j].ol_i_id) goto redo1;
-        }
+      bool selected_hot = false;
+      if (FLAGS_tpcc_hot_transaction_mode) {
+        selected_hot = hot_transaction;
+        items[i].ol_i_id = generate_unique_item_id(opt, i, hot_transaction);
+      } else {
+        items[i].ol_i_id = generate_item_id(opt, &selected_hot);
       }
-#else
-      items[i].ol_i_id = non_uniform_random<8191>(ID_START, opt.max_items);
-#endif
-      if (opt.num_wh == 1 || random_int(0, 99) != 0) {
+      if (!FLAGS_tpcc_hot_transaction_mode && selected_hot) {
+        items[i].ol_supply_w_id = static_cast<std::uint16_t>(
+            random_int(ID_START, FLAGS_tpcc_hot_supply_warehouse_count));
+      } else if (opt.num_wh == 1 || random_int(0, 99) != 0) {
         items[i].ol_supply_w_id = w_id;
-        remote = false;
       } else {
         do {
           items[i].ol_supply_w_id = random_int(ID_START, opt.num_wh);
         } while (items[i].ol_supply_w_id == w_id);
-        remote = true;
+      }
+      remote = remote || items[i].ol_supply_w_id != w_id;
+      if (FLAGS_tpcc_hot_transaction_stats &&
+          items[i].ol_supply_w_id != w_id) {
+        g_tpcc_neworder_remote_lines.fetch_add(1, std::memory_order_relaxed);
       }
       items[i].ol_quantity = random_int(1, 10);
     }
@@ -151,11 +224,7 @@ public:
   bool by_last_name;
 
   void generate([[maybe_unused]] std::uint16_t w_id0, Option& opt) {
-#ifdef FIXED_WAREHOUSE_PER_THREAD
     w_id = w_id0;
-#else
-    w_id = random_int(ID_START, opt.num_wh);
-#endif
     d_w_id = w_id;
     d_id = random_int(ID_START, opt.dist_per_ware);
     h_amount = random_double(100, 500000, 100);
@@ -210,11 +279,7 @@ public:
   bool by_last_name;
 
   void generate(uint16_t w_id0, Option& opt) {
-#ifdef FIXED_WAREHOUSE_PER_THREAD
     w_id = w_id0;
-#else
-    w_id = random_int(ID_START, opt.num_wh);
-#endif
     d_id = random_int(ID_START, opt.dist_per_ware);
 
     size_t y = random_int(1, 100);
@@ -246,11 +311,7 @@ public:
   std::uint64_t ol_delivery_d;
 
   void generate(uint16_t w_id0, [[maybe_unused]] Option& opt) {
-#ifdef FIXED_WAREHOUSE_PER_THREAD
     w_id = w_id0;
-#else
-    w_id = random_int(ID_START, opt.num_wh);
-#endif
     o_carrier_id = random_int(1, 10);
     ol_delivery_d = get_lightweight_timestamp();
   }
@@ -269,11 +330,7 @@ public:
   std::uint8_t threshold;
 
   void generate(uint16_t w_id0, Option& opt) {
-#ifdef FIXED_WAREHOUSE_PER_THREAD
     w_id = w_id0;
-#else
-    w_id = random_int(ID_START, opt.num_wh);
-#endif
     d_id = random_int(1, opt.dist_per_ware);
     threshold = random_int(10, 20);
   }
@@ -306,8 +363,9 @@ public:
     TPCCQuery::StockLevel stock_level;
   };
 
-  void generate(std::uint16_t w_id, TPCCQuery::Option& opt) {
-    type = decideQueryType(opt);
+  void generate(TxType selected_type, std::uint16_t w_id,
+                TPCCQuery::Option& opt) {
+    type = selected_type;
     switch (type) {
       case TxType::NewOrder:
         new_order.generate(w_id, opt);
@@ -327,6 +385,10 @@ public:
       case TxType::None:
         std::abort();
     }
+  }
+
+  void generate(std::uint16_t w_id, TPCCQuery::Option& opt) {
+    generate(decideQueryType(opt), w_id, opt);
   }
 
   void print() {

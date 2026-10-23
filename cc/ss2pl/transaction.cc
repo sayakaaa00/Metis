@@ -112,6 +112,7 @@ bool TxExecutor::commit() {
   read_set_.clear();
   write_set_.clear();
 
+  Backoff::reset();
   return true;
 }
 
