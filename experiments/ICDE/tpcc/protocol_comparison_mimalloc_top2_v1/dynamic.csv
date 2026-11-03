@@ -1,0 +1,7 @@
+method,run,tps,abort_rate,log
+silo_with_backoff,1,611748,0.1604,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_top2_v1/logs/dynamic/silo_with_backoff_run1.log
+observed_metis,1,620301,0.1238,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_top2_v1/logs/dynamic/observed_metis_run1.log
+observed_metis,2,623559,0.1235,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_top2_v1/logs/dynamic/observed_metis_run2.log
+silo_with_backoff,2,610468,0.1608,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_top2_v1/logs/dynamic/silo_with_backoff_run2.log
+silo_with_backoff,3,606667,0.1639,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_top2_v1/logs/dynamic/silo_with_backoff_run3.log
+observed_metis,3,622682,0.1239,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_top2_v1/logs/dynamic/observed_metis_run3.log

@@ -1,0 +1,103 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		50
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261026_145055.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_active_warehouse_count:	1
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	randomized_worker_affined
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+[th#41]: insert order-secondary failed
+[th#3]: insert order-secondary failed
+[th#38]: insert order-secondary failed
+[th#66]: insert order-secondary failed
+[th#60]: insert order-secondary failed
+[th#34]: insert order-secondary failed
+[th#41]: insert order-secondary failed
+[th#10]: insert order-secondary failed
+[th#18]: insert order-secondary failed
+[th#8]: insert order-secondary failed
+[th#37]: insert order-secondary failed
+[th#29]: insert order-secondary failed
+[th#80]: insert order-secondary failed
+[th#48]: insert order-secondary failed
+[th#76]: insert order-secondary failed
+[th#63]: insert order-secondary failed
+[th#7]: insert order-secondary failed
+[th#13]: insert order-secondary failed
+[th#36]: insert order-secondary failed
+[th#1]: insert order-secondary failed
+[th#79]: insert order-secondary failed
+[th#89]: insert order-secondary failed
+[th#1]: insert order-secondary failed
+[th#6]: insert order-secondary failed
+[th#38]: insert order-secondary failed
+[th#22]: insert order-secondary failed
+[th#8]: insert order-secondary failed
+[th#34]: insert order-secondary failed
+[th#92]: insert order-secondary failed
+[th#53]: insert order-secondary failed
+[th#58]: insert order-secondary failed
+[th#32]: insert order-secondary failed
+[th#49]: insert order-secondary failed
+[th#23]: insert order-secondary failed
+[th#54]: insert order-secondary failed
+[th#61]: insert order-secondary failed
+[th#7]: insert order-secondary failed
+[th#15]: insert order-secondary failed
+[th#19]: insert order-secondary failed
+[th#37]: insert order-secondary failed
+[th#32]: insert order-secondary failed
+[th#21]: insert order-secondary failed
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	50
+success_forwarding_:	0
+abort_counts_:	293474262
+batch_abort_counts_:	0
+commit_counts_:	1421508
+batch_commit_counts_:	0
+maxrss:	30387380 kB
+abort_rate:	0.9952
+batch_abort_rate:	-nan
+latency[ns]:	3376714.7380
+throughput[tps]:	28430
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 639810
+    aborts: 288766367
+    abort rate: 0.9978
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 610814
+    aborts: 16591
+    abort rate: 0.0264
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 56972
+    aborts: 8
+    abort rate: 0.0001
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 56777
+    aborts: 4572173
+    abort rate: 0.9877
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 57135
+    aborts: 119123
+    abort rate: 0.6758
+    latency[us]: 0.00
+  Summary: 639810,288766367,610814,16591,56972,8,56777,4572173,57135,119123,
+  All transaction total latencies: 0,0,0,0,0,

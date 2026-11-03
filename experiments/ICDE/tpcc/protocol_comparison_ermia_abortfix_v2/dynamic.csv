@@ -1,0 +1,3 @@
+method,run,tps,abort_rate,log
+ermia,1,40891,0.9281,experiments/ICDE/tpcc/protocol_comparison_ermia_abortfix_v2/logs/dynamic/ermia_run1.log
+ermia,2,40092,0.8950,experiments/ICDE/tpcc/protocol_comparison_ermia_abortfix_v2/logs/dynamic/ermia_run2.log

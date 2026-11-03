@@ -1,0 +1,6 @@
+method,runs,mean_tps,min_tps,max_tps
+silo_without_backoff,2,254450,231519,277380
+silo_with_backoff,2,274366,266206,282525
+cicada,2,56476,49893,63058
+ermia,2,36517,35036,37998
+observed_metis,2,144354,114604,174105

@@ -1,0 +1,5 @@
+method,run,tps,abort_rate,trace,log
+metis_test,1,346595,0.2873,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/traces/metis_test_run1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/logs/metis_test_run1.log
+adatam,1,468857,0.3075,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/traces/adatam_run1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/logs/adatam_run1.log
+silo_without_backoff,1,414715,0.3564,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/traces/silo_without_backoff_run1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/logs/silo_without_backoff_run1.log
+silo_with_backoff,1,438176,0.2293,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/traces/silo_with_backoff_run1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_adatam_dynamic_16_4_32_smoke/logs/silo_with_backoff_run1.log

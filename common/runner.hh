@@ -41,6 +41,7 @@
  */
 
 #include <atomic>
+#include <chrono>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
@@ -210,7 +211,23 @@ void worker_body(std::size_t thid, char& ready, const bool& start,
   worker_after_start(trans, thid);
   while (!loadAcquire(quit)) {
     if (!worker_gate(thid)) {
+#ifdef ADAPTIVE_VARIANT
+      if constexpr (requires(Tx& parked) {
+                      parked.announce_quiescent_epoch();
+                    }) {
+        trans.announce_quiescent_epoch();
+      }
+      const auto sleep_us = FLAGS_metis_test_enable
+          ? FLAGS_metis_test_idle_sleep_us : FLAGS_tam_idle_sleep_us;
+      if (sleep_us != 0) {
+        std::this_thread::sleep_for(
+            std::chrono::microseconds(sleep_us));
+      } else {
+        _mm_pause();
+      }
+#else
       _mm_pause();
+#endif
       continue;
     }
     workload.template run<Tx, TransactionStatus>(trans);

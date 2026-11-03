@@ -1,0 +1,14 @@
+binary=/home/ubuntu/ccbench-adaTAM/build_release/silo/tpcc_metis_paper
+total_threads=96 48 32 24 16 12 8 6 4 3 2 1
+database_warehouses=96 (fixed)
+active_warehouses=96 48 32 24 16 12 8 6 4 3 2 1
+threads_per_warehouse=derived as total_threads / active_warehouses
+extime=5
+repeats=2
+tpcc_mix=not passed (TPC-C defaults: New-Order 45, Payment 43, Order-Status 4, Delivery 4, Stock-Level 4)
+tpcc_random_warehouse_per_transaction=not passed (default false; worker-affined home warehouse)
+tpcc_retry_same_type=not passed (default true)
+tpcc_hot_*_flags=not passed (defaults disabled)
+metis=false (default)
+ada_tam=false (default)
+numa_policy=not set (no numactl)

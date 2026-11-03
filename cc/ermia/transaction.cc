@@ -837,6 +837,13 @@ void TxExecutor::abort() {
   read_set_.clear();
   node_map_.clear();
 
+  // Workload-level aborts can reach here without passing through one of the
+  // conflict paths that already publishes this state. Do not leave the TMT
+  // entry inflight while the next transaction begins.
+  this->status_ = TransactionStatus::aborted;
+  TransactionTable* tmt = loadAcquire(TMT[thid_]);
+  tmt->status_.store(TransactionStatus::aborted, memory_order_release);
+
 #if BACK_OFF
 
 #if ADD_ANALYSIS
@@ -875,7 +882,7 @@ void TxExecutor::mainte() {
       // gcRecord uses MinQueuedCstamp[] (published by every thread on
       // push to and pop from gcq_for_version_) to defer Tuple free
       // until no thread can still hold a reference.
-      gcobject_.gcRecord();
+      if (!FLAGS_gc_defer_record_reclamation) gcobject_.gcRecord();
       pre_gc_threshold_ = loadThreshold;
       gcstart_ = gcstop_;
 #if ADD_ANALYSIS

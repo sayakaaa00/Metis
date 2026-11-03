@@ -1,0 +1,61 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		60
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261028_050229.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_active_warehouse_count:	16
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	randomized_worker_affined
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	60
+success_forwarding_:	0
+abort_counts_:	5733823
+batch_abort_counts_:	0
+commit_counts_:	29646481
+batch_commit_counts_:	0
+maxrss:	78341416 kB
+abort_rate:	0.1621
+batch_abort_rate:	-nan
+latency[ns]:	194289.5076
+throughput[tps]:	494108
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 13339885
+    aborts: 1014795
+    abort rate: 0.0707
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 12746766
+    aborts: 112003
+    abort rate: 0.0087
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 1186444
+    aborts: 28
+    abort rate: 0.0000
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 1186979
+    aborts: 3567476
+    abort rate: 0.7503
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 1186407
+    aborts: 1039521
+    abort rate: 0.4670
+    latency[us]: 0.00
+  Summary: 13339885,1014795,12746766,112003,1186444,28,1186979,3567476,1186407,1039521,
+  All transaction total latencies: 0,0,0,0,0,

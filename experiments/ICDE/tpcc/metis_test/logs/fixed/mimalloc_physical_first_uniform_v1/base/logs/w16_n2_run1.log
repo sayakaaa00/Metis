@@ -1,0 +1,60 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		15
+#FLAGS_thread_num:	96
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_active_warehouse_count:	16
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	15
+success_forwarding_:	0
+abort_counts_:	17303
+batch_abort_counts_:	0
+commit_counts_:	791217
+batch_commit_counts_:	0
+maxrss:	22980108 kB
+abort_rate:	0.0214
+batch_abort_rate:	-nan
+latency[ns]:	1820008.7209
+throughput[tps]:	52747
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 356777
+    aborts: 10207
+    abort rate: 0.0278
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 339839
+    aborts: 889
+    abort rate: 0.0026
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 31348
+    aborts: 1
+    abort rate: 0.0000
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 31548
+    aborts: 3980
+    abort rate: 0.1120
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 31705
+    aborts: 2226
+    abort rate: 0.0656
+    latency[us]: 0.00
+  Summary: 356777,10207,339839,889,31348,1,31548,3980,31705,2226,
+  All transaction total latencies: 0,0,0,0,0,

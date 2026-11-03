@@ -106,7 +106,10 @@ bool insert_order(TxExecutor& tx, uint32_t o_id, uint8_t d_id, uint16_t w_id,
   if (FLAGS_tpcc_interactive_ms) sleepMs(FLAGS_tpcc_interactive_ms);
   if (stat == Status::WARN_ALREADY_EXISTS ||
       tx.status_ == TransactionStatus::aborted) {
-    dump(tx.thid_, "insert order failed");
+#ifndef METIS_TEST
+    if (FLAGS_tpcc_log_retry_conflicts)
+      dump(tx.thid_, "insert order failed");
+#endif
     return false;
   }
   SimpleKey<16> o_sec_key;
@@ -115,7 +118,8 @@ bool insert_order(TxExecutor& tx, uint32_t o_id, uint8_t d_id, uint16_t w_id,
                    TupleBody(o_sec_key.view(), std::move(key_obj)));
   if (stat == Status::WARN_ALREADY_EXISTS ||
       tx.status_ == TransactionStatus::aborted) {
-    dump(tx.thid_, "insert order-secondary failed");
+    if (FLAGS_tpcc_log_retry_conflicts)
+      dump(tx.thid_, "insert order-secondary failed");
     return false;
   }
   return true;

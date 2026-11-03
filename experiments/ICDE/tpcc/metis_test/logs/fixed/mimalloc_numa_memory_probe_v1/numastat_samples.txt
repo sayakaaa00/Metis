@@ -1,0 +1,16 @@
+Illustrative process-wide snapshots from the 10-second W=16, N=24 probe.
+Command: numastat -p <tpcc_metis_test PID>
+Both processes used the OS default NUMA memory policy and mimalloc LD_PRELOAD.
+Snapshots were taken during separate runs at potentially different elapsed times.
+They include all 96 warehouses, shared indexes, metadata, and runtime allocations;
+they do not identify pages belonging to a particular warehouse.
+
+pin=true, PID 108274:
+                           Node 0          Node 1           Total (MB)
+Private                  16063.23        10540.55        26603.78
+Total                    16063.30        10540.55        26603.85
+
+pin=false, PID 108685:
+                           Node 0          Node 1           Total (MB)
+Private                  12151.90        13437.86        25589.77
+Total                    12151.90        13437.93        25589.84

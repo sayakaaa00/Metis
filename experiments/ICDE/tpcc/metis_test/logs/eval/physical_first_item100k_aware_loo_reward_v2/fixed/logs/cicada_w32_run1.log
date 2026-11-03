@@ -1,0 +1,68 @@
+#FLAGS_clocks_per_us:			2900
+#FLAGS_extime:				30
+#FLAGS_gc_inter_us:			1000000000
+#FLAGS_group_commit:			0
+#FLAGS_group_commit_timeout_us:		2
+#FLAGS_io_time_ns:			5
+#FLAGS_pre_reserve_version:		10000
+#FLAGS_p_wal:				0
+#FLAGS_s_wal:				0
+#FLAGS_thread_num:			96
+#FLAGS_ycsb:				1
+#FLAGS_worker1_insert_delay_rphase_us:	0
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_active_warehouse_count:	32
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 1: INLINE_VERSION_OPT 0: INLINE_VERSION_PROMOTION 1: MASSTREE_USE 1: PARTITION_TABLE 0: REUSE_VERSION 1: SINGLE_EXEC 0: KEY_SIZE 8: VAL_SIZE 4: WRITE_LATEST_ONLY 0: WORKER1_INSERT_DELAY_RPHASE 0
+success_forwarding_:	0
+abort_counts_:	1495761
+batch_abort_counts_:	0
+commit_counts_:	7549564
+batch_commit_counts_:	0
+maxrss:	132391516 kB
+abort_rate:	0.1654
+batch_abort_rate:	-nan
+latency[ns]:	381479.1855
+throughput[tps]:	251652
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 3398372
+    aborts: 278017
+    abort rate: 0.0756
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 3245770
+    aborts: 97816
+    abort rate: 0.0293
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 301860
+    aborts: 9
+    abort rate: 0.0000
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 301830
+    aborts: 1080561
+    abort rate: 0.7817
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 301732
+    aborts: 39358
+    abort rate: 0.1154
+    latency[us]: 0.00
+  Summary: 3398372,278017,3245770,97816,301860,9,301830,1080561,301732,39358,
+  All transaction total latencies: 0,0,0,0,0,

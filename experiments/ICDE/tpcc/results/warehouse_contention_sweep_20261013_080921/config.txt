@@ -1,0 +1,16 @@
+binary=/home/ubuntu/ccbench-adaTAM/build_release/silo/tpcc_metis_paper
+warehouses=512 256 128 64 32 16
+threads=8 12 16 20 24 28 32 36 40 44 48
+extime=5
+repeats=2
+new_order_percent=90
+payment_percent=7
+order_status_percent=1
+delivery_percent=1
+stock_level_percent=1
+random_warehouse_per_transaction=true
+numactl_args=--interleave=all
+metis=false
+tam=false
+hot_workload_flags=not_passed
+retry_same_type=false

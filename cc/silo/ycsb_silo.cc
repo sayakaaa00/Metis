@@ -31,6 +31,8 @@ using namespace std;
 
 DEFINE_bool(pin_threads, false,
             "Enable NUMA-aware CPU pinning for adaptive Silo variants");
+DEFINE_string(ycsb_pin_order, "socket0_first",
+              "Worker pin order when pinning: socket0_first or physical_first");
 DEFINE_bool(ycsb_skew_change_enable, false,
             "Enable the first in-run YCSB Zipf skew change");
 DEFINE_double(ycsb_zipf_skew2, 0.0,
@@ -48,6 +50,11 @@ int main(int argc, char* argv[]) try {
   gflags::SetUsageMessage("YCSB Silo benchmark.");
   gflags::ParseCommandLineFlags(&argc, &argv, true);
   chkArg();
+  if (FLAGS_ycsb_pin_order != "socket0_first" &&
+      FLAGS_ycsb_pin_order != "physical_first") {
+    fprintf(stderr, "ycsb_pin_order must be socket0_first or physical_first\n");
+    return 1;
+  }
   g_current_ycsb_skew.store(FLAGS_ycsb_zipf_skew,
                             std::memory_order_release);
 
@@ -87,7 +94,12 @@ int main(int argc, char* argv[]) try {
 #endif
 #ifdef Linux
 #if ADAPTIVE_VARIANT
-        if (FLAGS_pin_threads) { setThreadAffinity(thid); }
+        if (FLAGS_pin_threads) {
+          if (FLAGS_ycsb_pin_order == "physical_first")
+            setThreadAffinityPhysicalFirst(thid);
+          else
+            setThreadAffinity(thid);
+        }
 #else
         setThreadAffinity(thid);
 #endif

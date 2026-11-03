@@ -34,8 +34,16 @@ add_silo_research_variant(silo_with_TAM ycsb_silo.cc 0)
 add_silo_research_variant(ycsb_metis_paper ycsb_silo.cc 0)
 add_silo_research_variant(tpcc_with_TAM tpcc_silo.cc 0)
 add_silo_research_variant(tpcc_metis_paper tpcc_silo.cc 0)
+add_silo_research_variant(tpcc_metis_test tpcc_silo.cc 0)
+target_compile_definitions(tpcc_metis_test PRIVATE METIS_TEST=1)
+add_silo_research_variant(tpcc_metis_test_smt tpcc_silo.cc 0)
+target_compile_definitions(tpcc_metis_test_smt PRIVATE METIS_TEST=1 METIS_TEST_SMT=1)
 add_silo_research_variant(silo_with_backoff ycsb_silo.cc 1)
 add_silo_research_variant(silo_without_backoff ycsb_silo.cc 0)
+add_silo_research_variant(tpcc_silo_with_backoff tpcc_silo.cc 1)
+target_compile_definitions(tpcc_silo_with_backoff PRIVATE METIS_TEST=1)
+add_silo_research_variant(tpcc_silo_without_backoff tpcc_silo.cc 0)
+target_compile_definitions(tpcc_silo_without_backoff PRIVATE METIS_TEST=1)
 
 # Standalone replay test — not parameterized by workload. It still needs
 # the universal -DVAL_SIZE etc. that ccbench_add_protocol applies to the

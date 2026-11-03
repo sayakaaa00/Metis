@@ -7,8 +7,26 @@
 
 #ifdef GLOBAL_VALUE_DEFINE
 DEFINE_uint32(tpcc_num_wh, 1, "The number of warehouses");
+DEFINE_uint32(tpcc_num_items, 100000,
+              "Number of Item rows and Stock rows per warehouse");
+DEFINE_bool(tpcc_item_zipf_enable, false,
+            "Select New-Order item IDs from a Zipf distribution");
+DEFINE_double(tpcc_item_zipf_skew, 0.0,
+              "Zipf theta for New-Order item IDs, in [0, 1)");
+DEFINE_uint64(tpcc_item_zipf_seed, 1,
+              "Seed of the shared Zipf-rank to item-ID permutation");
+DEFINE_uint64(tpcc_item_zipf_validation_samples, 0,
+              "Sample item IDs with the benchmark generator, then exit");
+DEFINE_string(tpcc_item_zipf_histogram_path, "",
+              "CSV output path for item-Zipf validation histogram");
 DEFINE_uint32(tpcc_active_warehouse_count, 0,
               "Number of warehouses selected as logical terminal home warehouses; 0 uses tpcc_num_wh");
+DEFINE_string(tpcc_active_warehouse_schedule, "",
+              "Runtime schedule as seconds:active_warehouses, starting at 0");
+DEFINE_bool(tpcc_balanced_home_prefix, false,
+            "Repeat a shuffled home-warehouse cycle across worker IDs");
+DEFINE_bool(tpcc_log_retry_conflicts, true,
+            "Print expected TPC-C insert conflicts while retrying");
 DEFINE_uint64(tpcc_perc_payment, 43, "The percentage of Payment transactions");
 DEFINE_uint64(tpcc_perc_order_status, 4,
               "The percentage of Order-Status transactions");
@@ -47,7 +65,16 @@ DEFINE_uint64(tpcc_hot_item_validation_samples, 0,
               "Generate selections, report their distribution, and exit");
 #else
 DECLARE_uint32(tpcc_num_wh);
+DECLARE_uint32(tpcc_num_items);
+DECLARE_bool(tpcc_item_zipf_enable);
+DECLARE_double(tpcc_item_zipf_skew);
+DECLARE_uint64(tpcc_item_zipf_seed);
+DECLARE_uint64(tpcc_item_zipf_validation_samples);
+DECLARE_string(tpcc_item_zipf_histogram_path);
 DECLARE_uint32(tpcc_active_warehouse_count);
+DECLARE_string(tpcc_active_warehouse_schedule);
+DECLARE_bool(tpcc_balanced_home_prefix);
+DECLARE_bool(tpcc_log_retry_conflicts);
 DECLARE_uint64(tpcc_perc_payment);
 DECLARE_uint64(tpcc_perc_order_status);
 DECLARE_uint64(tpcc_perc_delivery);

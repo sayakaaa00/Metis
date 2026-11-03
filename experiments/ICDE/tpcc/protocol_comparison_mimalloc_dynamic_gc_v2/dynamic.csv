@@ -1,0 +1,11 @@
+method,run,tps,abort_rate,log
+cicada,1,526407,0.1432,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/cicada_run1.log
+ermia,1,279804,0.2896,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/ermia_run1.log
+silo_without_backoff,1,599977,0.2681,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/silo_without_backoff_run1.log
+silo_with_backoff,1,610117,0.1585,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/silo_with_backoff_run1.log
+observed_metis,1,599859,0.0748,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/observed_metis_run1.log
+observed_metis,2,601634,0.0748,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/observed_metis_run2.log
+ermia,2,313327,0.3348,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/ermia_run2.log
+cicada,2,508465,0.1365,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/cicada_run2.log
+silo_with_backoff,2,607740,0.1635,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/silo_with_backoff_run2.log
+silo_without_backoff,2,594363,0.2684,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_gc_v2/logs/dynamic/silo_without_backoff_run2.log

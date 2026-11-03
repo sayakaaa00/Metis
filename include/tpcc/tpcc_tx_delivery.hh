@@ -48,8 +48,14 @@ bool get_order_id(TxExecutor& tx, uint16_t w_id, uint8_t d_id, uint32_t& o_id,
   // Per TPC-C spec: if no NEW-ORDER row exists for this district, skip
   // delivery for this district only (caller continues with the next).
   if (result.empty()) { return true; }
-  found = true;
   TupleBody* body = *result.begin();
+  // A concurrent scan may expose a version without a committed payload.
+  // Retry the transaction instead of dereferencing an empty value.
+  if (body == nullptr || !body->get_value().is_compatible<NewOrder>()) {
+    tx.status_ = TxStatus::aborted;
+    return false;
+  }
+  found = true;
   o_id = body->get_value().cast_to<NewOrder>().NO_O_ID;
   return true;
 }

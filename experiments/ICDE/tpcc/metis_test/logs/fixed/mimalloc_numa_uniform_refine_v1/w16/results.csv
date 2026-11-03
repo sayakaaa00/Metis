@@ -1,0 +1,9 @@
+active_warehouses,active_threads,run,tps,abort_rate,log
+16,20,1,277248,0.2163,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n20_run1.log
+16,28,1,276129,0.2862,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n28_run1.log
+16,56,1,250795,0.4417,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n56_run1.log
+16,72,1,305065,0.4437,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n72_run1.log
+16,72,2,304372,0.4526,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n72_run2.log
+16,56,2,251122,0.4126,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n56_run2.log
+16,28,2,300490,0.2749,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n28_run2.log
+16,20,2,278793,0.2170,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_numa_uniform_refine_v1/w16/logs/w16_n20_run2.log

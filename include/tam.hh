@@ -4,11 +4,16 @@
 #include <array>
 #include <atomic>
 #include <cmath>
+#include <chrono>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
+#include <limits>
+#include <random>
 #include <string>
+#include <vector>
 
 #include "gflags/gflags.h"
 #include "adaptive_state.hh"
@@ -26,6 +31,43 @@ DEFINE_bool(ada_tam_enable, false,
             "Enable adaptive thread activity management (AdaTAM)");
 DEFINE_bool(metis_paper_enable, false,
             "Enable Metis_paper absolute-action thread activity management");
+DEFINE_bool(metis_test_enable, false,
+            "Enable experimental Metis-test TPCC controller");
+DEFINE_bool(metis_test_learn, true, "Update Metis-test model during this run");
+DEFINE_uint64(metis_test_fixed_threads, 0,
+              "Use a fixed active count (0 enables Metis-test decisions)");
+DEFINE_uint64(metis_test_active_warehouses, 16,
+              "TPC-C active home warehouses for Metis-test context");
+DEFINE_bool(metis_test_random_per_transaction, false,
+            "TPC-C home warehouse is resampled for each transaction");
+DEFINE_bool(metis_test_balanced_home_prefix, true,
+            "Randomize warehouse order while balancing each active worker prefix");
+DEFINE_double(metis_test_tps_scale, 400000.0,
+              "Fixed TPCC TPS scale for Metis-test reward and context");
+DEFINE_string(metis_test_reward_profile, "legacy",
+              "Metis-test reward scale: legacy or physical_first_item100k");
+DEFINE_uint64(metis_test_min_pulls_per_action, 1,
+              "Initial samples per action while training Metis-test");
+DEFINE_bool(metis_test_empirical_reward, false,
+            "Use measured mean reward per absolute action on a fixed workload");
+DEFINE_bool(metis_test_coarse_actions, false,
+            "Probe representative absolute actions 8,16,24,32,48,64,96");
+DEFINE_bool(metis_test_cross_workload, false,
+            "Train or evaluate a warehouse-aware model across TPC-C workloads");
+DEFINE_bool(metis_test_observed_load, false,
+            "Use only measured probe throughput and abort rate for workload transfer");
+DEFINE_uint64(metis_test_probe_intervals, 3,
+              "TAM update intervals to average at the 96-worker reference action");
+DEFINE_uint64(metis_test_reprobe_period_us, 0,
+              "Periodically refresh the observed workload signature (0 disables)");
+DEFINE_double(metis_test_observed_min_coefficient, 2.0,
+              "Minimum learned coefficient for the observed abort-to-thread policy");
+DEFINE_uint64(metis_test_exploration_seed, 1,
+              "Seed for balanced Metis-test action exploration");
+DEFINE_uint64(metis_test_idle_sleep_us, 50,
+              "Sleep parked Metis-test workers for this many microseconds (0 spins)");
+DEFINE_uint64(tam_idle_sleep_us, 50,
+              "Sleep parked AdaTAM/Metis_paper workers for this many microseconds (0 spins)");
 DEFINE_uint64(tam_update_period_us, 100000,
               "How often (in us) TAM updates active thread count");
 DEFINE_uint64(tam_log_period_us, 100000,
@@ -38,6 +80,8 @@ DEFINE_double(ada_tam_step, 2.0,
               "Step size (in threads) when AdaTAM increases/decreases active threads");
 DEFINE_bool(tam_log_active_threads, false,
             "If true, log active thread count at each AdaTAM update");
+DEFINE_uint64(benchmark_interval_tps_log_us, 0,
+              "Log interval TPS to stderr at this period in us (0 disables)");
 DEFINE_double(linucb_alpha, 1.0,
               "Exploration parameter alpha for LinUCBTAM");
 DEFINE_double(linucb_lambda, 1.0,
@@ -66,12 +110,32 @@ DEFINE_uint64(linucb_abs_ignore_initial_steps, 0,
 #else
 DECLARE_bool(ada_tam_enable);
 DECLARE_bool(metis_paper_enable);
+DECLARE_bool(metis_test_enable);
+DECLARE_bool(metis_test_learn);
+DECLARE_uint64(metis_test_fixed_threads);
+DECLARE_uint64(metis_test_active_warehouses);
+DECLARE_bool(metis_test_random_per_transaction);
+DECLARE_bool(metis_test_balanced_home_prefix);
+DECLARE_double(metis_test_tps_scale);
+DECLARE_string(metis_test_reward_profile);
+DECLARE_uint64(metis_test_min_pulls_per_action);
+DECLARE_bool(metis_test_empirical_reward);
+DECLARE_bool(metis_test_coarse_actions);
+DECLARE_bool(metis_test_cross_workload);
+DECLARE_bool(metis_test_observed_load);
+DECLARE_uint64(metis_test_probe_intervals);
+DECLARE_uint64(metis_test_reprobe_period_us);
+DECLARE_double(metis_test_observed_min_coefficient);
+DECLARE_uint64(metis_test_exploration_seed);
+DECLARE_uint64(metis_test_idle_sleep_us);
+DECLARE_uint64(tam_idle_sleep_us);
 DECLARE_uint64(tam_update_period_us);
 DECLARE_uint64(tam_log_period_us);
 DECLARE_uint64(tam_min_threads);
 DECLARE_uint64(tam_max_threads);
 DECLARE_double(ada_tam_step);
 DECLARE_bool(tam_log_active_threads);
+DECLARE_uint64(benchmark_interval_tps_log_us);
 DECLARE_double(linucb_alpha);
 DECLARE_double(linucb_lambda);
 DECLARE_uint64(linucb_tam_min_pulls_per_action);
@@ -697,10 +761,812 @@ class Metis_paper {
   uint64_t update_step_id_{0};
 };
 
+// Experimental TPCC controller. Unlike Metis_paper, all absolute actions
+// share one ridge model so a short, fixed-workload training run can transfer
+// information between neighboring thread counts.
+class Metis_test {
+ private:
+#ifdef METIS_TEST_SMT
+  static constexpr size_t kDim = 14;
+#else
+  static constexpr size_t kDim = 12;
+#endif
+  static constexpr size_t kActions = 45;
+  static constexpr std::array<uint64_t, kActions> kTargets = {
+      8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,
+      48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,
+      88,90,92,94,96};
+  struct ObservedEpisode {
+    double probe_tps{0.0};
+    double probe_abort{0.0};
+    std::array<uint64_t, kActions> counts{};
+    std::array<double, kActions> reward_sums{};
+  };
+
+ public:
+  void init(uint64_t total_threads, uint64_t) {
+    if (!(FLAGS_metis_test_tps_scale > 0.0) ||
+        !std::isfinite(FLAGS_metis_test_tps_scale) ||
+        (FLAGS_metis_test_reward_profile != "legacy" &&
+         FLAGS_metis_test_reward_profile != "physical_first_item100k") ||
+        FLAGS_metis_test_active_warehouses == 0 ||
+        (FLAGS_metis_test_observed_load &&
+         (total_threads != 96 || FLAGS_tam_max_threads < 96 ||
+          FLAGS_metis_test_probe_intervals == 0 ||
+          FLAGS_metis_test_observed_min_coefficient <= 0.0 ||
+          FLAGS_metis_test_observed_min_coefficient > 12.0))) {
+      std::fprintf(stderr, "Invalid Metis-test scale, warehouse, probe, or thread configuration\n");
+      std::abort();
+    }
+    total_threads_ = total_threads;
+    g_metis_test_home_warehouses =
+        std::vector<std::atomic<std::uint16_t>>(total_threads);
+    g_metis_test_worker_warehouses =
+        std::vector<std::atomic<std::uint32_t>>(total_threads);
+    uint64_t initial = std::min(total_threads, FLAGS_tam_max_threads);
+    if (FLAGS_metis_test_fixed_threads != 0) {
+      initial = FLAGS_metis_test_fixed_threads;
+    }
+    if (initial == 0 || initial > total_threads) {
+      std::fprintf(stderr, "Invalid Metis-test initial thread count\n");
+      std::abort();
+    }
+    set_active(initial);
+    last_time_ = std::chrono::steady_clock::now();
+    start_time_ = last_time_;
+    last_log_time_ = last_time_;
+    last_committed_ = last_aborts_ = 0;
+    last_tps_ = 0.0;
+    have_last_tps_ = false;
+    last_action_ = -1;
+    settling_ = false;
+    step_ = 0;
+    observations_ = 0;
+    samples_.fill(0);
+    reward_sum_.fill(0.0);
+    observed_episodes_.clear();
+    observed_current_ = {};
+    observed_coefficient_ = 6.0;
+    observed_probing_ = FLAGS_metis_test_observed_load;
+    observed_skip_probe_interval_ = false;
+    observed_probe_count_ = 0;
+    observed_probe_tps_sum_ = observed_probe_abort_sum_ = 0.0;
+    observed_previous_probe_tps_ = observed_previous_probe_abort_ = 0.0;
+    observed_anchor_tps_ = observed_anchor_abort_ = 0.0;
+    observed_probe_time_ = last_time_;
+    rng_.seed(FLAGS_metis_test_exploration_seed);
+    double lambda = FLAGS_linucb_lambda > 0.0 ? FLAGS_linucb_lambda : 1.0;
+    A_ = {};
+    b_ = {};
+    for (size_t i = 0; i < kDim; ++i) A_[i][i] = lambda;
+  }
+
+  bool enabled() const { return FLAGS_metis_test_enable; }
+  uint64_t active_threads() const {
+    return active_.load(std::memory_order_acquire);
+  }
+
+  bool load_model(const std::string& path) {
+    std::ifstream in(path);
+    std::string header;
+    if (!(in >> header)) return false;
+    if (header == "metis_test_observed_v1") {
+      size_t actions, episodes;
+      int coarse, balanced;
+      uint64_t update_us, sleep_us, probe_intervals;
+      if (!FLAGS_metis_test_observed_load ||
+          !(in >> actions >> coarse >> balanced >> update_us >> sleep_us >>
+            probe_intervals >> episodes) ||
+          actions != kActions ||
+          coarse != static_cast<int>(FLAGS_metis_test_coarse_actions) ||
+          balanced != static_cast<int>(FLAGS_metis_test_balanced_home_prefix) ||
+          update_us != FLAGS_tam_update_period_us ||
+          sleep_us != FLAGS_metis_test_idle_sleep_us ||
+          probe_intervals != FLAGS_metis_test_probe_intervals)
+        return false;
+      std::vector<ObservedEpisode> loaded;
+      loaded.reserve(episodes);
+      for (size_t i = 0; i < episodes; ++i) {
+        ObservedEpisode episode;
+        if (!(in >> episode.probe_tps >> episode.probe_abort) ||
+            !(episode.probe_tps > 0.0) ||
+            !std::isfinite(episode.probe_tps) ||
+            !std::isfinite(episode.probe_abort)) return false;
+        for (auto& count : episode.counts) if (!(in >> count)) return false;
+        for (auto& sum : episode.reward_sums) if (!(in >> sum)) return false;
+        loaded.push_back(episode);
+      }
+      observed_episodes_ = std::move(loaded);
+      observed_coefficient_ = fit_observed_coefficient();
+      return true;
+    }
+    if (FLAGS_metis_test_observed_load) return false;
+    in.clear();
+    in.seekg(0);
+    size_t dim, actions;
+    double scale;
+    uint64_t warehouses;
+    int random_per_tx;
+    int balanced_prefix = 0;
+    int empirical_reward = 0;
+    int coarse_actions = 0;
+    int cross_workload = 0;
+    std::string reward_profile = "legacy";
+    uint64_t idle_sleep_us = 0, update_period_us = 0;
+    if (!(in >> header >> dim >> actions >> scale >> warehouses >> random_per_tx))
+      return false;
+    if ((header == "metis_test_model_v2" || header == "metis_test_model_v3" ||
+         header == "metis_test_model_v4" || header == "metis_test_model_v5" ||
+         header == "metis_test_model_v6" || header == "metis_test_model_v7") &&
+        !(in >> balanced_prefix >> idle_sleep_us >> update_period_us))
+      return false;
+    if ((header == "metis_test_model_v3" || header == "metis_test_model_v4" ||
+         header == "metis_test_model_v5" || header == "metis_test_model_v6" ||
+         header == "metis_test_model_v7") &&
+        !(in >> empirical_reward))
+      return false;
+    if ((header == "metis_test_model_v4" || header == "metis_test_model_v5" ||
+         header == "metis_test_model_v6" || header == "metis_test_model_v7") &&
+        !(in >> coarse_actions))
+      return false;
+    if ((header == "metis_test_model_v5" || header == "metis_test_model_v6" ||
+         header == "metis_test_model_v7") &&
+        !(in >> cross_workload))
+      return false;
+    if ((header == "metis_test_model_v6" || header == "metis_test_model_v7") &&
+        !(in >> reward_profile))
+      return false;
+#ifdef METIS_TEST_SMT
+    if (header != "metis_test_model_v7") return false;
+#else
+    if (header == "metis_test_model_v7") return false;
+#endif
+    if ((header != "metis_test_model_v1" && header != "metis_test_model_v2" &&
+         header != "metis_test_model_v3" && header != "metis_test_model_v4" &&
+         header != "metis_test_model_v5" && header != "metis_test_model_v6" &&
+         header != "metis_test_model_v7") ||
+        dim != kDim ||
+        actions != kActions || scale != FLAGS_metis_test_tps_scale ||
+        reward_profile != FLAGS_metis_test_reward_profile ||
+        (warehouses != FLAGS_metis_test_active_warehouses &&
+         !(cross_workload && warehouses == 0)) ||
+        random_per_tx != static_cast<int>(FLAGS_metis_test_random_per_transaction) ||
+        balanced_prefix != static_cast<int>(FLAGS_metis_test_balanced_home_prefix) ||
+        empirical_reward != static_cast<int>(FLAGS_metis_test_empirical_reward) ||
+        coarse_actions != static_cast<int>(FLAGS_metis_test_coarse_actions) ||
+        cross_workload != static_cast<int>(FLAGS_metis_test_cross_workload) ||
+        ((header == "metis_test_model_v2" || header == "metis_test_model_v3" ||
+          header == "metis_test_model_v4" || header == "metis_test_model_v5" ||
+          header == "metis_test_model_v6" || header == "metis_test_model_v7") &&
+         (idle_sleep_us != FLAGS_metis_test_idle_sleep_us ||
+          update_period_us != FLAGS_tam_update_period_us))) {
+      return false;
+    }
+    Mat next_a{};
+    Vec next_b{};
+    std::array<uint64_t, kActions> next_samples{};
+    std::array<double, kActions> next_reward_sum{};
+    for (auto& row : next_a) for (double& value : row) if (!(in >> value)) return false;
+    for (double& value : next_b) if (!(in >> value)) return false;
+    for (uint64_t& value : next_samples) if (!(in >> value)) return false;
+    if (header == "metis_test_model_v3" || header == "metis_test_model_v4" ||
+        header == "metis_test_model_v5" || header == "metis_test_model_v6" ||
+        header == "metis_test_model_v7")
+      for (double& value : next_reward_sum) if (!(in >> value)) return false;
+    if (!(in >> observations_)) return false;
+    A_ = next_a;
+    b_ = next_b;
+    samples_ = next_samples;
+    reward_sum_ = next_reward_sum;
+    return true;
+  }
+
+  bool save_model(const std::string& path) const {
+    if (path.empty()) return false;
+    std::ofstream out(path, std::ios::trunc);
+    if (!out) return false;
+    out << std::setprecision(17);
+    if (FLAGS_metis_test_observed_load) {
+      const size_t episode_count = observed_episodes_.size() +
+          (observed_current_.probe_tps > 0.0 ? 1 : 0);
+      out << "metis_test_observed_v1 " << kActions << ' '
+          << static_cast<int>(FLAGS_metis_test_coarse_actions) << ' '
+          << static_cast<int>(FLAGS_metis_test_balanced_home_prefix) << ' '
+          << FLAGS_tam_update_period_us << ' '
+          << FLAGS_metis_test_idle_sleep_us << ' '
+          << FLAGS_metis_test_probe_intervals << ' ' << episode_count << '\n';
+      auto save_episode = [&out](const ObservedEpisode& episode) {
+        out << episode.probe_tps << ' ' << episode.probe_abort << '\n';
+        for (auto value : episode.counts) out << value << ' ';
+        out << '\n';
+        for (auto value : episode.reward_sums) out << value << ' ';
+        out << '\n';
+      };
+      for (const auto& episode : observed_episodes_) save_episode(episode);
+      if (observed_current_.probe_tps > 0.0) save_episode(observed_current_);
+      return out.good();
+    }
+#ifdef METIS_TEST_SMT
+    out << "metis_test_model_v7 "
+#else
+    out << (FLAGS_metis_test_reward_profile == "legacy" ?
+            "metis_test_model_v5 " : "metis_test_model_v6 ")
+#endif
+        << kDim << ' ' << kActions << ' '
+        << FLAGS_metis_test_tps_scale << ' '
+        << (FLAGS_metis_test_cross_workload ? 0 :
+            FLAGS_metis_test_active_warehouses) << ' '
+        << static_cast<int>(FLAGS_metis_test_random_per_transaction) << ' '
+        << static_cast<int>(FLAGS_metis_test_balanced_home_prefix) << ' '
+        << FLAGS_metis_test_idle_sleep_us << ' '
+        << FLAGS_tam_update_period_us << ' '
+        << static_cast<int>(FLAGS_metis_test_empirical_reward) << ' '
+        << static_cast<int>(FLAGS_metis_test_coarse_actions) << ' '
+        << static_cast<int>(FLAGS_metis_test_cross_workload);
+    if (FLAGS_metis_test_reward_profile != "legacy")
+      out << ' ' << FLAGS_metis_test_reward_profile;
+    out << '\n';
+    for (const auto& row : A_) {
+      for (double value : row) out << value << ' ';
+      out << '\n';
+    }
+    for (double value : b_) out << value << ' ';
+    out << '\n';
+    for (uint64_t value : samples_) out << value << ' ';
+    out << '\n';
+    for (double value : reward_sum_) out << value << ' ';
+    out << '\n' << observations_ << '\n';
+    return out.good();
+  }
+
+  void print_stats() const {
+    if (stats_count_ == 0) return;
+    std::fprintf(stderr,
+        "[Metis-test] active_threads stats: count=%llu mean=%.3f model_samples=%llu\n",
+        static_cast<unsigned long long>(stats_count_), stats_sum_ / stats_count_,
+        static_cast<unsigned long long>(observations_));
+  }
+
+  void update(uint64_t commits, uint64_t aborts) {
+    const auto now = std::chrono::steady_clock::now();
+    const double seconds = std::chrono::duration<double>(now - last_time_).count();
+    if (seconds < static_cast<double>(FLAGS_tam_update_period_us) / 1e6 ||
+        seconds <= 0.0) return;
+    const double tps = (commits - last_committed_) / seconds;
+    const uint64_t attempts = commits - last_committed_ + aborts - last_aborts_;
+    const double abort_rate = attempts == 0 ? 0.0 :
+        static_cast<double>(aborts - last_aborts_) / attempts;
+    const double trend = have_last_tps_ ? tps - last_tps_ : 0.0;
+    last_time_ = now;
+    last_committed_ = commits;
+    last_aborts_ = aborts;
+    last_tps_ = tps;
+    have_last_tps_ = true;
+    ++step_;
+
+    if (step_ <= FLAGS_linucb_abs_ignore_initial_steps) return;
+
+    if (FLAGS_metis_test_observed_load) {
+      // Keep the warehouse-aware context below for historical models only.
+      // The observed-load policy uses no warehouse count or home map features.
+      if (FLAGS_metis_test_fixed_threads != 0) {
+        log(now, tps, abort_rate, 0.0, -1.0, 0.0, "fixed");
+      } else {
+        update_observed(now, tps, abort_rate);
+      }
+      return;
+    }
+
+    const double reward = tps / reward_scale();
+    if (FLAGS_metis_test_fixed_threads == 0 && last_action_ >= 0) {
+      if (settling_) {
+        settling_ = false;
+        log(now, tps, abort_rate, reward, -1.0, 0.0, "settle");
+        return;  // Hold this action for a second interval before learning.
+      }
+      if (FLAGS_metis_test_learn) {
+        for (size_t i = 0; i < kDim; ++i) {
+          b_[i] += reward * last_x_[i];
+          for (size_t j = 0; j < kDim; ++j) {
+            A_[i][j] += last_x_[i] * last_x_[j];
+          }
+        }
+        ++samples_[last_action_];
+        reward_sum_[last_action_] += reward;
+        ++observations_;
+      }
+    }
+
+    if (FLAGS_metis_test_fixed_threads != 0) {
+      log(now, tps, abort_rate, reward, -1.0, 0.0, "fixed");
+      return;
+    }
+
+    const uint64_t min_th = std::max<uint64_t>(1, FLAGS_tam_min_threads);
+    const uint64_t max_th = std::min(total_threads_, FLAGS_tam_max_threads);
+    Mat inv{};
+    if (!invert(A_, inv)) {
+      std::fprintf(stderr, "Metis-test model matrix is singular\n");
+      std::abort();
+    }
+    Vec theta = multiply(inv, b_);
+    size_t best = kActions;
+    Vec best_x{};
+    double best_score = -std::numeric_limits<double>::infinity();
+    double best_mean = 0.0, best_bonus = 0.0;
+    const double alpha = std::max(0.0, FLAGS_linucb_alpha);
+    const uint64_t current = active_threads();
+    size_t forced_action = kActions;
+    if (FLAGS_metis_test_learn &&
+        FLAGS_metis_test_min_pulls_per_action > 0) {
+      uint64_t min_samples = FLAGS_metis_test_min_pulls_per_action;
+      std::vector<size_t> eligible;
+      for (size_t a = 0; a < kActions; ++a) {
+        if (!allowed(kTargets[a]) ||
+            kTargets[a] < min_th || kTargets[a] > max_th ||
+            samples_[a] >= FLAGS_metis_test_min_pulls_per_action) continue;
+        if (samples_[a] < min_samples) {
+          min_samples = samples_[a];
+          eligible.clear();
+        }
+        if (samples_[a] == min_samples) eligible.push_back(a);
+      }
+      if (!eligible.empty())
+        forced_action = eligible[rng_() % eligible.size()];
+    }
+    for (size_t a = 0; a < kActions; ++a) {
+      const uint64_t candidate = kTargets[a];
+      if (!allowed(candidate) || candidate < min_th || candidate > max_th ||
+          (forced_action != kActions && a != forced_action)) continue;
+      const Vec x = context(abort_rate, tps, current, candidate, trend);
+      double mean = dot(x, theta);
+      double bonus = std::sqrt(std::max(0.0, dot(x, multiply(inv, x))));
+      if (FLAGS_metis_test_empirical_reward && samples_[a] != 0) {
+        mean = reward_sum_[a] / samples_[a];
+        bonus = 0.05 * std::sqrt(
+            std::log(static_cast<double>(std::max<uint64_t>(2, observations_))) /
+            samples_[a]);
+      }
+      const double score = mean + alpha * bonus;
+      if (a == forced_action) {
+        best = a; best_x = x; best_mean = mean; best_bonus = bonus;
+        break;
+      }
+      if (score > best_score) {
+        best = a; best_x = x; best_score = score;
+        best_mean = mean; best_bonus = bonus;
+      }
+    }
+    if (best == kActions) {
+      log(now, tps, abort_rate, reward, -1.0, 0.0, "hold");
+      return;
+    }
+    last_x_ = best_x;
+    last_action_ = static_cast<int>(best);
+    const bool changed = kTargets[best] != current;
+    set_active(kTargets[best]);
+    settling_ = changed;
+    log(now, tps, abort_rate, reward, best_mean, best_bonus,
+        changed ? "choose" : "hold");
+  }
+
+ private:
+  using Vec = std::array<double, kDim>;
+  using Mat = std::array<Vec, kDim>;
+
+  static bool allowed(uint64_t candidate) {
+    if (!FLAGS_metis_test_coarse_actions) return true;
+    return candidate == 8 || candidate == 16 || candidate == 24 ||
+           candidate == 32 || candidate == 48 || candidate == 64 ||
+           candidate == 96;
+  }
+
+  size_t observed_target(double probe_abort, double coefficient) const {
+    const double ideal = coefficient / std::max(0.005, probe_abort);
+    size_t selected = kActions;
+    double best_distance = std::numeric_limits<double>::infinity();
+    for (size_t a = 0; a < kActions; ++a) {
+      if (!allowed(kTargets[a]) || kTargets[a] < FLAGS_tam_min_threads ||
+          kTargets[a] > std::min(total_threads_, FLAGS_tam_max_threads)) continue;
+      const double distance = std::abs(std::log(kTargets[a] / ideal));
+      if (distance < best_distance) {
+        selected = a;
+        best_distance = distance;
+      }
+    }
+    return selected;
+  }
+
+  double fit_observed_coefficient() const {
+    std::vector<const ObservedEpisode*> episodes;
+    for (const auto& episode : observed_episodes_)
+      if (episode.probe_tps > 0.0) episodes.push_back(&episode);
+    if (FLAGS_metis_test_learn && observed_current_.probe_tps > 0.0)
+      episodes.push_back(&observed_current_);
+    if (episodes.empty()) return 6.0;
+
+    double best_score = -std::numeric_limits<double>::infinity();
+    std::vector<double> maximizers;
+    const int first_step = static_cast<int>(std::ceil(
+        FLAGS_metis_test_observed_min_coefficient / 0.05));
+    for (int step = first_step; step <= 240; ++step) {
+      const double coefficient = step * 0.05;
+      double score_sum = 0.0;
+      size_t usable = 0;
+      for (const auto* episode : episodes) {
+        double best_mean = 0.0;
+        for (size_t a = 0; a < kActions; ++a) {
+          if (allowed(kTargets[a]) && episode->counts[a] != 0)
+            best_mean = std::max(best_mean,
+                episode->reward_sums[a] / episode->counts[a]);
+        }
+        const size_t chosen = observed_target(episode->probe_abort, coefficient);
+        if (chosen == kActions || episode->counts[chosen] == 0 ||
+            best_mean <= 0.0) continue;
+        score_sum += (episode->reward_sums[chosen] /
+                      episode->counts[chosen]) / best_mean;
+        ++usable;
+      }
+      if (usable == 0) continue;
+      const double score = score_sum / usable;
+      if (score > best_score + 1e-10) {
+        best_score = score;
+        maximizers.clear();
+        maximizers.push_back(coefficient);
+      } else if (std::abs(score - best_score) <= 1e-10) {
+        maximizers.push_back(coefficient);
+      }
+    }
+    // A range of coefficients often gives the same training reward. Its
+    // center is less sensitive to noise in the next 96-worker probe.
+    return maximizers.empty() ? 6.0 : maximizers[maximizers.size() / 2];
+  }
+
+  void update_observed(std::chrono::steady_clock::time_point now,
+                       double tps, double abort_rate) {
+    if (observed_probing_) {
+      if (observed_skip_probe_interval_) {
+        observed_skip_probe_interval_ = false;
+        log(now, tps, abort_rate, 0.0, -1.0, 0.0, "probe_settle");
+        return;
+      }
+      observed_probe_tps_sum_ += tps;
+      observed_probe_abort_sum_ += abort_rate;
+      ++observed_probe_count_;
+      if (observed_probe_count_ < FLAGS_metis_test_probe_intervals) {
+        log(now, tps, abort_rate, 0.0, -1.0, 0.0, "probe");
+        return;
+      }
+      observed_current_ = {};
+      observed_current_.probe_tps = std::max(1.0,
+          observed_probe_tps_sum_ / observed_probe_count_);
+      observed_current_.probe_abort =
+          observed_probe_abort_sum_ / observed_probe_count_;
+      // Changing the number of active homes normally moves throughput and
+      // contention in opposite directions at the same 96-worker probe action.
+      // Reject same-direction excursions caused by transient host slowdowns.
+      const bool contradictory_probe = observed_previous_probe_tps_ > 0.0 &&
+          ((observed_current_.probe_tps < observed_previous_probe_tps_ * 0.80 &&
+            observed_current_.probe_abort <
+                observed_previous_probe_abort_ * 0.80) ||
+           (observed_current_.probe_tps > observed_previous_probe_tps_ * 1.25 &&
+            observed_current_.probe_abort >
+                observed_previous_probe_abort_ * 1.25));
+      if (contradictory_probe) {
+        observed_current_.probe_tps = observed_previous_probe_tps_;
+        observed_current_.probe_abort = observed_previous_probe_abort_;
+      }
+      observed_probing_ = false;
+      observed_probe_time_ = now;
+      observed_anchor_tps_ = observed_anchor_abort_ = 0.0;
+      last_action_ = -1;
+      settling_ = false;
+      log(now, tps, abort_rate, 1.0, observed_current_.probe_abort,
+          observed_current_.probe_tps,
+          contradictory_probe ? "probe_reject" : "probe_ready");
+    } else {
+      if (last_action_ >= 0) {
+        if (settling_) {
+          settling_ = false;
+          log(now, tps, abort_rate, 0.0, -1.0, 0.0, "settle");
+          return;
+        }
+        if (FLAGS_metis_test_learn) {
+          ++observed_current_.counts[last_action_];
+          observed_current_.reward_sums[last_action_] +=
+              tps / observed_current_.probe_tps;
+          ++observations_;
+        }
+      }
+      // A real workload shift changes throughput and contention in opposite
+      // directions at a fixed action. Probe immediately when both move far
+      // enough; keep periodic probes as a fallback for smaller changes.
+      // Fixed-workload training deliberately sweeps actions. Those action
+      // changes can move TPS and abort rate as much as a workload switch;
+      // probing again would split one training episode before all actions
+      // receive their required samples. Dynamic evaluation still detects
+      // changes and starts a new probe episode.
+      const bool load_change = !FLAGS_metis_test_learn &&
+          observed_anchor_tps_ > 0.0 &&
+          ((tps < observed_anchor_tps_ * 0.70 &&
+            abort_rate > std::max(0.03, observed_anchor_abort_ * 1.8)) ||
+           (tps > observed_anchor_tps_ * 1.35 &&
+            observed_anchor_abort_ > 0.02 &&
+            abort_rate < observed_anchor_abort_ * 0.60));
+      if (!load_change && tps > 0.0) {
+        if (observed_anchor_tps_ == 0.0) {
+          observed_anchor_tps_ = tps;
+          observed_anchor_abort_ = abort_rate;
+        } else {
+          observed_anchor_tps_ = 0.9 * observed_anchor_tps_ + 0.1 * tps;
+          observed_anchor_abort_ =
+              0.9 * observed_anchor_abort_ + 0.1 * abort_rate;
+        }
+      }
+      if (load_change || (FLAGS_metis_test_reprobe_period_us != 0 &&
+          now - observed_probe_time_ >= std::chrono::microseconds(
+              FLAGS_metis_test_reprobe_period_us))) {
+        observed_previous_probe_tps_ = observed_current_.probe_tps;
+        observed_previous_probe_abort_ = observed_current_.probe_abort;
+        if (FLAGS_metis_test_learn && observed_current_.probe_tps > 0.0)
+          observed_episodes_.push_back(observed_current_);
+        observed_current_ = {};
+        observed_probe_count_ = 0;
+        observed_probe_tps_sum_ = observed_probe_abort_sum_ = 0.0;
+        observed_anchor_tps_ = observed_anchor_abort_ = 0.0;
+        observed_probing_ = true;
+        observed_skip_probe_interval_ = active_threads() != total_threads_;
+        last_action_ = -1;
+        settling_ = false;
+        set_active(total_threads_);
+        log(now, tps, abort_rate, 0.0, -1.0, 0.0,
+            load_change ? "change_probe" : "reprobe");
+        return;
+      }
+    }
+
+    size_t selected = kActions;
+    if (FLAGS_metis_test_learn && FLAGS_metis_test_min_pulls_per_action != 0) {
+      uint64_t fewest = FLAGS_metis_test_min_pulls_per_action;
+      std::vector<size_t> eligible;
+      for (size_t a = 0; a < kActions; ++a) {
+        if (!allowed(kTargets[a]) || kTargets[a] < FLAGS_tam_min_threads ||
+            kTargets[a] > std::min(total_threads_, FLAGS_tam_max_threads) ||
+            observed_current_.counts[a] >= FLAGS_metis_test_min_pulls_per_action)
+          continue;
+        if (observed_current_.counts[a] < fewest) {
+          fewest = observed_current_.counts[a];
+          eligible.clear();
+        }
+        if (observed_current_.counts[a] == fewest) eligible.push_back(a);
+      }
+      if (!eligible.empty()) selected = eligible[rng_() % eligible.size()];
+    }
+    // Evaluation episodes are immutable. Fit once while loading the model;
+    // running the grid search on every control tick stalls the hot path.
+    const double coefficient = FLAGS_metis_test_learn ?
+        fit_observed_coefficient() : observed_coefficient_;
+    if (selected == kActions)
+      selected = observed_target(observed_current_.probe_abort, coefficient);
+    if (selected == kActions) {
+      log(now, tps, abort_rate, 0.0, -1.0, coefficient, "hold");
+      return;
+    }
+    const uint64_t current = active_threads();
+    last_action_ = static_cast<int>(selected);
+    set_active(kTargets[selected]);
+    settling_ = kTargets[selected] != current;
+    log(now, tps, abort_rate, tps / observed_current_.probe_tps,
+        coefficient / std::max(0.005, observed_current_.probe_abort),
+        coefficient, settling_ ? "choose" : "hold");
+  }
+
+  static double reward_scale() {
+    if (FLAGS_metis_test_reward_profile == "physical_first_item100k") {
+      // Two-run fixed-worker sweep, mimalloc, Item=100000, standard mix,
+      // physical-core-first pinning, random-per-transaction home W.
+      constexpr std::array<double, 7> ws = {1, 4, 8, 16, 32, 64, 96};
+      constexpr std::array<double, 7> tps = {
+          54349.5, 125190.0, 218270.5, 389050.5,
+          598057.0, 779349.0, 880460.5};
+      const double w = static_cast<double>(
+          g_tpcc_runtime_active_warehouses.load(std::memory_order_acquire));
+      if (w <= ws.front()) return tps.front();
+      for (size_t i = 1; i < ws.size(); ++i) {
+        if (w <= ws[i]) {
+          const double f = (std::log(w) - std::log(ws[i - 1])) /
+                           (std::log(ws[i]) - std::log(ws[i - 1]));
+          return tps[i - 1] + f * (tps[i] - tps[i - 1]);
+        }
+      }
+      return tps.back();
+    }
+    if (!FLAGS_metis_test_cross_workload)
+      return FLAGS_metis_test_tps_scale;
+    const double w = static_cast<double>(
+        g_tpcc_runtime_active_warehouses.load(std::memory_order_acquire));
+    return FLAGS_metis_test_tps_scale *
+        (-std::expm1(-w / 16.0)) / (-std::expm1(-1.0));
+  }
+
+  static double dot(const Vec& x, const Vec& y) {
+    double result = 0.0;
+    for (size_t i = 0; i < kDim; ++i) result += x[i] * y[i];
+    return result;
+  }
+  static Vec multiply(const Mat& m, const Vec& x) {
+    Vec result{};
+    for (size_t i = 0; i < kDim; ++i)
+      for (size_t j = 0; j < kDim; ++j) result[i] += m[i][j] * x[j];
+    return result;
+  }
+  static bool invert(const Mat& source, Mat& inverse) {
+    double aug[kDim][2 * kDim]{};
+    for (size_t i = 0; i < kDim; ++i) {
+      for (size_t j = 0; j < kDim; ++j) aug[i][j] = source[i][j];
+      aug[i][i + kDim] = 1.0;
+    }
+    for (size_t col = 0; col < kDim; ++col) {
+      size_t pivot = col;
+      for (size_t row = col + 1; row < kDim; ++row)
+        if (std::abs(aug[row][col]) > std::abs(aug[pivot][col])) pivot = row;
+      if (std::abs(aug[pivot][col]) < 1e-12) return false;
+      for (size_t j = 0; j < 2 * kDim; ++j)
+        std::swap(aug[col][j], aug[pivot][j]);
+      const double scale = aug[col][col];
+      for (size_t j = 0; j < 2 * kDim; ++j) aug[col][j] /= scale;
+      for (size_t row = 0; row < kDim; ++row) {
+        if (row == col) continue;
+        const double factor = aug[row][col];
+        for (size_t j = 0; j < 2 * kDim; ++j)
+          aug[row][j] -= factor * aug[col][j];
+      }
+    }
+    for (size_t i = 0; i < kDim; ++i)
+      for (size_t j = 0; j < kDim; ++j) inverse[i][j] = aug[i][j + kDim];
+    return true;
+  }
+
+  Vec context(double abort_rate, double tps, uint64_t current,
+              uint64_t candidate, double trend) const {
+    const double c = static_cast<double>(candidate) / total_threads_;
+    const double current_ratio = static_cast<double>(current) / total_threads_;
+    const double w = static_cast<double>(
+        g_tpcc_runtime_active_warehouses.load(std::memory_order_acquire));
+    double coverage = 0.0, concentration = 1.0;
+    if (FLAGS_metis_test_random_per_transaction) {
+      coverage = 1.0 - std::pow(1.0 - 1.0 / w, candidate);
+      concentration = 1.0 + (w - 1.0) / candidate;
+    } else {
+      std::vector<uint64_t> counts(static_cast<size_t>(w), 0);
+      for (size_t thid = 0; thid < candidate; ++thid) {
+        const auto home = g_metis_test_home_warehouses[thid].load(
+            std::memory_order_acquire);
+        if (home >= 1 && home <= counts.size()) ++counts[home - 1];
+      }
+      double sum_squares = 0.0;
+      for (auto n : counts) {
+        coverage += (n != 0);
+        sum_squares += static_cast<double>(n) * n;
+      }
+      coverage /= w;
+      concentration = w * sum_squares / (candidate * candidate);
+    }
+    if (FLAGS_metis_test_cross_workload) {
+      const double wl = std::log2(w + 1.0) / std::log2(97.0);
+#ifdef METIS_TEST_SMT
+      // physical_first uses 48 physical cores before SMT siblings. The step
+      // captures the boundary; the fraction captures how many siblings run.
+      const double smt_on = candidate > 48 ? 1.0 : 0.0;
+      const double smt_fraction = candidate > 48 ?
+          static_cast<double>(candidate - 48) / 48.0 : 0.0;
+      return {1.0, abort_rate, tps / reward_scale(), current_ratio,
+              c, c * c, wl, c * wl, c * c * wl, coverage,
+              concentration, abort_rate * c, smt_on, smt_fraction};
+#else
+      return {1.0, abort_rate, tps / reward_scale(), current_ratio,
+              c, c * c, wl, c * wl, c * c * wl, coverage,
+              concentration, abort_rate * c};
+#endif
+    }
+#ifdef METIS_TEST_SMT
+    const double smt_on = candidate > 48 ? 1.0 : 0.0;
+    const double smt_fraction = candidate > 48 ?
+        static_cast<double>(candidate - 48) / 48.0 : 0.0;
+    return {1.0, abort_rate, tps / FLAGS_metis_test_tps_scale,
+            current_ratio, c, c - current_ratio, abort_rate * c,
+            tps / (current * 10000.0), trend / FLAGS_metis_test_tps_scale,
+            c * c, coverage, concentration, smt_on, smt_fraction};
+#else
+    return {1.0, abort_rate, tps / FLAGS_metis_test_tps_scale,
+            current_ratio, c, c - current_ratio, abort_rate * c,
+            tps / (current * 10000.0), trend / FLAGS_metis_test_tps_scale,
+            c * c, coverage, concentration};
+#endif
+  }
+
+  void set_active(uint64_t count) {
+    active_.store(count, std::memory_order_release);
+    g_metis_test_active_threads.store(count, std::memory_order_release);
+  }
+  void log(std::chrono::steady_clock::time_point now, double tps,
+           double abort_rate, double reward, double predicted,
+           double bonus, const char* phase) {
+    if (!FLAGS_tam_log_active_threads) return;
+    const auto period = std::chrono::microseconds(FLAGS_tam_log_period_us);
+    if (now - last_log_time_ < period) return;
+    const double value = active_threads();
+    ++stats_count_; stats_sum_ += value;
+    const auto benchmark_start_us =
+        g_tpcc_benchmark_start_us.load(std::memory_order_acquire);
+    const auto now_us = std::chrono::duration_cast<std::chrono::microseconds>(
+        now.time_since_epoch()).count();
+    const double benchmark_s = benchmark_start_us == 0 ? -1.0 :
+        (now_us - benchmark_start_us) / 1e6;
+    std::fprintf(stderr,
+        "[Metis-test] elapsed_s=%.3f bench_s=%.3f phase=%s active_threads=%llu tput=%.0f abort_rate=%.4f "
+        "reward=%.5f predicted=%.5f bonus=%.5f model_samples=%llu\n",
+        std::chrono::duration<double>(now - start_time_).count(),
+        benchmark_s, phase, static_cast<unsigned long long>(active_threads()), tps,
+        abort_rate, reward, predicted, bonus,
+        static_cast<unsigned long long>(observations_));
+    last_log_time_ = now;
+  }
+
+  std::atomic<uint64_t> active_{0};
+  uint64_t total_threads_{0};
+  std::chrono::steady_clock::time_point last_time_{};
+  std::chrono::steady_clock::time_point start_time_{};
+  std::chrono::steady_clock::time_point last_log_time_{};
+  uint64_t last_committed_{0}, last_aborts_{0}, step_{0}, observations_{0};
+  double last_tps_{0.0};
+  bool have_last_tps_{false}, settling_{false};
+  int last_action_{-1};
+  Vec last_x_{};
+  Mat A_{};
+  Vec b_{};
+  std::array<uint64_t, kActions> samples_{};
+  std::array<double, kActions> reward_sum_{};
+  std::vector<ObservedEpisode> observed_episodes_{};
+  ObservedEpisode observed_current_{};
+  double observed_coefficient_{6.0};
+  bool observed_probing_{false}, observed_skip_probe_interval_{false};
+  uint64_t observed_probe_count_{0};
+  double observed_probe_tps_sum_{0.0}, observed_probe_abort_sum_{0.0};
+  double observed_previous_probe_tps_{0.0}, observed_previous_probe_abort_{0.0};
+  double observed_anchor_tps_{0.0}, observed_anchor_abort_{0.0};
+  std::chrono::steady_clock::time_point observed_probe_time_{};
+  std::mt19937_64 rng_{};
+  uint64_t stats_count_{0};
+  double stats_sum_{0.0};
+};
+
 
 class TamController {
  public:
   void init(uint64_t total_threads, uint64_t clocks_per_us) {
+    if (static_cast<int>(FLAGS_metis_test_enable) +
+        static_cast<int>(FLAGS_metis_paper_enable) +
+        static_cast<int>(FLAGS_ada_tam_enable) > 1) {
+      std::fprintf(stderr, "Enable only one TAM controller\n");
+      std::abort();
+    }
+    if (FLAGS_metis_test_enable) {
+      metis_test_.init(total_threads, clocks_per_us);
+      if (!FLAGS_linucb_model_path.empty()) {
+        std::ifstream model(FLAGS_linucb_model_path);
+        if (model.good() && !metis_test_.load_model(FLAGS_linucb_model_path)) {
+          std::fprintf(stderr, "Invalid Metis-test model: %s\n",
+                       FLAGS_linucb_model_path.c_str());
+          std::abort();
+        }
+        if (!model.good() && !FLAGS_linucb_model_autosave) {
+          std::fprintf(stderr, "Missing Metis-test model: %s\n",
+                       FLAGS_linucb_model_path.c_str());
+          std::abort();
+        }
+      }
+    }
     if (FLAGS_metis_paper_enable) {
       metis_paper_.init(total_threads, clocks_per_us);
       if (!FLAGS_linucb_model_path.empty()) {
@@ -713,15 +1579,21 @@ class TamController {
   }
 
   bool enabled() const {
-    return FLAGS_ada_tam_enable || FLAGS_metis_paper_enable;
+    return FLAGS_ada_tam_enable || FLAGS_metis_paper_enable ||
+           FLAGS_metis_test_enable;
   }
 
   uint64_t active_threads() const {
+    if (FLAGS_metis_test_enable) return metis_test_.active_threads();
     if (FLAGS_metis_paper_enable) return metis_paper_.active_threads();
     return adatam_.active_threads();
   }
 
   void update(uint64_t committed_txs, uint64_t abort_txs) {
+    if (FLAGS_metis_test_enable) {
+      metis_test_.update(committed_txs, abort_txs);
+      return;
+    }
     if (FLAGS_metis_paper_enable) {
       metis_paper_.update(committed_txs, abort_txs);
       return;
@@ -731,7 +1603,9 @@ class TamController {
 
   void print_stats() const {
     if (!FLAGS_tam_log_active_threads) return;
-    if (FLAGS_metis_paper_enable) {
+    if (FLAGS_metis_test_enable) {
+      metis_test_.print_stats();
+    } else if (FLAGS_metis_paper_enable) {
       metis_paper_.print_stats();
     } else if (FLAGS_ada_tam_enable) {
       adatam_.print_stats();
@@ -739,6 +1613,7 @@ class TamController {
   }
 
   bool save_model(const std::string &path) const {
+    if (FLAGS_metis_test_enable) return metis_test_.save_model(path);
     if (FLAGS_metis_paper_enable) return metis_paper_.save_model(path);
     return false;
   }
@@ -746,4 +1621,5 @@ class TamController {
  private:
   AdaTAM adatam_;
   Metis_paper metis_paper_;
+  Metis_test metis_test_;
 };

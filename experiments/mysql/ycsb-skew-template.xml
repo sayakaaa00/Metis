@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<parameters>
+  <type>MYSQL</type>
+  <driver>com.mysql.cj.jdbc.Driver</driver>
+  <url>jdbc:mysql://127.0.0.1:3307/benchbase?rewriteBatchedStatements=true&amp;allowPublicKeyRetrieval=True&amp;sslMode=DISABLED</url>
+  <username>benchbase</username>
+  <password>benchbase-password</password>
+  <reconnectOnConnectionFailure>true</reconnectOnConnectionFailure>
+  <isolation>TRANSACTION_REPEATABLE_READ</isolation>
+  <batchsize>128</batchsize>
+
+  <!-- BenchBase YCSB creates 1000 rows per scale-factor unit. -->
+  <scalefactor>@SCALE_FACTOR@</scalefactor>
+  <fieldSize>100</fieldSize>
+  <skewFactor>@SKEW@</skewFactor>
+  <!-- ccbench compatibility: one DB transaction contains this many operations. -->
+  <operationsPerTransaction>@OPERATIONS_PER_TRANSACTION@</operationsPerTransaction>
+  <readRatio>@READ_RATIO@</readRatio>
+
+  <!-- ccbench-compatible transaction chooses read/update independently for every operation. -->
+  <terminals>@TERMINALS@</terminals>
+  <works>
+    <work>
+      <time>@TIME_SECONDS@</time>
+      <rate>unlimited</rate>
+      <weights>0,0,0,0,0,100</weights>
+    </work>
+  </works>
+
+  <transactiontypes>
+    <transactiontype><name>ReadRecord</name></transactiontype>
+    <transactiontype><name>InsertRecord</name></transactiontype>
+    <transactiontype><name>ScanRecord</name></transactiontype>
+    <transactiontype><name>UpdateRecord</name></transactiontype>
+    <transactiontype><name>DeleteRecord</name></transactiontype>
+    <transactiontype><name>ReadModifyWriteRecord</name></transactiontype>
+  </transactiontypes>
+</parameters>

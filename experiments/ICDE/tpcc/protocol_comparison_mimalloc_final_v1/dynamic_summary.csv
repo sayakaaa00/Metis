@@ -1,0 +1,7 @@
+method,runs,mean_tps,min_tps,max_tps
+metis_retrained,3,622181,620301,623559
+silo_with_backoff,3,609628,606667,611748
+metis_previous,2,600746,599859,601634
+silo_without_backoff,2,597170,594363,599977
+cicada,2,517436,508465,526407
+ermia,2,296566,279804,313327

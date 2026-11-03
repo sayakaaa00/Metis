@@ -110,6 +110,9 @@ public:
       std::fprintf(stderr, "tam_update_period_us must be > 0\n");
       std::abort();
     }
+    if (FLAGS_benchmark_interval_tps_log_us > 0) {
+      tick_us = std::min(tick_us, FLAGS_benchmark_interval_tps_log_us);
+    }
 #if BACK_OFF
     if (Backoff::log_enabled()) {
       if (Backoff::log_interval_us() == 0) {
@@ -127,6 +130,9 @@ public:
     std::uint64_t last_backoff_log_committed = 0;
     std::uint64_t last_backoff_log_abort = 0;
 #endif
+    std::uint64_t last_tps_log_tsc = start_tsc;
+    std::uint64_t last_tps_log_committed = 0;
+    std::uint64_t last_thread_log_tsc = start_tsc;
 
     if (FLAGS_extime == 0) return;
 
@@ -141,7 +147,8 @@ public:
 
       std::uint64_t committed_sum = 0;
       std::uint64_t abort_sum = 0;
-      bool collect_results = tam_.enabled();
+      bool collect_results = tam_.enabled() ||
+                             FLAGS_benchmark_interval_tps_log_us > 0;
 #if BACK_OFF
       collect_results = collect_results || Backoff::log_enabled();
 #endif
@@ -156,6 +163,38 @@ public:
       if (tam_.enabled()) { tam_.update(committed_sum, abort_sum); }
 
       const std::uint64_t now = rdtscp();
+      if (FLAGS_benchmark_interval_tps_log_us > 0) {
+        const std::uint64_t interval_clocks =
+            FLAGS_benchmark_interval_tps_log_us * FLAGS_clocks_per_us;
+        if (chkClkSpan(last_tps_log_tsc, now, interval_clocks)) {
+          const double interval_s = static_cast<double>(now - last_tps_log_tsc) /
+              (static_cast<double>(FLAGS_clocks_per_us) * 1e6);
+          const double bench_s = static_cast<double>(now - start_tsc) /
+              (static_cast<double>(FLAGS_clocks_per_us) * 1e6);
+          const std::uint64_t delta = committed_sum - last_tps_log_committed;
+          std::fprintf(stderr,
+                       "[TPS sample] bench_s=%.3f interval_tps=%.1f "
+                       "interval_committed=%llu interval_s=%.6f\n",
+                       bench_s, static_cast<double>(delta) / interval_s,
+                       static_cast<unsigned long long>(delta), interval_s);
+          last_tps_log_tsc = now;
+          last_tps_log_committed = committed_sum;
+        }
+      }
+      if (tam_.enabled() && FLAGS_tam_log_active_threads) {
+        const std::uint64_t sample_clocks =
+            std::max<std::uint64_t>(1, FLAGS_tam_log_period_us) *
+            FLAGS_clocks_per_us;
+        if (chkClkSpan(last_thread_log_tsc, now, sample_clocks)) {
+          const double bench_s = static_cast<double>(now - start_tsc) /
+              (static_cast<double>(FLAGS_clocks_per_us) * 1e6);
+          std::fprintf(stderr,
+                       "[TAM sample] bench_s=%.3f active_threads=%llu\n",
+                       bench_s,
+                       static_cast<unsigned long long>(tam_.active_threads()));
+          last_thread_log_tsc = now;
+        }
+      }
 #if BACK_OFF
       if (Backoff::log_enabled()) {
         const std::uint64_t log_interval_clocks =
@@ -191,7 +230,8 @@ public:
   void finish() {
     if (tam_.enabled()) {
       tam_.print_stats();
-      if (FLAGS_metis_paper_enable && FLAGS_linucb_model_autosave &&
+      if ((FLAGS_metis_paper_enable || FLAGS_metis_test_enable) &&
+          FLAGS_linucb_model_autosave &&
           !FLAGS_linucb_model_path.empty()) {
         if (tam_.save_model(FLAGS_linucb_model_path)) {
           std::cerr << "[LinUCB] model saved to: "

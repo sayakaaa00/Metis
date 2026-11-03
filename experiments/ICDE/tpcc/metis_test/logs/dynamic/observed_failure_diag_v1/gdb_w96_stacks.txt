@@ -1,0 +1,869 @@
+
+Thread 386 (Thread 0x7ff810fe96c0 (LWP 11951) "tpcc_metis_test"):
+#0  0x00007ffff78adb41 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3657
+#1  0x00007ffff78af57c in __posix_memalign (size=128, alignment=64, memptr=0x7ff810fe8330) at ./malloc/malloc.c:5801
+#2  __posix_memalign (memptr=0x7ff810fe8330, alignment=64, size=128) at ./malloc/malloc.c:5785
+#3  0x00007ffff7cbb9f6 in operator new(unsigned long, std::align_val_t) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x00005555555854a2 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#5  0x00005555555720ed in bool insert_orderline<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short, unsigned char, unsigned int, unsigned short, unsigned char, double, Stock const&) ()
+(More stack frames follow...)
+
+Thread 385 (Thread 0x7ff8117ea6c0 (LWP 11950) "tpcc_metis_test"):
+#0  0x000055555558b83d in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555571d47 in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 384 (Thread 0x7ff811feb6c0 (LWP 11949) "tpcc_metis_test"):
+#0  0x000055555558c00a in Masstree::tcursor<MasstreeWrapper<Tuple>::table_params>::find_locked(threadinfo&) ()
+#1  0x00005555555855e9 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x00005555555720ed in bool insert_orderline<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short, unsigned char, unsigned int, unsigned short, unsigned char, double, Stock const&) ()
+#3  0x0000555555572618 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 383 (Thread 0x7ff8127ec6c0 (LWP 11948) "tpcc_metis_test"):
+#0  0x000055555558bfff in Masstree::tcursor<MasstreeWrapper<Tuple>::table_params>::find_locked(threadinfo&) ()
+#1  0x00005555555855e9 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x00005555555720ed in bool insert_orderline<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short, unsigned char, unsigned int, unsigned short, unsigned char, double, Stock const&) ()
+#3  0x0000555555572618 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 382 (Thread 0x7ff812fed6c0 (LWP 11947) "tpcc_metis_test"):
+#0  0x0000555555584cd7 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#1  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555571d47 in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 381 (Thread 0x7ff8137ee6c0 (LWP 11946) "tpcc_metis_test"):
+#0  _int_memalign (av=av@entry=0x7fff30000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:1326
+#1  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+#2  0x00007ffff78af57c in __posix_memalign (size=128, alignment=64, memptr=0x7ff8137ed740) at ./malloc/malloc.c:5801
+#3  __posix_memalign (memptr=0x7ff8137ed740, alignment=64, size=128) at ./malloc/malloc.c:5785
+#4  0x00007ffff7cbb9f6 in operator new(unsigned long, std::align_val_t) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x0000555555573f91 in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+(More stack frames follow...)
+
+Thread 380 (Thread 0x7ff813fef6c0 (LWP 11945) "tpcc_metis_test"):
+#0  0x0000555555559b90 in memcmp@plt ()
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555890e4 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 379 (Thread 0x7ff8147f06c0 (LWP 11944) "tpcc_metis_test"):
+#0  0x0000555555567b77 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose() ()
+#1  0x00005555555716bd in bool get_and_update_district<TxExecutor, TransactionStatus>(TxExecutor&, unsigned char, unsigned short, District&) ()
+#2  0x0000555555572425 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#3  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 378 (Thread 0x7ff814ff16c0 (LWP 11943) "tpcc_metis_test"):
+#0  sysmalloc (av=0x7ffef4000030, nb=256) at ./malloc/malloc.c:2936
+#1  _int_malloc (av=av@entry=0x7ffef4000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#2  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffef4000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#3  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+#4  0x00007ffff78af57c in __posix_memalign (size=128, alignment=64, memptr=0x7ff814ff0600) at ./malloc/malloc.c:5801
+#5  __posix_memalign (memptr=0x7ff814ff0600, alignment=64, size=128) at ./malloc/malloc.c:5785
+(More stack frames follow...)
+
+Thread 377 (Thread 0x7ff8157f26c0 (LWP 11942) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:155
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555890e4 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 376 (Thread 0x7ff815ff36c0 (LWP 11941) "tpcc_metis_test"):
+#0  sysmalloc (av=0x7fff00000030, nb=448) at ./malloc/malloc.c:2936
+#1  _int_malloc (av=av@entry=0x7fff00000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#2  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff00000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#3  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+#4  0x00007ffff78af57c in __posix_memalign (size=320, alignment=64, memptr=0x7ff815ff26f0) at ./malloc/malloc.c:5801
+#5  __posix_memalign (memptr=0x7ff815ff26f0, alignment=64, size=320) at ./malloc/malloc.c:5785
+(More stack frames follow...)
+
+Thread 375 (Thread 0x7ff8167f46c0 (LWP 11940) "tpcc_metis_test"):
+#0  0x0000555555560a48 in Masstree::unlocked_tcursor<MasstreeWrapper<Tuple>::table_params>::find_unlocked(threadinfo&) [clone .isra.0] ()
+#1  0x0000555555572d4f in bool get_customer_key_by_last_name<Tuple>(unsigned short, unsigned char, char const*, SimpleKey<8ul>&) ()
+#2  0x00005555555735f3 in bool run_payment<TxExecutor, TransactionStatus, Tuple>(TxExecutor&, TPCCQuery::Payment*, HistoryKeyGenerator*) ()
+#3  0x0000555555574a33 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 374 (Thread 0x7ff816ff56c0 (LWP 11939) "tpcc_metis_test"):
+#0  0x0000555555584cd7 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#1  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555571d47 in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 373 (Thread 0x7ff8177f66c0 (LWP 11938) "tpcc_metis_test"):
+#0  0x000055555558b83d in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555585489 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x00005555555720ed in bool insert_orderline<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short, unsigned char, unsigned int, unsigned short, unsigned char, double, Stock const&) ()
+#3  0x0000555555572618 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 372 (Thread 0x7ff817ff76c0 (LWP 11937) "tpcc_metis_test"):
+#0  __memcpy_evex_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:266
+#1  0x0000555555584e61 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#2  0x00005555555890fd in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 371 (Thread 0x7ff8187f86c0 (LWP 11936) "tpcc_metis_test"):
+#0  __memcpy_evex_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:266
+#1  0x0000555555584e61 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#2  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#3  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 370 (Thread 0x7ff818ff96c0 (LWP 11935) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:134
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x0000555555585358 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#3  0x0000555555572696 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 369 (Thread 0x7ff8197fa6c0 (LWP 11934) "tpcc_metis_test"):
+#0  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555890e4 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#2  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#3  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 368 (Thread 0x7ff819ffb6c0 (LWP 11933) "tpcc_metis_test"):
+#0  0x00007ffff78adb41 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=64, address=<optimized out>) at ./malloc/malloc.c:3657
+#1  0x00007ffff78af57c in __posix_memalign (size=64, alignment=64, memptr=0x7ff819ffa630) at ./malloc/malloc.c:5801
+#2  __posix_memalign (memptr=0x7ff819ffa630, alignment=64, size=64) at ./malloc/malloc.c:5785
+#3  0x00007ffff7cbb9f6 in operator new(unsigned long, std::align_val_t) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x0000555555584e34 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#5  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+(More stack frames follow...)
+
+Thread 367 (Thread 0x7ff81a7fc6c0 (LWP 11932) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3c4000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fffa0000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fffa0000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fffa0000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 366 (Thread 0x7ff81affd6c0 (LWP 11931) "tpcc_metis_test"):
+#0  0x000055555558bdf3 in Masstree::tcursor<MasstreeWrapper<Tuple>::table_params>::find_locked(threadinfo&) ()
+#1  0x00005555555855e9 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x000055555557197c in bool insert_order<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short, unsigned int, unsigned char, bool, Order&) ()
+#3  0x00005555555724e3 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 365 (Thread 0x7ff81b7fe6c0 (LWP 11930) "tpcc_metis_test"):
+#0  _int_malloc (av=av@entry=0x7fffe0000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4353
+#1  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fffe0000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#2  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+#3  0x00007ffff78af57c in __posix_memalign (size=320, alignment=64, memptr=0x7ff81b7fd300) at ./malloc/malloc.c:5801
+#4  __posix_memalign (memptr=0x7ff81b7fd300, alignment=64, size=320) at ./malloc/malloc.c:5785
+#5  0x00007ffff7cbb9f6 in operator new(unsigned long, std::align_val_t) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 364 (Thread 0x7ff81bfff6c0 (LWP 11929) "tpcc_metis_test"):
+#0  0x000055555558396b in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555585358 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 363 (Thread 0x7ff820ff96c0 (LWP 11928) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:141
+#1  0x0000555555583a30 in TxExecutor::searchWriteSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555840a7 in TxExecutor::update(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#3  0x0000555555574032 in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#4  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 362 (Thread 0x7ff8217fa6c0 (LWP 11927) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3e0000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff9c000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff9c000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff9c000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 361 (Thread 0x7ff821ffb6c0 (LWP 11926) "tpcc_metis_test"):
+#0  0x00007ffff78aabf1 in _int_free_maybe_consolidate (av=0x7ffe18000030, size=3456) at ./malloc/malloc.c:4770
+#1  0x00007ffff78ad485 in _int_memalign (av=av@entry=0x7ffe18000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5137
+#2  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+#3  0x00007ffff78af57c in __posix_memalign (size=320, alignment=64, memptr=0x7ff821ffa6f0) at ./malloc/malloc.c:5801
+#4  __posix_memalign (memptr=0x7ff821ffa6f0, alignment=64, size=320) at ./malloc/malloc.c:5785
+#5  0x00007ffff7cbb9f6 in operator new(unsigned long, std::align_val_t) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 360 (Thread 0x7ff8227fc6c0 (LWP 11925) "tpcc_metis_test"):
+#0  0x0000555555584cd7 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#1  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555571d47 in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 359 (Thread 0x7ff822ffd6c0 (LWP 11924) "tpcc_metis_test"):
+#0  sysmalloc (av=0x7fff7c000030, nb=448) at ./malloc/malloc.c:2936
+#1  _int_malloc (av=av@entry=0x7fff7c000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#2  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff7c000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#3  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+#4  0x00007ffff78af57c in __posix_memalign (size=320, alignment=64, memptr=0x7ff822ffc6f0) at ./malloc/malloc.c:5801
+#5  __posix_memalign (memptr=0x7ff822ffc6f0, alignment=64, size=320) at ./malloc/malloc.c:5785
+(More stack frames follow...)
+
+Thread 358 (Thread 0x7ff8237fe6c0 (LWP 11923) "tpcc_metis_test"):
+#0  0x0000555555586e08 in TxExecutor::writePhase() ()
+#1  0x000055555558b640 in TxExecutor::commit() ()
+#2  0x0000555555574a4a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 357 (Thread 0x7ff823fff6c0 (LWP 11922) "tpcc_metis_test"):
+#0  0x000055555558b7f4 in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555571d47 in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 356 (Thread 0x7ff8c4ff36c0 (LWP 11921) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff490000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffe98000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffe98000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffe98000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 355 (Thread 0x7ff9f6ffb6c0 (LWP 11920) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3d0000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdd4000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdd4000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdd4000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 354 (Thread 0x7ffa0dbf76c0 (LWP 11919) "tpcc_metis_test"):
+#0  0x000055555558b809 in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555572f54 in bool get_and_update_customer<TxExecutor, TransactionStatus>(TxExecutor&, SimpleKey<8ul> const&, unsigned int, unsigned char, unsigned short, unsigned char, unsigned short, double) ()
+#3  0x000055555557358f in bool run_payment<TxExecutor, TransactionStatus, Tuple>(TxExecutor&, TPCCQuery::Payment*, HistoryKeyGenerator*) ()
+#4  0x0000555555574a33 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 353 (Thread 0x7ffa0fbfe6c0 (LWP 11918) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff450000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffe34000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffe34000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffe34000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 352 (Thread 0x7ffa177fd6c0 (LWP 11917) "tpcc_metis_test"):
+#0  0x0000555555583a21 in TxExecutor::searchWriteSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555840a7 in TxExecutor::update(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x0000555555574032 in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#3  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 351 (Thread 0x7ffa1e7f96c0 (LWP 11916) "tpcc_metis_test"):
+#0  0x0000555555583a08 in TxExecutor::searchWriteSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555840a7 in TxExecutor::update(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x0000555555571ead in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 350 (Thread 0x7ffa293f66c0 (LWP 11915) "tpcc_metis_test"):
+#0  0x000055555558b709 in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555572696 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#3  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 349 (Thread 0x7ffa2a7fa6c0 (LWP 11914) "tpcc_metis_test"):
+#0  __memcpy_evex_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:266
+#1  0x0000555555584e61 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#2  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#3  0x0000555555572696 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 348 (Thread 0x7ffa2bfff6c0 (LWP 11913) "tpcc_metis_test"):
+#0  0x000055555557ea05 in void std::__insertion_sort<__gnu_cxx::__normal_iterator<WriteElement<Tuple>*, std::vector<WriteElement<Tuple>, std::allocator<WriteElement<Tuple> > > >, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<WriteElement<Tuple>*, std::vector<WriteElement<Tuple>, std::allocator<WriteElement<Tuple> > > >, __gnu_cxx::__normal_iterator<WriteElement<Tuple>*, std::vector<WriteElement<Tuple>, std::allocator<WriteElement<Tuple> > > >, __gnu_cxx::__ops::_Iter_less_iter) [clone .isra.0] ()
+#1  0x000055555558a87a in TxExecutor::validationPhase() ()
+#2  0x000055555558b622 in TxExecutor::commit() ()
+#3  0x0000555555574a4a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 347 (Thread 0x7ffa3a3f86c0 (LWP 11912) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff604000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdf0000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdf0000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdf0000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 346 (Thread 0x7ffa40bf36c0 (LWP 11911) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff5d0000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdbc000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdbc000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdbc000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 345 (Thread 0x7ffa42bfa6c0 (LWP 11910) "tpcc_metis_test"):
+#0  __memcpy_evex_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:386
+#1  0x0000555555584e61 in TxExecutor::read_internal(Storage, std::basic_string_view<char, std::char_traits<char> >, Tuple*) ()
+#2  0x00005555555853c3 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#3  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 344 (Thread 0x7ffa4a7f96c0 (LWP 11909) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff5d8000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffde4000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffde4000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffde4000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 343 (Thread 0x7ffa50be56c0 (LWP 11908) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff448000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdf4000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdf4000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdf4000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 342 (Thread 0x7ffa547f36c0 (LWP 11907) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:118
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x0000555555589188 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 341 (Thread 0x7ffa55ff86c0 (LWP 11906) "tpcc_metis_test"):
+#0  0x000055555558b7e1 in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 340 (Thread 0x7ffa577fd6c0 (LWP 11905) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:118
+#1  0x0000555555583a30 in TxExecutor::searchWriteSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x000055555558adfb in TxExecutor::validationPhase() ()
+#3  0x000055555558b622 in TxExecutor::commit() ()
+#4  0x0000555555574a4a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 339 (Thread 0x7ffa5d7f66c0 (LWP 11904) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff5cc000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdac000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdac000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdac000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 338 (Thread 0x7ffa5f3fc6c0 (LWP 11903) "tpcc_metis_test"):
+#0  0x0000555555559b90 in memcmp@plt ()
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x0000555555589188 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 337 (Thread 0x7ffa6affb6c0 (LWP 11902) "tpcc_metis_test"):
+#0  0x00005555555870d9 in int Masstree::scanstackelt<MasstreeWrapper<Tuple>::table_params>::find_next<Masstree::forward_scan_helper>(Masstree::forward_scan_helper&, Masstree::key<unsigned long>&, Masstree::leafvalue<MasstreeWrapper<Tuple>::table_params>&) [clone .isra.0] ()
+#1  0x0000555555588ab2 in int Masstree::basic_table<MasstreeWrapper<Tuple>::table_params>::scan<Masstree::forward_scan_helper, MasstreeWrapper<Tuple>::SearchRangeScanner>(Masstree::forward_scan_helper, lcdf::Str, bool, MasstreeWrapper<Tuple>::SearchRangeScanner&, threadinfo&) const [clone .isra.0] ()
+#2  0x000055555558907b in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x000055555557499a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 336 (Thread 0x7ffa8dbf76c0 (LWP 11901) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff498000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffd84000030, nb=2064) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffd84000030, bytes=bytes@entry=2048) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad7f4 in __GI___libc_malloc (bytes=2048) at ./malloc/malloc.c:3336
+#5  0x00007ffff7cbb904 in operator new(unsigned long) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 335 (Thread 0x7ffa8ffff6c0 (LWP 11900) "tpcc_metis_test"):
+#0  0x000055555558ae2c in TxExecutor::validationPhase() ()
+#1  0x000055555558b622 in TxExecutor::commit() ()
+#2  0x0000555555574a4a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 334 (Thread 0x7ffa9a3f86c0 (LWP 11899) "tpcc_metis_test"):
+#0  0x000055555558b83d in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555571d47 in bool get_and_update_stock<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned int, unsigned char, bool, Stock&) ()
+#3  0x000055555557258f in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 333 (Thread 0x7ffaa53f66c0 (LWP 11898) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff5e4000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffd60000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffd60000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffd60000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 332 (Thread 0x7ffaa6bfb6c0 (LWP 11897) "tpcc_metis_test"):
+#0  0x0000555555583914 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555585358 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 331 (Thread 0x7ffaa7bfe6c0 (LWP 11896) "tpcc_metis_test"):
+#0  0x0000555555559b90 in memcmp@plt ()
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555890e4 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 330 (Thread 0x7ffaae3f86c0 (LWP 11895) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff464000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffd40000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffd40000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffd40000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 329 (Thread 0x7ffab57f66c0 (LWP 11894) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff5c8000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffd5c000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffd5c000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffd5c000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 328 (Thread 0x7ffab67f96c0 (LWP 11893) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff41c000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffeec000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffeec000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffeec000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 327 (Thread 0x7ffac27f96c0 (LWP 11892) "tpcc_metis_test"):
+#0  0x0000555555559b90 in memcmp@plt ()
+#1  0x0000555555583a30 in TxExecutor::searchWriteSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555890ce in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x0000555555573efe in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#5  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+(More stack frames follow...)
+
+Thread 326 (Thread 0x7ffade3f96c0 (LWP 11891) "tpcc_metis_test"):
+#0  0x0000555555583948 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555589188 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#2  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#3  0x00005555555746ed in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 325 (Thread 0x7ffadffff6c0 (LWP 11890) "tpcc_metis_test"):
+#0  0x000055555558b83d in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 324 (Thread 0x7ffae6ffb6c0 (LWP 11889) "tpcc_metis_test"):
+#0  0x000055555558396b in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555841d2 in TxExecutor::update(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x0000555555574032 in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#3  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 323 (Thread 0x7ffaf13f56c0 (LWP 11888) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:155
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555890e4 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x0000555555573efe in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#5  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+(More stack frames follow...)
+
+Thread 322 (Thread 0x7ffaf33fc6c0 (LWP 11887) "tpcc_metis_test"):
+#0  0x000055555558b83d in MasstreeWrapper<Tuple>::get_value(std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555853ab in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x0000555555573673 in bool update_order_and_get_c_id<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned char, unsigned int&) ()
+#3  0x000055555557501e in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 321 (Thread 0x7ffb02ffb6c0 (LWP 11886) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff4e4000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffcb8000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffcb8000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffcb8000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 320 (Thread 0x7ffb153f56c0 (LWP 11885) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff388000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff80000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff80000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff80000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 319 (Thread 0x7ffb15ff76c0 (LWP 11884) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff5c0000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffc84000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffc84000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffc84000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 318 (Thread 0x7ffb257f66c0 (LWP 11883) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff410000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffe90000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffe90000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffe90000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 317 (Thread 0x7ffb273fc6c0 (LWP 11882) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3e8000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffe40000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffe40000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffe40000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 316 (Thread 0x7ffb38ff46c0 (LWP 11881) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3d8000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffe24000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffe24000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffe24000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 315 (Thread 0x7ffb3b3fc6c0 (LWP 11880) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff420000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffddc000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffddc000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffddc000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 314 (Thread 0x7ffb52ffc6c0 (LWP 11879) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:141
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x00005555555890e4 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#3  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#4  0x0000555555573efe in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#5  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+(More stack frames follow...)
+
+Thread 313 (Thread 0x7ffb53fff6c0 (LWP 11878) "tpcc_metis_test"):
+#0  0x000055555558391a in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x00005555555841d2 in TxExecutor::update(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x0000555555572ae5 in bool get_and_update_district<TxExecutor, TransactionStatus>(TxExecutor&, unsigned char, unsigned short, double, District&) ()
+#3  0x00005555555734f5 in bool run_payment<TxExecutor, TransactionStatus, Tuple>(TxExecutor&, TPCCQuery::Payment*, HistoryKeyGenerator*) ()
+#4  0x0000555555574a33 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 312 (Thread 0x7ffb6a3f96c0 (LWP 11877) "tpcc_metis_test"):
+#0  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555585358 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 311 (Thread 0x7ffb6bfff6c0 (LWP 11876) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3d4000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdc0000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdc0000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdc0000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 310 (Thread 0x7ffb7cff46c0 (LWP 11875) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3b8000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdc4000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdc4000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdc4000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 309 (Thread 0x7ffb7f7fd6c0 (LWP 11874) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff384000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff04000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff04000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff04000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 308 (Thread 0x7ffb8d3e76c0 (LWP 11873) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff848000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffff0000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffff0000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffff0000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 307 (Thread 0x7ffb8f7ef6c0 (LWP 11872) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3c8000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffd38000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffd38000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffd38000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 306 (Thread 0x7ffb917f66c0 (LWP 11871) "tpcc_metis_test"):
+#0  0x0000555555583948 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555585358 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#2  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#3  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#4  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x00007ffff789cb84 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+(More stack frames follow...)
+
+Thread 305 (Thread 0x7ffb93fff6c0 (LWP 11870) "tpcc_metis_test"):
+#0  0x000055555558bed2 in Masstree::tcursor<MasstreeWrapper<Tuple>::table_params>::find_locked(threadinfo&) ()
+#1  0x00005555555855e9 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#2  0x0000555555571bf0 in bool insert_neworder<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short) ()
+#3  0x0000555555572501 in bool run_new_order<TxExecutor, TransactionStatus>(TxExecutor&, TPCCQuery::NewOrder*) ()
+#4  0x0000555555574a97 in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 304 (Thread 0x7ffba5ff96c0 (LWP 11869) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff514000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffed8000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffed8000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffed8000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 303 (Thread 0x7ffba6ffc6c0 (LWP 11868) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3f4000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffc8c000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffc8c000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffc8c000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 302 (Thread 0x7ffba7fff6c0 (LWP 11867) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff3dc000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdec000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdec000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdec000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 301 (Thread 0x7ffbb9ff86c0 (LWP 11866) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff38c000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fffec000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fffec000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fffec000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 300 (Thread 0x7ffbbb3fc6c0 (LWP 11865) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff508000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fffd0000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fffd0000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fffd0000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 299 (Thread 0x7ffbc93f56c0 (LWP 11864) "tpcc_metis_test"):
+#0  0x00007ffff78a9bdd in unlink_chunk (p=p@entry=0x7ff74e427fc0, av=0x7fff94000030) at ./malloc/malloc.c:1616
+#1  0x00007ffff78ac2b5 in _int_malloc (av=av@entry=0x7fff94000030, bytes=bytes@entry=17) at ./malloc/malloc.c:4381
+#2  0x00007ffff78ad7f4 in __GI___libc_malloc (bytes=17) at ./malloc/malloc.c:3336
+#3  0x00007ffff7cbb904 in operator new(unsigned long) () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#4  0x0000555555585b73 in TxExecutor::insert(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody&&) ()
+#5  0x000055555557197c in bool insert_order<TxExecutor, TransactionStatus>(TxExecutor&, unsigned int, unsigned char, unsigned short, unsigned int, unsigned char, bool, Order&) ()
+(More stack frames follow...)
+
+Thread 298 (Thread 0x7ffbcabfa6c0 (LWP 11863) "tpcc_metis_test"):
+#0  __memcmp_evex_movbe () at ../sysdeps/x86_64/multiarch/memcmp-evex-movbe.S:132
+#1  0x0000555555583970 in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#2  0x0000555555585358 in TxExecutor::read(Storage, std::basic_string_view<char, std::char_traits<char> >, TupleBody**) ()
+#3  0x000055555557481c in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#4  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+#5  0x00007ffff7cecdb4 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(More stack frames follow...)
+
+Thread 297 (Thread 0x7ffbe0ff46c0 (LWP 11862) "tpcc_metis_test"):
+#0  0x000055555558395b in TxExecutor::searchReadSet(Storage, std::basic_string_view<char, std::char_traits<char> >) ()
+#1  0x0000555555589188 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&, long) ()
+#2  0x00005555555896c9 in TxExecutor::scan(Storage, std::basic_string_view<char, std::char_traits<char> >, bool, std::basic_string_view<char, std::char_traits<char> >, bool, std::vector<TupleBody*, std::allocator<TupleBody*> >&) ()
+#3  0x0000555555573efe in bool update_order_line_and_get_ol_total<TxExecutor, TransactionStatus>(TxExecutor&, unsigned short, unsigned char, unsigned int, unsigned long, double&) ()
+#4  0x000055555557505a in void TPCCWorkload<Tuple, void>::run<TxExecutor, TransactionStatus>(TxExecutor&) ()
+#5  0x0000555555561e77 in void ccbench::runner_detail::worker_body<TxExecutor, TransactionStatus, TPCCWorkload<Tuple, void>, main::{lambda(unsigned long, bool const&, Backoff&)#1}, main::{lambda(TxExecutor&, unsigned long)#1}, main::{lambda(TxExecutor&, unsigned long)#2}, main::{lambda(unsigned long)#1}>(unsigned long, char&, bool const&, bool const&, main::{lambda(unsigned long, bool const&, Backoff&)#1} const&, main::{lambda(TxExecutor&, unsigned long)#1} const&, main::{lambda(TxExecutor&, unsigned long)#2} const&, main::{lambda(unsigned long)#1} const&) [clone .isra.0] ()
+(More stack frames follow...)
+
+Thread 296 (Thread 0x7ffbe33fc6c0 (LWP 11861) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff474000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fffa4000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fffa4000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fffa4000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 295 (Thread 0x7ffbe8ff46c0 (LWP 11860) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff48c000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7ffdc8000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7ffdc8000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7ffdc8000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 294 (Thread 0x7ff9f63f96c0 (LWP 11859) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff394000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff78000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff78000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff78000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 293 (Thread 0x7ff9d3fff6c0 (LWP 11858) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff470000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff70000030, nb=256) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff70000030, bytes=bytes@entry=240) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff70000030, alignment=alignment@entry=64, bytes=bytes@entry=128) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=128, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 292 (Thread 0x7ff9d2bfb6c0 (LWP 11857) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff47c000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff4c000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff4c000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff4c000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 291 (Thread 0x7ff9d17f76c0 (LWP 11856) "tpcc_metis_test"):
+#0  0x00007ffff7925eeb in __GI_mprotect () at ../sysdeps/unix/syscall-template.S:117
+#1  0x00007ffff78ac876 in grow_heap (diff=<optimized out>, h=0x7ff478000000) at ./malloc/arena.c:490
+#2  sysmalloc (av=0x7fff58000030, nb=448) at ./malloc/malloc.c:2617
+#3  _int_malloc (av=av@entry=0x7fff58000030, bytes=bytes@entry=432) at ./malloc/malloc.c:4481
+#4  0x00007ffff78ad2ff in _int_memalign (av=av@entry=0x7fff58000030, alignment=alignment@entry=64, bytes=bytes@entry=320) at ./malloc/malloc.c:5072
+#5  0x00007ffff78adb32 in _mid_memalign (alignment=alignment@entry=64, bytes=bytes@entry=320, address=<optimized out>) at ./malloc/malloc.c:3648
+(More stack frames follow...)
+
+Thread 1 (Thread 0x7ffff7ea3780 (LWP 11558) "tpcc_metis_test"):
+#0  0x00007ffff78ecbdf in __GI___clock_nanosleep (clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7fffffff01b0, rem=0x7fffffff01b0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+#1  0x00007ffff78f9b27 in __GI___nanosleep (req=<optimized out>, rem=<optimized out>) at ../sysdeps/unix/sysv/linux/nanosleep.c:25
+#2  0x000055555555c762 in main ()

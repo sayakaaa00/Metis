@@ -1,0 +1,34 @@
+{
+  "binary_sha256": "e2bd01d20e95195adf35633898547df61237d2b01467771bfc1412ad01105fc1",
+  "allocator_sha256": "f88a9a5b65a452720342a370cdd815d88dff4dbffd62c2d44802a43321e5d73d",
+  "database_warehouses": 16,
+  "active_warehouses": 1,
+  "items": 100000,
+  "software_workers": 96,
+  "mix": "neworder_only",
+  "thetas": [
+    0,
+    0.95
+  ],
+  "workers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    12,
+    16,
+    24,
+    32,
+    48,
+    72,
+    96
+  ],
+  "seconds": 5,
+  "runs": 1,
+  "pin_order": "physical_first",
+  "item_zipf_seed": 1
+}

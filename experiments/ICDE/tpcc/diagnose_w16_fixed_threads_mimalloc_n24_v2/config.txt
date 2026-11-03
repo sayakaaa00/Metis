@@ -1,0 +1,13 @@
+database_warehouses=96
+active_warehouses=16
+physical_workers=96
+home_assignment=randomized_worker_affined
+home_seed=1
+balanced_home_prefix=true
+allocator_preload=/home/ubuntu/ccbench-adaTAM/build_release/mimalloc_override/libmimalloc.so
+extime=15
+runs=2
+fixed_values=24
+update_period_us=200000
+log_period_us=200000
+idle_sleep_us=50

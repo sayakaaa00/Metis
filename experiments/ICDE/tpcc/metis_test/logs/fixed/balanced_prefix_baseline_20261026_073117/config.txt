@@ -1,0 +1,14 @@
+binary=/home/ubuntu/ccbench-adaTAM/build_release/silo/tpcc_metis_test
+threads=96
+warehouses=96
+active_warehouses=16
+home_assignment=randomized_worker_affined
+seed=1
+reward_scale=300000
+update_period_us=50000
+clocks_per_us=2900
+idle_sleep_us=50
+balanced_home_prefix=true
+extime=5
+runs=2
+fixed_values=24 96

@@ -1,0 +1,3 @@
+active_warehouses,active_threads,run,pin_workers,tps,abort_rate,log
+16,72,1,true,313675,0.4422,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_pin_ab_smoke_v1/logs/w16_n72_run1_pintrue.log
+16,72,1,false,305647,0.4553,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/metis_test/logs/fixed/mimalloc_pin_ab_smoke_v1/logs/w16_n72_run1_pinfalse.log

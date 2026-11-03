@@ -72,6 +72,13 @@ void TxExecutor::begin() {
   max_rset_.obj_ = 0;
 }
 
+void TxExecutor::announce_quiescent_epoch() {
+  // A parked worker holds no index pointers. Keep its epoch announcement
+  // current so the Silo leader can advance GlobalEpoch and reclaim records.
+  if (read_set_.empty() && write_set_.empty() && node_map_.empty())
+    atomicStoreThLocalEpoch(thid_, atomicLoadGE());
+}
+
 // TODO: enable this if we want to use
 // void TxExecutor::displayWriteSet() {
 //   printf("display_write_set()\n");

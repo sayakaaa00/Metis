@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
+#include <map>
 #include <mutex>
 #include <vector>
 
@@ -126,6 +127,59 @@ static int chooseSocketAwareCpu(const int myid) {
   return myid % static_cast<int>(nprocs);
 }
 
+// Fill one logical CPU per physical core on socket 0, then on the other
+// sockets, before using SMT siblings. For this machine the first 48 workers
+// therefore occupy 48 distinct physical cores across both sockets.
+static int choosePhysicalFirstCpu(const int myid) {
+  static std::once_flag cpu_init_flag;
+  static std::vector<int> ordered_cpus;
+
+  std::call_once(cpu_init_flag, [&]() {
+    std::map<std::pair<int, int>, std::vector<int>> cores;
+    long nprocs = sysconf(_SC_NPROCESSORS_CONF);
+    if (nprocs < 1) nprocs = 1;
+    auto topology_value = [](long cpu, const char* name, int& value) {
+      char path[256];
+      std::snprintf(path, sizeof(path),
+                    "/sys/devices/system/cpu/cpu%ld/topology/%s", cpu,
+                    name);
+      FILE* fp = std::fopen(path, "r");
+      if (!fp) return false;
+      const bool ok = std::fscanf(fp, "%d", &value) == 1;
+      std::fclose(fp);
+      return ok;
+    };
+    for (long cpu = 0; cpu < nprocs; ++cpu) {
+      int socket = -1;
+      int core = -1;
+      if (topology_value(cpu, "physical_package_id", socket) &&
+          topology_value(cpu, "core_id", core)) {
+        cores[{socket, core}].push_back(static_cast<int>(cpu));
+      }
+    }
+    auto append = [&](bool socket0, bool siblings) {
+      for (const auto& [key, cpus] : cores) {
+        if ((key.first == 0) != socket0) continue;
+        const std::size_t begin = siblings ? 1 : 0;
+        const std::size_t end = siblings ? cpus.size() : std::min<std::size_t>(1, cpus.size());
+        for (std::size_t i = begin; i < end; ++i) {
+          ordered_cpus.push_back(cpus[i]);
+        }
+      }
+    };
+    append(true, false);
+    append(false, false);
+    append(true, true);
+    append(false, true);
+    if (ordered_cpus.empty()) {
+      for (long cpu = 0; cpu < nprocs; ++cpu) {
+        ordered_cpus.push_back(static_cast<int>(cpu));
+      }
+    }
+  });
+  return ordered_cpus[myid % ordered_cpus.size()];
+}
+
 // プロセス全体の CPU アフィニティを、"ソケット0だけ" に制限するヘルパ。
 // TotalThreadNum がソケット0の論理 CPU 数以下のときだけ適用することで、
 // thread_num ≤ socket0 コア数なら必ず node0 だけを使うポリシーを実現する。
@@ -181,6 +235,14 @@ static void setThreadAffinity(const int myid) {
   if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
 
   return;
+}
+
+[[maybe_unused]] static void setThreadAffinityPhysicalFirst(const int myid) {
+  pid_t pid = syscall(SYS_gettid);
+  cpu_set_t cpu_set;
+  CPU_ZERO(&cpu_set);
+  CPU_SET(choosePhysicalFirstCpu(myid), &cpu_set);
+  if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
 }
 #endif  // Linux
 

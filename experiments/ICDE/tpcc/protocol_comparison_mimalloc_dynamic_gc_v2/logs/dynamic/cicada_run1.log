@@ -1,0 +1,379 @@
+#FLAGS_clocks_per_us:			2900
+#FLAGS_extime:				60
+#FLAGS_gc_inter_us:			10
+#FLAGS_group_commit:			0
+#FLAGS_group_commit_timeout_us:		2
+#FLAGS_io_time_ns:			5
+#FLAGS_pre_reserve_version:		10000
+#FLAGS_p_wal:				0
+#FLAGS_s_wal:				0
+#FLAGS_thread_num:			96
+#FLAGS_ycsb:				1
+#FLAGS_worker1_insert_delay_rphase_us:	0
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_active_warehouse_count:	16
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	randomized_worker_affined
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+[TPC-C workload] bench_s=0.000 active_warehouses=16
+[TPC-C interval] bench_s=0.200 active_warehouses=16 tput=426882.1
+[TPC-C interval] bench_s=0.400 active_warehouses=16 tput=397390.5
+[TPC-C interval] bench_s=0.600 active_warehouses=16 tput=419306.0
+[TPC-C interval] bench_s=0.801 active_warehouses=16 tput=413433.6
+[TPC-C workload] bench_s=1.001 active_warehouses=16 applied_workers=96/96
+[TPC-C interval] bench_s=1.001 active_warehouses=16 tput=406996.7
+[TPC-C interval] bench_s=1.201 active_warehouses=16 tput=412389.9
+[TPC-C interval] bench_s=1.401 active_warehouses=16 tput=420661.2
+[TPC-C interval] bench_s=1.601 active_warehouses=16 tput=410966.7
+[TPC-C interval] bench_s=1.801 active_warehouses=16 tput=409152.5
+[TPC-C interval] bench_s=2.001 active_warehouses=16 tput=425850.6
+[TPC-C interval] bench_s=2.201 active_warehouses=16 tput=421769.3
+[TPC-C interval] bench_s=2.401 active_warehouses=16 tput=417428.1
+[TPC-C interval] bench_s=2.602 active_warehouses=16 tput=419959.7
+[TPC-C interval] bench_s=2.802 active_warehouses=16 tput=420976.5
+[TPC-C interval] bench_s=3.002 active_warehouses=16 tput=418869.8
+[TPC-C interval] bench_s=3.202 active_warehouses=16 tput=410376.8
+[TPC-C interval] bench_s=3.402 active_warehouses=16 tput=424657.0
+[TPC-C interval] bench_s=3.602 active_warehouses=16 tput=419974.8
+[TPC-C interval] bench_s=3.802 active_warehouses=16 tput=421265.0
+[TPC-C interval] bench_s=4.002 active_warehouses=16 tput=421616.5
+[TPC-C interval] bench_s=4.202 active_warehouses=16 tput=403065.5
+[TPC-C interval] bench_s=4.403 active_warehouses=16 tput=415150.0
+[TPC-C interval] bench_s=4.603 active_warehouses=16 tput=425484.9
+[TPC-C interval] bench_s=4.803 active_warehouses=16 tput=421175.3
+[TPC-C interval] bench_s=5.003 active_warehouses=16 tput=414280.8
+[TPC-C interval] bench_s=5.203 active_warehouses=16 tput=402476.5
+[TPC-C interval] bench_s=5.403 active_warehouses=16 tput=415458.9
+[TPC-C interval] bench_s=5.603 active_warehouses=16 tput=409325.9
+[TPC-C interval] bench_s=5.803 active_warehouses=16 tput=416636.7
+[TPC-C interval] bench_s=6.003 active_warehouses=16 tput=411421.0
+[TPC-C interval] bench_s=6.204 active_warehouses=16 tput=401267.0
+[TPC-C interval] bench_s=6.404 active_warehouses=16 tput=400491.2
+[TPC-C interval] bench_s=6.604 active_warehouses=16 tput=402161.5
+[TPC-C interval] bench_s=6.804 active_warehouses=16 tput=406263.9
+[TPC-C interval] bench_s=7.004 active_warehouses=16 tput=389696.5
+[TPC-C interval] bench_s=7.204 active_warehouses=16 tput=377831.0
+[TPC-C interval] bench_s=7.404 active_warehouses=16 tput=383075.1
+[TPC-C interval] bench_s=7.604 active_warehouses=16 tput=395167.4
+[TPC-C interval] bench_s=7.805 active_warehouses=16 tput=385338.2
+[TPC-C interval] bench_s=8.005 active_warehouses=16 tput=393610.6
+[TPC-C interval] bench_s=8.205 active_warehouses=16 tput=397544.0
+[TPC-C interval] bench_s=8.405 active_warehouses=16 tput=378492.6
+[TPC-C interval] bench_s=8.605 active_warehouses=16 tput=381885.0
+[TPC-C interval] bench_s=8.805 active_warehouses=16 tput=383165.6
+[TPC-C interval] bench_s=9.005 active_warehouses=16 tput=393058.7
+[TPC-C interval] bench_s=9.205 active_warehouses=16 tput=384674.6
+[TPC-C interval] bench_s=9.406 active_warehouses=16 tput=379598.3
+[TPC-C interval] bench_s=9.606 active_warehouses=16 tput=402163.5
+[TPC-C interval] bench_s=9.806 active_warehouses=16 tput=389880.5
+[TPC-C workload] bench_s=10.006 active_warehouses=1
+[TPC-C interval] bench_s=10.006 active_warehouses=1 tput=400891.0
+[TPC-C interval] bench_s=10.206 active_warehouses=1 tput=29194.2
+[TPC-C interval] bench_s=10.407 active_warehouses=1 tput=28215.8
+[TPC-C interval] bench_s=10.607 active_warehouses=1 tput=28395.6
+[TPC-C interval] bench_s=10.807 active_warehouses=1 tput=25816.6
+[TPC-C workload] bench_s=11.007 active_warehouses=1 applied_workers=96/96
+[TPC-C interval] bench_s=11.007 active_warehouses=1 tput=26160.5
+[TPC-C interval] bench_s=11.207 active_warehouses=1 tput=26471.1
+[TPC-C interval] bench_s=11.408 active_warehouses=1 tput=26716.2
+[TPC-C interval] bench_s=11.608 active_warehouses=1 tput=26331.4
+[TPC-C interval] bench_s=11.808 active_warehouses=1 tput=26116.7
+[TPC-C interval] bench_s=12.008 active_warehouses=1 tput=23536.5
+[TPC-C interval] bench_s=12.208 active_warehouses=1 tput=25471.9
+[TPC-C interval] bench_s=12.409 active_warehouses=1 tput=25742.5
+[TPC-C interval] bench_s=12.609 active_warehouses=1 tput=25687.4
+[TPC-C interval] bench_s=12.809 active_warehouses=1 tput=25840.9
+[TPC-C interval] bench_s=13.009 active_warehouses=1 tput=28090.9
+[TPC-C interval] bench_s=13.209 active_warehouses=1 tput=26201.9
+[TPC-C interval] bench_s=13.409 active_warehouses=1 tput=25330.3
+[TPC-C interval] bench_s=13.609 active_warehouses=1 tput=27151.2
+[TPC-C interval] bench_s=13.809 active_warehouses=1 tput=24691.7
+[TPC-C interval] bench_s=14.009 active_warehouses=1 tput=25956.7
+[TPC-C interval] bench_s=14.209 active_warehouses=1 tput=26641.1
+[TPC-C interval] bench_s=14.410 active_warehouses=1 tput=24422.9
+[TPC-C interval] bench_s=14.610 active_warehouses=1 tput=24057.7
+[TPC-C interval] bench_s=14.810 active_warehouses=1 tput=27030.2
+[TPC-C interval] bench_s=15.010 active_warehouses=1 tput=26201.5
+[TPC-C interval] bench_s=15.210 active_warehouses=1 tput=26041.7
+[TPC-C interval] bench_s=15.410 active_warehouses=1 tput=26330.5
+[TPC-C interval] bench_s=15.610 active_warehouses=1 tput=26821.4
+[TPC-C interval] bench_s=15.810 active_warehouses=1 tput=27131.2
+[TPC-C interval] bench_s=16.010 active_warehouses=1 tput=24546.8
+[TPC-C interval] bench_s=16.210 active_warehouses=1 tput=26346.6
+[TPC-C interval] bench_s=16.411 active_warehouses=1 tput=26886.3
+[TPC-C interval] bench_s=16.611 active_warehouses=1 tput=26122.7
+[TPC-C interval] bench_s=16.811 active_warehouses=1 tput=25116.1
+[TPC-C interval] bench_s=17.011 active_warehouses=1 tput=26140.4
+[TPC-C interval] bench_s=17.211 active_warehouses=1 tput=21718.6
+[TPC-C interval] bench_s=17.411 active_warehouses=1 tput=27590.7
+[TPC-C interval] bench_s=17.612 active_warehouses=1 tput=24991.0
+[TPC-C interval] bench_s=17.812 active_warehouses=1 tput=23628.0
+[TPC-C interval] bench_s=18.012 active_warehouses=1 tput=26324.7
+[TPC-C interval] bench_s=18.212 active_warehouses=1 tput=25511.0
+[TPC-C interval] bench_s=18.412 active_warehouses=1 tput=26441.2
+[TPC-C interval] bench_s=18.613 active_warehouses=1 tput=23972.2
+[TPC-C interval] bench_s=18.813 active_warehouses=1 tput=27455.6
+[TPC-C interval] bench_s=19.013 active_warehouses=1 tput=25331.8
+[TPC-C interval] bench_s=19.213 active_warehouses=1 tput=25977.2
+[TPC-C interval] bench_s=19.413 active_warehouses=1 tput=26957.2
+[TPC-C interval] bench_s=19.613 active_warehouses=1 tput=27111.6
+[TPC-C interval] bench_s=19.814 active_warehouses=1 tput=26050.8
+[TPC-C workload] bench_s=20.014 active_warehouses=96
+[TPC-C interval] bench_s=20.014 active_warehouses=96 tput=24781.4
+[TPC-C interval] bench_s=20.214 active_warehouses=96 tput=1357620.0
+[TPC-C interval] bench_s=20.414 active_warehouses=96 tput=1446284.3
+[TPC-C interval] bench_s=20.614 active_warehouses=96 tput=1491172.5
+[TPC-C interval] bench_s=20.814 active_warehouses=96 tput=1522704.7
+[TPC-C workload] bench_s=21.014 active_warehouses=96 applied_workers=96/96
+[TPC-C interval] bench_s=21.014 active_warehouses=96 tput=1460285.4
+[TPC-C interval] bench_s=21.214 active_warehouses=96 tput=1496945.2
+[TPC-C interval] bench_s=21.415 active_warehouses=96 tput=1551489.3
+[TPC-C interval] bench_s=21.615 active_warehouses=96 tput=1573471.3
+[TPC-C interval] bench_s=21.815 active_warehouses=96 tput=1562198.0
+[TPC-C interval] bench_s=22.015 active_warehouses=96 tput=1583461.9
+[TPC-C interval] bench_s=22.216 active_warehouses=96 tput=1600421.3
+[TPC-C interval] bench_s=22.416 active_warehouses=96 tput=1597169.8
+[TPC-C interval] bench_s=22.616 active_warehouses=96 tput=1660525.7
+[TPC-C interval] bench_s=22.816 active_warehouses=96 tput=1616813.5
+[TPC-C interval] bench_s=23.016 active_warehouses=96 tput=1645199.1
+[TPC-C interval] bench_s=23.217 active_warehouses=96 tput=1622591.5
+[TPC-C interval] bench_s=23.417 active_warehouses=96 tput=1625564.5
+[TPC-C interval] bench_s=23.617 active_warehouses=96 tput=1649077.8
+[TPC-C interval] bench_s=23.817 active_warehouses=96 tput=1639585.6
+[TPC-C interval] bench_s=24.017 active_warehouses=96 tput=1639623.7
+[TPC-C interval] bench_s=24.218 active_warehouses=96 tput=1644038.5
+[TPC-C interval] bench_s=24.418 active_warehouses=96 tput=1644470.4
+[TPC-C interval] bench_s=24.618 active_warehouses=96 tput=1678502.9
+[TPC-C interval] bench_s=24.818 active_warehouses=96 tput=1665827.7
+[TPC-C interval] bench_s=25.019 active_warehouses=96 tput=1647716.8
+[TPC-C interval] bench_s=25.219 active_warehouses=96 tput=1629473.4
+[TPC-C interval] bench_s=25.419 active_warehouses=96 tput=1653754.3
+[TPC-C interval] bench_s=25.619 active_warehouses=96 tput=1669812.3
+[TPC-C interval] bench_s=25.820 active_warehouses=96 tput=1675891.7
+[TPC-C interval] bench_s=26.020 active_warehouses=96 tput=1662302.5
+[TPC-C interval] bench_s=26.220 active_warehouses=96 tput=1641912.7
+[TPC-C interval] bench_s=26.420 active_warehouses=96 tput=1693758.5
+[TPC-C interval] bench_s=26.620 active_warehouses=96 tput=1660351.4
+[TPC-C interval] bench_s=26.820 active_warehouses=96 tput=1689298.5
+[TPC-C interval] bench_s=27.021 active_warehouses=96 tput=1656507.7
+[TPC-C interval] bench_s=27.221 active_warehouses=96 tput=1665519.3
+[TPC-C interval] bench_s=27.421 active_warehouses=96 tput=1677126.4
+[TPC-C interval] bench_s=27.621 active_warehouses=96 tput=1679478.7
+[TPC-C interval] bench_s=27.821 active_warehouses=96 tput=1680182.5
+[TPC-C interval] bench_s=28.021 active_warehouses=96 tput=1676276.3
+[TPC-C interval] bench_s=28.221 active_warehouses=96 tput=1675653.9
+[TPC-C interval] bench_s=28.421 active_warehouses=96 tput=1627189.9
+[TPC-C interval] bench_s=28.622 active_warehouses=96 tput=1685777.8
+[TPC-C interval] bench_s=28.822 active_warehouses=96 tput=1697713.3
+[TPC-C interval] bench_s=29.022 active_warehouses=96 tput=1652470.7
+[TPC-C interval] bench_s=29.222 active_warehouses=96 tput=1704536.9
+[TPC-C interval] bench_s=29.422 active_warehouses=96 tput=1674016.1
+[TPC-C interval] bench_s=29.622 active_warehouses=96 tput=1682353.9
+[TPC-C interval] bench_s=29.822 active_warehouses=96 tput=1741383.1
+[TPC-C workload] bench_s=30.023 active_warehouses=4
+[TPC-C interval] bench_s=30.023 active_warehouses=4 tput=1627415.0
+[TPC-C interval] bench_s=30.223 active_warehouses=4 tput=80349.2
+[TPC-C interval] bench_s=30.423 active_warehouses=4 tput=65237.7
+[TPC-C interval] bench_s=30.623 active_warehouses=4 tput=56351.6
+[TPC-C interval] bench_s=30.823 active_warehouses=4 tput=59763.0
+[TPC-C workload] bench_s=31.024 active_warehouses=4 applied_workers=96/96
+[TPC-C interval] bench_s=31.024 active_warehouses=4 tput=58460.2
+[TPC-C interval] bench_s=31.224 active_warehouses=4 tput=66301.2
+[TPC-C interval] bench_s=31.424 active_warehouses=4 tput=67042.7
+[TPC-C interval] bench_s=31.624 active_warehouses=4 tput=62016.9
+[TPC-C interval] bench_s=31.824 active_warehouses=4 tput=67063.8
+[TPC-C interval] bench_s=32.024 active_warehouses=4 tput=61252.1
+[TPC-C interval] bench_s=32.224 active_warehouses=4 tput=64875.8
+[TPC-C interval] bench_s=32.424 active_warehouses=4 tput=62968.3
+[TPC-C interval] bench_s=32.624 active_warehouses=4 tput=58686.6
+[TPC-C interval] bench_s=32.825 active_warehouses=4 tput=60242.7
+[TPC-C interval] bench_s=33.025 active_warehouses=4 tput=62046.2
+[TPC-C interval] bench_s=33.225 active_warehouses=4 tput=61430.8
+[TPC-C interval] bench_s=33.425 active_warehouses=4 tput=60655.5
+[TPC-C interval] bench_s=33.625 active_warehouses=4 tput=65923.3
+[TPC-C interval] bench_s=33.825 active_warehouses=4 tput=57614.3
+[TPC-C interval] bench_s=34.025 active_warehouses=4 tput=60968.5
+[TPC-C interval] bench_s=34.226 active_warehouses=4 tput=61544.9
+[TPC-C interval] bench_s=34.426 active_warehouses=4 tput=57730.0
+[TPC-C interval] bench_s=34.626 active_warehouses=4 tput=56677.9
+[TPC-C interval] bench_s=34.826 active_warehouses=4 tput=63272.6
+[TPC-C interval] bench_s=35.026 active_warehouses=4 tput=58049.6
+[TPC-C interval] bench_s=35.226 active_warehouses=4 tput=51832.0
+[TPC-C interval] bench_s=35.427 active_warehouses=4 tput=57342.8
+[TPC-C interval] bench_s=35.627 active_warehouses=4 tput=60511.9
+[TPC-C interval] bench_s=35.827 active_warehouses=4 tput=63297.9
+[TPC-C interval] bench_s=36.027 active_warehouses=4 tput=55709.7
+[TPC-C interval] bench_s=36.227 active_warehouses=4 tput=57271.3
+[TPC-C interval] bench_s=36.428 active_warehouses=4 tput=62753.5
+[TPC-C interval] bench_s=36.628 active_warehouses=4 tput=63131.2
+[TPC-C interval] bench_s=36.828 active_warehouses=4 tput=58639.6
+[TPC-C interval] bench_s=37.028 active_warehouses=4 tput=66220.3
+[TPC-C interval] bench_s=37.228 active_warehouses=4 tput=65162.9
+[TPC-C interval] bench_s=37.429 active_warehouses=4 tput=59293.7
+[TPC-C interval] bench_s=37.629 active_warehouses=4 tput=64217.6
+[TPC-C interval] bench_s=37.829 active_warehouses=4 tput=61829.7
+[TPC-C interval] bench_s=38.029 active_warehouses=4 tput=58607.7
+[TPC-C interval] bench_s=38.229 active_warehouses=4 tput=56694.5
+[TPC-C interval] bench_s=38.429 active_warehouses=4 tput=60548.3
+[TPC-C interval] bench_s=38.629 active_warehouses=4 tput=58271.8
+[TPC-C interval] bench_s=38.829 active_warehouses=4 tput=62499.3
+[TPC-C interval] bench_s=39.029 active_warehouses=4 tput=61627.3
+[TPC-C interval] bench_s=39.230 active_warehouses=4 tput=56683.2
+[TPC-C interval] bench_s=39.430 active_warehouses=4 tput=59764.0
+[TPC-C interval] bench_s=39.630 active_warehouses=4 tput=58632.9
+[TPC-C interval] bench_s=39.830 active_warehouses=4 tput=55158.1
+[TPC-C workload] bench_s=40.030 active_warehouses=32
+[TPC-C interval] bench_s=40.030 active_warehouses=32 tput=58365.5
+[TPC-C interval] bench_s=40.230 active_warehouses=32 tput=655653.0
+[TPC-C interval] bench_s=40.430 active_warehouses=32 tput=809134.6
+[TPC-C interval] bench_s=40.630 active_warehouses=32 tput=680365.7
+[TPC-C interval] bench_s=40.830 active_warehouses=32 tput=696351.3
+[TPC-C workload] bench_s=41.031 active_warehouses=32 applied_workers=96/96
+[TPC-C interval] bench_s=41.031 active_warehouses=32 tput=687880.3
+[TPC-C interval] bench_s=41.231 active_warehouses=32 tput=715573.0
+[TPC-C interval] bench_s=41.431 active_warehouses=32 tput=682866.8
+[TPC-C interval] bench_s=41.631 active_warehouses=32 tput=705297.5
+[TPC-C interval] bench_s=41.831 active_warehouses=32 tput=665179.8
+[TPC-C interval] bench_s=42.031 active_warehouses=32 tput=682298.9
+[TPC-C interval] bench_s=42.232 active_warehouses=32 tput=686386.7
+[TPC-C interval] bench_s=42.432 active_warehouses=32 tput=700408.4
+[TPC-C interval] bench_s=42.632 active_warehouses=32 tput=658680.1
+[TPC-C interval] bench_s=42.832 active_warehouses=32 tput=736481.9
+[TPC-C interval] bench_s=43.032 active_warehouses=32 tput=676897.0
+[TPC-C interval] bench_s=43.233 active_warehouses=32 tput=764331.1
+[TPC-C interval] bench_s=43.433 active_warehouses=32 tput=678803.8
+[TPC-C interval] bench_s=43.633 active_warehouses=32 tput=677250.1
+[TPC-C interval] bench_s=43.833 active_warehouses=32 tput=679756.5
+[TPC-C interval] bench_s=44.034 active_warehouses=32 tput=684581.9
+[TPC-C interval] bench_s=44.234 active_warehouses=32 tput=732710.9
+[TPC-C interval] bench_s=44.434 active_warehouses=32 tput=673237.0
+[TPC-C interval] bench_s=44.634 active_warehouses=32 tput=700309.5
+[TPC-C interval] bench_s=44.834 active_warehouses=32 tput=689232.1
+[TPC-C interval] bench_s=45.034 active_warehouses=32 tput=714908.0
+[TPC-C interval] bench_s=45.234 active_warehouses=32 tput=718466.5
+[TPC-C interval] bench_s=45.434 active_warehouses=32 tput=769261.6
+[TPC-C interval] bench_s=45.635 active_warehouses=32 tput=683095.1
+[TPC-C interval] bench_s=45.835 active_warehouses=32 tput=678751.3
+[TPC-C interval] bench_s=46.035 active_warehouses=32 tput=676810.4
+[TPC-C interval] bench_s=46.235 active_warehouses=32 tput=673900.2
+[TPC-C interval] bench_s=46.435 active_warehouses=32 tput=724473.1
+[TPC-C interval] bench_s=46.635 active_warehouses=32 tput=705192.3
+[TPC-C interval] bench_s=46.835 active_warehouses=32 tput=750319.4
+[TPC-C interval] bench_s=47.036 active_warehouses=32 tput=662509.1
+[TPC-C interval] bench_s=47.236 active_warehouses=32 tput=678140.1
+[TPC-C interval] bench_s=47.436 active_warehouses=32 tput=702974.6
+[TPC-C interval] bench_s=47.636 active_warehouses=32 tput=660900.4
+[TPC-C interval] bench_s=47.836 active_warehouses=32 tput=731961.9
+[TPC-C interval] bench_s=48.037 active_warehouses=32 tput=678842.2
+[TPC-C interval] bench_s=48.237 active_warehouses=32 tput=721135.8
+[TPC-C interval] bench_s=48.437 active_warehouses=32 tput=710365.0
+[TPC-C interval] bench_s=48.637 active_warehouses=32 tput=739352.0
+[TPC-C interval] bench_s=48.837 active_warehouses=32 tput=734533.0
+[TPC-C interval] bench_s=49.037 active_warehouses=32 tput=654933.5
+[TPC-C interval] bench_s=49.237 active_warehouses=32 tput=700741.4
+[TPC-C interval] bench_s=49.437 active_warehouses=32 tput=680977.0
+[TPC-C interval] bench_s=49.638 active_warehouses=32 tput=749347.4
+[TPC-C interval] bench_s=49.838 active_warehouses=32 tput=710477.6
+[TPC-C workload] bench_s=50.038 active_warehouses=16
+[TPC-C interval] bench_s=50.038 active_warehouses=16 tput=706737.0
+[TPC-C interval] bench_s=50.238 active_warehouses=16 tput=345269.3
+[TPC-C interval] bench_s=50.438 active_warehouses=16 tput=327491.5
+[TPC-C interval] bench_s=50.639 active_warehouses=16 tput=339247.7
+[TPC-C interval] bench_s=50.839 active_warehouses=16 tput=325500.5
+[TPC-C workload] bench_s=51.039 active_warehouses=16 applied_workers=96/96
+[TPC-C interval] bench_s=51.039 active_warehouses=16 tput=347549.5
+[TPC-C interval] bench_s=51.239 active_warehouses=16 tput=341014.3
+[TPC-C interval] bench_s=51.439 active_warehouses=16 tput=332495.9
+[TPC-C interval] bench_s=51.640 active_warehouses=16 tput=319772.0
+[TPC-C interval] bench_s=51.840 active_warehouses=16 tput=322166.8
+[TPC-C interval] bench_s=52.040 active_warehouses=16 tput=312899.4
+[TPC-C interval] bench_s=52.240 active_warehouses=16 tput=330045.1
+[TPC-C interval] bench_s=52.440 active_warehouses=16 tput=332232.3
+[TPC-C interval] bench_s=52.640 active_warehouses=16 tput=328515.5
+[TPC-C interval] bench_s=52.840 active_warehouses=16 tput=325179.7
+[TPC-C interval] bench_s=53.040 active_warehouses=16 tput=330488.6
+[TPC-C interval] bench_s=53.240 active_warehouses=16 tput=327960.3
+[TPC-C interval] bench_s=53.441 active_warehouses=16 tput=356192.1
+[TPC-C interval] bench_s=53.641 active_warehouses=16 tput=343703.1
+[TPC-C interval] bench_s=53.841 active_warehouses=16 tput=336150.0
+[TPC-C interval] bench_s=54.041 active_warehouses=16 tput=360428.4
+[TPC-C interval] bench_s=54.242 active_warehouses=16 tput=325690.6
+[TPC-C interval] bench_s=54.442 active_warehouses=16 tput=319358.3
+[TPC-C interval] bench_s=54.642 active_warehouses=16 tput=330715.0
+[TPC-C interval] bench_s=54.842 active_warehouses=16 tput=350637.2
+[TPC-C interval] bench_s=55.042 active_warehouses=16 tput=328154.1
+[TPC-C interval] bench_s=55.243 active_warehouses=16 tput=334613.6
+[TPC-C interval] bench_s=55.443 active_warehouses=16 tput=342174.0
+[TPC-C interval] bench_s=55.643 active_warehouses=16 tput=340264.6
+[TPC-C interval] bench_s=55.843 active_warehouses=16 tput=337758.2
+[TPC-C interval] bench_s=56.043 active_warehouses=16 tput=366621.8
+[TPC-C interval] bench_s=56.243 active_warehouses=16 tput=324081.2
+[TPC-C interval] bench_s=56.443 active_warehouses=16 tput=335953.6
+[TPC-C interval] bench_s=56.643 active_warehouses=16 tput=324586.1
+[TPC-C interval] bench_s=56.843 active_warehouses=16 tput=347639.1
+[TPC-C interval] bench_s=57.044 active_warehouses=16 tput=335683.2
+[TPC-C interval] bench_s=57.244 active_warehouses=16 tput=355117.3
+[TPC-C interval] bench_s=57.444 active_warehouses=16 tput=331287.1
+[TPC-C interval] bench_s=57.644 active_warehouses=16 tput=335723.0
+[TPC-C interval] bench_s=57.844 active_warehouses=16 tput=314807.5
+[TPC-C interval] bench_s=58.044 active_warehouses=16 tput=329413.9
+[TPC-C interval] bench_s=58.244 active_warehouses=16 tput=328106.0
+[TPC-C interval] bench_s=58.444 active_warehouses=16 tput=332469.8
+[TPC-C interval] bench_s=58.645 active_warehouses=16 tput=342950.3
+[TPC-C interval] bench_s=58.845 active_warehouses=16 tput=343079.9
+[TPC-C interval] bench_s=59.045 active_warehouses=16 tput=343710.9
+[TPC-C interval] bench_s=59.245 active_warehouses=16 tput=327548.5
+[TPC-C interval] bench_s=59.445 active_warehouses=16 tput=351424.4
+[TPC-C interval] bench_s=59.646 active_warehouses=16 tput=341538.0
+[TPC-C interval] bench_s=59.846 active_warehouses=16 tput=330309.2
+[TPC-C interval] bench_s=60.000 active_warehouses=16 tput=337103.5
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 1: INLINE_VERSION_OPT 0: INLINE_VERSION_PROMOTION 1: MASSTREE_USE 1: PARTITION_TABLE 0: REUSE_VERSION 1: SINGLE_EXEC 0: KEY_SIZE 8: VAL_SIZE 4: WRITE_LATEST_ONLY 0: WORKER1_INSERT_DELAY_RPHASE 0
+success_forwarding_:	0
+abort_counts_:	5279493
+batch_abort_counts_:	0
+commit_counts_:	31584458
+batch_commit_counts_:	0
+maxrss:	171993172 kB
+abort_rate:	0.1432
+batch_abort_rate:	-nan
+latency[ns]:	182368.3956
+throughput[tps]:	526407
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 14210528
+    aborts: 606458
+    abort rate: 0.0409
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 13581329
+    aborts: 173613
+    abort rate: 0.0126
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 1263476
+    aborts: 10
+    abort rate: 0.0000
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 1264822
+    aborts: 4414853
+    abort rate: 0.7773
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 1264303
+    aborts: 84559
+    abort rate: 0.0627
+    latency[us]: 0.00
+  Summary: 14210528,606458,13581329,173613,1263476,10,1264822,4414853,1264303,84559,
+  All transaction total latencies: 0,0,0,0,0,

@@ -1,0 +1,63 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		20
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261102_054708.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_active_warehouse_count:	16
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+[th#34]: cannot get order ID by scanning order-secondary with customer ID
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	20
+success_forwarding_:	0
+abort_counts_:	3891465
+batch_abort_counts_:	0
+commit_counts_:	6723388
+batch_commit_counts_:	0
+maxrss:	31780516 kB
+abort_rate:	0.3666
+batch_abort_rate:	-nan
+latency[ns]:	285570.6505
+throughput[tps]:	336169
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 3025279
+    aborts: 1003861
+    abort rate: 0.2492
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 2890015
+    aborts: 106684
+    abort rate: 0.0356
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 268782
+    aborts: 24
+    abort rate: 0.0001
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 269245
+    aborts: 2423396
+    abort rate: 0.9000
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 270067
+    aborts: 357500
+    abort rate: 0.5697
+    latency[us]: 0.00
+  Summary: 3025279,1003861,2890015,106684,268782,24,269245,2423396,270067,357500,
+  All transaction total latencies: 0,0,0,0,0,

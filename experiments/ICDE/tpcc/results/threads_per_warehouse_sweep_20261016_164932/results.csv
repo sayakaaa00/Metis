@@ -1,0 +1,15 @@
+total_threads,threads_per_warehouse,warehouses,run,tps,abort_rate,latency_ns,commits,aborts,log_file
+8,2,4,1,139529,0.1264,57335.7510,697646,100970,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_8_per_warehouse_2_warehouses_4_run_1.log.gz
+8,2,4,2,141851,0.1259,56397.2055,709255,102132,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_8_per_warehouse_2_warehouses_4_run_2.log.gz
+16,2,8,1,274692,0.1262,58247.0549,1373463,198386,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_16_per_warehouse_2_warehouses_8_run_1.log.gz
+16,2,8,2,275244,0.1278,58130.2408,1376222,201649,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_16_per_warehouse_2_warehouses_8_run_2.log.gz
+24,2,12,1,403562,0.1265,59470.4159,2017813,292204,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_24_per_warehouse_2_warehouses_12_run_1.log.gz
+24,2,12,2,400954,0.1280,59857.2405,2004774,294166,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_24_per_warehouse_2_warehouses_12_run_2.log.gz
+32,2,16,1,438019,0.1049,73056.1916,2190099,256681,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_32_per_warehouse_2_warehouses_16_run_1.log.gz
+32,2,16,2,438563,0.1052,72965.5717,2192819,257739,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_32_per_warehouse_2_warehouses_16_run_2.log.gz
+48,2,24,1,471863,0.1194,101724.4412,2359315,319815,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_48_per_warehouse_2_warehouses_24_run_1.log.gz
+48,2,24,2,472125,0.1200,101667.9905,2360629,321926,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_48_per_warehouse_2_warehouses_24_run_2.log.gz
+64,2,32,1,628219,0.1070,101875.3014,3141095,376556,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_64_per_warehouse_2_warehouses_32_run_1.log.gz
+64,2,32,2,552141,0.1033,115912.4209,2760706,318124,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_64_per_warehouse_2_warehouses_32_run_2.log.gz
+96,2,48,1,613400,0.0928,156504.7277,3067002,313663,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_96_per_warehouse_2_warehouses_48_run_1.log.gz
+96,2,48,2,616903,0.0928,155616.0369,3084518,315450,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/results/threads_per_warehouse_sweep_20261016_164932/logs/threads_96_per_warehouse_2_warehouses_48_run_2.log.gz

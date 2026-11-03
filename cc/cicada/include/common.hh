@@ -40,6 +40,8 @@ DEFINE_uint64(clocks_per_us, 2100,
               "CPU_MHz. Use this info for measuring time.");
 DEFINE_uint64(extime, 3, "Execution time[sec].");
 DEFINE_uint64(gc_inter_us, 10, "GC interval[us].");
+DEFINE_bool(gc_defer_record_reclamation, false,
+            "Keep deleted records while reclaiming old versions.");
 DEFINE_uint64(group_commit, 0, "Group commit number of transactions.");
 DEFINE_uint64(
     group_commit_timeout_us, 2,
@@ -75,6 +77,7 @@ DEFINE_bool(batch_simple_rr, false,
 DECLARE_uint64(clocks_per_us);
 DECLARE_uint64(extime);
 DECLARE_uint64(gc_inter_us);
+DECLARE_bool(gc_defer_record_reclamation);
 DECLARE_uint64(group_commit);
 DECLARE_uint64(group_commit_timeout_us);
 DECLARE_uint64(io_time_ns);

@@ -1,0 +1,13 @@
+method,run,active_warehouses,samples,mean_interval_tps_after_2s,mean_workers_after_2s
+metis_test,1,4,90,161963,8
+metis_test,1,1,90,53697,8
+metis_test,1,16,90,487732,16
+metis_test,2,4,90,163939,8
+metis_test,2,1,90,54374,8
+metis_test,2,16,90,490175,16
+adatam,1,4,90,167961,72.58
+adatam,1,1,90,47487,60.58
+adatam,1,16,90,525320,72.04
+adatam,2,4,90,167834,70.18
+adatam,2,1,90,46670,77.56
+adatam,2,16,90,523705,72.04

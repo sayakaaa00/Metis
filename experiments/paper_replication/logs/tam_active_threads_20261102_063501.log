@@ -1,0 +1,605 @@
+[TPC-C workload] bench_s=0.000 active_warehouses=16
+[Metis-test] elapsed_s=0.854 bench_s=0.200 phase=fixed active_threads=96 tput=55467 abort_rate=0.5080 reward=0.13867 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=0.200 active_threads=96
+[Metis-test] elapsed_s=1.054 bench_s=0.400 phase=fixed active_threads=96 tput=222627 abort_rate=0.5163 reward=0.55657 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=0.400 active_threads=96
+[Metis-test] elapsed_s=1.254 bench_s=0.600 phase=fixed active_threads=96 tput=216405 abort_rate=0.5199 reward=0.54101 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=0.600 active_threads=96
+[Metis-test] elapsed_s=1.454 bench_s=0.800 phase=fixed active_threads=96 tput=220430 abort_rate=0.5153 reward=0.55108 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=0.801 active_threads=96
+[Metis-test] elapsed_s=1.654 bench_s=1.001 phase=fixed active_threads=96 tput=223034 abort_rate=0.5199 reward=0.55759 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=1.001 active_threads=96
+[TPC-C workload] bench_s=1.001 active_warehouses=16 applied_workers=96/96
+[Metis-test] elapsed_s=1.855 bench_s=1.201 phase=fixed active_threads=96 tput=215545 abort_rate=0.5541 reward=0.53886 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=1.201 active_threads=96
+[Metis-test] elapsed_s=2.055 bench_s=1.401 phase=fixed active_threads=96 tput=220902 abort_rate=0.5157 reward=0.55226 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=1.401 active_threads=96
+[Metis-test] elapsed_s=2.255 bench_s=1.601 phase=fixed active_threads=96 tput=228750 abort_rate=0.5102 reward=0.57187 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=1.601 active_threads=96
+[Metis-test] elapsed_s=2.455 bench_s=1.801 phase=fixed active_threads=96 tput=238409 abort_rate=0.5141 reward=0.59602 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=1.801 active_threads=96
+[Metis-test] elapsed_s=2.655 bench_s=2.001 phase=fixed active_threads=96 tput=252861 abort_rate=0.5190 reward=0.63215 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=2.001 active_threads=96
+[Metis-test] elapsed_s=2.855 bench_s=2.201 phase=fixed active_threads=96 tput=249229 abort_rate=0.7807 reward=0.62307 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=2.201 active_threads=96
+[Metis-test] elapsed_s=3.055 bench_s=2.401 phase=fixed active_threads=96 tput=248281 abort_rate=0.5158 reward=0.62070 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=2.402 active_threads=96
+[Metis-test] elapsed_s=3.255 bench_s=2.602 phase=fixed active_threads=96 tput=249389 abort_rate=0.5201 reward=0.62347 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=2.602 active_threads=96
+[Metis-test] elapsed_s=3.456 bench_s=2.802 phase=fixed active_threads=96 tput=254934 abort_rate=0.5171 reward=0.63734 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=2.802 active_threads=96
+[Metis-test] elapsed_s=3.656 bench_s=3.002 phase=fixed active_threads=96 tput=252399 abort_rate=0.5247 reward=0.63100 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=3.002 active_threads=96
+[Metis-test] elapsed_s=3.856 bench_s=3.202 phase=fixed active_threads=96 tput=249651 abort_rate=0.6764 reward=0.62413 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=3.202 active_threads=96
+[Metis-test] elapsed_s=4.056 bench_s=3.402 phase=fixed active_threads=96 tput=246149 abort_rate=0.5167 reward=0.61537 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=3.402 active_threads=96
+[Metis-test] elapsed_s=4.256 bench_s=3.602 phase=fixed active_threads=96 tput=254836 abort_rate=0.5137 reward=0.63709 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=3.603 active_threads=96
+[Metis-test] elapsed_s=4.456 bench_s=3.803 phase=fixed active_threads=96 tput=252688 abort_rate=0.5125 reward=0.63172 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=3.803 active_threads=96
+[Metis-test] elapsed_s=4.657 bench_s=4.003 phase=fixed active_threads=96 tput=250787 abort_rate=0.5189 reward=0.62697 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=4.003 active_threads=96
+[Metis-test] elapsed_s=4.857 bench_s=4.203 phase=fixed active_threads=96 tput=244450 abort_rate=0.5620 reward=0.61113 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=4.203 active_threads=96
+[Metis-test] elapsed_s=5.057 bench_s=4.403 phase=fixed active_threads=96 tput=253480 abort_rate=0.5121 reward=0.63370 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=4.403 active_threads=96
+[Metis-test] elapsed_s=5.257 bench_s=4.603 phase=fixed active_threads=96 tput=253170 abort_rate=0.5172 reward=0.63292 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=4.603 active_threads=96
+[Metis-test] elapsed_s=5.457 bench_s=4.803 phase=fixed active_threads=96 tput=258506 abort_rate=0.5167 reward=0.64626 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=4.804 active_threads=96
+[Metis-test] elapsed_s=5.657 bench_s=5.004 phase=fixed active_threads=96 tput=250426 abort_rate=0.5102 reward=0.62606 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=5.004 active_threads=96
+[Metis-test] elapsed_s=5.858 bench_s=5.204 phase=fixed active_threads=96 tput=247795 abort_rate=0.6365 reward=0.61949 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=5.204 active_threads=96
+[Metis-test] elapsed_s=6.058 bench_s=5.404 phase=fixed active_threads=96 tput=260366 abort_rate=0.5128 reward=0.65091 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=5.404 active_threads=96
+[Metis-test] elapsed_s=6.258 bench_s=5.604 phase=fixed active_threads=96 tput=260289 abort_rate=0.5104 reward=0.65072 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=5.604 active_threads=96
+[Metis-test] elapsed_s=6.458 bench_s=5.804 phase=fixed active_threads=96 tput=249695 abort_rate=0.5200 reward=0.62424 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=5.804 active_threads=96
+[Metis-test] elapsed_s=6.658 bench_s=6.004 phase=fixed active_threads=96 tput=252213 abort_rate=0.5175 reward=0.63053 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=6.005 active_threads=96
+[Metis-test] elapsed_s=6.858 bench_s=6.205 phase=fixed active_threads=96 tput=254782 abort_rate=0.5160 reward=0.63695 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=6.205 active_threads=96
+[Metis-test] elapsed_s=7.059 bench_s=6.405 phase=fixed active_threads=96 tput=247773 abort_rate=0.5164 reward=0.61943 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=6.405 active_threads=96
+[Metis-test] elapsed_s=7.259 bench_s=6.605 phase=fixed active_threads=96 tput=247703 abort_rate=0.5165 reward=0.61926 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=6.605 active_threads=96
+[Metis-test] elapsed_s=7.459 bench_s=6.805 phase=fixed active_threads=96 tput=251804 abort_rate=0.5197 reward=0.62951 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=6.805 active_threads=96
+[Metis-test] elapsed_s=7.659 bench_s=7.005 phase=fixed active_threads=96 tput=252064 abort_rate=0.5158 reward=0.63016 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=7.005 active_threads=96
+[Metis-test] elapsed_s=7.859 bench_s=7.205 phase=fixed active_threads=96 tput=261819 abort_rate=0.5147 reward=0.65455 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=7.206 active_threads=96
+[Metis-test] elapsed_s=8.059 bench_s=7.406 phase=fixed active_threads=96 tput=257265 abort_rate=0.5175 reward=0.64316 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=7.406 active_threads=96
+[Metis-test] elapsed_s=8.260 bench_s=7.606 phase=fixed active_threads=96 tput=248388 abort_rate=0.5164 reward=0.62097 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=7.606 active_threads=96
+[Metis-test] elapsed_s=8.460 bench_s=7.806 phase=fixed active_threads=96 tput=257668 abort_rate=0.5109 reward=0.64417 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=7.806 active_threads=96
+[Metis-test] elapsed_s=8.660 bench_s=8.006 phase=fixed active_threads=96 tput=255461 abort_rate=0.5162 reward=0.63865 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=8.006 active_threads=96
+[Metis-test] elapsed_s=8.860 bench_s=8.206 phase=fixed active_threads=96 tput=251811 abort_rate=0.5197 reward=0.62953 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=8.206 active_threads=96
+[Metis-test] elapsed_s=9.060 bench_s=8.407 phase=fixed active_threads=96 tput=255102 abort_rate=0.5142 reward=0.63776 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=8.407 active_threads=96
+[Metis-test] elapsed_s=9.261 bench_s=8.607 phase=fixed active_threads=96 tput=254423 abort_rate=0.5160 reward=0.63606 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=8.607 active_threads=96
+[Metis-test] elapsed_s=9.461 bench_s=8.807 phase=fixed active_threads=96 tput=265558 abort_rate=0.5109 reward=0.66390 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=8.807 active_threads=96
+[Metis-test] elapsed_s=9.661 bench_s=9.007 phase=fixed active_threads=96 tput=256225 abort_rate=0.5109 reward=0.64056 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=9.007 active_threads=96
+[Metis-test] elapsed_s=9.861 bench_s=9.207 phase=fixed active_threads=96 tput=255045 abort_rate=0.5123 reward=0.63761 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=9.207 active_threads=96
+[Metis-test] elapsed_s=10.061 bench_s=9.408 phase=fixed active_threads=96 tput=251850 abort_rate=0.5157 reward=0.62963 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=9.408 active_threads=96
+[Metis-test] elapsed_s=10.261 bench_s=9.608 phase=fixed active_threads=96 tput=255974 abort_rate=0.5115 reward=0.63993 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=9.608 active_threads=96
+[Metis-test] elapsed_s=10.462 bench_s=9.808 phase=fixed active_threads=96 tput=241116 abort_rate=0.5242 reward=0.60279 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=9.808 active_threads=96
+[Metis-test] elapsed_s=10.662 bench_s=10.008 phase=fixed active_threads=96 tput=245573 abort_rate=0.5179 reward=0.61393 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=10.008 active_threads=96
+[Metis-test] elapsed_s=10.862 bench_s=10.208 phase=fixed active_threads=96 tput=250529 abort_rate=0.5144 reward=0.62632 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=10.208 active_threads=96
+[Metis-test] elapsed_s=11.062 bench_s=10.408 phase=fixed active_threads=96 tput=251715 abort_rate=0.5141 reward=0.62929 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=10.408 active_threads=96
+[Metis-test] elapsed_s=11.263 bench_s=10.609 phase=fixed active_threads=96 tput=245435 abort_rate=0.5170 reward=0.61359 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=10.609 active_threads=96
+[Metis-test] elapsed_s=11.463 bench_s=10.809 phase=fixed active_threads=96 tput=249517 abort_rate=0.5169 reward=0.62379 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=10.809 active_threads=96
+[Metis-test] elapsed_s=11.663 bench_s=11.009 phase=fixed active_threads=96 tput=248132 abort_rate=0.5156 reward=0.62033 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=11.009 active_threads=96
+[Metis-test] elapsed_s=11.863 bench_s=11.209 phase=fixed active_threads=96 tput=262852 abort_rate=0.5113 reward=0.65713 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=11.209 active_threads=96
+[Metis-test] elapsed_s=12.063 bench_s=11.409 phase=fixed active_threads=96 tput=267366 abort_rate=0.5115 reward=0.66841 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=11.410 active_threads=96
+[Metis-test] elapsed_s=12.263 bench_s=11.610 phase=fixed active_threads=96 tput=265580 abort_rate=0.5118 reward=0.66395 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=11.610 active_threads=96
+[Metis-test] elapsed_s=12.464 bench_s=11.810 phase=fixed active_threads=96 tput=254207 abort_rate=0.5109 reward=0.63552 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=11.810 active_threads=96
+[Metis-test] elapsed_s=12.664 bench_s=12.010 phase=fixed active_threads=96 tput=247774 abort_rate=0.5164 reward=0.61944 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=12.010 active_threads=96
+[Metis-test] elapsed_s=12.864 bench_s=12.210 phase=fixed active_threads=96 tput=267264 abort_rate=0.5069 reward=0.66816 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=12.210 active_threads=96
+[Metis-test] elapsed_s=13.064 bench_s=12.410 phase=fixed active_threads=96 tput=248185 abort_rate=0.5173 reward=0.62046 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=12.410 active_threads=96
+[Metis-test] elapsed_s=13.264 bench_s=12.610 phase=fixed active_threads=96 tput=258675 abort_rate=0.5148 reward=0.64669 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=12.610 active_threads=96
+[Metis-test] elapsed_s=13.464 bench_s=12.810 phase=fixed active_threads=96 tput=252224 abort_rate=0.5143 reward=0.63056 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=12.810 active_threads=96
+[Metis-test] elapsed_s=13.664 bench_s=13.010 phase=fixed active_threads=96 tput=257358 abort_rate=0.5165 reward=0.64339 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=13.011 active_threads=96
+[Metis-test] elapsed_s=13.865 bench_s=13.211 phase=fixed active_threads=96 tput=254682 abort_rate=0.5150 reward=0.63670 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=13.211 active_threads=96
+[Metis-test] elapsed_s=14.065 bench_s=13.411 phase=fixed active_threads=96 tput=260185 abort_rate=0.5159 reward=0.65046 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=13.411 active_threads=96
+[Metis-test] elapsed_s=14.265 bench_s=13.611 phase=fixed active_threads=96 tput=253306 abort_rate=0.5105 reward=0.63326 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=13.611 active_threads=96
+[Metis-test] elapsed_s=14.465 bench_s=13.811 phase=fixed active_threads=96 tput=252545 abort_rate=0.5180 reward=0.63136 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=13.811 active_threads=96
+[Metis-test] elapsed_s=14.665 bench_s=14.011 phase=fixed active_threads=96 tput=251593 abort_rate=0.5066 reward=0.62898 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=14.012 active_threads=96
+[Metis-test] elapsed_s=14.865 bench_s=14.212 phase=fixed active_threads=96 tput=253211 abort_rate=0.5169 reward=0.63303 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=14.212 active_threads=96
+[Metis-test] elapsed_s=15.066 bench_s=14.412 phase=fixed active_threads=96 tput=255274 abort_rate=0.5144 reward=0.63819 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=14.412 active_threads=96
+[Metis-test] elapsed_s=15.266 bench_s=14.612 phase=fixed active_threads=96 tput=254595 abort_rate=0.5137 reward=0.63649 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=14.612 active_threads=96
+[Metis-test] elapsed_s=15.466 bench_s=14.812 phase=fixed active_threads=96 tput=248384 abort_rate=0.5208 reward=0.62096 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=14.812 active_threads=96
+[Metis-test] elapsed_s=15.667 bench_s=15.013 phase=fixed active_threads=96 tput=252077 abort_rate=0.5188 reward=0.63019 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=15.013 active_threads=96
+[Metis-test] elapsed_s=15.867 bench_s=15.213 phase=fixed active_threads=96 tput=254140 abort_rate=0.5138 reward=0.63535 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=15.213 active_threads=96
+[Metis-test] elapsed_s=16.067 bench_s=15.413 phase=fixed active_threads=96 tput=247699 abort_rate=0.5134 reward=0.61925 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=15.413 active_threads=96
+[Metis-test] elapsed_s=16.267 bench_s=15.613 phase=fixed active_threads=96 tput=247137 abort_rate=0.5185 reward=0.61784 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=15.613 active_threads=96
+[Metis-test] elapsed_s=16.467 bench_s=15.813 phase=fixed active_threads=96 tput=244964 abort_rate=0.5206 reward=0.61241 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=15.814 active_threads=96
+[Metis-test] elapsed_s=16.667 bench_s=16.014 phase=fixed active_threads=96 tput=257698 abort_rate=0.5160 reward=0.64424 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=16.014 active_threads=96
+[Metis-test] elapsed_s=16.868 bench_s=16.214 phase=fixed active_threads=96 tput=254597 abort_rate=0.5057 reward=0.63649 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=16.214 active_threads=96
+[Metis-test] elapsed_s=17.068 bench_s=16.414 phase=fixed active_threads=96 tput=252296 abort_rate=0.5169 reward=0.63074 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=16.414 active_threads=96
+[Metis-test] elapsed_s=17.268 bench_s=16.614 phase=fixed active_threads=96 tput=255871 abort_rate=0.5146 reward=0.63968 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=16.614 active_threads=96
+[Metis-test] elapsed_s=17.468 bench_s=16.814 phase=fixed active_threads=96 tput=249166 abort_rate=0.5165 reward=0.62292 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=16.814 active_threads=96
+[Metis-test] elapsed_s=17.668 bench_s=17.014 phase=fixed active_threads=96 tput=256184 abort_rate=0.5149 reward=0.64046 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=17.014 active_threads=96
+[Metis-test] elapsed_s=17.868 bench_s=17.214 phase=fixed active_threads=96 tput=250942 abort_rate=0.5128 reward=0.62736 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=17.214 active_threads=96
+[Metis-test] elapsed_s=18.068 bench_s=17.414 phase=fixed active_threads=96 tput=255462 abort_rate=0.5148 reward=0.63865 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=17.415 active_threads=96
+[Metis-test] elapsed_s=18.268 bench_s=17.615 phase=fixed active_threads=96 tput=254408 abort_rate=0.5120 reward=0.63602 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=17.615 active_threads=96
+[Metis-test] elapsed_s=18.469 bench_s=17.815 phase=fixed active_threads=96 tput=249436 abort_rate=0.5116 reward=0.62359 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=17.815 active_threads=96
+[Metis-test] elapsed_s=18.669 bench_s=18.015 phase=fixed active_threads=96 tput=249967 abort_rate=0.5161 reward=0.62492 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=18.015 active_threads=96
+[Metis-test] elapsed_s=18.869 bench_s=18.215 phase=fixed active_threads=96 tput=249286 abort_rate=0.5155 reward=0.62321 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=18.215 active_threads=96
+[Metis-test] elapsed_s=19.070 bench_s=18.416 phase=fixed active_threads=96 tput=255319 abort_rate=0.5134 reward=0.63830 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=18.416 active_threads=96
+[Metis-test] elapsed_s=19.270 bench_s=18.616 phase=fixed active_threads=96 tput=254042 abort_rate=0.5167 reward=0.63510 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=18.616 active_threads=96
+[Metis-test] elapsed_s=19.470 bench_s=18.816 phase=fixed active_threads=96 tput=252717 abort_rate=0.5152 reward=0.63179 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=18.816 active_threads=96
+[Metis-test] elapsed_s=19.670 bench_s=19.016 phase=fixed active_threads=96 tput=256780 abort_rate=0.5173 reward=0.64195 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=19.016 active_threads=96
+[Metis-test] elapsed_s=19.870 bench_s=19.216 phase=fixed active_threads=96 tput=256711 abort_rate=0.5128 reward=0.64178 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=19.217 active_threads=96
+[Metis-test] elapsed_s=20.070 bench_s=19.417 phase=fixed active_threads=96 tput=255208 abort_rate=0.5145 reward=0.63802 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=19.417 active_threads=96
+[Metis-test] elapsed_s=20.271 bench_s=19.617 phase=fixed active_threads=96 tput=256024 abort_rate=0.5071 reward=0.64006 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=19.617 active_threads=96
+[Metis-test] elapsed_s=20.471 bench_s=19.817 phase=fixed active_threads=96 tput=250082 abort_rate=0.5162 reward=0.62521 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=19.817 active_threads=96
+[Metis-test] elapsed_s=20.671 bench_s=20.017 phase=fixed active_threads=96 tput=258795 abort_rate=0.5136 reward=0.64699 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=20.017 active_threads=96
+[TPC-C workload] bench_s=20.017 active_warehouses=96
+[Metis-test] elapsed_s=20.871 bench_s=20.217 phase=fixed active_threads=96 tput=729307 abort_rate=0.1863 reward=1.82327 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=20.217 active_threads=96
+[Metis-test] elapsed_s=21.071 bench_s=20.417 phase=fixed active_threads=96 tput=814864 abort_rate=0.1871 reward=2.03716 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=20.417 active_threads=96
+[Metis-test] elapsed_s=21.271 bench_s=20.617 phase=fixed active_threads=96 tput=828679 abort_rate=0.1853 reward=2.07170 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=20.617 active_threads=96
+[Metis-test] elapsed_s=21.471 bench_s=20.817 phase=fixed active_threads=96 tput=814469 abort_rate=0.1866 reward=2.03617 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=20.818 active_threads=96
+[Metis-test] elapsed_s=21.671 bench_s=21.018 phase=fixed active_threads=96 tput=817545 abort_rate=0.1850 reward=2.04386 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=21.018 active_threads=96
+[TPC-C workload] bench_s=21.018 active_warehouses=96 applied_workers=96/96
+[Metis-test] elapsed_s=21.872 bench_s=21.218 phase=fixed active_threads=96 tput=812078 abort_rate=0.2007 reward=2.03020 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=21.218 active_threads=96
+[Metis-test] elapsed_s=22.072 bench_s=21.418 phase=fixed active_threads=96 tput=828341 abort_rate=0.1849 reward=2.07085 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=21.418 active_threads=96
+[Metis-test] elapsed_s=22.272 bench_s=21.618 phase=fixed active_threads=96 tput=820392 abort_rate=0.1875 reward=2.05098 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=21.618 active_threads=96
+[Metis-test] elapsed_s=22.472 bench_s=21.818 phase=fixed active_threads=96 tput=819175 abort_rate=0.1835 reward=2.04794 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=21.818 active_threads=96
+[Metis-test] elapsed_s=22.673 bench_s=22.019 phase=fixed active_threads=96 tput=828573 abort_rate=0.1852 reward=2.07143 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=22.019 active_threads=96
+[Metis-test] elapsed_s=22.873 bench_s=22.219 phase=fixed active_threads=96 tput=810608 abort_rate=0.1851 reward=2.02652 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=22.219 active_threads=96
+[Metis-test] elapsed_s=23.073 bench_s=22.419 phase=fixed active_threads=96 tput=828265 abort_rate=0.1844 reward=2.07066 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=22.419 active_threads=96
+[Metis-test] elapsed_s=23.273 bench_s=22.619 phase=fixed active_threads=96 tput=835255 abort_rate=0.1848 reward=2.08814 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=22.619 active_threads=96
+[Metis-test] elapsed_s=23.473 bench_s=22.820 phase=fixed active_threads=96 tput=875635 abort_rate=0.1837 reward=2.18909 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=22.820 active_threads=96
+[Metis-test] elapsed_s=23.673 bench_s=23.020 phase=fixed active_threads=96 tput=888357 abort_rate=0.1852 reward=2.22089 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=23.020 active_threads=96
+[Metis-test] elapsed_s=23.874 bench_s=23.220 phase=fixed active_threads=96 tput=866859 abort_rate=0.1960 reward=2.16715 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=23.220 active_threads=96
+[Metis-test] elapsed_s=24.074 bench_s=23.420 phase=fixed active_threads=96 tput=888388 abort_rate=0.1846 reward=2.22097 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=23.420 active_threads=96
+[Metis-test] elapsed_s=24.274 bench_s=23.620 phase=fixed active_threads=96 tput=888953 abort_rate=0.1833 reward=2.22238 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=23.620 active_threads=96
+[Metis-test] elapsed_s=24.474 bench_s=23.820 phase=fixed active_threads=96 tput=888429 abort_rate=0.1834 reward=2.22107 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=23.820 active_threads=96
+[Metis-test] elapsed_s=24.674 bench_s=24.020 phase=fixed active_threads=96 tput=887684 abort_rate=0.1843 reward=2.21921 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=24.020 active_threads=96
+[Metis-test] elapsed_s=24.874 bench_s=24.220 phase=fixed active_threads=96 tput=853384 abort_rate=0.2382 reward=2.13346 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=24.221 active_threads=96
+[Metis-test] elapsed_s=25.075 bench_s=24.421 phase=fixed active_threads=96 tput=876218 abort_rate=0.1847 reward=2.19054 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=24.421 active_threads=96
+[Metis-test] elapsed_s=25.275 bench_s=24.621 phase=fixed active_threads=96 tput=891270 abort_rate=0.1839 reward=2.22817 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=24.621 active_threads=96
+[Metis-test] elapsed_s=25.475 bench_s=24.821 phase=fixed active_threads=96 tput=892484 abort_rate=0.1832 reward=2.23121 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=24.821 active_threads=96
+[Metis-test] elapsed_s=25.675 bench_s=25.021 phase=fixed active_threads=96 tput=888392 abort_rate=0.1851 reward=2.22098 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=25.021 active_threads=96
+[Metis-test] elapsed_s=25.875 bench_s=25.222 phase=fixed active_threads=96 tput=881774 abort_rate=0.1858 reward=2.20443 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=25.222 active_threads=96
+[Metis-test] elapsed_s=26.075 bench_s=25.422 phase=fixed active_threads=96 tput=891561 abort_rate=0.1845 reward=2.22890 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=25.422 active_threads=96
+[Metis-test] elapsed_s=26.276 bench_s=25.622 phase=fixed active_threads=96 tput=881756 abort_rate=0.1840 reward=2.20439 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=25.622 active_threads=96
+[Metis-test] elapsed_s=26.476 bench_s=25.822 phase=fixed active_threads=96 tput=893270 abort_rate=0.1831 reward=2.23318 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=25.822 active_threads=96
+[Metis-test] elapsed_s=26.676 bench_s=26.022 phase=fixed active_threads=96 tput=895556 abort_rate=0.1828 reward=2.23889 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=26.022 active_threads=96
+[Metis-test] elapsed_s=26.877 bench_s=26.223 phase=fixed active_threads=96 tput=884390 abort_rate=0.1835 reward=2.21097 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=26.223 active_threads=96
+[Metis-test] elapsed_s=27.077 bench_s=26.423 phase=fixed active_threads=96 tput=891213 abort_rate=0.1849 reward=2.22803 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=26.423 active_threads=96
+[Metis-test] elapsed_s=27.277 bench_s=26.623 phase=fixed active_threads=96 tput=896973 abort_rate=0.1829 reward=2.24243 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=26.623 active_threads=96
+[Metis-test] elapsed_s=27.477 bench_s=26.823 phase=fixed active_threads=96 tput=897553 abort_rate=0.1834 reward=2.24388 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=26.823 active_threads=96
+[Metis-test] elapsed_s=27.677 bench_s=27.024 phase=fixed active_threads=96 tput=888093 abort_rate=0.1846 reward=2.22023 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=27.024 active_threads=96
+[Metis-test] elapsed_s=27.877 bench_s=27.224 phase=fixed active_threads=96 tput=877653 abort_rate=0.1856 reward=2.19413 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=27.224 active_threads=96
+[Metis-test] elapsed_s=28.078 bench_s=27.424 phase=fixed active_threads=96 tput=890794 abort_rate=0.1833 reward=2.22699 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=27.424 active_threads=96
+[Metis-test] elapsed_s=28.278 bench_s=27.624 phase=fixed active_threads=96 tput=890092 abort_rate=0.1837 reward=2.22523 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=27.624 active_threads=96
+[Metis-test] elapsed_s=28.478 bench_s=27.824 phase=fixed active_threads=96 tput=891036 abort_rate=0.1837 reward=2.22759 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=27.824 active_threads=96
+[Metis-test] elapsed_s=28.678 bench_s=28.024 phase=fixed active_threads=96 tput=895348 abort_rate=0.1834 reward=2.23837 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=28.024 active_threads=96
+[Metis-test] elapsed_s=28.878 bench_s=28.224 phase=fixed active_threads=96 tput=866545 abort_rate=0.1973 reward=2.16636 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=28.224 active_threads=96
+[Metis-test] elapsed_s=29.078 bench_s=28.424 phase=fixed active_threads=96 tput=888181 abort_rate=0.1842 reward=2.22045 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=28.425 active_threads=96
+[Metis-test] elapsed_s=29.278 bench_s=28.625 phase=fixed active_threads=96 tput=888387 abort_rate=0.1825 reward=2.22097 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=28.625 active_threads=96
+[Metis-test] elapsed_s=29.479 bench_s=28.825 phase=fixed active_threads=96 tput=891745 abort_rate=0.1838 reward=2.22936 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=28.825 active_threads=96
+[Metis-test] elapsed_s=29.679 bench_s=29.025 phase=fixed active_threads=96 tput=893940 abort_rate=0.1844 reward=2.23485 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=29.025 active_threads=96
+[Metis-test] elapsed_s=29.879 bench_s=29.225 phase=fixed active_threads=96 tput=882150 abort_rate=0.1844 reward=2.20538 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=29.225 active_threads=96
+[Metis-test] elapsed_s=30.080 bench_s=29.426 phase=fixed active_threads=96 tput=890453 abort_rate=0.1843 reward=2.22613 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=29.426 active_threads=96
+[Metis-test] elapsed_s=30.280 bench_s=29.626 phase=fixed active_threads=96 tput=889263 abort_rate=0.1839 reward=2.22316 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=29.626 active_threads=96
+[Metis-test] elapsed_s=30.480 bench_s=29.826 phase=fixed active_threads=96 tput=882790 abort_rate=0.1846 reward=2.20698 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=29.826 active_threads=96
+[Metis-test] elapsed_s=30.680 bench_s=30.026 phase=fixed active_threads=96 tput=894276 abort_rate=0.1820 reward=2.23569 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=30.026 active_threads=96
+[Metis-test] elapsed_s=30.880 bench_s=30.227 phase=fixed active_threads=96 tput=882692 abort_rate=0.1852 reward=2.20673 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=30.227 active_threads=96
+[Metis-test] elapsed_s=31.080 bench_s=30.427 phase=fixed active_threads=96 tput=892677 abort_rate=0.1833 reward=2.23169 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=30.427 active_threads=96
+[Metis-test] elapsed_s=31.281 bench_s=30.627 phase=fixed active_threads=96 tput=899551 abort_rate=0.1824 reward=2.24888 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=30.627 active_threads=96
+[Metis-test] elapsed_s=31.481 bench_s=30.827 phase=fixed active_threads=96 tput=895264 abort_rate=0.1849 reward=2.23816 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=30.827 active_threads=96
+[Metis-test] elapsed_s=31.681 bench_s=31.027 phase=fixed active_threads=96 tput=885736 abort_rate=0.1834 reward=2.21434 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=31.027 active_threads=96
+[Metis-test] elapsed_s=31.881 bench_s=31.227 phase=fixed active_threads=96 tput=895444 abort_rate=0.1835 reward=2.23861 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=31.227 active_threads=96
+[Metis-test] elapsed_s=32.081 bench_s=31.427 phase=fixed active_threads=96 tput=888216 abort_rate=0.1847 reward=2.22054 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=31.427 active_threads=96
+[Metis-test] elapsed_s=32.281 bench_s=31.627 phase=fixed active_threads=96 tput=888905 abort_rate=0.1838 reward=2.22226 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=31.627 active_threads=96
+[Metis-test] elapsed_s=32.481 bench_s=31.828 phase=fixed active_threads=96 tput=895722 abort_rate=0.1834 reward=2.23931 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=31.828 active_threads=96
+[Metis-test] elapsed_s=32.681 bench_s=32.028 phase=fixed active_threads=96 tput=903492 abort_rate=0.1823 reward=2.25873 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=32.028 active_threads=96
+[Metis-test] elapsed_s=32.882 bench_s=32.228 phase=fixed active_threads=96 tput=882155 abort_rate=0.1825 reward=2.20539 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=32.228 active_threads=96
+[Metis-test] elapsed_s=33.082 bench_s=32.428 phase=fixed active_threads=96 tput=891115 abort_rate=0.1815 reward=2.22779 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=32.428 active_threads=96
+[Metis-test] elapsed_s=33.283 bench_s=32.629 phase=fixed active_threads=96 tput=902604 abort_rate=0.1844 reward=2.25651 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=32.629 active_threads=96
+[Metis-test] elapsed_s=33.483 bench_s=32.829 phase=fixed active_threads=96 tput=899211 abort_rate=0.1832 reward=2.24803 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=32.829 active_threads=96
+[Metis-test] elapsed_s=33.683 bench_s=33.029 phase=fixed active_threads=96 tput=896597 abort_rate=0.1826 reward=2.24149 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=33.029 active_threads=96
+[Metis-test] elapsed_s=33.883 bench_s=33.229 phase=fixed active_threads=96 tput=875317 abort_rate=0.1826 reward=2.18829 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=33.229 active_threads=96
+[Metis-test] elapsed_s=34.083 bench_s=33.430 phase=fixed active_threads=96 tput=898691 abort_rate=0.1840 reward=2.24673 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=33.430 active_threads=96
+[Metis-test] elapsed_s=34.283 bench_s=33.630 phase=fixed active_threads=96 tput=907070 abort_rate=0.1843 reward=2.26768 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=33.630 active_threads=96
+[Metis-test] elapsed_s=34.484 bench_s=33.830 phase=fixed active_threads=96 tput=901413 abort_rate=0.1830 reward=2.25353 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=33.830 active_threads=96
+[Metis-test] elapsed_s=34.684 bench_s=34.030 phase=fixed active_threads=96 tput=885294 abort_rate=0.1833 reward=2.21324 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=34.030 active_threads=96
+[Metis-test] elapsed_s=34.884 bench_s=34.230 phase=fixed active_threads=96 tput=899031 abort_rate=0.1836 reward=2.24758 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=34.230 active_threads=96
+[Metis-test] elapsed_s=35.084 bench_s=34.430 phase=fixed active_threads=96 tput=901396 abort_rate=0.1823 reward=2.25349 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=34.430 active_threads=96
+[Metis-test] elapsed_s=35.284 bench_s=34.630 phase=fixed active_threads=96 tput=899820 abort_rate=0.1840 reward=2.24955 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=34.630 active_threads=96
+[Metis-test] elapsed_s=35.484 bench_s=34.831 phase=fixed active_threads=96 tput=898474 abort_rate=0.1840 reward=2.24619 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=34.831 active_threads=96
+[Metis-test] elapsed_s=35.684 bench_s=35.031 phase=fixed active_threads=96 tput=905152 abort_rate=0.1822 reward=2.26288 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=35.031 active_threads=96
+[Metis-test] elapsed_s=35.885 bench_s=35.231 phase=fixed active_threads=96 tput=881046 abort_rate=0.1824 reward=2.20261 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=35.231 active_threads=96
+[Metis-test] elapsed_s=36.085 bench_s=35.431 phase=fixed active_threads=96 tput=904288 abort_rate=0.1843 reward=2.26072 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=35.431 active_threads=96
+[Metis-test] elapsed_s=36.285 bench_s=35.631 phase=fixed active_threads=96 tput=899423 abort_rate=0.1838 reward=2.24856 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=35.631 active_threads=96
+[Metis-test] elapsed_s=36.485 bench_s=35.831 phase=fixed active_threads=96 tput=894223 abort_rate=0.1843 reward=2.23556 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=35.831 active_threads=96
+[Metis-test] elapsed_s=36.685 bench_s=36.031 phase=fixed active_threads=96 tput=891352 abort_rate=0.1840 reward=2.22838 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=36.031 active_threads=96
+[Metis-test] elapsed_s=36.886 bench_s=36.232 phase=fixed active_threads=96 tput=885234 abort_rate=0.1867 reward=2.21309 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=36.232 active_threads=96
+[Metis-test] elapsed_s=37.086 bench_s=36.432 phase=fixed active_threads=96 tput=888450 abort_rate=0.1835 reward=2.22113 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=36.432 active_threads=96
+[Metis-test] elapsed_s=37.286 bench_s=36.632 phase=fixed active_threads=96 tput=886092 abort_rate=0.1837 reward=2.21523 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=36.632 active_threads=96
+[Metis-test] elapsed_s=37.486 bench_s=36.832 phase=fixed active_threads=96 tput=892350 abort_rate=0.1829 reward=2.23087 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=36.832 active_threads=96
+[Metis-test] elapsed_s=37.686 bench_s=37.033 phase=fixed active_threads=96 tput=883952 abort_rate=0.1852 reward=2.20988 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=37.033 active_threads=96
+[Metis-test] elapsed_s=37.886 bench_s=37.233 phase=fixed active_threads=96 tput=881626 abort_rate=0.1861 reward=2.20406 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=37.233 active_threads=96
+[Metis-test] elapsed_s=38.087 bench_s=37.433 phase=fixed active_threads=96 tput=894397 abort_rate=0.1823 reward=2.23599 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=37.433 active_threads=96
+[Metis-test] elapsed_s=38.287 bench_s=37.633 phase=fixed active_threads=96 tput=891571 abort_rate=0.1843 reward=2.22893 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=37.633 active_threads=96
+[Metis-test] elapsed_s=38.487 bench_s=37.833 phase=fixed active_threads=96 tput=888695 abort_rate=0.1834 reward=2.22174 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=37.833 active_threads=96
+[Metis-test] elapsed_s=38.687 bench_s=38.033 phase=fixed active_threads=96 tput=894004 abort_rate=0.1829 reward=2.23501 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=38.033 active_threads=96
+[Metis-test] elapsed_s=38.887 bench_s=38.233 phase=fixed active_threads=96 tput=878741 abort_rate=0.1911 reward=2.19685 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=38.233 active_threads=96
+[Metis-test] elapsed_s=39.088 bench_s=38.434 phase=fixed active_threads=96 tput=893065 abort_rate=0.1832 reward=2.23266 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=38.434 active_threads=96
+[Metis-test] elapsed_s=39.288 bench_s=38.634 phase=fixed active_threads=96 tput=883406 abort_rate=0.1848 reward=2.20852 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=38.634 active_threads=96
+[Metis-test] elapsed_s=39.488 bench_s=38.834 phase=fixed active_threads=96 tput=908017 abort_rate=0.1827 reward=2.27004 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=38.834 active_threads=96
+[Metis-test] elapsed_s=39.688 bench_s=39.034 phase=fixed active_threads=96 tput=885837 abort_rate=0.1856 reward=2.21459 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=39.034 active_threads=96
+[Metis-test] elapsed_s=39.888 bench_s=39.235 phase=fixed active_threads=96 tput=890415 abort_rate=0.1844 reward=2.22604 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=39.235 active_threads=96
+[Metis-test] elapsed_s=40.088 bench_s=39.435 phase=fixed active_threads=96 tput=892490 abort_rate=0.1857 reward=2.23123 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=39.435 active_threads=96
+[Metis-test] elapsed_s=40.289 bench_s=39.635 phase=fixed active_threads=96 tput=891611 abort_rate=0.1848 reward=2.22903 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=39.635 active_threads=96
+[Metis-test] elapsed_s=40.489 bench_s=39.835 phase=fixed active_threads=96 tput=887922 abort_rate=0.1839 reward=2.21980 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=39.835 active_threads=96
+[Metis-test] elapsed_s=40.689 bench_s=40.035 phase=fixed active_threads=96 tput=893999 abort_rate=0.1838 reward=2.23500 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=40.035 active_threads=96
+[TPC-C workload] bench_s=40.035 active_warehouses=4
+[Metis-test] elapsed_s=40.890 bench_s=40.236 phase=fixed active_threads=96 tput=81241 abort_rate=0.7686 reward=0.20310 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=40.236 active_threads=96
+[Metis-test] elapsed_s=41.090 bench_s=40.436 phase=fixed active_threads=96 tput=68423 abort_rate=0.7811 reward=0.17106 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=40.436 active_threads=96
+[Metis-test] elapsed_s=41.290 bench_s=40.636 phase=fixed active_threads=96 tput=72721 abort_rate=0.7807 reward=0.18180 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=40.636 active_threads=96
+[Metis-test] elapsed_s=41.490 bench_s=40.836 phase=fixed active_threads=96 tput=70440 abort_rate=0.7870 reward=0.17610 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=40.836 active_threads=96
+[Metis-test] elapsed_s=41.690 bench_s=41.036 phase=fixed active_threads=96 tput=72325 abort_rate=0.7888 reward=0.18081 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=41.037 active_threads=96
+[TPC-C workload] bench_s=41.037 active_warehouses=4 applied_workers=96/96
+[Metis-test] elapsed_s=41.890 bench_s=41.237 phase=fixed active_threads=96 tput=71081 abort_rate=0.7843 reward=0.17770 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=41.237 active_threads=96
+[Metis-test] elapsed_s=42.091 bench_s=41.437 phase=fixed active_threads=96 tput=73944 abort_rate=0.7791 reward=0.18486 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=41.437 active_threads=96
+[Metis-test] elapsed_s=42.291 bench_s=41.637 phase=fixed active_threads=96 tput=72237 abort_rate=0.7841 reward=0.18059 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=41.637 active_threads=96
+[Metis-test] elapsed_s=42.491 bench_s=41.837 phase=fixed active_threads=96 tput=74130 abort_rate=0.7749 reward=0.18532 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=41.837 active_threads=96
+[Metis-test] elapsed_s=42.691 bench_s=42.037 phase=fixed active_threads=96 tput=72978 abort_rate=0.7731 reward=0.18245 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=42.037 active_threads=96
+[Metis-test] elapsed_s=42.891 bench_s=42.237 phase=fixed active_threads=96 tput=68571 abort_rate=0.7928 reward=0.17143 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=42.237 active_threads=96
+[Metis-test] elapsed_s=43.091 bench_s=42.437 phase=fixed active_threads=96 tput=72612 abort_rate=0.7782 reward=0.18153 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=42.437 active_threads=96
+[Metis-test] elapsed_s=43.291 bench_s=42.637 phase=fixed active_threads=96 tput=72403 abort_rate=0.7808 reward=0.18101 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=42.638 active_threads=96
+[Metis-test] elapsed_s=43.491 bench_s=42.838 phase=fixed active_threads=96 tput=71717 abort_rate=0.7877 reward=0.17929 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=42.838 active_threads=96
+[Metis-test] elapsed_s=43.692 bench_s=43.038 phase=fixed active_threads=96 tput=70803 abort_rate=0.7892 reward=0.17701 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=43.038 active_threads=96
+[Metis-test] elapsed_s=43.892 bench_s=43.238 phase=fixed active_threads=96 tput=74278 abort_rate=0.7754 reward=0.18570 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=43.238 active_threads=96
+[Metis-test] elapsed_s=44.092 bench_s=43.438 phase=fixed active_threads=96 tput=72236 abort_rate=0.7869 reward=0.18059 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=43.438 active_threads=96
+[Metis-test] elapsed_s=44.292 bench_s=43.638 phase=fixed active_threads=96 tput=69624 abort_rate=0.7861 reward=0.17406 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=43.638 active_threads=96
+[Metis-test] elapsed_s=44.492 bench_s=43.838 phase=fixed active_threads=96 tput=71758 abort_rate=0.7850 reward=0.17939 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=43.838 active_threads=96
+[Metis-test] elapsed_s=44.693 bench_s=44.039 phase=fixed active_threads=96 tput=69303 abort_rate=0.7858 reward=0.17326 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=44.039 active_threads=96
+[Metis-test] elapsed_s=44.893 bench_s=44.239 phase=fixed active_threads=96 tput=67284 abort_rate=0.7955 reward=0.16821 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=44.239 active_threads=96
+[Metis-test] elapsed_s=45.093 bench_s=44.439 phase=fixed active_threads=96 tput=71166 abort_rate=0.7830 reward=0.17792 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=44.439 active_threads=96
+[Metis-test] elapsed_s=45.293 bench_s=44.639 phase=fixed active_threads=96 tput=72283 abort_rate=0.7862 reward=0.18071 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=44.639 active_threads=96
+[Metis-test] elapsed_s=45.493 bench_s=44.839 phase=fixed active_threads=96 tput=68751 abort_rate=0.7917 reward=0.17188 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=44.840 active_threads=96
+[Metis-test] elapsed_s=45.693 bench_s=45.040 phase=fixed active_threads=96 tput=71499 abort_rate=0.7874 reward=0.17875 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=45.040 active_threads=96
+[Metis-test] elapsed_s=45.894 bench_s=45.240 phase=fixed active_threads=96 tput=69262 abort_rate=0.7935 reward=0.17315 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=45.240 active_threads=96
+[Metis-test] elapsed_s=46.094 bench_s=45.440 phase=fixed active_threads=96 tput=70707 abort_rate=0.7898 reward=0.17677 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=45.440 active_threads=96
+[Metis-test] elapsed_s=46.294 bench_s=45.640 phase=fixed active_threads=96 tput=71591 abort_rate=0.7852 reward=0.17898 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=45.640 active_threads=96
+[Metis-test] elapsed_s=46.494 bench_s=45.840 phase=fixed active_threads=96 tput=74456 abort_rate=0.7815 reward=0.18614 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=45.840 active_threads=96
+[Metis-test] elapsed_s=46.705 bench_s=46.051 phase=fixed active_threads=96 tput=70474 abort_rate=0.7859 reward=0.17619 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=46.051 active_threads=96
+[Metis-test] elapsed_s=46.905 bench_s=46.251 phase=fixed active_threads=96 tput=73989 abort_rate=0.7796 reward=0.18497 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=46.251 active_threads=96
+[Metis-test] elapsed_s=47.105 bench_s=46.452 phase=fixed active_threads=96 tput=71476 abort_rate=0.7913 reward=0.17869 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=46.452 active_threads=96
+[Metis-test] elapsed_s=47.306 bench_s=46.652 phase=fixed active_threads=96 tput=74284 abort_rate=0.7829 reward=0.18571 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=46.652 active_threads=96
+[Metis-test] elapsed_s=47.506 bench_s=46.852 phase=fixed active_threads=96 tput=72455 abort_rate=0.7840 reward=0.18114 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=46.852 active_threads=96
+[Metis-test] elapsed_s=47.706 bench_s=47.052 phase=fixed active_threads=96 tput=71551 abort_rate=0.7888 reward=0.17888 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=47.052 active_threads=96
+[Metis-test] elapsed_s=47.906 bench_s=47.252 phase=fixed active_threads=96 tput=75131 abort_rate=0.7746 reward=0.18783 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=47.252 active_threads=96
+[Metis-test] elapsed_s=48.106 bench_s=47.452 phase=fixed active_threads=96 tput=73205 abort_rate=0.7850 reward=0.18301 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=47.452 active_threads=96
+[Metis-test] elapsed_s=48.306 bench_s=47.652 phase=fixed active_threads=96 tput=75180 abort_rate=0.7860 reward=0.18795 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=47.652 active_threads=96
+[Metis-test] elapsed_s=48.506 bench_s=47.852 phase=fixed active_threads=96 tput=74117 abort_rate=0.7786 reward=0.18529 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=47.852 active_threads=96
+[Metis-test] elapsed_s=48.706 bench_s=48.053 phase=fixed active_threads=96 tput=75166 abort_rate=0.7725 reward=0.18792 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=48.053 active_threads=96
+[Metis-test] elapsed_s=48.906 bench_s=48.253 phase=fixed active_threads=96 tput=73969 abort_rate=0.7829 reward=0.18492 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=48.253 active_threads=96
+[Metis-test] elapsed_s=49.107 bench_s=48.453 phase=fixed active_threads=96 tput=68557 abort_rate=0.7937 reward=0.17139 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=48.453 active_threads=96
+[Metis-test] elapsed_s=49.307 bench_s=48.653 phase=fixed active_threads=96 tput=74156 abort_rate=0.7805 reward=0.18539 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=48.653 active_threads=96
+[Metis-test] elapsed_s=49.507 bench_s=48.853 phase=fixed active_threads=96 tput=74631 abort_rate=0.7807 reward=0.18658 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=48.853 active_threads=96
+[Metis-test] elapsed_s=49.707 bench_s=49.053 phase=fixed active_threads=96 tput=72694 abort_rate=0.7840 reward=0.18174 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=49.053 active_threads=96
+[Metis-test] elapsed_s=49.907 bench_s=49.253 phase=fixed active_threads=96 tput=71324 abort_rate=0.7761 reward=0.17831 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=49.253 active_threads=96
+[Metis-test] elapsed_s=50.107 bench_s=49.453 phase=fixed active_threads=96 tput=71889 abort_rate=0.7815 reward=0.17972 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=49.453 active_threads=96
+[Metis-test] elapsed_s=50.307 bench_s=49.653 phase=fixed active_threads=96 tput=69841 abort_rate=0.7808 reward=0.17460 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=49.654 active_threads=96
+[Metis-test] elapsed_s=50.507 bench_s=49.854 phase=fixed active_threads=96 tput=71793 abort_rate=0.7819 reward=0.17948 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=49.854 active_threads=96
+[Metis-test] elapsed_s=50.708 bench_s=50.054 phase=fixed active_threads=96 tput=75967 abort_rate=0.7762 reward=0.18992 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=50.054 active_threads=96
+[Metis-test] elapsed_s=50.908 bench_s=50.254 phase=fixed active_threads=96 tput=71705 abort_rate=0.7802 reward=0.17926 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=50.254 active_threads=96
+[Metis-test] elapsed_s=51.108 bench_s=50.454 phase=fixed active_threads=96 tput=73238 abort_rate=0.7771 reward=0.18310 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=50.454 active_threads=96
+[Metis-test] elapsed_s=51.308 bench_s=50.654 phase=fixed active_threads=96 tput=79150 abort_rate=0.7606 reward=0.19787 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=50.654 active_threads=96
+[Metis-test] elapsed_s=51.508 bench_s=50.854 phase=fixed active_threads=96 tput=70729 abort_rate=0.7812 reward=0.17682 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=50.854 active_threads=96
+[Metis-test] elapsed_s=51.708 bench_s=51.054 phase=fixed active_threads=96 tput=73551 abort_rate=0.7766 reward=0.18388 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=51.054 active_threads=96
+[Metis-test] elapsed_s=51.908 bench_s=51.254 phase=fixed active_threads=96 tput=73747 abort_rate=0.7709 reward=0.18437 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=51.254 active_threads=96
+[Metis-test] elapsed_s=52.108 bench_s=51.454 phase=fixed active_threads=96 tput=70121 abort_rate=0.7764 reward=0.17530 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=51.455 active_threads=96
+[Metis-test] elapsed_s=52.308 bench_s=51.655 phase=fixed active_threads=96 tput=75742 abort_rate=0.7670 reward=0.18935 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=51.655 active_threads=96
+[Metis-test] elapsed_s=52.509 bench_s=51.855 phase=fixed active_threads=96 tput=73718 abort_rate=0.7733 reward=0.18429 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=51.855 active_threads=96
+[Metis-test] elapsed_s=52.709 bench_s=52.055 phase=fixed active_threads=96 tput=69724 abort_rate=0.7812 reward=0.17431 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=52.055 active_threads=96
+[Metis-test] elapsed_s=52.909 bench_s=52.255 phase=fixed active_threads=96 tput=74988 abort_rate=0.7690 reward=0.18747 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=52.255 active_threads=96
+[Metis-test] elapsed_s=53.109 bench_s=52.455 phase=fixed active_threads=96 tput=70630 abort_rate=0.7821 reward=0.17657 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=52.455 active_threads=96
+[Metis-test] elapsed_s=53.309 bench_s=52.655 phase=fixed active_threads=96 tput=74432 abort_rate=0.7701 reward=0.18608 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=52.655 active_threads=96
+[Metis-test] elapsed_s=53.509 bench_s=52.855 phase=fixed active_threads=96 tput=70817 abort_rate=0.7833 reward=0.17704 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=52.855 active_threads=96
+[Metis-test] elapsed_s=53.709 bench_s=53.055 phase=fixed active_threads=96 tput=75503 abort_rate=0.7689 reward=0.18876 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=53.055 active_threads=96
+[Metis-test] elapsed_s=53.909 bench_s=53.256 phase=fixed active_threads=96 tput=72763 abort_rate=0.7740 reward=0.18191 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=53.256 active_threads=96
+[Metis-test] elapsed_s=54.109 bench_s=53.456 phase=fixed active_threads=96 tput=70082 abort_rate=0.7725 reward=0.17520 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=53.456 active_threads=96
+[Metis-test] elapsed_s=54.310 bench_s=53.656 phase=fixed active_threads=96 tput=70896 abort_rate=0.7775 reward=0.17724 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=53.656 active_threads=96
+[Metis-test] elapsed_s=54.510 bench_s=53.856 phase=fixed active_threads=96 tput=71080 abort_rate=0.7783 reward=0.17770 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=53.856 active_threads=96
+[Metis-test] elapsed_s=54.710 bench_s=54.056 phase=fixed active_threads=96 tput=70681 abort_rate=0.7792 reward=0.17670 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=54.056 active_threads=96
+[Metis-test] elapsed_s=54.910 bench_s=54.256 phase=fixed active_threads=96 tput=72380 abort_rate=0.7735 reward=0.18095 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=54.256 active_threads=96
+[Metis-test] elapsed_s=55.110 bench_s=54.456 phase=fixed active_threads=96 tput=72948 abort_rate=0.7699 reward=0.18237 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=54.456 active_threads=96
+[Metis-test] elapsed_s=55.310 bench_s=54.656 phase=fixed active_threads=96 tput=72602 abort_rate=0.7717 reward=0.18151 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=54.656 active_threads=96
+[Metis-test] elapsed_s=55.510 bench_s=54.856 phase=fixed active_threads=96 tput=71499 abort_rate=0.7716 reward=0.17875 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=54.856 active_threads=96
+[Metis-test] elapsed_s=55.710 bench_s=55.057 phase=fixed active_threads=96 tput=72128 abort_rate=0.7709 reward=0.18032 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=55.057 active_threads=96
+[Metis-test] elapsed_s=55.910 bench_s=55.257 phase=fixed active_threads=96 tput=72025 abort_rate=0.7716 reward=0.18006 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=55.257 active_threads=96
+[Metis-test] elapsed_s=56.111 bench_s=55.457 phase=fixed active_threads=96 tput=69877 abort_rate=0.7776 reward=0.17469 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=55.457 active_threads=96
+[Metis-test] elapsed_s=56.311 bench_s=55.657 phase=fixed active_threads=96 tput=70045 abort_rate=0.7830 reward=0.17511 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=55.657 active_threads=96
+[Metis-test] elapsed_s=56.512 bench_s=55.858 phase=fixed active_threads=96 tput=73213 abort_rate=0.7680 reward=0.18303 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=55.858 active_threads=96
+[Metis-test] elapsed_s=56.712 bench_s=56.058 phase=fixed active_threads=96 tput=69000 abort_rate=0.7802 reward=0.17250 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=56.058 active_threads=96
+[Metis-test] elapsed_s=56.912 bench_s=56.258 phase=fixed active_threads=96 tput=68342 abort_rate=0.7817 reward=0.17085 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=56.258 active_threads=96
+[Metis-test] elapsed_s=57.112 bench_s=56.458 phase=fixed active_threads=96 tput=71739 abort_rate=0.7701 reward=0.17935 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=56.458 active_threads=96
+[Metis-test] elapsed_s=57.312 bench_s=56.658 phase=fixed active_threads=96 tput=65802 abort_rate=0.7878 reward=0.16451 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=56.659 active_threads=96
+[Metis-test] elapsed_s=57.512 bench_s=56.859 phase=fixed active_threads=96 tput=66226 abort_rate=0.7875 reward=0.16556 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=56.859 active_threads=96
+[Metis-test] elapsed_s=57.713 bench_s=57.059 phase=fixed active_threads=96 tput=76271 abort_rate=0.7672 reward=0.19068 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=57.059 active_threads=96
+[Metis-test] elapsed_s=57.913 bench_s=57.259 phase=fixed active_threads=96 tput=70878 abort_rate=0.7747 reward=0.17720 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=57.259 active_threads=96
+[Metis-test] elapsed_s=58.113 bench_s=57.459 phase=fixed active_threads=96 tput=70821 abort_rate=0.7710 reward=0.17705 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=57.459 active_threads=96
+[Metis-test] elapsed_s=58.313 bench_s=57.659 phase=fixed active_threads=96 tput=73604 abort_rate=0.7637 reward=0.18401 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=57.659 active_threads=96
+[Metis-test] elapsed_s=58.513 bench_s=57.859 phase=fixed active_threads=96 tput=72559 abort_rate=0.7674 reward=0.18140 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=57.859 active_threads=96
+[Metis-test] elapsed_s=58.713 bench_s=58.059 phase=fixed active_threads=96 tput=66746 abort_rate=0.7911 reward=0.16686 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=58.059 active_threads=96
+[Metis-test] elapsed_s=58.913 bench_s=58.259 phase=fixed active_threads=96 tput=70419 abort_rate=0.7813 reward=0.17605 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=58.259 active_threads=96
+[Metis-test] elapsed_s=59.113 bench_s=58.460 phase=fixed active_threads=96 tput=73647 abort_rate=0.7691 reward=0.18412 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=58.460 active_threads=96
+[Metis-test] elapsed_s=59.313 bench_s=58.660 phase=fixed active_threads=96 tput=74297 abort_rate=0.7693 reward=0.18574 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=58.660 active_threads=96
+[Metis-test] elapsed_s=59.514 bench_s=58.860 phase=fixed active_threads=96 tput=72153 abort_rate=0.7738 reward=0.18038 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=58.860 active_threads=96
+[Metis-test] elapsed_s=59.714 bench_s=59.060 phase=fixed active_threads=96 tput=72837 abort_rate=0.7752 reward=0.18209 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=59.060 active_threads=96
+[Metis-test] elapsed_s=59.914 bench_s=59.260 phase=fixed active_threads=96 tput=74318 abort_rate=0.7779 reward=0.18580 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=59.260 active_threads=96
+[Metis-test] elapsed_s=60.114 bench_s=59.460 phase=fixed active_threads=96 tput=73993 abort_rate=0.7699 reward=0.18498 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=59.460 active_threads=96
+[Metis-test] elapsed_s=60.314 bench_s=59.660 phase=fixed active_threads=96 tput=68800 abort_rate=0.7731 reward=0.17200 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=59.660 active_threads=96
+[Metis-test] elapsed_s=60.514 bench_s=59.861 phase=fixed active_threads=96 tput=72635 abort_rate=0.7731 reward=0.18159 predicted=-1.00000 bonus=0.00000 model_samples=0
+[TAM sample] bench_s=59.861 active_threads=96
+[Metis-test] active_threads stats: count=299 mean=96.000 model_samples=0

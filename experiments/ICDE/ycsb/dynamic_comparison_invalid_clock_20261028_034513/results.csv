@@ -1,0 +1,4 @@
+method,trial,throughput_tps,abort_rate,benchmark_log,trace_log
+silo_without_backoff,1,1969320,0.8664,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/ycsb/dynamic_comparison_20261028_034513/silo_without_backoff_trial_1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/ycsb/dynamic_comparison_20261028_034513/silo_without_backoff_trial_1.log
+silo_with_backoff,1,2279051,0.6756,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/ycsb/dynamic_comparison_20261028_034513/silo_with_backoff_trial_1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/ycsb/dynamic_comparison_20261028_034513/silo_with_backoff_trial_1.log
+metis_paper,1,4069116,0.5472,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/ycsb/dynamic_comparison_20261028_034513/metis_paper_trial_1.log,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/ycsb/dynamic_comparison_20261028_034513/metis_paper_trial_1_trace.log

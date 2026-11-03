@@ -1,0 +1,63 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		60
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261102_063147.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_active_warehouse_count:	16
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+[th#42]: cannot get order ID by scanning order-secondary with customer ID
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	60
+success_forwarding_:	0
+abort_counts_:	15918245
+batch_abort_counts_:	0
+commit_counts_:	15551160
+batch_commit_counts_:	0
+maxrss:	49510116 kB
+abort_rate:	0.5058
+batch_abort_rate:	-nan
+latency[ns]:	370390.3760
+throughput[tps]:	259186
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 6997872
+    aborts: 2051705
+    abort rate: 0.2267
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 6686384
+    aborts: 207395
+    abort rate: 0.0301
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 621857
+    aborts: 58
+    abort rate: 0.0001
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 623560
+    aborts: 12769463
+    abort rate: 0.9534
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 621487
+    aborts: 889624
+    abort rate: 0.5887
+    latency[us]: 0.00
+  Summary: 6997872,2051705,6686384,207395,621857,58,623560,12769463,621487,889624,
+  All transaction total latencies: 0,0,0,0,0,

@@ -1,0 +1,73 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		50
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261026_145205.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_active_warehouse_count:	1
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	randomized_worker_affined
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+[th#13]: insert order-secondary failed
+[th#22]: insert order-secondary failed
+[th#21]: insert order-secondary failed
+[th#6]: insert order-secondary failed
+[th#56]: insert order-secondary failed
+[th#36]: insert order-secondary failed
+[th#40]: insert order-secondary failed
+[th#42]: insert order-secondary failed
+[th#21]: insert order-secondary failed
+[th#52]: insert order-secondary failed
+[th#57]: insert order-secondary failed
+[th#11]: insert order-secondary failed
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	50
+success_forwarding_:	0
+abort_counts_:	207726140
+batch_abort_counts_:	0
+commit_counts_:	1517009
+batch_commit_counts_:	0
+maxrss:	30664884 kB
+abort_rate:	0.9928
+batch_abort_rate:	-nan
+latency[ns]:	3164139.7495
+throughput[tps]:	30340
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 682158
+    aborts: 202464321
+    abort rate: 0.9966
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 652883
+    aborts: 17651
+    abort rate: 0.0263
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 60424
+    aborts: 10
+    abort rate: 0.0002
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 60779
+    aborts: 5117798
+    abort rate: 0.9883
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 60765
+    aborts: 126360
+    abort rate: 0.6753
+    latency[us]: 0.00
+  Summary: 682158,202464321,652883,17651,60424,10,60779,5117798,60765,126360,
+  All transaction total latencies: 0,0,0,0,0,

@@ -90,6 +90,10 @@ public:
 
   void begin();
 
+  // Called only between transactions while an adaptive worker is parked.
+  void announce_quiescent_epoch();
+
+
   void tx_delete(std::uint64_t key);
 
   void displayWriteSet();

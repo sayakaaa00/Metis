@@ -82,7 +82,8 @@ public:
       }
     };
 
-    IsOriginal is_original(MAX_ITEMS, MAX_ITEMS / 10);
+    const std::size_t item_count = FLAGS_tpcc_num_items;
+    IsOriginal is_original(item_count, item_count / 10);
 #if 0
     std::vector<std::thread> thv;
     /**
@@ -101,7 +102,7 @@ public:
 #else
     // single threaded.
     //::printf("load item...\n");
-    S::work(param, 1, MAX_ITEMS, is_original);
+    S::work(param, 1, item_count, is_original);
     //::printf("load item done\n");
 #endif
   }
@@ -167,7 +168,7 @@ public:
         }
       }
     };
-    const std::size_t stock_num{MAX_ITEMS};
+    const std::size_t stock_num{FLAGS_tpcc_num_items};
     IsOriginal is_original(stock_num, stock_num / 10);
 
 #if 0
@@ -219,7 +220,7 @@ public:
     order_line.OL_D_ID = d_id;
     order_line.OL_W_ID = w_id;
     order_line.OL_NUMBER = ol_num;
-    order_line.OL_I_ID = random_int(1, 100000);
+    order_line.OL_I_ID = random_int(1, FLAGS_tpcc_num_items);
     order_line.OL_SUPPLY_W_ID = w_id;
     if (order_line.OL_O_ID < 2101) {
       order_line.OL_DELIVERY_D = now;

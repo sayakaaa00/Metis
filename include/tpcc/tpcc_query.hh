@@ -1,6 +1,7 @@
 #pragma once
 
 #include "tpcc_common.hh"
+#include "tpcc_item_zipf.hh"
 #include "tpcc_util.hh"
 // #include "../include/random.hh"
 // #include "../include/result.hh"
@@ -30,9 +31,10 @@ namespace TPCCQuery {
 
 class Option {
 public:
+  FastZipf* item_zipf = nullptr;
   std::uint32_t num_wh = FLAGS_tpcc_num_wh;
   std::uint32_t dist_per_ware = DIST_PER_WARE;
-  std::uint32_t max_items = MAX_ITEMS;
+  std::uint32_t max_items = FLAGS_tpcc_num_items;
   std::uint32_t cust_per_dist = CUST_PER_DIST;
   std::uint64_t perc_payment = FLAGS_tpcc_perc_payment;
   std::uint64_t perc_order_status = FLAGS_tpcc_perc_order_status;
@@ -90,6 +92,12 @@ public:
 
   static std::uint32_t generate_item_id(const Option& opt,
                                         bool* selected_hot = nullptr) {
+    if (FLAGS_tpcc_item_zipf_enable) {
+      if (selected_hot != nullptr) *selected_hot = false;
+      if (FLAGS_tpcc_hot_item_stats)
+        g_tpcc_item_selections.fetch_add(1, std::memory_order_relaxed);
+      return g_tpcc_item_zipf_distribution.select(*opt.item_zipf);
+    }
     constexpr std::uint64_t kRatioScale = 1000000;
     const auto hot_threshold = static_cast<std::uint64_t>(
         FLAGS_tpcc_hot_item_ratio * static_cast<double>(kRatioScale));
@@ -120,11 +128,13 @@ public:
     std::uint32_t item_id = 0;
     bool duplicate = false;
     do {
-      item_id = select_hot
-                    ? static_cast<std::uint32_t>(
-                          random_int(ID_START, FLAGS_tpcc_hot_item_count))
-                    : static_cast<std::uint32_t>(
-                          non_uniform_random<8191>(ID_START, opt.max_items));
+      item_id = FLAGS_tpcc_item_zipf_enable
+                    ? g_tpcc_item_zipf_distribution.select(*opt.item_zipf)
+                    : select_hot
+                          ? static_cast<std::uint32_t>(random_int(
+                                ID_START, FLAGS_tpcc_hot_item_count))
+                          : static_cast<std::uint32_t>(non_uniform_random<8191>(
+                                ID_START, opt.max_items));
       duplicate = false;
       for (unsigned int previous = 0; previous < item_index; ++previous) {
         if (items[previous].ol_i_id == item_id) {
@@ -133,6 +143,8 @@ public:
         }
       }
     } while (duplicate);
+    if (FLAGS_tpcc_item_zipf_enable && FLAGS_tpcc_hot_item_stats)
+      g_tpcc_item_selections.fetch_add(1, std::memory_order_relaxed);
     return item_id;
   }
 
@@ -169,7 +181,9 @@ public:
 
     for (unsigned int i = 0; i < ol_cnt; ++i) {
       bool selected_hot = false;
-      if (FLAGS_tpcc_hot_transaction_mode) {
+      if (FLAGS_tpcc_item_zipf_enable) {
+        items[i].ol_i_id = generate_unique_item_id(opt, i, false);
+      } else if (FLAGS_tpcc_hot_transaction_mode) {
         selected_hot = hot_transaction;
         items[i].ol_i_id = generate_unique_item_id(opt, i, hot_transaction);
       } else {
