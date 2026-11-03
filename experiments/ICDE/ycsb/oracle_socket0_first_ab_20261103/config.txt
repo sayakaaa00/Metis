@@ -1,0 +1,11 @@
+binary=/home/ubuntu/ccbench-adaTAM/build_release/silo/ycsb_metis_paper
+binary_sha256=150d9dcb5d6f475c1dab694eba9fd0586bcbcbc709935123672352288df29358
+allocator_preload=/home/ubuntu/ccbench-adaTAM/build_release/mimalloc_override/libmimalloc.so
+allocator_sha256=f88a9a5b65a452720342a370cdd815d88dff4dbffd62c2d44802a43321e5d73d
+git_head=d8d0c6e7036f2a2daabe455db720cda9718c73f7
+skews=0.7 0.8 0.9
+threads=24 26 28 32 36 40 48
+extime=10 runs=2 pin_order=socket0_first
+physical_workers=96 idle_sleep_us=50 clocks_per_us=2900 numa=os_default
+ycsb_tuple_num=10000 ycsb_max_ope=10 ycsb_rratio=50 backoff=0
+run_order=run1 ascending skew/N, run2 descending
