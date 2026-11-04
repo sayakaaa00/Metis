@@ -94,7 +94,11 @@ public:
   alignas(CACHE_LINE_SIZE) Psstamp
       psstamp_; // Version access stamp, eta(V), Version successor stamp, pi(V)
   Version* prev_;                 // Pointer to overwritten version
-  std::atomic<uint64_t> readers_; // summarize all of V's readers.
+  // Bitmap of V's readers, one bit per worker. Two 64-bit words support up to
+  // 128 workers; a single word silently aliased workers >= 32 (int shift) and
+  // >= 64 (word width) when the benchmark ran 96 workers.
+  static constexpr unsigned int kReaderWords = 2;
+  std::atomic<uint64_t> readers_[kReaderWords];
   std::atomic<uint32_t> cstamp_;  // Version creation stamp, c(V)
   std::atomic<VersionStatus> status_;
 
@@ -105,6 +109,6 @@ public:
   void init() {
     psstamp_.init(0, UINT32_MAX & ~(TIDFLAG));
     status_.store(VersionStatus::inflight, std::memory_order_release);
-    readers_.store(0, std::memory_order_release);
+    for (auto& word : readers_) word.store(0, std::memory_order_release);
   }
 };

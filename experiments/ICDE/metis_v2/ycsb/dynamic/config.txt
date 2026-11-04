@@ -1,0 +1,18 @@
+extime=60 runs=2 methods=['metis_v2', 'adatam', 'silo_bo', 'silo_nobo']
+Y1=0.7,20:0.95,40:0.8
+Y2=0.99,20:0.7,40:0.9
+extime=60 runs=2 methods=['metis_v2']
+Y1=0.7,20:0.95,40:0.8
+Y2=0.99,20:0.7,40:0.9
+extime=60 runs=2 methods=['metis_v2']
+Y1=0.7,20:0.95,40:0.8
+Y2=0.99,20:0.7,40:0.9
+extime=60 runs=2 methods=['adatam_default']
+Y1=0.7,20:0.95,40:0.8
+Y2=0.99,20:0.7,40:0.9
+extime=60 runs=2 methods=['metis_v2']
+Y1=0.7,20:0.95,40:0.8
+Y2=0.99,20:0.7,40:0.9
+extime=60 runs=2 methods=['metis_v2']
+Y1=0.7,20:0.95,40:0.8
+Y2=0.99,20:0.7,40:0.9

@@ -1,0 +1,4 @@
+binary=/home/ubuntu/ccbench-adaTAM/build_release/silo/tpcc_metis_test
+binary_sha256=e3842a0f01af5efdd38be1363bd2fa63fba7b0558b2715c0e6ce60bd3edf9a94
+allocator_sha256=f88a9a5b65a452720342a370cdd815d88dff4dbffd62c2d44802a43321e5d73d
+args={'cmd': 'fixed', 'bench': 'tpcc', 'variant': 'A', 'states': '', 'runs': 2, 'extime': 10, 'alpha': 0.0, 'schedule': '', 'model': '', 'all_model': False}

@@ -1,0 +1,287 @@
+[TAM sample] bench_s=0.200 active_threads=96
+[MetisV2] t=1.061 active=96 tps=54041 abort=0.8101 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=0.400 active_threads=96
+[TAM sample] bench_s=0.600 active_threads=96
+[TAM sample] bench_s=0.800 active_threads=96
+[MetisV2] t=1.664 active=96 tps=53094 abort=0.8146 phase=probe_ref reward=0.0000 pred=0.0000
+[TAM sample] bench_s=1.003 active_threads=48
+[MetisV2] t=1.864 active=48 tps=78163 abort=0.7221 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=1.203 active_threads=48
+[TAM sample] bench_s=1.403 active_threads=48
+[TAM sample] bench_s=1.603 active_threads=48
+[MetisV2] t=2.464 active=48 tps=89447 abort=0.7174 phase=probe_phys reward=0.5216 pred=0.0000
+[TAM sample] bench_s=1.803 active_threads=94
+[MetisV2] t=2.665 active=94 tps=64223 abort=0.8050 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=2.004 active_threads=94
+[MetisV2] t=2.865 active=94 tps=65389 abort=0.8021 phase=learn reward=0.2083 pred=0.0000
+[TAM sample] bench_s=2.204 active_threads=66
+[MetisV2] t=3.065 active=66 tps=83609 abort=0.7374 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=2.404 active_threads=66
+[MetisV2] t=3.265 active=66 tps=85714 abort=0.7346 phase=learn reward=0.4790 pred=0.0000
+[TAM sample] bench_s=2.604 active_threads=94
+[MetisV2] t=3.466 active=94 tps=65771 abort=0.7997 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=2.805 active_threads=94
+[MetisV2] t=3.666 active=94 tps=62385 abort=0.8112 phase=learn reward=0.1613 pred=0.0000
+[TAM sample] bench_s=3.005 active_threads=16
+[MetisV2] t=3.866 active=16 tps=97439 abort=0.4727 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=3.205 active_threads=16
+[MetisV2] t=4.066 active=16 tps=96754 abort=0.4660 phase=learn reward=0.6001 pred=0.0000
+[TAM sample] bench_s=3.405 active_threads=30
+[MetisV2] t=4.266 active=30 tps=91135 abort=0.6188 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=3.605 active_threads=30
+[MetisV2] t=4.466 active=30 tps=95256 abort=0.6169 phase=learn reward=0.5845 pred=0.0000
+[TAM sample] bench_s=3.806 active_threads=46
+[MetisV2] t=4.666 active=46 tps=92206 abort=0.7039 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=4.006 active_threads=46
+[MetisV2] t=4.866 active=46 tps=86590 abort=0.7109 phase=learn reward=0.4891 pred=0.0000
+[TAM sample] bench_s=4.206 active_threads=16
+[MetisV2] t=5.066 active=16 tps=97434 abort=0.4683 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=4.406 active_threads=16
+[MetisV2] t=5.267 active=16 tps=99641 abort=0.4631 phase=learn reward=0.6295 pred=0.0000
+[TAM sample] bench_s=4.606 active_threads=26
+[MetisV2] t=5.467 active=26 tps=100128 abort=0.5823 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=4.806 active_threads=26
+[MetisV2] t=5.667 active=26 tps=96070 abort=0.5893 phase=learn reward=0.5930 pred=0.0000
+[TAM sample] bench_s=5.006 active_threads=38
+[MetisV2] t=5.867 active=38 tps=85184 abort=0.6788 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=5.206 active_threads=38
+[MetisV2] t=6.067 active=38 tps=90310 abort=0.6671 phase=learn reward=0.5312 pred=0.0000
+[TAM sample] bench_s=5.406 active_threads=90
+[MetisV2] t=6.267 active=90 tps=76018 abort=0.7726 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=5.606 active_threads=90
+[MetisV2] t=6.467 active=90 tps=76628 abort=0.7783 phase=learn reward=0.3669 pred=0.0000
+[TAM sample] bench_s=5.806 active_threads=22
+[MetisV2] t=6.667 active=22 tps=99470 abort=0.5416 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=6.007 active_threads=22
+[MetisV2] t=6.867 active=22 tps=100344 abort=0.5384 phase=learn reward=0.6365 pred=0.0000
+[TAM sample] bench_s=6.207 active_threads=80
+[MetisV2] t=7.067 active=80 tps=85165 abort=0.7471 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=6.407 active_threads=80
+[MetisV2] t=7.268 active=80 tps=88896 abort=0.7415 phase=learn reward=0.5154 pred=0.0000
+[TAM sample] bench_s=6.607 active_threads=94
+[MetisV2] t=7.468 active=94 tps=63782 abort=0.8105 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=6.807 active_threads=94
+[MetisV2] t=7.668 active=94 tps=64443 abort=0.8059 phase=learn reward=0.1937 pred=0.0000
+[TAM sample] bench_s=7.007 active_threads=74
+[MetisV2] t=7.868 active=74 tps=88033 abort=0.7298 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=7.207 active_threads=74
+[MetisV2] t=8.068 active=74 tps=85559 abort=0.7407 phase=learn reward=0.4771 pred=0.0000
+[TAM sample] bench_s=7.407 active_threads=58
+[MetisV2] t=8.268 active=58 tps=87505 abort=0.7212 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=7.607 active_threads=58
+[MetisV2] t=8.468 active=58 tps=86530 abort=0.7231 phase=learn reward=0.4884 pred=0.0000
+[TAM sample] bench_s=7.808 active_threads=70
+[MetisV2] t=8.668 active=70 tps=86169 abort=0.7316 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=8.008 active_threads=70
+[MetisV2] t=8.868 active=70 tps=86548 abort=0.7360 phase=learn reward=0.4886 pred=0.0000
+[TAM sample] bench_s=8.208 active_threads=26
+[MetisV2] t=9.069 active=26 tps=93593 abort=0.5837 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=8.408 active_threads=26
+[MetisV2] t=9.269 active=26 tps=95605 abort=0.5851 phase=learn reward=0.5882 pred=0.0000
+[TAM sample] bench_s=8.608 active_threads=76
+[MetisV2] t=9.469 active=76 tps=85377 abort=0.7421 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=8.808 active_threads=76
+[MetisV2] t=9.669 active=76 tps=93756 abort=0.7306 phase=learn reward=0.5686 pred=0.0000
+[TAM sample] bench_s=9.008 active_threads=18
+[MetisV2] t=9.869 active=18 tps=96462 abort=0.4992 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=9.208 active_threads=18
+[MetisV2] t=10.069 active=18 tps=103264 abort=0.4874 phase=learn reward=0.6652 pred=0.0000
+[TAM sample] bench_s=9.408 active_threads=86
+[MetisV2] t=10.269 active=86 tps=84411 abort=0.7595 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=9.608 active_threads=86
+[MetisV2] t=10.469 active=86 tps=84193 abort=0.7603 phase=learn reward=0.4610 pred=0.0000
+[TAM sample] bench_s=9.809 active_threads=96
+[MetisV2] t=10.670 active=96 tps=60825 abort=0.8097 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=10.009 active_threads=96
+[TAM sample] bench_s=10.209 active_threads=96
+[TAM sample] bench_s=10.409 active_threads=96
+[MetisV2] t=11.270 active=96 tps=58167 abort=0.8190 phase=probe_ref reward=0.0000 pred=0.0000
+[TAM sample] bench_s=10.609 active_threads=48
+[MetisV2] t=11.470 active=48 tps=91414 abort=0.7083 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=10.809 active_threads=48
+[TAM sample] bench_s=11.010 active_threads=48
+[TAM sample] bench_s=11.210 active_threads=48
+[MetisV2] t=12.070 active=48 tps=89217 abort=0.7131 phase=probe_phys reward=0.4278 pred=0.0000
+[TAM sample] bench_s=11.410 active_threads=94
+[MetisV2] t=12.271 active=94 tps=66860 abort=0.7978 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=11.610 active_threads=94
+[MetisV2] t=12.471 active=94 tps=64449 abort=0.8085 phase=learn reward=0.1026 pred=0.0000
+[TAM sample] bench_s=11.810 active_threads=34
+[MetisV2] t=12.671 active=34 tps=91399 abort=0.6428 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=12.010 active_threads=34
+[MetisV2] t=12.871 active=34 tps=95303 abort=0.6391 phase=learn reward=0.4937 pred=0.0000
+[TAM sample] bench_s=12.210 active_threads=70
+[MetisV2] t=13.071 active=70 tps=86264 abort=0.7342 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=12.410 active_threads=70
+[MetisV2] t=13.271 active=70 tps=84772 abort=0.7378 phase=learn reward=0.3767 pred=0.0000
+[TAM sample] bench_s=12.611 active_threads=58
+[MetisV2] t=13.471 active=58 tps=84360 abort=0.7278 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=12.811 active_threads=58
+[MetisV2] t=13.671 active=58 tps=82295 abort=0.7269 phase=learn reward=0.3470 pred=0.0000
+[TAM sample] bench_s=13.011 active_threads=20
+[MetisV2] t=13.872 active=20 tps=101384 abort=0.5225 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=13.211 active_threads=20
+[MetisV2] t=14.072 active=20 tps=99348 abort=0.5239 phase=learn reward=0.5353 pred=0.0000
+[TAM sample] bench_s=13.411 active_threads=32
+[MetisV2] t=14.272 active=32 tps=91548 abort=0.6370 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=13.611 active_threads=32
+[MetisV2] t=14.472 active=32 tps=93264 abort=0.6316 phase=learn reward=0.4721 pred=0.0000
+[TAM sample] bench_s=13.811 active_threads=76
+[MetisV2] t=14.672 active=76 tps=86014 abort=0.7386 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=14.011 active_threads=76
+[MetisV2] t=14.872 active=76 tps=83998 abort=0.7437 phase=learn reward=0.3675 pred=0.0000
+[TAM sample] bench_s=14.211 active_threads=70
+[MetisV2] t=15.072 active=70 tps=86414 abort=0.7350 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=14.411 active_threads=70
+[MetisV2] t=15.272 active=70 tps=93612 abort=0.7257 phase=learn reward=0.4758 pred=0.0000
+[TAM sample] bench_s=14.612 active_threads=58
+[MetisV2] t=15.472 active=58 tps=86533 abort=0.7285 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=14.812 active_threads=58
+[MetisV2] t=15.672 active=58 tps=84042 abort=0.7274 phase=learn reward=0.3680 pred=0.0000
+[TAM sample] bench_s=15.012 active_threads=78
+[MetisV2] t=15.873 active=78 tps=83150 abort=0.7493 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=15.212 active_threads=78
+[MetisV2] t=16.073 active=78 tps=84748 abort=0.7408 phase=learn reward=0.3764 pred=0.0000
+[TAM sample] bench_s=15.412 active_threads=54
+[MetisV2] t=16.273 active=54 tps=84584 abort=0.7189 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=15.612 active_threads=54
+[MetisV2] t=16.473 active=54 tps=81663 abort=0.7267 phase=learn reward=0.3393 pred=0.0000
+[TAM sample] bench_s=15.812 active_threads=24
+[MetisV2] t=16.673 active=24 tps=99688 abort=0.5590 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=16.012 active_threads=24
+[MetisV2] t=16.873 active=24 tps=92531 abort=0.5625 phase=learn reward=0.4642 pred=0.0000
+[TAM sample] bench_s=16.212 active_threads=66
+[MetisV2] t=17.073 active=66 tps=82291 abort=0.7365 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=16.413 active_threads=66
+[MetisV2] t=17.273 active=66 tps=82616 abort=0.7408 phase=learn reward=0.3509 pred=0.0000
+[TAM sample] bench_s=16.613 active_threads=12
+[MetisV2] t=17.473 active=12 tps=95520 abort=0.3952 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=16.813 active_threads=12
+[MetisV2] t=17.673 active=12 tps=98936 abort=0.3908 phase=learn reward=0.5312 pred=0.0000
+[TAM sample] bench_s=17.013 active_threads=34
+[MetisV2] t=17.874 active=34 tps=90185 abort=0.6508 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=17.213 active_threads=34
+[MetisV2] t=18.074 active=34 tps=89945 abort=0.6558 phase=learn reward=0.4359 pred=0.0000
+[TAM sample] bench_s=17.413 active_threads=56
+[MetisV2] t=18.274 active=56 tps=85752 abort=0.7192 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=17.613 active_threads=56
+[MetisV2] t=18.474 active=56 tps=87484 abort=0.7145 phase=learn reward=0.4081 pred=0.0000
+[TAM sample] bench_s=17.813 active_threads=94
+[MetisV2] t=18.675 active=94 tps=65203 abort=0.8014 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=18.014 active_threads=94
+[MetisV2] t=18.875 active=94 tps=64603 abort=0.8043 phase=learn reward=0.1050 pred=0.0000
+[TAM sample] bench_s=18.214 active_threads=54
+[MetisV2] t=19.075 active=54 tps=87394 abort=0.7161 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=18.414 active_threads=54
+[MetisV2] t=19.275 active=54 tps=87612 abort=0.7153 phase=learn reward=0.4096 pred=0.0000
+[TAM sample] bench_s=18.614 active_threads=84
+[MetisV2] t=19.475 active=84 tps=81057 abort=0.7584 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=18.815 active_threads=84
+[MetisV2] t=19.675 active=84 tps=80401 abort=0.7607 phase=learn reward=0.3237 pred=0.0000
+[TAM sample] bench_s=19.015 active_threads=60
+[MetisV2] t=19.875 active=60 tps=83737 abort=0.7279 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=19.215 active_threads=60
+[MetisV2] t=20.076 active=60 tps=85791 abort=0.7226 phase=learn reward=0.3886 pred=0.0000
+[TAM sample] bench_s=19.415 active_threads=96
+[MetisV2] t=20.276 active=96 tps=54458 abort=0.8240 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=19.615 active_threads=96
+[TAM sample] bench_s=19.815 active_threads=96
+[TAM sample] bench_s=20.015 active_threads=96
+[MetisV2] t=20.877 active=96 tps=56709 abort=0.8192 phase=probe_ref reward=0.0000 pred=0.0000
+[TAM sample] bench_s=20.216 active_threads=48
+[MetisV2] t=21.077 active=48 tps=85561 abort=0.7223 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=20.416 active_threads=48
+[TAM sample] bench_s=20.616 active_threads=48
+[TAM sample] bench_s=20.816 active_threads=48
+[MetisV2] t=21.677 active=48 tps=87715 abort=0.7163 phase=probe_phys reward=0.4362 pred=0.0000
+[TAM sample] bench_s=21.016 active_threads=34
+[MetisV2] t=21.877 active=34 tps=89977 abort=0.6436 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=21.217 active_threads=34
+[MetisV2] t=22.077 active=34 tps=93081 abort=0.6359 phase=learn reward=0.4955 pred=0.0000
+[TAM sample] bench_s=21.417 active_threads=16
+[MetisV2] t=22.277 active=16 tps=97225 abort=0.4689 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=21.617 active_threads=16
+[MetisV2] t=22.478 active=16 tps=97990 abort=0.4691 phase=learn reward=0.5469 pred=0.0000
+[TAM sample] bench_s=21.817 active_threads=86
+[MetisV2] t=22.678 active=86 tps=76421 abort=0.7738 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=22.017 active_threads=86
+[MetisV2] t=22.878 active=86 tps=81019 abort=0.7649 phase=learn reward=0.3568 pred=0.0000
+[TAM sample] bench_s=22.217 active_threads=66
+[MetisV2] t=23.078 active=66 tps=87586 abort=0.7313 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=22.417 active_threads=66
+[MetisV2] t=23.278 active=66 tps=83369 abort=0.7326 phase=learn reward=0.3854 pred=0.0000
+[TAM sample] bench_s=22.617 active_threads=76
+[MetisV2] t=23.478 active=76 tps=85844 abort=0.7413 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=22.817 active_threads=76
+[MetisV2] t=23.678 active=76 tps=84065 abort=0.7456 phase=learn reward=0.3937 pred=0.0000
+[TAM sample] bench_s=23.017 active_threads=30
+[MetisV2] t=23.878 active=30 tps=88516 abort=0.6227 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=23.218 active_threads=30
+[MetisV2] t=24.078 active=30 tps=92648 abort=0.6159 phase=learn reward=0.4909 pred=0.0000
+[TAM sample] bench_s=23.418 active_threads=58
+[MetisV2] t=24.278 active=58 tps=85448 abort=0.7226 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=23.618 active_threads=58
+[MetisV2] t=24.479 active=58 tps=84706 abort=0.7236 phase=learn reward=0.4013 pred=0.0000
+[TAM sample] bench_s=23.818 active_threads=82
+[MetisV2] t=24.679 active=82 tps=82822 abort=0.7535 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=24.018 active_threads=82
+[MetisV2] t=24.879 active=82 tps=87508 abort=0.7450 phase=learn reward=0.4338 pred=0.0000
+[TAM sample] bench_s=24.218 active_threads=24
+[MetisV2] t=25.079 active=24 tps=95658 abort=0.5651 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=24.418 active_threads=24
+[MetisV2] t=25.279 active=24 tps=95766 abort=0.5602 phase=learn reward=0.5240 pred=0.0000
+[TAM sample] bench_s=24.618 active_threads=62
+[MetisV2] t=25.479 active=62 tps=84891 abort=0.7318 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=24.818 active_threads=62
+[MetisV2] t=25.679 active=62 tps=83755 abort=0.7293 phase=learn reward=0.3900 pred=0.0000
+[TAM sample] bench_s=25.018 active_threads=30
+[MetisV2] t=25.879 active=30 tps=90125 abort=0.6207 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=25.219 active_threads=30
+[MetisV2] t=26.079 active=30 tps=91871 abort=0.6189 phase=learn reward=0.4825 pred=0.0000
+[TAM sample] bench_s=25.419 active_threads=48
+[MetisV2] t=26.279 active=48 tps=91670 abort=0.7059 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=25.619 active_threads=48
+[MetisV2] t=26.480 active=48 tps=91065 abort=0.7105 phase=learn reward=0.4736 pred=0.0000
+[TAM sample] bench_s=25.819 active_threads=16
+[MetisV2] t=26.680 active=16 tps=96562 abort=0.4710 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=26.019 active_threads=16
+[MetisV2] t=26.880 active=16 tps=102042 abort=0.4646 phase=learn reward=0.5875 pred=0.0000
+[TAM sample] bench_s=26.219 active_threads=86
+[MetisV2] t=27.080 active=86 tps=78064 abort=0.7694 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=26.419 active_threads=86
+[MetisV2] t=27.280 active=86 tps=85053 abort=0.7593 phase=learn reward=0.4054 pred=0.0000
+[TAM sample] bench_s=26.619 active_threads=82
+[MetisV2] t=27.480 active=82 tps=88094 abort=0.7488 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=26.819 active_threads=82
+[MetisV2] t=27.680 active=82 tps=85766 abort=0.7506 phase=learn reward=0.4137 pred=0.0000
+[TAM sample] bench_s=27.019 active_threads=66
+[MetisV2] t=27.880 active=66 tps=83598 abort=0.7356 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=27.220 active_threads=66
+[MetisV2] t=28.080 active=66 tps=86269 abort=0.7311 phase=learn reward=0.4196 pred=0.0000
+[TAM sample] bench_s=27.420 active_threads=12
+[MetisV2] t=28.280 active=12 tps=96932 abort=0.3941 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=27.620 active_threads=12
+[MetisV2] t=28.481 active=12 tps=100453 abort=0.3841 phase=learn reward=0.5718 pred=0.0000
+[TAM sample] bench_s=27.820 active_threads=94
+[MetisV2] t=28.681 active=94 tps=64026 abort=0.8126 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=28.020 active_threads=94
+[MetisV2] t=28.881 active=94 tps=63943 abort=0.8069 phase=learn reward=0.1201 pred=0.0000
+[TAM sample] bench_s=28.220 active_threads=74
+[MetisV2] t=29.081 active=74 tps=86498 abort=0.7392 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=28.420 active_threads=74
+[MetisV2] t=29.281 active=74 tps=83792 abort=0.7463 phase=learn reward=0.3904 pred=0.0000
+[TAM sample] bench_s=28.620 active_threads=52
+[MetisV2] t=29.481 active=52 tps=85940 abort=0.7203 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=28.820 active_threads=52
+[MetisV2] t=29.681 active=52 tps=91921 abort=0.7054 phase=learn reward=0.4830 pred=0.0000
+[TAM sample] bench_s=29.021 active_threads=96
+[MetisV2] t=29.882 active=96 tps=56490 abort=0.8252 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=29.221 active_threads=96
+[TAM sample] bench_s=29.421 active_threads=96
+[TAM sample] bench_s=29.621 active_threads=96
+[MetisV2] t=30.482 active=96 tps=57640 abort=0.8178 phase=probe_ref reward=0.0000 pred=0.0000
+[TAM sample] bench_s=29.821 active_threads=48
+[MetisV2] t=30.661 active=48 tps=96647 abort=0.7150 phase=settle reward=0.0000 pred=0.0000
+[TAM sample] bench_s=30.000 active_threads=48
+[MetisV2] variant=B samples=63 decisions=0 switches=67 probes=3
+[LinUCB] model saved to: /home/ubuntu/ccbench-adaTAM/experiments/ICDE/metis_v2/tpcc/B2/train/state_3_run1.txt

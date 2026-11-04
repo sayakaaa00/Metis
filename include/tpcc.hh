@@ -100,7 +100,7 @@ public:
 #ifdef METIS_TEST
     // All locks from the preceding attempt have been released before RETRY.
     // Honor a lower active-thread limit before generating the next attempt.
-    if (FLAGS_metis_test_enable) {
+    if (FLAGS_metis_test_enable || FLAGS_metis_v2_enable || FLAGS_ada_tam_enable) {
       while (tx.thid_ >=
                  g_metis_test_active_threads.load(std::memory_order_acquire) &&
              !loadAcquire(tx.quit_)) {

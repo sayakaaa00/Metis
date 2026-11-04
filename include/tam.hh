@@ -17,6 +17,7 @@
 
 #include "gflags/gflags.h"
 #include "adaptive_state.hh"
+#include "metis_v2.hh"
 #include "tsc.hh"  // for rdtscp()
 
 // AdaTAM: Adaptive Thread Activity Management
@@ -163,6 +164,8 @@ class AdaTAM {
     if (min_th == 0) min_th = 1;
     if (min_th > max_th) min_th = max_th;
     active_threads_.store(max_th, std::memory_order_relaxed);
+    // Shared with the TPC-C retry loop so parked workers stop between attempts.
+    g_metis_test_active_threads.store(max_th, std::memory_order_release);
     last_time_ = rdtscp();
     last_committed_txs_ = 0;
     last_tput_ = 0.0;
@@ -259,6 +262,8 @@ class AdaTAM {
     if (next > static_cast<int64_t>(max_th)) next = static_cast<int64_t>(max_th);
 
     active_threads_.store(static_cast<uint64_t>(next), std::memory_order_release);
+    g_metis_test_active_threads.store(static_cast<uint64_t>(next),
+                                      std::memory_order_release);
 
     if (FLAGS_tam_log_active_threads) {
       uint64_t log_period = FLAGS_tam_log_period_us * clocks_per_us_;
@@ -1547,6 +1552,7 @@ class TamController {
   void init(uint64_t total_threads, uint64_t clocks_per_us) {
     if (static_cast<int>(FLAGS_metis_test_enable) +
         static_cast<int>(FLAGS_metis_paper_enable) +
+        static_cast<int>(FLAGS_metis_v2_enable) +
         static_cast<int>(FLAGS_ada_tam_enable) > 1) {
       std::fprintf(stderr, "Enable only one TAM controller\n");
       std::abort();
@@ -1573,6 +1579,25 @@ class TamController {
         metis_paper_.load_model(FLAGS_linucb_model_path);
       }
     }
+    if (FLAGS_metis_v2_enable) {
+      metis_v2_.init(total_threads);
+      if (!FLAGS_linucb_model_path.empty()) {
+        std::ifstream model(FLAGS_linucb_model_path);
+        if (model.good() && !metis_v2_.load_model(FLAGS_linucb_model_path)) {
+          std::fprintf(stderr, "Invalid Metis v2 model: %s\n",
+                       FLAGS_linucb_model_path.c_str());
+          std::abort();
+        }
+        if (!model.good() && !FLAGS_metis_v2_learn) {
+          std::fprintf(stderr, "Missing Metis v2 model: %s\n",
+                       FLAGS_linucb_model_path.c_str());
+          std::abort();
+        }
+      } else if (!FLAGS_metis_v2_learn) {
+        std::fprintf(stderr, "Metis v2 evaluation needs --linucb_model_path\n");
+        std::abort();
+      }
+    }
     if (FLAGS_ada_tam_enable) {
       adatam_.init(total_threads, clocks_per_us);
     }
@@ -1580,11 +1605,12 @@ class TamController {
 
   bool enabled() const {
     return FLAGS_ada_tam_enable || FLAGS_metis_paper_enable ||
-           FLAGS_metis_test_enable;
+           FLAGS_metis_test_enable || FLAGS_metis_v2_enable;
   }
 
   uint64_t active_threads() const {
     if (FLAGS_metis_test_enable) return metis_test_.active_threads();
+    if (FLAGS_metis_v2_enable) return metis_v2_.active_threads();
     if (FLAGS_metis_paper_enable) return metis_paper_.active_threads();
     return adatam_.active_threads();
   }
@@ -1592,6 +1618,10 @@ class TamController {
   void update(uint64_t committed_txs, uint64_t abort_txs) {
     if (FLAGS_metis_test_enable) {
       metis_test_.update(committed_txs, abort_txs);
+      return;
+    }
+    if (FLAGS_metis_v2_enable) {
+      metis_v2_.update(committed_txs, abort_txs);
       return;
     }
     if (FLAGS_metis_paper_enable) {
@@ -1605,6 +1635,8 @@ class TamController {
     if (!FLAGS_tam_log_active_threads) return;
     if (FLAGS_metis_test_enable) {
       metis_test_.print_stats();
+    } else if (FLAGS_metis_v2_enable) {
+      metis_v2_.print_stats();
     } else if (FLAGS_metis_paper_enable) {
       metis_paper_.print_stats();
     } else if (FLAGS_ada_tam_enable) {
@@ -1614,6 +1646,7 @@ class TamController {
 
   bool save_model(const std::string &path) const {
     if (FLAGS_metis_test_enable) return metis_test_.save_model(path);
+    if (FLAGS_metis_v2_enable) return metis_v2_.save_model(path);
     if (FLAGS_metis_paper_enable) return metis_paper_.save_model(path);
     return false;
   }
@@ -1622,4 +1655,5 @@ class TamController {
   AdaTAM adatam_;
   Metis_paper metis_paper_;
   Metis_test metis_test_;
+  MetisV2 metis_v2_;
 };

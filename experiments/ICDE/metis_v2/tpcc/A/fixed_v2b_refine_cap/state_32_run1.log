@@ -1,0 +1,63 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		10
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261103_083518.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_item_zipf_enable:	false
+#FLAGS_tpcc_active_warehouse_count:	32
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	10
+success_forwarding_:	0
+abort_counts_:	2209961
+batch_abort_counts_:	0
+commit_counts_:	5391719
+batch_commit_counts_:	0
+maxrss:	31497620 kB
+abort_rate:	0.2907
+batch_abort_rate:	-nan
+latency[ns]:	178051.1192
+throughput[tps]:	539171
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 2425176
+    aborts: 891306
+    abort rate: 0.2688
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 2318746
+    aborts: 73545
+    abort rate: 0.0307
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 215903
+    aborts: 6
+    abort rate: 0.0000
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 215972
+    aborts: 987945
+    abort rate: 0.8206
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 215922
+    aborts: 257159
+    abort rate: 0.5436
+    latency[us]: 0.00
+  Summary: 2425176,891306,2318746,73545,215903,6,215972,987945,215922,257159,
+  All transaction total latencies: 0,0,0,0,0,

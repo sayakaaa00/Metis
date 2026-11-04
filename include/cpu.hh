@@ -224,12 +224,48 @@ static int choosePhysicalFirstCpu(const int myid) {
   }
 }
 
+// Diagnostic override: CCBENCH_PIN_CPU_LIST="0,1,24,25,..." pins worker i to
+// the i-th listed CPU. Workers beyond the list use the remaining CPUs in
+// ascending order. Returns -1 when the variable is unset or empty.
+static int explicitPinCpu(const int myid) {
+  static std::once_flag init_flag;
+  static std::vector<int> order;
+  std::call_once(init_flag, [&]() {
+    const char* spec = std::getenv("CCBENCH_PIN_CPU_LIST");
+    if (spec == nullptr || *spec == '\0') return;
+    long nprocs = sysconf(_SC_NPROCESSORS_CONF);
+    if (nprocs < 1) nprocs = 1;
+    std::vector<bool> used(static_cast<std::size_t>(nprocs), false);
+    const char* p = spec;
+    while (*p != '\0') {
+      char* end = nullptr;
+      long cpu = std::strtol(p, &end, 10);
+      if (end == p || cpu < 0 || cpu >= nprocs || used[cpu]) {
+        std::fprintf(stderr, "Invalid CCBENCH_PIN_CPU_LIST: %s\n", spec);
+        std::exit(1);
+      }
+      used[cpu] = true;
+      order.push_back(static_cast<int>(cpu));
+      p = (*end == ',') ? end + 1 : end;
+      if (*end != ',' && *end != '\0') {
+        std::fprintf(stderr, "Invalid CCBENCH_PIN_CPU_LIST: %s\n", spec);
+        std::exit(1);
+      }
+    }
+    for (long cpu = 0; cpu < nprocs; ++cpu)
+      if (!used[cpu]) order.push_back(static_cast<int>(cpu));
+  });
+  if (order.empty()) return -1;
+  return order[static_cast<std::size_t>(myid) % order.size()];
+}
+
 static void setThreadAffinity(const int myid) {
   pid_t pid = syscall(SYS_gettid);
   cpu_set_t cpu_set;
 
   CPU_ZERO(&cpu_set);
-  int cpu = chooseSocketAwareCpu(myid);
+  int cpu = explicitPinCpu(myid);
+  if (cpu < 0) cpu = chooseSocketAwareCpu(myid);
   CPU_SET(cpu, &cpu_set);
 
   if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
@@ -241,7 +277,8 @@ static void setThreadAffinity(const int myid) {
   pid_t pid = syscall(SYS_gettid);
   cpu_set_t cpu_set;
   CPU_ZERO(&cpu_set);
-  CPU_SET(choosePhysicalFirstCpu(myid), &cpu_set);
+  const int cpu = explicitPinCpu(myid);
+  CPU_SET(cpu >= 0 ? cpu : choosePhysicalFirstCpu(myid), &cpu_set);
   if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
 }
 #endif  // Linux

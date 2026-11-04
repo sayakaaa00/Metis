@@ -1,0 +1,421 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		60
+#FLAGS_thread_num:	96
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_item_zipf_enable:	false
+#FLAGS_tpcc_active_warehouse_count:	1
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+[TPC-C workload] bench_s=0.000 active_warehouses=1
+[TPS sample] bench_s=0.200 interval_tps=35087.8 interval_committed=7022 interval_s=0.200127
+[TPS sample] bench_s=0.400 interval_tps=29731.6 interval_committed=5950 interval_s=0.200124
+[TPS sample] bench_s=0.600 interval_tps=31616.6 interval_committed=6327 interval_s=0.200116
+[TPS sample] bench_s=0.800 interval_tps=32687.0 interval_committed=6541 interval_s=0.200110
+[TPS sample] bench_s=1.001 interval_tps=34018.7 interval_committed=6808 interval_s=0.200125
+[TPC-C workload] bench_s=1.001 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=1.202 interval_tps=31300.5 interval_committed=6294 interval_s=0.201083
+[TPS sample] bench_s=1.402 interval_tps=32124.6 interval_committed=6429 interval_s=0.200127
+[TPS sample] bench_s=1.602 interval_tps=36103.6 interval_committed=7225 interval_s=0.200118
+[TPS sample] bench_s=1.803 interval_tps=34772.9 interval_committed=6992 interval_s=0.201076
+[TPS sample] bench_s=2.003 interval_tps=33691.4 interval_committed=6742 interval_s=0.200110
+[TPC-C workload] bench_s=2.003 active_warehouses=32
+[TPS sample] bench_s=2.203 interval_tps=396556.1 interval_committed=79358 interval_s=0.200118
+[TPS sample] bench_s=2.403 interval_tps=413671.3 interval_committed=82785 interval_s=0.200123
+[TPS sample] bench_s=2.603 interval_tps=409319.6 interval_committed=81914 interval_s=0.200122
+[TPS sample] bench_s=2.804 interval_tps=412357.7 interval_committed=82523 interval_s=0.200125
+[TPS sample] bench_s=3.004 interval_tps=406381.8 interval_committed=81337 interval_s=0.200149
+[TPC-C workload] bench_s=3.004 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=3.204 interval_tps=393974.7 interval_committed=78845 interval_s=0.200127
+[TPS sample] bench_s=3.404 interval_tps=403449.2 interval_committed=80744 interval_s=0.200134
+[TPS sample] bench_s=3.604 interval_tps=401276.3 interval_committed=80306 interval_s=0.200126
+[TPS sample] bench_s=3.804 interval_tps=408137.9 interval_committed=81680 interval_s=0.200128
+[TPS sample] bench_s=4.004 interval_tps=448132.1 interval_committed=89686 interval_s=0.200133
+[TPC-C workload] bench_s=4.004 active_warehouses=1
+[TPS sample] bench_s=4.205 interval_tps=36290.4 interval_committed=7263 interval_s=0.200135
+[TPS sample] bench_s=4.405 interval_tps=33206.3 interval_committed=6645 interval_s=0.200112
+[TPS sample] bench_s=4.605 interval_tps=35224.2 interval_committed=7049 interval_s=0.200118
+[TPS sample] bench_s=4.805 interval_tps=34510.3 interval_committed=6906 interval_s=0.200114
+[TPS sample] bench_s=5.005 interval_tps=35638.0 interval_committed=7132 interval_s=0.200123
+[TPC-C workload] bench_s=5.005 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=5.205 interval_tps=33290.7 interval_committed=6662 interval_s=0.200116
+[TPS sample] bench_s=5.405 interval_tps=33455.5 interval_committed=6695 interval_s=0.200116
+[TPS sample] bench_s=5.606 interval_tps=34483.1 interval_committed=6923 interval_s=0.200765
+[TPS sample] bench_s=5.806 interval_tps=32986.2 interval_committed=6601 interval_s=0.200114
+[TPS sample] bench_s=6.006 interval_tps=33969.9 interval_committed=6798 interval_s=0.200118
+[TPC-C workload] bench_s=6.006 active_warehouses=32
+[TPS sample] bench_s=6.206 interval_tps=445013.2 interval_committed=89087 interval_s=0.200190
+[TPS sample] bench_s=6.407 interval_tps=455199.3 interval_committed=91115 interval_s=0.200165
+[TPS sample] bench_s=6.607 interval_tps=457923.2 interval_committed=91667 interval_s=0.200180
+[TPS sample] bench_s=6.807 interval_tps=457659.3 interval_committed=91614 interval_s=0.200179
+[TPS sample] bench_s=7.007 interval_tps=456226.8 interval_committed=91331 interval_s=0.200188
+[TPC-C workload] bench_s=7.007 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=7.207 interval_tps=443305.3 interval_committed=88741 interval_s=0.200180
+[TPS sample] bench_s=7.408 interval_tps=444026.7 interval_committed=88888 interval_s=0.200186
+[TPS sample] bench_s=7.610 interval_tps=451649.4 interval_committed=91491 interval_s=0.202571
+[TPS sample] bench_s=7.810 interval_tps=450811.1 interval_committed=90244 interval_s=0.200181
+[TPS sample] bench_s=8.010 interval_tps=446212.6 interval_committed=89323 interval_s=0.200180
+[TPC-C workload] bench_s=8.011 active_warehouses=1
+[TPS sample] bench_s=8.211 interval_tps=38320.9 interval_committed=7671 interval_s=0.200178
+[TPS sample] bench_s=8.411 interval_tps=35024.3 interval_committed=7011 interval_s=0.200175
+[TPS sample] bench_s=8.611 interval_tps=35858.6 interval_committed=7178 interval_s=0.200175
+[TPS sample] bench_s=8.811 interval_tps=35286.0 interval_committed=7063 interval_s=0.200164
+[TPS sample] bench_s=9.011 interval_tps=33031.2 interval_committed=6611 interval_s=0.200144
+[TPC-C workload] bench_s=9.011 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=9.211 interval_tps=33986.9 interval_committed=6803 interval_s=0.200165
+[TPS sample] bench_s=9.412 interval_tps=35082.9 interval_committed=7022 interval_s=0.200154
+[TPS sample] bench_s=9.612 interval_tps=32645.4 interval_committed=6534 interval_s=0.200151
+[TPS sample] bench_s=9.812 interval_tps=31915.9 interval_committed=6388 interval_s=0.200151
+[TPS sample] bench_s=10.012 interval_tps=31123.7 interval_committed=6230 interval_s=0.200169
+[TPC-C workload] bench_s=10.012 active_warehouses=32
+[TPS sample] bench_s=10.212 interval_tps=452297.5 interval_committed=90536 interval_s=0.200169
+[TPS sample] bench_s=10.412 interval_tps=451260.0 interval_committed=90330 interval_s=0.200173
+[TPS sample] bench_s=10.613 interval_tps=465892.2 interval_committed=93258 interval_s=0.200171
+[TPS sample] bench_s=10.813 interval_tps=455859.0 interval_committed=91254 interval_s=0.200180
+[TPS sample] bench_s=11.013 interval_tps=460161.8 interval_committed=92116 interval_s=0.200182
+[TPC-C workload] bench_s=11.013 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=11.213 interval_tps=445493.2 interval_committed=89192 interval_s=0.200210
+[TPS sample] bench_s=11.413 interval_tps=447121.6 interval_committed=89507 interval_s=0.200185
+[TPS sample] bench_s=11.614 interval_tps=458549.0 interval_committed=91791 interval_s=0.200177
+[TPS sample] bench_s=11.814 interval_tps=458857.3 interval_committed=91851 interval_s=0.200173
+[TPS sample] bench_s=12.014 interval_tps=456758.3 interval_committed=91432 interval_s=0.200176
+[TPC-C workload] bench_s=12.014 active_warehouses=1
+[TPS sample] bench_s=12.214 interval_tps=37300.7 interval_committed=7466 interval_s=0.200157
+[TPS sample] bench_s=12.414 interval_tps=33400.5 interval_committed=6685 interval_s=0.200146
+[TPS sample] bench_s=12.614 interval_tps=33753.8 interval_committed=6756 interval_s=0.200155
+[TPS sample] bench_s=12.814 interval_tps=34254.7 interval_committed=6856 interval_s=0.200148
+[TPS sample] bench_s=13.015 interval_tps=33697.8 interval_committed=6745 interval_s=0.200161
+[TPC-C workload] bench_s=13.015 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=13.215 interval_tps=34421.1 interval_committed=6890 interval_s=0.200168
+[TPS sample] bench_s=13.415 interval_tps=35878.4 interval_committed=7181 interval_s=0.200148
+[TPS sample] bench_s=13.615 interval_tps=34699.4 interval_committed=6946 interval_s=0.200176
+[TPS sample] bench_s=13.815 interval_tps=32293.6 interval_committed=6464 interval_s=0.200163
+[TPS sample] bench_s=14.015 interval_tps=33755.6 interval_committed=6757 interval_s=0.200174
+[TPC-C workload] bench_s=14.016 active_warehouses=32
+[TPS sample] bench_s=14.216 interval_tps=445583.3 interval_committed=89189 interval_s=0.200162
+[TPS sample] bench_s=14.416 interval_tps=457226.6 interval_committed=91529 interval_s=0.200183
+[TPS sample] bench_s=14.616 interval_tps=453626.8 interval_committed=90800 interval_s=0.200165
+[TPS sample] bench_s=14.816 interval_tps=456355.9 interval_committed=91358 interval_s=0.200190
+[TPS sample] bench_s=15.016 interval_tps=441599.4 interval_committed=88400 interval_s=0.200181
+[TPC-C workload] bench_s=15.017 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=15.217 interval_tps=449832.2 interval_committed=90308 interval_s=0.200759
+[TPS sample] bench_s=15.417 interval_tps=450650.5 interval_committed=90207 interval_s=0.200171
+[TPS sample] bench_s=15.617 interval_tps=450426.0 interval_committed=90160 interval_s=0.200166
+[TPS sample] bench_s=15.818 interval_tps=441900.8 interval_committed=88449 interval_s=0.200156
+[TPS sample] bench_s=16.018 interval_tps=447558.9 interval_committed=89590 interval_s=0.200175
+[TPC-C workload] bench_s=16.018 active_warehouses=1
+[TPS sample] bench_s=16.218 interval_tps=36108.3 interval_committed=7228 interval_s=0.200175
+[TPS sample] bench_s=16.418 interval_tps=35671.7 interval_committed=7139 interval_s=0.200131
+[TPS sample] bench_s=16.618 interval_tps=32326.4 interval_committed=6469 interval_s=0.200115
+[TPS sample] bench_s=16.818 interval_tps=31377.4 interval_committed=6279 interval_s=0.200112
+[TPS sample] bench_s=17.019 interval_tps=35320.6 interval_committed=7089 interval_s=0.200704
+[TPC-C workload] bench_s=17.019 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=17.219 interval_tps=33885.5 interval_committed=6781 interval_s=0.200115
+[TPS sample] bench_s=17.419 interval_tps=32751.6 interval_committed=6554 interval_s=0.200112
+[TPS sample] bench_s=17.619 interval_tps=33745.4 interval_committed=6753 interval_s=0.200116
+[TPS sample] bench_s=17.819 interval_tps=34035.3 interval_committed=6811 interval_s=0.200116
+[TPS sample] bench_s=18.020 interval_tps=34490.0 interval_committed=6902 interval_s=0.200116
+[TPC-C workload] bench_s=18.020 active_warehouses=32
+[TPS sample] bench_s=18.220 interval_tps=453549.2 interval_committed=90766 interval_s=0.200124
+[TPS sample] bench_s=18.420 interval_tps=461331.2 interval_committed=92325 interval_s=0.200127
+[TPS sample] bench_s=18.620 interval_tps=454659.6 interval_committed=90991 interval_s=0.200130
+[TPS sample] bench_s=18.820 interval_tps=456444.0 interval_committed=91352 interval_s=0.200138
+[TPS sample] bench_s=19.020 interval_tps=455184.2 interval_committed=91214 interval_s=0.200389
+[TPC-C workload] bench_s=19.021 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=19.221 interval_tps=444238.7 interval_committed=88907 interval_s=0.200133
+[TPS sample] bench_s=19.421 interval_tps=452160.7 interval_committed=90488 interval_s=0.200124
+[TPS sample] bench_s=19.621 interval_tps=451511.8 interval_committed=90368 interval_s=0.200145
+[TPS sample] bench_s=19.821 interval_tps=446566.7 interval_committed=89369 interval_s=0.200125
+[TPS sample] bench_s=20.022 interval_tps=447745.1 interval_committed=89994 interval_s=0.200994
+[TPC-C workload] bench_s=20.022 active_warehouses=1
+[TPS sample] bench_s=20.222 interval_tps=35079.6 interval_committed=7021 interval_s=0.200145
+[TPS sample] bench_s=20.422 interval_tps=33761.7 interval_committed=6758 interval_s=0.200168
+[TPS sample] bench_s=20.622 interval_tps=33075.9 interval_committed=6620 interval_s=0.200146
+[TPS sample] bench_s=20.823 interval_tps=34765.9 interval_committed=6958 interval_s=0.200139
+[TPS sample] bench_s=21.023 interval_tps=31847.2 interval_committed=6374 interval_s=0.200143
+[TPC-C workload] bench_s=21.023 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=21.223 interval_tps=32199.0 interval_committed=6445 interval_s=0.200162
+[TPS sample] bench_s=21.423 interval_tps=34417.7 interval_committed=6889 interval_s=0.200159
+[TPS sample] bench_s=21.623 interval_tps=33805.5 interval_committed=6766 interval_s=0.200145
+[TPS sample] bench_s=21.823 interval_tps=34300.1 interval_committed=6865 interval_s=0.200145
+[TPS sample] bench_s=22.024 interval_tps=32041.2 interval_committed=6413 interval_s=0.200149
+[TPC-C workload] bench_s=22.024 active_warehouses=32
+[TPS sample] bench_s=22.224 interval_tps=444936.4 interval_committed=89066 interval_s=0.200177
+[TPS sample] bench_s=22.424 interval_tps=453646.2 interval_committed=90807 interval_s=0.200171
+[TPS sample] bench_s=22.624 interval_tps=455920.2 interval_committed=91254 interval_s=0.200153
+[TPS sample] bench_s=22.824 interval_tps=441585.1 interval_committed=88386 interval_s=0.200156
+[TPS sample] bench_s=23.026 interval_tps=450710.5 interval_committed=91002 interval_s=0.201908
+[TPC-C workload] bench_s=23.026 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=23.226 interval_tps=440418.0 interval_committed=88160 interval_s=0.200173
+[TPS sample] bench_s=23.426 interval_tps=450136.5 interval_committed=90102 interval_s=0.200166
+[TPS sample] bench_s=23.627 interval_tps=448405.6 interval_committed=89758 interval_s=0.200171
+[TPS sample] bench_s=23.827 interval_tps=451701.8 interval_committed=90413 interval_s=0.200161
+[TPS sample] bench_s=24.027 interval_tps=458867.1 interval_committed=91859 interval_s=0.200187
+[TPC-C workload] bench_s=24.027 active_warehouses=1
+[TPS sample] bench_s=24.227 interval_tps=39178.7 interval_committed=7844 interval_s=0.200211
+[TPS sample] bench_s=24.427 interval_tps=32355.6 interval_committed=6476 interval_s=0.200151
+[TPS sample] bench_s=24.627 interval_tps=33548.4 interval_committed=6715 interval_s=0.200158
+[TPS sample] bench_s=24.828 interval_tps=35118.5 interval_committed=7029 interval_s=0.200151
+[TPS sample] bench_s=25.028 interval_tps=33330.1 interval_committed=6671 interval_s=0.200149
+[TPC-C workload] bench_s=25.028 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=25.228 interval_tps=32788.0 interval_committed=6563 interval_s=0.200165
+[TPS sample] bench_s=25.428 interval_tps=33960.9 interval_committed=6798 interval_s=0.200172
+[TPS sample] bench_s=25.628 interval_tps=35040.4 interval_committed=7014 interval_s=0.200169
+[TPS sample] bench_s=25.828 interval_tps=33205.7 interval_committed=6646 interval_s=0.200146
+[TPS sample] bench_s=26.029 interval_tps=34464.6 interval_committed=6898 interval_s=0.200148
+[TPC-C workload] bench_s=26.029 active_warehouses=32
+[TPS sample] bench_s=26.229 interval_tps=442387.9 interval_committed=88551 interval_s=0.200166
+[TPS sample] bench_s=26.429 interval_tps=453412.4 interval_committed=90764 interval_s=0.200180
+[TPS sample] bench_s=26.629 interval_tps=447329.1 interval_committed=89546 interval_s=0.200179
+[TPS sample] bench_s=26.829 interval_tps=453882.1 interval_committed=90858 interval_s=0.200180
+[TPS sample] bench_s=27.029 interval_tps=453495.1 interval_committed=90791 interval_s=0.200203
+[TPC-C workload] bench_s=27.030 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=27.230 interval_tps=450260.4 interval_committed=90151 interval_s=0.200220
+[TPS sample] bench_s=27.430 interval_tps=456154.8 interval_committed=91316 interval_s=0.200186
+[TPS sample] bench_s=27.630 interval_tps=450437.8 interval_committed=90155 interval_s=0.200150
+[TPS sample] bench_s=27.830 interval_tps=449434.9 interval_committed=89965 interval_s=0.200174
+[TPS sample] bench_s=28.030 interval_tps=442992.2 interval_committed=88675 interval_s=0.200173
+[TPC-C workload] bench_s=28.030 active_warehouses=1
+[TPS sample] bench_s=28.231 interval_tps=38451.5 interval_committed=7697 interval_s=0.200174
+[TPS sample] bench_s=28.431 interval_tps=33669.6 interval_committed=6739 interval_s=0.200151
+[TPS sample] bench_s=28.631 interval_tps=33432.1 interval_committed=6699 interval_s=0.200376
+[TPS sample] bench_s=28.831 interval_tps=34344.4 interval_committed=6874 interval_s=0.200149
+[TPS sample] bench_s=29.031 interval_tps=34579.1 interval_committed=6921 interval_s=0.200150
+[TPC-C workload] bench_s=29.031 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=29.232 interval_tps=33236.7 interval_committed=6653 interval_s=0.200170
+[TPS sample] bench_s=29.432 interval_tps=34604.2 interval_committed=6941 interval_s=0.200583
+[TPS sample] bench_s=29.632 interval_tps=36983.6 interval_committed=7403 interval_s=0.200170
+[TPS sample] bench_s=29.832 interval_tps=31609.3 interval_committed=6327 interval_s=0.200162
+[TPS sample] bench_s=30.033 interval_tps=33650.0 interval_committed=6735 interval_s=0.200148
+[TPC-C workload] bench_s=30.033 active_warehouses=32
+[TPS sample] bench_s=30.233 interval_tps=450698.1 interval_committed=90216 interval_s=0.200169
+[TPS sample] bench_s=30.433 interval_tps=457887.1 interval_committed=91660 interval_s=0.200180
+[TPS sample] bench_s=30.633 interval_tps=453279.3 interval_committed=90733 interval_s=0.200170
+[TPS sample] bench_s=30.836 interval_tps=453753.8 interval_committed=92095 interval_s=0.202962
+[TPS sample] bench_s=31.036 interval_tps=447452.8 interval_committed=89543 interval_s=0.200117
+[TPC-C workload] bench_s=31.039 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=31.239 interval_tps=454194.4 interval_committed=92160 interval_s=0.202909
+[TPS sample] bench_s=31.442 interval_tps=448185.8 interval_committed=90970 interval_s=0.202974
+[TPS sample] bench_s=31.642 interval_tps=445821.8 interval_committed=89226 interval_s=0.200138
+[TPS sample] bench_s=31.842 interval_tps=442596.5 interval_committed=88594 interval_s=0.200169
+[TPS sample] bench_s=32.045 interval_tps=439002.6 interval_committed=89026 interval_s=0.202792
+[TPC-C workload] bench_s=32.045 active_warehouses=1
+[TPS sample] bench_s=32.245 interval_tps=36658.6 interval_committed=7338 interval_s=0.200171
+[TPS sample] bench_s=32.445 interval_tps=33470.0 interval_committed=6699 interval_s=0.200149
+[TPS sample] bench_s=32.646 interval_tps=34494.3 interval_committed=6904 interval_s=0.200149
+[TPS sample] bench_s=32.846 interval_tps=33258.1 interval_committed=6657 interval_s=0.200162
+[TPS sample] bench_s=33.046 interval_tps=32904.2 interval_committed=6587 interval_s=0.200187
+[TPC-C workload] bench_s=33.046 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=33.246 interval_tps=33405.3 interval_committed=6687 interval_s=0.200178
+[TPS sample] bench_s=33.446 interval_tps=33654.6 interval_committed=6736 interval_s=0.200151
+[TPS sample] bench_s=33.646 interval_tps=34354.2 interval_committed=6876 interval_s=0.200150
+[TPS sample] bench_s=33.847 interval_tps=34294.7 interval_committed=6864 interval_s=0.200148
+[TPS sample] bench_s=34.047 interval_tps=33299.4 interval_committed=6665 interval_s=0.200154
+[TPC-C workload] bench_s=34.047 active_warehouses=32
+[TPS sample] bench_s=34.247 interval_tps=436338.1 interval_committed=87340 interval_s=0.200166
+[TPS sample] bench_s=34.447 interval_tps=459235.0 interval_committed=91929 interval_s=0.200179
+[TPS sample] bench_s=34.647 interval_tps=456218.5 interval_committed=91325 interval_s=0.200178
+[TPS sample] bench_s=34.847 interval_tps=467750.2 interval_committed=93632 interval_s=0.200175
+[TPS sample] bench_s=35.048 interval_tps=450564.8 interval_committed=90193 interval_s=0.200178
+[TPC-C workload] bench_s=35.048 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=35.248 interval_tps=455237.1 interval_committed=91141 interval_s=0.200206
+[TPS sample] bench_s=35.448 interval_tps=451597.2 interval_committed=90389 interval_s=0.200154
+[TPS sample] bench_s=35.648 interval_tps=444406.0 interval_committed=88970 interval_s=0.200200
+[TPS sample] bench_s=35.848 interval_tps=450385.3 interval_committed=90156 interval_s=0.200175
+[TPS sample] bench_s=36.049 interval_tps=435603.6 interval_committed=87197 interval_s=0.200175
+[TPC-C workload] bench_s=36.049 active_warehouses=1
+[TPS sample] bench_s=36.249 interval_tps=36636.4 interval_committed=7334 interval_s=0.200183
+[TPS sample] bench_s=36.449 interval_tps=31906.3 interval_committed=6386 interval_s=0.200149
+[TPS sample] bench_s=36.649 interval_tps=31387.2 interval_committed=6281 interval_s=0.200113
+[TPS sample] bench_s=36.849 interval_tps=31744.9 interval_committed=6354 interval_s=0.200158
+[TPS sample] bench_s=37.049 interval_tps=33389.9 interval_committed=6683 interval_s=0.200151
+[TPC-C workload] bench_s=37.050 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=37.250 interval_tps=31641.0 interval_committed=6337 interval_s=0.200278
+[TPS sample] bench_s=37.450 interval_tps=34215.4 interval_committed=6852 interval_s=0.200260
+[TPS sample] bench_s=37.650 interval_tps=32225.9 interval_committed=6453 interval_s=0.200243
+[TPS sample] bench_s=37.850 interval_tps=34270.9 interval_committed=6862 interval_s=0.200228
+[TPS sample] bench_s=38.050 interval_tps=32656.2 interval_committed=6535 interval_s=0.200115
+[TPC-C workload] bench_s=38.051 active_warehouses=32
+[TPS sample] bench_s=38.251 interval_tps=432351.8 interval_committed=86577 interval_s=0.200247
+[TPS sample] bench_s=38.451 interval_tps=446922.8 interval_committed=89494 interval_s=0.200245
+[TPS sample] bench_s=38.651 interval_tps=442361.9 interval_committed=88593 interval_s=0.200273
+[TPS sample] bench_s=38.851 interval_tps=447948.7 interval_committed=89715 interval_s=0.200280
+[TPS sample] bench_s=39.052 interval_tps=448749.9 interval_committed=89871 interval_s=0.200270
+[TPC-C workload] bench_s=39.052 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=39.252 interval_tps=440876.5 interval_committed=88288 interval_s=0.200256
+[TPS sample] bench_s=39.453 interval_tps=444521.4 interval_committed=89349 interval_s=0.201000
+[TPS sample] bench_s=39.653 interval_tps=440636.3 interval_committed=88189 interval_s=0.200140
+[TPS sample] bench_s=39.853 interval_tps=440590.1 interval_committed=88185 interval_s=0.200152
+[TPS sample] bench_s=40.053 interval_tps=445079.8 interval_committed=89077 interval_s=0.200137
+[TPC-C workload] bench_s=40.054 active_warehouses=1
+[TPS sample] bench_s=40.254 interval_tps=34645.2 interval_committed=6934 interval_s=0.200143
+[TPS sample] bench_s=40.454 interval_tps=33234.6 interval_committed=6651 interval_s=0.200123
+[TPS sample] bench_s=40.654 interval_tps=33939.6 interval_committed=6798 interval_s=0.200297
+[TPS sample] bench_s=40.854 interval_tps=31875.5 interval_committed=6379 interval_s=0.200122
+[TPS sample] bench_s=41.054 interval_tps=33214.1 interval_committed=6647 interval_s=0.200126
+[TPC-C workload] bench_s=41.057 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=41.257 interval_tps=31087.1 interval_committed=6303 interval_s=0.202753
+[TPS sample] bench_s=41.457 interval_tps=33805.5 interval_committed=6765 interval_s=0.200115
+[TPS sample] bench_s=41.657 interval_tps=33136.5 interval_committed=6631 interval_s=0.200112
+[TPS sample] bench_s=41.857 interval_tps=33480.3 interval_committed=6701 interval_s=0.200147
+[TPS sample] bench_s=42.058 interval_tps=33594.5 interval_committed=6724 interval_s=0.200152
+[TPC-C workload] bench_s=42.058 active_warehouses=32
+[TPS sample] bench_s=42.258 interval_tps=437027.9 interval_committed=87484 interval_s=0.200179
+[TPS sample] bench_s=42.458 interval_tps=443728.0 interval_committed=88826 interval_s=0.200181
+[TPS sample] bench_s=42.658 interval_tps=448620.0 interval_committed=89807 interval_s=0.200185
+[TPS sample] bench_s=42.858 interval_tps=447465.1 interval_committed=89567 interval_s=0.200165
+[TPS sample] bench_s=43.058 interval_tps=450728.5 interval_committed=90223 interval_s=0.200172
+[TPC-C workload] bench_s=43.059 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=43.259 interval_tps=442080.3 interval_committed=88506 interval_s=0.200203
+[TPS sample] bench_s=43.459 interval_tps=440144.1 interval_committed=88108 interval_s=0.200180
+[TPS sample] bench_s=43.659 interval_tps=442269.1 interval_committed=88533 interval_s=0.200179
+[TPS sample] bench_s=43.860 interval_tps=443551.5 interval_committed=89197 interval_s=0.201097
+[TPS sample] bench_s=44.060 interval_tps=448145.0 interval_committed=89710 interval_s=0.200181
+[TPC-C workload] bench_s=44.060 active_warehouses=1
+[TPS sample] bench_s=44.260 interval_tps=34468.4 interval_committed=6900 interval_s=0.200183
+[TPS sample] bench_s=44.461 interval_tps=34498.5 interval_committed=6905 interval_s=0.200154
+[TPS sample] bench_s=44.661 interval_tps=33514.5 interval_committed=6708 interval_s=0.200152
+[TPS sample] bench_s=44.861 interval_tps=35019.6 interval_committed=7009 interval_s=0.200145
+[TPS sample] bench_s=45.061 interval_tps=33740.5 interval_committed=6752 interval_s=0.200116
+[TPC-C workload] bench_s=45.061 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=45.261 interval_tps=33800.5 interval_committed=6766 interval_s=0.200175
+[TPS sample] bench_s=45.461 interval_tps=32006.4 interval_committed=6406 interval_s=0.200148
+[TPS sample] bench_s=45.661 interval_tps=32290.7 interval_committed=6463 interval_s=0.200150
+[TPS sample] bench_s=45.862 interval_tps=33889.2 interval_committed=6783 interval_s=0.200152
+[TPS sample] bench_s=46.062 interval_tps=33481.9 interval_committed=6701 interval_s=0.200138
+[TPC-C workload] bench_s=46.062 active_warehouses=32
+[TPS sample] bench_s=46.262 interval_tps=449748.5 interval_committed=90029 interval_s=0.200176
+[TPS sample] bench_s=46.462 interval_tps=454841.7 interval_committed=91050 interval_s=0.200180
+[TPS sample] bench_s=46.662 interval_tps=454125.7 interval_committed=90900 interval_s=0.200165
+[TPS sample] bench_s=46.865 interval_tps=456303.6 interval_committed=92533 interval_s=0.202788
+[TPS sample] bench_s=47.065 interval_tps=452055.1 interval_committed=90467 interval_s=0.200124
+[TPC-C workload] bench_s=47.065 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=47.265 interval_tps=458419.0 interval_committed=91749 interval_s=0.200142
+[TPS sample] bench_s=47.466 interval_tps=445207.5 interval_committed=89116 interval_s=0.200167
+[TPS sample] bench_s=47.666 interval_tps=445016.2 interval_committed=89079 interval_s=0.200170
+[TPS sample] bench_s=47.866 interval_tps=448049.8 interval_committed=89688 interval_s=0.200174
+[TPS sample] bench_s=48.066 interval_tps=445088.3 interval_committed=89088 interval_s=0.200158
+[TPC-C workload] bench_s=48.066 active_warehouses=1
+[TPS sample] bench_s=48.266 interval_tps=34804.4 interval_committed=6967 interval_s=0.200176
+[TPS sample] bench_s=48.466 interval_tps=31911.2 interval_committed=6387 interval_s=0.200149
+[TPS sample] bench_s=48.666 interval_tps=32995.6 interval_committed=6604 interval_s=0.200148
+[TPS sample] bench_s=48.867 interval_tps=32520.0 interval_committed=6509 interval_s=0.200154
+[TPS sample] bench_s=49.067 interval_tps=34258.6 interval_committed=6857 interval_s=0.200154
+[TPC-C workload] bench_s=49.067 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=49.267 interval_tps=33575.1 interval_committed=6722 interval_s=0.200208
+[TPS sample] bench_s=49.467 interval_tps=32486.0 interval_committed=6502 interval_s=0.200148
+[TPS sample] bench_s=49.667 interval_tps=34698.2 interval_committed=6945 interval_s=0.200154
+[TPS sample] bench_s=49.868 interval_tps=34827.1 interval_committed=6992 interval_s=0.200763
+[TPS sample] bench_s=50.068 interval_tps=32436.4 interval_committed=6492 interval_s=0.200145
+[TPC-C workload] bench_s=50.068 active_warehouses=32
+[TPS sample] bench_s=50.268 interval_tps=446457.5 interval_committed=89367 interval_s=0.200169
+[TPS sample] bench_s=50.469 interval_tps=443816.9 interval_committed=88837 interval_s=0.200166
+[TPS sample] bench_s=50.669 interval_tps=446093.4 interval_committed=89294 interval_s=0.200169
+[TPS sample] bench_s=50.869 interval_tps=443733.8 interval_committed=88837 interval_s=0.200203
+[TPS sample] bench_s=51.069 interval_tps=447206.7 interval_committed=89525 interval_s=0.200187
+[TPC-C workload] bench_s=51.069 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=51.269 interval_tps=451712.3 interval_committed=90426 interval_s=0.200185
+[TPS sample] bench_s=51.469 interval_tps=445274.4 interval_committed=89139 interval_s=0.200189
+[TPS sample] bench_s=51.670 interval_tps=448317.7 interval_committed=89749 interval_s=0.200191
+[TPS sample] bench_s=51.872 interval_tps=446451.4 interval_committed=90364 interval_s=0.202405
+[TPS sample] bench_s=52.072 interval_tps=451051.7 interval_committed=90337 interval_s=0.200281
+[TPC-C workload] bench_s=52.072 active_warehouses=1
+[TPS sample] bench_s=52.272 interval_tps=34781.9 interval_committed=6961 interval_s=0.200133
+[TPS sample] bench_s=52.473 interval_tps=33504.5 interval_committed=6706 interval_s=0.200152
+[TPS sample] bench_s=52.673 interval_tps=33599.6 interval_committed=6725 interval_s=0.200151
+[TPS sample] bench_s=52.873 interval_tps=31597.8 interval_committed=6325 interval_s=0.200172
+[TPS sample] bench_s=53.073 interval_tps=32518.4 interval_committed=6509 interval_s=0.200163
+[TPC-C workload] bench_s=53.073 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=53.273 interval_tps=32953.0 interval_committed=6596 interval_s=0.200164
+[TPS sample] bench_s=53.473 interval_tps=31928.8 interval_committed=6391 interval_s=0.200164
+[TPS sample] bench_s=53.674 interval_tps=33458.9 interval_committed=6697 interval_s=0.200156
+[TPS sample] bench_s=53.876 interval_tps=33064.3 interval_committed=6694 interval_s=0.202454
+[TPS sample] bench_s=54.076 interval_tps=33659.4 interval_committed=6736 interval_s=0.200123
+[TPC-C workload] bench_s=54.076 active_warehouses=32
+[TPS sample] bench_s=54.276 interval_tps=430518.7 interval_committed=86178 interval_s=0.200173
+[TPS sample] bench_s=54.477 interval_tps=449127.9 interval_committed=89897 interval_s=0.200159
+[TPS sample] bench_s=54.677 interval_tps=455914.5 interval_committed=91258 interval_s=0.200165
+[TPS sample] bench_s=54.877 interval_tps=455922.4 interval_committed=91268 interval_s=0.200183
+[TPS sample] bench_s=55.077 interval_tps=442133.2 interval_committed=88492 interval_s=0.200148
+[TPC-C workload] bench_s=55.077 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=55.277 interval_tps=434544.6 interval_committed=86994 interval_s=0.200196
+[TPS sample] bench_s=55.477 interval_tps=443643.0 interval_committed=88814 interval_s=0.200193
+[TPS sample] bench_s=55.678 interval_tps=446311.9 interval_committed=89346 interval_s=0.200187
+[TPS sample] bench_s=55.878 interval_tps=436611.7 interval_committed=87401 interval_s=0.200180
+[TPS sample] bench_s=56.078 interval_tps=433275.9 interval_committed=86729 interval_s=0.200170
+[TPC-C workload] bench_s=56.078 active_warehouses=1
+[TPS sample] bench_s=56.278 interval_tps=34196.1 interval_committed=6846 interval_s=0.200199
+[TPS sample] bench_s=56.478 interval_tps=33833.7 interval_committed=6772 interval_s=0.200155
+[TPS sample] bench_s=56.678 interval_tps=33680.1 interval_committed=6741 interval_s=0.200148
+[TPS sample] bench_s=56.879 interval_tps=34124.1 interval_committed=6830 interval_s=0.200152
+[TPS sample] bench_s=57.079 interval_tps=34165.3 interval_committed=6838 interval_s=0.200145
+[TPC-C workload] bench_s=57.079 active_warehouses=1 applied_workers=96/96
+[TPS sample] bench_s=57.279 interval_tps=33317.2 interval_committed=6669 interval_s=0.200167
+[TPS sample] bench_s=57.479 interval_tps=32358.1 interval_committed=6477 interval_s=0.200166
+[TPS sample] bench_s=57.679 interval_tps=32989.8 interval_committed=6603 interval_s=0.200153
+[TPS sample] bench_s=57.879 interval_tps=33665.1 interval_committed=6738 interval_s=0.200148
+[TPS sample] bench_s=58.082 interval_tps=34076.6 interval_committed=6907 interval_s=0.202690
+[TPC-C workload] bench_s=58.082 active_warehouses=32
+[TPS sample] bench_s=58.282 interval_tps=450658.8 interval_committed=90188 interval_s=0.200125
+[TPS sample] bench_s=58.482 interval_tps=450460.1 interval_committed=90146 interval_s=0.200120
+[TPS sample] bench_s=58.682 interval_tps=457812.5 interval_committed=91648 interval_s=0.200187
+[TPS sample] bench_s=58.883 interval_tps=451254.3 interval_committed=90338 interval_s=0.200193
+[TPS sample] bench_s=59.083 interval_tps=449909.9 interval_committed=90071 interval_s=0.200198
+[TPC-C workload] bench_s=59.083 active_warehouses=32 applied_workers=96/96
+[TPS sample] bench_s=59.283 interval_tps=447678.5 interval_committed=89634 interval_s=0.200220
+[TPS sample] bench_s=59.483 interval_tps=446329.1 interval_committed=89355 interval_s=0.200200
+[TPS sample] bench_s=59.684 interval_tps=452962.0 interval_committed=90944 interval_s=0.200776
+[TPS sample] bench_s=59.884 interval_tps=448294.2 interval_committed=89744 interval_s=0.200190
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 1: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	60
+success_forwarding_:	0
+abort_counts_:	8848343
+batch_abort_counts_:	0
+commit_counts_:	14388051
+batch_commit_counts_:	0
+maxrss:	47366408 kB
+abort_rate:	0.3808
+batch_abort_rate:	-nan
+latency[ns]:	400333.6113
+throughput[tps]:	239800
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 6473712
+    aborts: 1913084
+    abort rate: 0.2281
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 6187701
+    aborts: 191276
+    abort rate: 0.0300
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 575387
+    aborts: 49
+    abort rate: 0.0001
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 575435
+    aborts: 5941501
+    abort rate: 0.9117
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 575816
+    aborts: 802433
+    abort rate: 0.5822
+    latency[us]: 0.00
+  Summary: 6473712,1913084,6187701,191276,575387,49,575435,5941501,575816,802433,
+  All transaction total latencies: 0,0,0,0,0,

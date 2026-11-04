@@ -117,23 +117,25 @@ public:
   void dispRS();
 
   void upReadersBits(Version* ver) {
-    uint64_t expected, desired;
-    expected = ver->readers_.load(memory_order_acquire);
+    auto& word = ver->readers_[thid_ / 64];
+    const uint64_t bit = 1ULL << (thid_ % 64);
+    uint64_t expected = word.load(memory_order_acquire), desired;
     for (;;) {
-      desired = expected | (1 << thid_);
-      if (ver->readers_.compare_exchange_weak(
-              expected, desired, memory_order_acq_rel, memory_order_acquire))
+      desired = expected | bit;
+      if (word.compare_exchange_weak(expected, desired, memory_order_acq_rel,
+                                     memory_order_acquire))
         break;
     }
   }
 
   void downReadersBits(Version* ver) {
-    uint64_t expected, desired;
-    expected = ver->readers_.load(memory_order_acquire);
+    auto& word = ver->readers_[thid_ / 64];
+    const uint64_t bit = 1ULL << (thid_ % 64);
+    uint64_t expected = word.load(memory_order_acquire), desired;
     for (;;) {
-      desired = expected & ~(1 << thid_);
-      if (ver->readers_.compare_exchange_weak(
-              expected, desired, memory_order_acq_rel, memory_order_acquire))
+      desired = expected & ~bit;
+      if (word.compare_exchange_weak(expected, desired, memory_order_acq_rel,
+                                     memory_order_acquire))
         break;
     }
   }

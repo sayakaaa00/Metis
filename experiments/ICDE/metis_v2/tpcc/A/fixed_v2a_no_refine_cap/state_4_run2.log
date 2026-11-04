@@ -1,0 +1,63 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		10
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261103_082512.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_item_zipf_enable:	false
+#FLAGS_tpcc_active_warehouse_count:	4
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	10
+success_forwarding_:	0
+abort_counts_:	1325712
+batch_abort_counts_:	0
+commit_counts_:	1191516
+batch_commit_counts_:	0
+maxrss:	23074464 kB
+abort_rate:	0.5267
+batch_abort_rate:	-nan
+latency[ns]:	805700.3298
+throughput[tps]:	119151
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 536190
+    aborts: 281210
+    abort rate: 0.3440
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 512278
+    aborts: 17918
+    abort rate: 0.0338
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 47505
+    aborts: 4
+    abort rate: 0.0001
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 48046
+    aborts: 954334
+    abort rate: 0.9521
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 47497
+    aborts: 72246
+    abort rate: 0.6033
+    latency[us]: 0.00
+  Summary: 536190,281210,512278,17918,47505,4,48046,954334,47497,72246,
+  All transaction total latencies: 0,0,0,0,0,

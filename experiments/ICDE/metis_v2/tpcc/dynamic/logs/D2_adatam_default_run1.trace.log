@@ -1,0 +1,905 @@
+[TPC-C workload] bench_s=0.000 active_warehouses=2
+[AdaTAM] active_threads=94 committed_txs=9248 tput=10937 tx/s
+[TPS sample] bench_s=0.200 interval_tps=46185.8 interval_committed=9248 interval_s=0.200235
+[TAM sample] bench_s=0.200 active_threads=94
+[AdaTAM] active_threads=92 committed_txs=17398 tput=40727 tx/s
+[TPS sample] bench_s=0.400 interval_tps=40726.6 interval_committed=8150 interval_s=0.200115
+[TAM sample] bench_s=0.400 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=27848 tput=52220 tx/s
+[TPS sample] bench_s=0.601 interval_tps=52161.2 interval_committed=10450 interval_s=0.200340
+[TAM sample] bench_s=0.601 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=39176 tput=56482 tx/s
+[TPS sample] bench_s=0.801 interval_tps=56478.0 interval_committed=11328 interval_s=0.200574
+[TAM sample] bench_s=0.801 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=51964 tput=63769 tx/s
+[TPS sample] bench_s=1.002 interval_tps=63796.2 interval_committed=12788 interval_s=0.200451
+[TAM sample] bench_s=1.002 active_threads=86
+[TPC-C workload] bench_s=1.002 active_warehouses=2 applied_workers=86/86
+[AdaTAM] active_threads=88 committed_txs=63733 tput=58701 tx/s
+[TPS sample] bench_s=1.202 interval_tps=58746.0 interval_committed=11769 interval_s=0.200337
+[TAM sample] bench_s=1.202 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=75769 tput=60145 tx/s
+[TPS sample] bench_s=1.402 interval_tps=60146.0 interval_committed=12036 interval_s=0.200113
+[TAM sample] bench_s=1.402 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=87887 tput=60558 tx/s
+[TPS sample] bench_s=1.602 interval_tps=60518.7 interval_committed=12118 interval_s=0.200236
+[TAM sample] bench_s=1.602 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=99595 tput=58478 tx/s
+[TPS sample] bench_s=1.802 interval_tps=58515.4 interval_committed=11708 interval_s=0.200084
+[TAM sample] bench_s=1.802 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=112164 tput=62817 tx/s
+[TPS sample] bench_s=2.003 interval_tps=62768.3 interval_committed=12569 interval_s=0.200244
+[TAM sample] bench_s=2.003 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=125236 tput=65281 tx/s
+[TPS sample] bench_s=2.203 interval_tps=65328.2 interval_committed=13072 interval_s=0.200097
+[TAM sample] bench_s=2.203 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=138542 tput=66489 tx/s
+[TPS sample] bench_s=2.403 interval_tps=66491.9 interval_committed=13306 interval_s=0.200114
+[TAM sample] bench_s=2.403 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=151738 tput=65945 tx/s
+[TPS sample] bench_s=2.603 interval_tps=65945.8 interval_committed=13196 interval_s=0.200104
+[TAM sample] bench_s=2.603 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=165569 tput=69114 tx/s
+[TPS sample] bench_s=2.803 interval_tps=69113.3 interval_committed=13831 interval_s=0.200121
+[TAM sample] bench_s=2.803 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=178172 tput=62981 tx/s
+[TPS sample] bench_s=3.003 interval_tps=62977.0 interval_committed=12603 interval_s=0.200121
+[TAM sample] bench_s=3.003 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=191292 tput=65572 tx/s
+[TPS sample] bench_s=3.203 interval_tps=65577.9 interval_committed=13120 interval_s=0.200067
+[TAM sample] bench_s=3.203 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=205704 tput=72021 tx/s
+[TPS sample] bench_s=3.403 interval_tps=72020.6 interval_committed=14412 interval_s=0.200110
+[TAM sample] bench_s=3.403 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=219269 tput=67800 tx/s
+[TPS sample] bench_s=3.604 interval_tps=67795.6 interval_committed=13565 interval_s=0.200087
+[TAM sample] bench_s=3.604 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=233227 tput=69747 tx/s
+[TPS sample] bench_s=3.804 interval_tps=69750.7 interval_committed=13958 interval_s=0.200113
+[TAM sample] bench_s=3.804 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=246269 tput=65173 tx/s
+[TPS sample] bench_s=4.004 interval_tps=65174.1 interval_committed=13042 interval_s=0.200110
+[TAM sample] bench_s=4.004 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=259903 tput=68126 tx/s
+[TPS sample] bench_s=4.204 interval_tps=68126.6 interval_committed=13634 interval_s=0.200128
+[TAM sample] bench_s=4.204 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=272929 tput=65094 tx/s
+[TPS sample] bench_s=4.404 interval_tps=65089.0 interval_committed=13026 interval_s=0.200126
+[TAM sample] bench_s=4.404 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=286178 tput=66202 tx/s
+[TPS sample] bench_s=4.604 interval_tps=66206.6 interval_committed=13249 interval_s=0.200116
+[TAM sample] bench_s=4.604 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=299368 tput=65916 tx/s
+[TPS sample] bench_s=4.804 interval_tps=65913.9 interval_committed=13190 interval_s=0.200110
+[TAM sample] bench_s=4.804 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=312677 tput=66512 tx/s
+[TPS sample] bench_s=5.004 interval_tps=66516.7 interval_committed=13309 interval_s=0.200085
+[TAM sample] bench_s=5.004 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=325225 tput=62707 tx/s
+[TPS sample] bench_s=5.204 interval_tps=62706.0 interval_committed=12548 interval_s=0.200108
+[TAM sample] bench_s=5.204 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=338143 tput=64552 tx/s
+[TPS sample] bench_s=5.405 interval_tps=64551.1 interval_committed=12918 interval_s=0.200120
+[TAM sample] bench_s=5.405 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=350446 tput=61480 tx/s
+[TPS sample] bench_s=5.605 interval_tps=61481.1 interval_committed=12303 interval_s=0.200110
+[TAM sample] bench_s=5.605 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=363909 tput=67278 tx/s
+[TPS sample] bench_s=5.805 interval_tps=67277.2 interval_committed=13463 interval_s=0.200112
+[TAM sample] bench_s=5.805 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=377112 tput=65980 tx/s
+[TPS sample] bench_s=6.005 interval_tps=65983.3 interval_committed=13203 interval_s=0.200096
+[TAM sample] bench_s=6.005 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=390410 tput=66461 tx/s
+[TPS sample] bench_s=6.205 interval_tps=66458.4 interval_committed=13298 interval_s=0.200095
+[TAM sample] bench_s=6.205 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=403509 tput=65473 tx/s
+[TPS sample] bench_s=6.405 interval_tps=65469.4 interval_committed=13099 interval_s=0.200078
+[TAM sample] bench_s=6.405 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=416252 tput=63679 tx/s
+[TPS sample] bench_s=6.605 interval_tps=63681.6 interval_committed=12743 interval_s=0.200105
+[TAM sample] bench_s=6.605 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=429337 tput=65404 tx/s
+[TPS sample] bench_s=6.805 interval_tps=65403.6 interval_committed=13085 interval_s=0.200066
+[TAM sample] bench_s=6.805 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=441747 tput=62018 tx/s
+[TPS sample] bench_s=7.005 interval_tps=62014.9 interval_committed=12410 interval_s=0.200113
+[TAM sample] bench_s=7.005 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=454252 tput=62486 tx/s
+[TPS sample] bench_s=7.205 interval_tps=62489.1 interval_committed=12505 interval_s=0.200115
+[TAM sample] bench_s=7.205 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=466956 tput=63484 tx/s
+[TPS sample] bench_s=7.406 interval_tps=63484.0 interval_committed=12704 interval_s=0.200113
+[TAM sample] bench_s=7.406 active_threads=82
+[AdaTAM] active_threads=80 committed_txs=479726 tput=63814 tx/s
+[TPS sample] bench_s=7.606 interval_tps=63814.1 interval_committed=12770 interval_s=0.200113
+[TAM sample] bench_s=7.606 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=492688 tput=64781 tx/s
+[TPS sample] bench_s=7.806 interval_tps=64781.9 interval_committed=12962 interval_s=0.200087
+[TAM sample] bench_s=7.806 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=506855 tput=70796 tx/s
+[TPS sample] bench_s=8.006 interval_tps=70793.5 interval_committed=14167 interval_s=0.200117
+[TAM sample] bench_s=8.006 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=519287 tput=62124 tx/s
+[TPS sample] bench_s=8.206 interval_tps=62116.8 interval_committed=12432 interval_s=0.200139
+[TAM sample] bench_s=8.206 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=532265 tput=64854 tx/s
+[TPS sample] bench_s=8.406 interval_tps=64859.5 interval_committed=12978 interval_s=0.200094
+[TAM sample] bench_s=8.406 active_threads=80
+[AdaTAM] active_threads=82 committed_txs=545477 tput=66020 tx/s
+[TPS sample] bench_s=8.606 interval_tps=66022.5 interval_committed=13212 interval_s=0.200113
+[TAM sample] bench_s=8.606 active_threads=82
+[AdaTAM] active_threads=80 committed_txs=558478 tput=64969 tx/s
+[TPS sample] bench_s=8.806 interval_tps=64968.9 interval_committed=13001 interval_s=0.200111
+[TAM sample] bench_s=8.806 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=572004 tput=67598 tx/s
+[TPS sample] bench_s=9.006 interval_tps=67594.2 interval_committed=13526 interval_s=0.200106
+[TAM sample] bench_s=9.006 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=585207 tput=65980 tx/s
+[TPS sample] bench_s=9.207 interval_tps=65979.9 interval_committed=13203 interval_s=0.200107
+[TAM sample] bench_s=9.207 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=597941 tput=63636 tx/s
+[TPS sample] bench_s=9.407 interval_tps=63637.5 interval_committed=12734 interval_s=0.200102
+[TAM sample] bench_s=9.407 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=611282 tput=66667 tx/s
+[TPS sample] bench_s=9.607 interval_tps=66668.0 interval_committed=13341 interval_s=0.200111
+[TAM sample] bench_s=9.607 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=624576 tput=66433 tx/s
+[TPS sample] bench_s=9.807 interval_tps=66431.1 interval_committed=13294 interval_s=0.200117
+[TAM sample] bench_s=9.807 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=637744 tput=65801 tx/s
+[TPS sample] bench_s=10.007 interval_tps=65799.9 interval_committed=13168 interval_s=0.200122
+[TAM sample] bench_s=10.007 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=651589 tput=69182 tx/s
+[TPS sample] bench_s=10.207 interval_tps=69185.9 interval_committed=13845 interval_s=0.200113
+[TAM sample] bench_s=10.207 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=665348 tput=68757 tx/s
+[TPS sample] bench_s=10.407 interval_tps=68758.7 interval_committed=13759 interval_s=0.200106
+[TAM sample] bench_s=10.407 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=678623 tput=66340 tx/s
+[TPS sample] bench_s=10.607 interval_tps=66338.3 interval_committed=13275 interval_s=0.200111
+[TAM sample] bench_s=10.607 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=692077 tput=67232 tx/s
+[TPS sample] bench_s=10.807 interval_tps=67232.4 interval_committed=13454 interval_s=0.200112
+[TAM sample] bench_s=10.807 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=704824 tput=63700 tx/s
+[TPS sample] bench_s=11.008 interval_tps=63701.7 interval_committed=12747 interval_s=0.200105
+[TAM sample] bench_s=11.008 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=717480 tput=63247 tx/s
+[TPS sample] bench_s=11.208 interval_tps=63244.3 interval_committed=12656 interval_s=0.200113
+[TAM sample] bench_s=11.208 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=731275 tput=68943 tx/s
+[TPS sample] bench_s=11.408 interval_tps=68939.5 interval_committed=13795 interval_s=0.200103
+[TAM sample] bench_s=11.408 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=744828 tput=67723 tx/s
+[TPS sample] bench_s=11.608 interval_tps=67727.7 interval_committed=13553 interval_s=0.200110
+[TAM sample] bench_s=11.608 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=758253 tput=67088 tx/s
+[TPS sample] bench_s=11.808 interval_tps=67082.9 interval_committed=13425 interval_s=0.200126
+[TAM sample] bench_s=11.808 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=772054 tput=68960 tx/s
+[TPS sample] bench_s=12.008 interval_tps=68964.9 interval_committed=13801 interval_s=0.200116
+[TAM sample] bench_s=12.008 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=785228 tput=65833 tx/s
+[TPS sample] bench_s=12.208 interval_tps=65829.5 interval_committed=13174 interval_s=0.200123
+[TAM sample] bench_s=12.208 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=798174 tput=64691 tx/s
+[TPS sample] bench_s=12.408 interval_tps=64694.2 interval_committed=12946 interval_s=0.200111
+[TAM sample] bench_s=12.408 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=810797 tput=63080 tx/s
+[TPS sample] bench_s=12.608 interval_tps=63080.1 interval_committed=12623 interval_s=0.200111
+[TAM sample] bench_s=12.608 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=823551 tput=63734 tx/s
+[TPS sample] bench_s=12.809 interval_tps=63734.5 interval_committed=12754 interval_s=0.200111
+[TAM sample] bench_s=12.809 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=837652 tput=70467 tx/s
+[TPS sample] bench_s=13.009 interval_tps=70465.3 interval_committed=14101 interval_s=0.200113
+[TAM sample] bench_s=13.009 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=851131 tput=67367 tx/s
+[TPS sample] bench_s=13.209 interval_tps=67362.0 interval_committed=13479 interval_s=0.200098
+[TAM sample] bench_s=13.209 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=863828 tput=63450 tx/s
+[TPS sample] bench_s=13.409 interval_tps=63455.9 interval_committed=12697 interval_s=0.200092
+[TAM sample] bench_s=13.409 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=877165 tput=66644 tx/s
+[TPS sample] bench_s=13.609 interval_tps=66638.4 interval_committed=13337 interval_s=0.200140
+[TAM sample] bench_s=13.609 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=890651 tput=67395 tx/s
+[TPS sample] bench_s=13.809 interval_tps=67398.0 interval_committed=13486 interval_s=0.200095
+[TAM sample] bench_s=13.809 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=903878 tput=66096 tx/s
+[TPS sample] bench_s=14.009 interval_tps=66098.1 interval_committed=13227 interval_s=0.200112
+[TAM sample] bench_s=14.009 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=916902 tput=65083 tx/s
+[TPS sample] bench_s=14.209 interval_tps=65082.7 interval_committed=13024 interval_s=0.200115
+[TAM sample] bench_s=14.209 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=930415 tput=67527 tx/s
+[TPS sample] bench_s=14.409 interval_tps=67527.9 interval_committed=13513 interval_s=0.200110
+[TAM sample] bench_s=14.409 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=943847 tput=67130 tx/s
+[TPS sample] bench_s=14.610 interval_tps=67125.7 interval_committed=13432 interval_s=0.200102
+[TAM sample] bench_s=14.610 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=957393 tput=67690 tx/s
+[TPS sample] bench_s=14.810 interval_tps=67691.2 interval_committed=13546 interval_s=0.200115
+[TAM sample] bench_s=14.810 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=970737 tput=66679 tx/s
+[TPS sample] bench_s=15.010 interval_tps=66682.2 interval_committed=13344 interval_s=0.200113
+[TAM sample] bench_s=15.010 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=981861 tput=55590 tx/s
+[TPS sample] bench_s=15.210 interval_tps=55586.6 interval_committed=11124 interval_s=0.200120
+[TAM sample] bench_s=15.210 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=994797 tput=64641 tx/s
+[TPS sample] bench_s=15.410 interval_tps=64638.1 interval_committed=12936 interval_s=0.200130
+[TAM sample] bench_s=15.410 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=1008363 tput=67789 tx/s
+[TPS sample] bench_s=15.610 interval_tps=67791.1 interval_committed=13566 interval_s=0.200115
+[TAM sample] bench_s=15.610 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=1021116 tput=63730 tx/s
+[TPS sample] bench_s=15.810 interval_tps=63732.2 interval_committed=12753 interval_s=0.200103
+[TAM sample] bench_s=15.810 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=1034267 tput=65717 tx/s
+[TPS sample] bench_s=16.010 interval_tps=65717.5 interval_committed=13151 interval_s=0.200114
+[TAM sample] bench_s=16.010 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=1047689 tput=67082 tx/s
+[TPS sample] bench_s=16.210 interval_tps=67079.9 interval_committed=13422 interval_s=0.200090
+[TAM sample] bench_s=16.210 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=1061253 tput=67779 tx/s
+[TPS sample] bench_s=16.411 interval_tps=67781.1 interval_committed=13564 interval_s=0.200115
+[TAM sample] bench_s=16.411 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=1074394 tput=65667 tx/s
+[TPS sample] bench_s=16.611 interval_tps=65666.6 interval_committed=13141 interval_s=0.200117
+[TAM sample] bench_s=16.611 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=1087313 tput=64562 tx/s
+[TPS sample] bench_s=16.811 interval_tps=64559.4 interval_committed=12919 interval_s=0.200110
+[TAM sample] bench_s=16.811 active_threads=80
+[AdaTAM] active_threads=82 committed_txs=1100548 tput=66132 tx/s
+[TPS sample] bench_s=17.011 interval_tps=66136.7 interval_committed=13235 interval_s=0.200116
+[TAM sample] bench_s=17.011 active_threads=82
+[AdaTAM] active_threads=80 committed_txs=1113301 tput=63737 tx/s
+[TPS sample] bench_s=17.211 interval_tps=63731.2 interval_committed=12753 interval_s=0.200106
+[TAM sample] bench_s=17.211 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=1126921 tput=68056 tx/s
+[TPS sample] bench_s=17.411 interval_tps=68062.9 interval_committed=13620 interval_s=0.200109
+[TAM sample] bench_s=17.411 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=1139882 tput=64769 tx/s
+[TPS sample] bench_s=17.611 interval_tps=64767.9 interval_committed=12961 interval_s=0.200115
+[TAM sample] bench_s=17.611 active_threads=80
+[AdaTAM] active_threads=82 committed_txs=1152980 tput=65451 tx/s
+[TPS sample] bench_s=17.811 interval_tps=65450.0 interval_committed=13098 interval_s=0.200122
+[TAM sample] bench_s=17.811 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=1166521 tput=67665 tx/s
+[TPS sample] bench_s=18.011 interval_tps=67666.6 interval_committed=13541 interval_s=0.200114
+[TAM sample] bench_s=18.011 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=1179025 tput=62485 tx/s
+[TPS sample] bench_s=18.212 interval_tps=62484.3 interval_committed=12504 interval_s=0.200114
+[TAM sample] bench_s=18.212 active_threads=82
+[AdaTAM] active_threads=80 committed_txs=1192160 tput=65644 tx/s
+[TPS sample] bench_s=18.412 interval_tps=65642.6 interval_committed=13135 interval_s=0.200099
+[TAM sample] bench_s=18.412 active_threads=80
+[AdaTAM] active_threads=82 committed_txs=1205169 tput=65008 tx/s
+[TPS sample] bench_s=18.612 interval_tps=65010.0 interval_committed=13009 interval_s=0.200108
+[TAM sample] bench_s=18.612 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=1219604 tput=72131 tx/s
+[TPS sample] bench_s=18.812 interval_tps=72130.3 interval_committed=14435 interval_s=0.200124
+[TAM sample] bench_s=18.812 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=1232936 tput=66625 tx/s
+[TPS sample] bench_s=19.012 interval_tps=66619.5 interval_committed=13332 interval_s=0.200122
+[TAM sample] bench_s=19.012 active_threads=82
+[AdaTAM] active_threads=84 committed_txs=1246064 tput=65604 tx/s
+[TPS sample] bench_s=19.212 interval_tps=65605.8 interval_committed=13128 interval_s=0.200104
+[TAM sample] bench_s=19.212 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=1259480 tput=67049 tx/s
+[TPS sample] bench_s=19.412 interval_tps=67002.8 interval_committed=13416 interval_s=0.200231
+[TAM sample] bench_s=19.412 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=1272943 tput=67227 tx/s
+[TPS sample] bench_s=19.612 interval_tps=67279.4 interval_committed=13463 interval_s=0.200106
+[TAM sample] bench_s=19.612 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=1286306 tput=66789 tx/s
+[TPS sample] bench_s=19.813 interval_tps=66784.4 interval_committed=13363 interval_s=0.200092
+[TAM sample] bench_s=19.813 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=1298546 tput=61163 tx/s
+[TPS sample] bench_s=20.013 interval_tps=61165.6 interval_committed=12240 interval_s=0.200113
+[TAM sample] bench_s=20.013 active_threads=88
+[TPC-C workload] bench_s=20.013 active_warehouses=96
+[AdaTAM] active_threads=90 committed_txs=1428717 tput=650433 tx/s
+[TPS sample] bench_s=20.213 interval_tps=650408.2 interval_committed=130171 interval_s=0.200137
+[TAM sample] bench_s=20.213 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=1586297 tput=787377 tx/s
+[TPS sample] bench_s=20.413 interval_tps=787343.9 interval_committed=157580 interval_s=0.200141
+[TAM sample] bench_s=20.413 active_threads=92
+[AdaTAM] active_threads=94 committed_txs=1744753 tput=791842 tx/s
+[TPS sample] bench_s=20.613 interval_tps=791207.4 interval_committed=158456 interval_s=0.200271
+[TAM sample] bench_s=20.613 active_threads=94
+[AdaTAM] active_threads=96 committed_txs=1906043 tput=805229 tx/s
+[TPS sample] bench_s=20.813 interval_tps=805933.8 interval_committed=161290 interval_s=0.200128
+[TAM sample] bench_s=20.813 active_threads=96
+[AdaTAM] active_threads=94 committed_txs=2064378 tput=791178 tx/s
+[TPS sample] bench_s=21.014 interval_tps=790531.6 interval_committed=158335 interval_s=0.200289
+[TAM sample] bench_s=21.014 active_threads=94
+[TPC-C workload] bench_s=21.014 active_warehouses=96 applied_workers=94/94
+[AdaTAM] active_threads=96 committed_txs=2219988 tput=775857 tx/s
+[TPS sample] bench_s=21.214 interval_tps=775848.7 interval_committed=155610 interval_s=0.200567
+[TAM sample] bench_s=21.214 active_threads=96
+[AdaTAM] active_threads=96 committed_txs=2381894 tput=807722 tx/s
+[TPS sample] bench_s=21.415 interval_tps=807688.0 interval_committed=161906 interval_s=0.200456
+[TAM sample] bench_s=21.415 active_threads=96
+[AdaTAM] active_threads=96 committed_txs=2543477 tput=806096 tx/s
+[TPS sample] bench_s=21.615 interval_tps=805709.4 interval_committed=161583 interval_s=0.200548
+[TAM sample] bench_s=21.615 active_threads=96
+[AdaTAM] active_threads=94 committed_txs=2703994 tput=800280 tx/s
+[TPS sample] bench_s=21.816 interval_tps=800250.7 interval_committed=160517 interval_s=0.200583
+[TAM sample] bench_s=21.816 active_threads=94
+[AdaTAM] active_threads=92 committed_txs=2865419 tput=803512 tx/s
+[TPS sample] bench_s=22.017 interval_tps=803506.0 interval_committed=161425 interval_s=0.200901
+[TAM sample] bench_s=22.017 active_threads=92
+[AdaTAM] active_threads=94 committed_txs=3022390 tput=782637 tx/s
+[TPS sample] bench_s=22.217 interval_tps=782578.4 interval_committed=156971 interval_s=0.200582
+[TAM sample] bench_s=22.217 active_threads=94
+[AdaTAM] active_threads=96 committed_txs=3182861 tput=800803 tx/s
+[TPS sample] bench_s=22.418 interval_tps=801174.6 interval_committed=160471 interval_s=0.200295
+[TAM sample] bench_s=22.418 active_threads=96
+[AdaTAM] active_threads=96 committed_txs=3344672 tput=806351 tx/s
+[TPS sample] bench_s=22.618 interval_tps=806427.8 interval_committed=161811 interval_s=0.200652
+[TAM sample] bench_s=22.618 active_threads=96
+[AdaTAM] active_threads=94 committed_txs=3510508 tput=827178 tx/s
+[TPS sample] bench_s=22.819 interval_tps=826808.3 interval_committed=165836 interval_s=0.200574
+[TAM sample] bench_s=22.819 active_threads=94
+[AdaTAM] active_threads=92 committed_txs=3685021 tput=869958 tx/s
+[TPS sample] bench_s=23.019 interval_tps=869972.0 interval_committed=174513 interval_s=0.200596
+[TAM sample] bench_s=23.019 active_threads=92
+[AdaTAM] active_threads=94 committed_txs=3858658 tput=865692 tx/s
+[TPS sample] bench_s=23.220 interval_tps=865495.5 interval_committed=173637 interval_s=0.200621
+[TAM sample] bench_s=23.220 active_threads=94
+[AdaTAM] active_threads=96 committed_txs=4035933 tput=883435 tx/s
+[TPS sample] bench_s=23.424 interval_tps=869070.5 interval_committed=177275 interval_s=0.203982
+[TAM sample] bench_s=23.424 active_threads=96
+[AdaTAM] active_threads=94 committed_txs=4215030 tput=878823 tx/s
+[TPS sample] bench_s=23.624 interval_tps=894758.7 interval_committed=179097 interval_s=0.200162
+[TAM sample] bench_s=23.624 active_threads=94
+[AdaTAM] active_threads=96 committed_txs=4387911 tput=864024 tx/s
+[TPS sample] bench_s=23.826 interval_tps=854605.7 interval_committed=172881 interval_s=0.202293
+[TAM sample] bench_s=23.826 active_threads=96
+[AdaTAM] active_threads=96 committed_txs=4564048 tput=870099 tx/s
+[TPS sample] bench_s=24.027 interval_tps=878581.8 interval_committed=176137 interval_s=0.200479
+[TAM sample] bench_s=24.027 active_threads=96
+[AdaTAM] active_threads=96 committed_txs=4736349 tput=859150 tx/s
+[TPS sample] bench_s=24.227 interval_tps=859253.3 interval_committed=172301 interval_s=0.200524
+[TAM sample] bench_s=24.227 active_threads=96
+[AdaTAM] active_threads=96 committed_txs=4910395 tput=868680 tx/s
+[TPS sample] bench_s=24.430 interval_tps=859322.8 interval_committed=174046 interval_s=0.202539
+[TAM sample] bench_s=24.430 active_threads=96
+[AdaTAM] active_threads=94 committed_txs=5088568 tput=879565 tx/s
+[TPS sample] bench_s=24.630 interval_tps=890161.0 interval_committed=178173 interval_s=0.200158
+[TAM sample] bench_s=24.630 active_threads=94
+[AdaTAM] active_threads=96 committed_txs=5263923 tput=876327 tx/s
+[TPS sample] bench_s=24.830 interval_tps=876327.2 interval_committed=175355 interval_s=0.200102
+[TAM sample] bench_s=24.830 active_threads=96
+[AdaTAM] active_threads=94 committed_txs=5435876 tput=858132 tx/s
+[TPS sample] bench_s=25.031 interval_tps=857064.7 interval_committed=171953 interval_s=0.200630
+[TAM sample] bench_s=25.031 active_threads=94
+[AdaTAM] active_threads=92 committed_txs=5609719 tput=867084 tx/s
+[TPS sample] bench_s=25.231 interval_tps=866950.8 interval_committed=173843 interval_s=0.200522
+[TAM sample] bench_s=25.231 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=5785241 tput=874937 tx/s
+[TPS sample] bench_s=25.432 interval_tps=874885.9 interval_committed=175522 interval_s=0.200623
+[TAM sample] bench_s=25.432 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=5962466 tput=883341 tx/s
+[TPS sample] bench_s=25.633 interval_tps=883481.9 interval_committed=177225 interval_s=0.200598
+[TAM sample] bench_s=25.633 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=6137658 tput=874326 tx/s
+[TPS sample] bench_s=25.833 interval_tps=874297.9 interval_committed=175192 interval_s=0.200380
+[TAM sample] bench_s=25.833 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=6310667 tput=863352 tx/s
+[TPS sample] bench_s=26.033 interval_tps=863398.7 interval_committed=173009 interval_s=0.200381
+[TAM sample] bench_s=26.033 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=6485745 tput=873722 tx/s
+[TPS sample] bench_s=26.234 interval_tps=873977.9 interval_committed=175078 interval_s=0.200323
+[TAM sample] bench_s=26.234 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=6660695 tput=873516 tx/s
+[TPS sample] bench_s=26.434 interval_tps=874329.3 interval_committed=174950 interval_s=0.200096
+[TAM sample] bench_s=26.434 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=6834797 tput=869953 tx/s
+[TPS sample] bench_s=26.634 interval_tps=869971.3 interval_committed=174102 interval_s=0.200124
+[TAM sample] bench_s=26.634 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=7011839 tput=884740 tx/s
+[TPS sample] bench_s=26.834 interval_tps=884688.4 interval_committed=177042 interval_s=0.200118
+[TAM sample] bench_s=26.834 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=7185215 tput=866364 tx/s
+[TPS sample] bench_s=27.034 interval_tps=866421.1 interval_committed=173376 interval_s=0.200106
+[TAM sample] bench_s=27.034 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=7361656 tput=881616 tx/s
+[TPS sample] bench_s=27.234 interval_tps=881595.5 interval_committed=176441 interval_s=0.200138
+[TAM sample] bench_s=27.234 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=7538025 tput=881287 tx/s
+[TPS sample] bench_s=27.434 interval_tps=881327.8 interval_committed=176369 interval_s=0.200117
+[TAM sample] bench_s=27.434 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=7713663 tput=877666 tx/s
+[TPS sample] bench_s=27.635 interval_tps=877650.1 interval_committed=175638 interval_s=0.200123
+[TAM sample] bench_s=27.635 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=7888457 tput=873433 tx/s
+[TPS sample] bench_s=27.835 interval_tps=872576.8 interval_committed=174794 interval_s=0.200319
+[TAM sample] bench_s=27.835 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=8061829 tput=865449 tx/s
+[TPS sample] bench_s=28.035 interval_tps=866104.7 interval_committed=173372 interval_s=0.200174
+[TAM sample] bench_s=28.035 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=8234453 tput=861675 tx/s
+[TPS sample] bench_s=28.235 interval_tps=861865.4 interval_committed=172624 interval_s=0.200291
+[TAM sample] bench_s=28.235 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=8407852 tput=866475 tx/s
+[TPS sample] bench_s=28.435 interval_tps=866492.6 interval_committed=173399 interval_s=0.200116
+[TAM sample] bench_s=28.435 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=8579631 tput=858389 tx/s
+[TPS sample] bench_s=28.636 interval_tps=858390.3 interval_committed=171779 interval_s=0.200118
+[TAM sample] bench_s=28.636 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=8755319 tput=878033 tx/s
+[TPS sample] bench_s=28.836 interval_tps=877961.6 interval_committed=175688 interval_s=0.200109
+[TAM sample] bench_s=28.836 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=8925816 tput=851875 tx/s
+[TPS sample] bench_s=29.036 interval_tps=851922.2 interval_committed=170497 interval_s=0.200132
+[TAM sample] bench_s=29.036 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=9100751 tput=874142 tx/s
+[TPS sample] bench_s=29.236 interval_tps=873239.2 interval_committed=174935 interval_s=0.200329
+[TAM sample] bench_s=29.236 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=9273497 tput=862447 tx/s
+[TPS sample] bench_s=29.436 interval_tps=863292.2 interval_committed=172746 interval_s=0.200101
+[TAM sample] bench_s=29.436 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=9446109 tput=862473 tx/s
+[TPS sample] bench_s=29.636 interval_tps=862499.9 interval_committed=172612 interval_s=0.200130
+[TAM sample] bench_s=29.636 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=9618119 tput=859578 tx/s
+[TPS sample] bench_s=29.837 interval_tps=858864.7 interval_committed=172010 interval_s=0.200276
+[TAM sample] bench_s=29.837 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=9787644 tput=846352 tx/s
+[TPS sample] bench_s=30.037 interval_tps=847003.6 interval_committed=169525 interval_s=0.200147
+[TAM sample] bench_s=30.037 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=9964305 tput=882782 tx/s
+[TPS sample] bench_s=30.237 interval_tps=882822.5 interval_committed=176661 interval_s=0.200109
+[TAM sample] bench_s=30.237 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=10138480 tput=870280 tx/s
+[TPS sample] bench_s=30.437 interval_tps=870230.2 interval_committed=174175 interval_s=0.200148
+[TAM sample] bench_s=30.437 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=10314973 tput=881983 tx/s
+[TPS sample] bench_s=30.637 interval_tps=882068.9 interval_committed=176493 interval_s=0.200090
+[TAM sample] bench_s=30.637 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=10490196 tput=875762 tx/s
+[TPS sample] bench_s=30.837 interval_tps=875761.3 interval_committed=175223 interval_s=0.200081
+[TAM sample] bench_s=30.837 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=10663850 tput=867735 tx/s
+[TPS sample] bench_s=31.037 interval_tps=867749.5 interval_committed=173654 interval_s=0.200120
+[TAM sample] bench_s=31.037 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=10839322 tput=876807 tx/s
+[TPS sample] bench_s=31.237 interval_tps=876763.3 interval_committed=175472 interval_s=0.200136
+[TAM sample] bench_s=31.237 active_threads=84
+[AdaTAM] active_threads=86 committed_txs=11013634 tput=870998 tx/s
+[TPS sample] bench_s=31.438 interval_tps=871025.7 interval_committed=174312 interval_s=0.200123
+[TAM sample] bench_s=31.438 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=11188378 tput=873300 tx/s
+[TPS sample] bench_s=31.638 interval_tps=873291.4 interval_committed=174744 interval_s=0.200098
+[TAM sample] bench_s=31.638 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=11362177 tput=868522 tx/s
+[TPS sample] bench_s=31.838 interval_tps=868522.9 interval_committed=173799 interval_s=0.200109
+[TAM sample] bench_s=31.838 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=11533236 tput=854857 tx/s
+[TPS sample] bench_s=32.038 interval_tps=854868.6 interval_committed=171059 interval_s=0.200100
+[TAM sample] bench_s=32.038 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=11708256 tput=874442 tx/s
+[TPS sample] bench_s=32.238 interval_tps=874438.7 interval_committed=175020 interval_s=0.200151
+[TAM sample] bench_s=32.238 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=11883065 tput=873543 tx/s
+[TPS sample] bench_s=32.438 interval_tps=873543.1 interval_committed=174809 interval_s=0.200115
+[TAM sample] bench_s=32.438 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=12057257 tput=870600 tx/s
+[TPS sample] bench_s=32.638 interval_tps=870591.5 interval_committed=174192 interval_s=0.200085
+[TAM sample] bench_s=32.638 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=12233043 tput=878492 tx/s
+[TPS sample] bench_s=32.838 interval_tps=878334.9 interval_committed=175786 interval_s=0.200135
+[TAM sample] bench_s=32.838 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=12405145 tput=859716 tx/s
+[TPS sample] bench_s=33.039 interval_tps=859924.6 interval_committed=172102 interval_s=0.200136
+[TAM sample] bench_s=33.039 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=12578988 tput=868731 tx/s
+[TPS sample] bench_s=33.239 interval_tps=868666.5 interval_committed=173843 interval_s=0.200126
+[TAM sample] bench_s=33.239 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=12754498 tput=876741 tx/s
+[TPS sample] bench_s=33.439 interval_tps=876784.4 interval_committed=175510 interval_s=0.200175
+[TAM sample] bench_s=33.439 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=12928807 tput=871043 tx/s
+[TPS sample] bench_s=33.639 interval_tps=871006.6 interval_committed=174309 interval_s=0.200124
+[TAM sample] bench_s=33.639 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=13103769 tput=874341 tx/s
+[TPS sample] bench_s=33.839 interval_tps=874363.4 interval_committed=174962 interval_s=0.200102
+[TAM sample] bench_s=33.839 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=13276319 tput=862256 tx/s
+[TPS sample] bench_s=34.039 interval_tps=862130.3 interval_committed=172550 interval_s=0.200144
+[TAM sample] bench_s=34.039 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=13452458 tput=879790 tx/s
+[TPS sample] bench_s=34.239 interval_tps=879923.4 interval_committed=176139 interval_s=0.200175
+[TAM sample] bench_s=34.239 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=13627728 tput=875838 tx/s
+[TPS sample] bench_s=34.440 interval_tps=875397.1 interval_committed=175270 interval_s=0.200218
+[TAM sample] bench_s=34.440 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=13804416 tput=882505 tx/s
+[TPS sample] bench_s=34.640 interval_tps=882554.1 interval_committed=176688 interval_s=0.200201
+[TAM sample] bench_s=34.640 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=13981254 tput=883281 tx/s
+[TPS sample] bench_s=34.840 interval_tps=883200.6 interval_committed=176838 interval_s=0.200224
+[TAM sample] bench_s=34.840 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=14155166 tput=868636 tx/s
+[TPS sample] bench_s=35.040 interval_tps=868652.9 interval_committed=173912 interval_s=0.200209
+[TAM sample] bench_s=35.040 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=14331466 tput=880483 tx/s
+[TPS sample] bench_s=35.240 interval_tps=880928.6 interval_committed=176300 interval_s=0.200130
+[TAM sample] bench_s=35.240 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=14507752 tput=879761 tx/s
+[TPS sample] bench_s=35.441 interval_tps=879764.2 interval_committed=176286 interval_s=0.200379
+[TAM sample] bench_s=35.441 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=14682352 tput=872642 tx/s
+[TPS sample] bench_s=35.641 interval_tps=872633.6 interval_committed=174600 interval_s=0.200084
+[TAM sample] bench_s=35.641 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=14858904 tput=882214 tx/s
+[TPS sample] bench_s=35.841 interval_tps=881934.4 interval_committed=176552 interval_s=0.200187
+[TAM sample] bench_s=35.841 active_threads=86
+[AdaTAM] active_threads=88 committed_txs=15031009 tput=859639 tx/s
+[TPS sample] bench_s=36.041 interval_tps=859912.1 interval_committed=172105 interval_s=0.200143
+[TAM sample] bench_s=36.041 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=15206478 tput=876937 tx/s
+[TPS sample] bench_s=36.241 interval_tps=876804.6 interval_committed=175469 interval_s=0.200123
+[TAM sample] bench_s=36.241 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=15382131 tput=877640 tx/s
+[TPS sample] bench_s=36.441 interval_tps=877631.0 interval_committed=175653 interval_s=0.200144
+[TAM sample] bench_s=36.441 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=15556643 tput=871804 tx/s
+[TPS sample] bench_s=36.642 interval_tps=871963.5 interval_committed=174512 interval_s=0.200137
+[TAM sample] bench_s=36.642 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=15732107 tput=876814 tx/s
+[TPS sample] bench_s=36.842 interval_tps=876656.9 interval_committed=175464 interval_s=0.200151
+[TAM sample] bench_s=36.842 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=15904201 tput=859678 tx/s
+[TPS sample] bench_s=37.042 interval_tps=859772.9 interval_committed=172094 interval_s=0.200162
+[TAM sample] bench_s=37.042 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=16078413 tput=870479 tx/s
+[TPS sample] bench_s=37.242 interval_tps=870459.4 interval_committed=174212 interval_s=0.200138
+[TAM sample] bench_s=37.242 active_threads=92
+[AdaTAM] active_threads=94 committed_txs=16253414 tput=873295 tx/s
+[TPS sample] bench_s=37.442 interval_tps=873379.7 interval_committed=175001 interval_s=0.200372
+[TAM sample] bench_s=37.442 active_threads=94
+[AdaTAM] active_threads=92 committed_txs=16426998 tput=867431 tx/s
+[TPS sample] bench_s=37.642 interval_tps=867393.6 interval_committed=173584 interval_s=0.200121
+[TAM sample] bench_s=37.642 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=16602437 tput=876860 tx/s
+[TPS sample] bench_s=37.843 interval_tps=876426.9 interval_committed=175439 interval_s=0.200175
+[TAM sample] bench_s=37.843 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=16772541 tput=849630 tx/s
+[TPS sample] bench_s=38.043 interval_tps=849621.0 interval_committed=170104 interval_s=0.200212
+[TAM sample] bench_s=38.043 active_threads=92
+[AdaTAM] active_threads=94 committed_txs=16946584 tput=869254 tx/s
+[TPS sample] bench_s=38.243 interval_tps=869192.0 interval_committed=174043 interval_s=0.200235
+[TAM sample] bench_s=38.243 active_threads=94
+[AdaTAM] active_threads=92 committed_txs=17120061 tput=866231 tx/s
+[TPS sample] bench_s=38.443 interval_tps=866298.9 interval_committed=173477 interval_s=0.200251
+[TAM sample] bench_s=38.443 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=17295366 tput=875511 tx/s
+[TPS sample] bench_s=38.644 interval_tps=875133.8 interval_committed=175305 interval_s=0.200318
+[TAM sample] bench_s=38.644 active_threads=90
+[AdaTAM] active_threads=92 committed_txs=17469896 tput=871424 tx/s
+[TPS sample] bench_s=38.844 interval_tps=872100.3 interval_committed=174530 interval_s=0.200126
+[TAM sample] bench_s=38.844 active_threads=92
+[AdaTAM] active_threads=90 committed_txs=17643775 tput=868598 tx/s
+[TPS sample] bench_s=39.044 interval_tps=868514.0 interval_committed=173879 interval_s=0.200203
+[TAM sample] bench_s=39.044 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=17819031 tput=875539 tx/s
+[TPS sample] bench_s=39.244 interval_tps=875624.8 interval_committed=175256 interval_s=0.200150
+[TAM sample] bench_s=39.244 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=17993660 tput=872385 tx/s
+[TPS sample] bench_s=39.444 interval_tps=872535.0 interval_committed=174629 interval_s=0.200140
+[TAM sample] bench_s=39.444 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=18167029 tput=866315 tx/s
+[TPS sample] bench_s=39.644 interval_tps=866312.9 interval_committed=173369 interval_s=0.200123
+[TAM sample] bench_s=39.644 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=18340035 tput=864436 tx/s
+[TPS sample] bench_s=39.845 interval_tps=864265.9 interval_committed=173006 interval_s=0.200177
+[TAM sample] bench_s=39.845 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=18510928 tput=853839 tx/s
+[TPS sample] bench_s=40.045 interval_tps=853948.9 interval_committed=170893 interval_s=0.200121
+[TAM sample] bench_s=40.045 active_threads=88
+[TPC-C workload] bench_s=40.045 active_warehouses=3
+[AdaTAM] active_threads=90 committed_txs=18526226 tput=76428 tx/s
+[TPS sample] bench_s=40.245 interval_tps=76437.1 interval_committed=15298 interval_s=0.200138
+[TAM sample] bench_s=40.245 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=18540810 tput=72880 tx/s
+[TPS sample] bench_s=40.445 interval_tps=72863.5 interval_committed=14584 interval_s=0.200155
+[TAM sample] bench_s=40.445 active_threads=88
+[AdaTAM] active_threads=90 committed_txs=18555195 tput=71877 tx/s
+[TPS sample] bench_s=40.645 interval_tps=71887.1 interval_committed=14385 interval_s=0.200105
+[TAM sample] bench_s=40.645 active_threads=90
+[AdaTAM] active_threads=88 committed_txs=18569307 tput=70512 tx/s
+[TPS sample] bench_s=40.845 interval_tps=70509.8 interval_committed=14112 interval_s=0.200142
+[TAM sample] bench_s=40.845 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=18584364 tput=75230 tx/s
+[TPS sample] bench_s=41.045 interval_tps=75240.9 interval_committed=15057 interval_s=0.200117
+[TAM sample] bench_s=41.045 active_threads=86
+[TPC-C workload] bench_s=41.045 active_warehouses=3 applied_workers=86/86
+[AdaTAM] active_threads=88 committed_txs=18599025 tput=73271 tx/s
+[TPS sample] bench_s=41.246 interval_tps=73261.4 interval_committed=14661 interval_s=0.200119
+[TAM sample] bench_s=41.246 active_threads=88
+[AdaTAM] active_threads=86 committed_txs=18613661 tput=73128 tx/s
+[TPS sample] bench_s=41.446 interval_tps=73135.7 interval_committed=14636 interval_s=0.200121
+[TAM sample] bench_s=41.446 active_threads=86
+[AdaTAM] active_threads=84 committed_txs=18628462 tput=73965 tx/s
+[TPS sample] bench_s=41.646 interval_tps=73949.6 interval_committed=14801 interval_s=0.200150
+[TAM sample] bench_s=41.646 active_threads=84
+[AdaTAM] active_threads=82 committed_txs=18644247 tput=78877 tx/s
+[TPS sample] bench_s=41.846 interval_tps=78882.7 interval_committed=15785 interval_s=0.200107
+[TAM sample] bench_s=41.846 active_threads=82
+[AdaTAM] active_threads=80 committed_txs=18660423 tput=80820 tx/s
+[TPS sample] bench_s=42.046 interval_tps=80823.3 interval_committed=16176 interval_s=0.200140
+[TAM sample] bench_s=42.046 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=18677271 tput=84194 tx/s
+[TPS sample] bench_s=42.246 interval_tps=84189.9 interval_committed=16848 interval_s=0.200119
+[TAM sample] bench_s=42.246 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=18693916 tput=83163 tx/s
+[TPS sample] bench_s=42.446 interval_tps=83173.8 interval_committed=16645 interval_s=0.200123
+[TAM sample] bench_s=42.446 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=18710209 tput=81420 tx/s
+[TPS sample] bench_s=42.646 interval_tps=81407.4 interval_committed=16293 interval_s=0.200141
+[TAM sample] bench_s=42.646 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=18727063 tput=84225 tx/s
+[TPS sample] bench_s=42.847 interval_tps=84228.7 interval_committed=16854 interval_s=0.200098
+[TAM sample] bench_s=42.847 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=18744335 tput=86297 tx/s
+[TPS sample] bench_s=43.047 interval_tps=86306.3 interval_committed=17272 interval_s=0.200124
+[TAM sample] bench_s=43.047 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=18761156 tput=84058 tx/s
+[TPS sample] bench_s=43.247 interval_tps=84055.8 interval_committed=16821 interval_s=0.200117
+[TAM sample] bench_s=43.247 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=18778667 tput=87504 tx/s
+[TPS sample] bench_s=43.447 interval_tps=87488.3 interval_committed=17511 interval_s=0.200153
+[TAM sample] bench_s=43.447 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=18794998 tput=81600 tx/s
+[TPS sample] bench_s=43.647 interval_tps=81596.2 interval_committed=16331 interval_s=0.200144
+[TAM sample] bench_s=43.647 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=18812195 tput=85902 tx/s
+[TPS sample] bench_s=43.847 interval_tps=85910.9 interval_committed=17197 interval_s=0.200173
+[TAM sample] bench_s=43.847 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=18829407 tput=85993 tx/s
+[TPS sample] bench_s=44.047 interval_tps=86003.3 interval_committed=17212 interval_s=0.200132
+[TAM sample] bench_s=44.047 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=18846657 tput=86212 tx/s
+[TPS sample] bench_s=44.247 interval_tps=86209.6 interval_committed=17250 interval_s=0.200094
+[TAM sample] bench_s=44.247 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=18863691 tput=85121 tx/s
+[TPS sample] bench_s=44.448 interval_tps=85125.9 interval_committed=17034 interval_s=0.200104
+[TAM sample] bench_s=44.448 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=18881026 tput=86625 tx/s
+[TPS sample] bench_s=44.648 interval_tps=86627.7 interval_committed=17335 interval_s=0.200109
+[TAM sample] bench_s=44.648 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=18898367 tput=86662 tx/s
+[TPS sample] bench_s=44.848 interval_tps=86594.2 interval_committed=17341 interval_s=0.200256
+[TAM sample] bench_s=44.848 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=18916106 tput=88580 tx/s
+[TPS sample] bench_s=45.048 interval_tps=88642.1 interval_committed=17739 interval_s=0.200119
+[TAM sample] bench_s=45.048 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=18932591 tput=82385 tx/s
+[TPS sample] bench_s=45.248 interval_tps=82389.1 interval_committed=16485 interval_s=0.200087
+[TAM sample] bench_s=45.248 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=18948916 tput=81581 tx/s
+[TPS sample] bench_s=45.448 interval_tps=81581.7 interval_committed=16325 interval_s=0.200106
+[TAM sample] bench_s=45.448 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=18964783 tput=79290 tx/s
+[TPS sample] bench_s=45.648 interval_tps=79289.2 interval_committed=15867 interval_s=0.200116
+[TAM sample] bench_s=45.648 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=18981955 tput=85816 tx/s
+[TPS sample] bench_s=45.848 interval_tps=85818.9 interval_committed=17172 interval_s=0.200096
+[TAM sample] bench_s=45.848 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=18998476 tput=82560 tx/s
+[TPS sample] bench_s=46.049 interval_tps=82561.5 interval_committed=16521 interval_s=0.200105
+[TAM sample] bench_s=46.049 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=19015751 tput=86329 tx/s
+[TPS sample] bench_s=46.249 interval_tps=86327.4 interval_committed=17275 interval_s=0.200110
+[TAM sample] bench_s=46.249 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=19032944 tput=85919 tx/s
+[TPS sample] bench_s=46.449 interval_tps=85919.4 interval_committed=17193 interval_s=0.200106
+[TAM sample] bench_s=46.449 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=19049152 tput=80995 tx/s
+[TPS sample] bench_s=46.649 interval_tps=80994.9 interval_committed=16208 interval_s=0.200111
+[TAM sample] bench_s=46.649 active_threads=78
+[AdaTAM] active_threads=80 committed_txs=19066125 tput=84821 tx/s
+[TPS sample] bench_s=46.849 interval_tps=84822.3 interval_committed=16973 interval_s=0.200101
+[TAM sample] bench_s=46.849 active_threads=80
+[AdaTAM] active_threads=78 committed_txs=19082450 tput=81597 tx/s
+[TPS sample] bench_s=47.049 interval_tps=81595.5 interval_committed=16325 interval_s=0.200072
+[TAM sample] bench_s=47.049 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=19100341 tput=89411 tx/s
+[TPS sample] bench_s=47.249 interval_tps=89408.8 interval_committed=17891 interval_s=0.200103
+[TAM sample] bench_s=47.249 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=19118162 tput=89067 tx/s
+[TPS sample] bench_s=47.449 interval_tps=89069.0 interval_committed=17821 interval_s=0.200081
+[TAM sample] bench_s=47.449 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=19135772 tput=88003 tx/s
+[TPS sample] bench_s=47.649 interval_tps=88003.0 interval_committed=17610 interval_s=0.200107
+[TAM sample] bench_s=47.649 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=19152778 tput=84982 tx/s
+[TPS sample] bench_s=47.849 interval_tps=84980.9 interval_committed=17006 interval_s=0.200116
+[TAM sample] bench_s=47.849 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=19169756 tput=84842 tx/s
+[TPS sample] bench_s=48.050 interval_tps=84843.2 interval_committed=16978 interval_s=0.200110
+[TAM sample] bench_s=48.050 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=19187089 tput=86617 tx/s
+[TPS sample] bench_s=48.250 interval_tps=86617.2 interval_committed=17333 interval_s=0.200110
+[TAM sample] bench_s=48.250 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19204602 tput=87523 tx/s
+[TPS sample] bench_s=48.450 interval_tps=87520.0 interval_committed=17513 interval_s=0.200103
+[TAM sample] bench_s=48.450 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19221830 tput=86087 tx/s
+[TPS sample] bench_s=48.650 interval_tps=86085.2 interval_committed=17228 interval_s=0.200127
+[TAM sample] bench_s=48.650 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19238221 tput=81859 tx/s
+[TPS sample] bench_s=48.850 interval_tps=81863.3 interval_committed=16391 interval_s=0.200224
+[TAM sample] bench_s=48.850 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=19255921 tput=88451 tx/s
+[TPS sample] bench_s=49.050 interval_tps=88451.6 interval_committed=17700 interval_s=0.200109
+[TAM sample] bench_s=49.050 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=19272058 tput=80644 tx/s
+[TPS sample] bench_s=49.250 interval_tps=80637.8 interval_committed=16137 interval_s=0.200117
+[TAM sample] bench_s=49.250 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19288531 tput=82324 tx/s
+[TPS sample] bench_s=49.450 interval_tps=82325.4 interval_committed=16473 interval_s=0.200096
+[TAM sample] bench_s=49.450 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=19305804 tput=86321 tx/s
+[TPS sample] bench_s=49.651 interval_tps=86286.5 interval_committed=17273 interval_s=0.200182
+[TAM sample] bench_s=49.651 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=19322700 tput=84395 tx/s
+[TPS sample] bench_s=49.851 interval_tps=84402.7 interval_committed=16896 interval_s=0.200183
+[TAM sample] bench_s=49.851 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19339951 tput=86176 tx/s
+[TPS sample] bench_s=50.051 interval_tps=86209.5 interval_committed=17251 interval_s=0.200106
+[TAM sample] bench_s=50.051 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19356462 tput=82529 tx/s
+[TPS sample] bench_s=50.251 interval_tps=82520.7 interval_committed=16511 interval_s=0.200083
+[TAM sample] bench_s=50.251 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19372934 tput=82304 tx/s
+[TPS sample] bench_s=50.451 interval_tps=82307.1 interval_committed=16472 interval_s=0.200128
+[TAM sample] bench_s=50.451 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=19389557 tput=83076 tx/s
+[TPS sample] bench_s=50.651 interval_tps=83075.8 interval_committed=16623 interval_s=0.200094
+[TAM sample] bench_s=50.651 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=19406365 tput=83991 tx/s
+[TPS sample] bench_s=50.851 interval_tps=83992.5 interval_committed=16808 interval_s=0.200113
+[TAM sample] bench_s=50.851 active_threads=68
+[AdaTAM] active_threads=66 committed_txs=19423273 tput=84493 tx/s
+[TPS sample] bench_s=51.051 interval_tps=84496.8 interval_committed=16908 interval_s=0.200102
+[TAM sample] bench_s=51.051 active_threads=66
+[AdaTAM] active_threads=68 committed_txs=19440170 tput=84448 tx/s
+[TPS sample] bench_s=51.252 interval_tps=84441.2 interval_committed=16897 interval_s=0.200104
+[TAM sample] bench_s=51.252 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=19457122 tput=84710 tx/s
+[TPS sample] bench_s=51.452 interval_tps=84711.0 interval_committed=16952 interval_s=0.200116
+[TAM sample] bench_s=51.452 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=19474009 tput=84382 tx/s
+[TPS sample] bench_s=51.652 interval_tps=84382.5 interval_committed=16887 interval_s=0.200124
+[TAM sample] bench_s=51.652 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=19490722 tput=83517 tx/s
+[TPS sample] bench_s=51.852 interval_tps=83518.2 interval_committed=16713 interval_s=0.200112
+[TAM sample] bench_s=51.852 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=19507731 tput=84998 tx/s
+[TPS sample] bench_s=52.052 interval_tps=84991.7 interval_committed=17009 interval_s=0.200125
+[TAM sample] bench_s=52.052 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19525870 tput=90647 tx/s
+[TPS sample] bench_s=52.252 interval_tps=90648.3 interval_committed=18139 interval_s=0.200103
+[TAM sample] bench_s=52.252 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19542472 tput=82959 tx/s
+[TPS sample] bench_s=52.452 interval_tps=82963.6 interval_committed=16602 interval_s=0.200112
+[TAM sample] bench_s=52.452 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=19560448 tput=89830 tx/s
+[TPS sample] bench_s=52.652 interval_tps=89829.5 interval_committed=17976 interval_s=0.200112
+[TAM sample] bench_s=52.652 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=19577641 tput=85915 tx/s
+[TPS sample] bench_s=52.852 interval_tps=85916.2 interval_committed=17193 interval_s=0.200114
+[TAM sample] bench_s=52.852 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19595401 tput=88757 tx/s
+[TPS sample] bench_s=53.053 interval_tps=88756.9 interval_committed=17760 interval_s=0.200097
+[TAM sample] bench_s=53.053 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19611800 tput=81949 tx/s
+[TPS sample] bench_s=53.253 interval_tps=81948.1 interval_committed=16399 interval_s=0.200114
+[TAM sample] bench_s=53.253 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=19628651 tput=84221 tx/s
+[TPS sample] bench_s=53.453 interval_tps=84217.1 interval_committed=16851 interval_s=0.200090
+[TAM sample] bench_s=53.453 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=19646766 tput=90519 tx/s
+[TPS sample] bench_s=53.653 interval_tps=90524.7 interval_committed=18115 interval_s=0.200111
+[TAM sample] bench_s=53.653 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=19663543 tput=83838 tx/s
+[TPS sample] bench_s=53.853 interval_tps=83832.8 interval_committed=16777 interval_s=0.200124
+[TAM sample] bench_s=53.853 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=19680254 tput=83500 tx/s
+[TPS sample] bench_s=54.053 interval_tps=83504.6 interval_committed=16711 interval_s=0.200121
+[TAM sample] bench_s=54.053 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=19696762 tput=82499 tx/s
+[TPS sample] bench_s=54.253 interval_tps=82496.6 interval_committed=16508 interval_s=0.200105
+[TAM sample] bench_s=54.253 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=19713720 tput=84739 tx/s
+[TPS sample] bench_s=54.453 interval_tps=84740.0 interval_committed=16958 interval_s=0.200118
+[TAM sample] bench_s=54.453 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19731237 tput=87533 tx/s
+[TPS sample] bench_s=54.653 interval_tps=87535.2 interval_committed=17517 interval_s=0.200114
+[TAM sample] bench_s=54.653 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19748646 tput=86997 tx/s
+[TPS sample] bench_s=54.854 interval_tps=86997.2 interval_committed=17409 interval_s=0.200110
+[TAM sample] bench_s=54.854 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19765450 tput=83979 tx/s
+[TPS sample] bench_s=55.054 interval_tps=83976.2 interval_committed=16804 interval_s=0.200104
+[TAM sample] bench_s=55.054 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=19783705 tput=91220 tx/s
+[TPS sample] bench_s=55.254 interval_tps=91217.8 interval_committed=18255 interval_s=0.200125
+[TAM sample] bench_s=55.254 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=19800795 tput=85404 tx/s
+[TPS sample] bench_s=55.454 interval_tps=85397.0 interval_committed=17090 interval_s=0.200124
+[TAM sample] bench_s=55.454 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19818354 tput=87728 tx/s
+[TPS sample] bench_s=55.654 interval_tps=87727.7 interval_committed=17559 interval_s=0.200154
+[TAM sample] bench_s=55.654 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=19836185 tput=89104 tx/s
+[TPS sample] bench_s=55.854 interval_tps=89119.9 interval_committed=17831 interval_s=0.200079
+[TAM sample] bench_s=55.854 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=19852739 tput=82743 tx/s
+[TPS sample] bench_s=56.054 interval_tps=82740.6 interval_committed=16554 interval_s=0.200071
+[TAM sample] bench_s=56.054 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19870180 tput=87157 tx/s
+[TPS sample] bench_s=56.254 interval_tps=87153.0 interval_committed=17441 interval_s=0.200119
+[TAM sample] bench_s=56.254 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=19886760 tput=82851 tx/s
+[TPS sample] bench_s=56.454 interval_tps=82854.4 interval_committed=16580 interval_s=0.200110
+[TAM sample] bench_s=56.454 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=19903183 tput=82069 tx/s
+[TPS sample] bench_s=56.655 interval_tps=82069.3 interval_committed=16423 interval_s=0.200111
+[TAM sample] bench_s=56.655 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=19921029 tput=89176 tx/s
+[TPS sample] bench_s=56.855 interval_tps=89174.3 interval_committed=17846 interval_s=0.200125
+[TAM sample] bench_s=56.855 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=19938723 tput=88402 tx/s
+[TPS sample] bench_s=57.055 interval_tps=88405.3 interval_committed=17694 interval_s=0.200146
+[TAM sample] bench_s=57.055 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=19955471 tput=83696 tx/s
+[TPS sample] bench_s=57.255 interval_tps=83694.4 interval_committed=16748 interval_s=0.200109
+[TAM sample] bench_s=57.255 active_threads=76
+[AdaTAM] active_threads=78 committed_txs=19972626 tput=85734 tx/s
+[TPS sample] bench_s=57.455 interval_tps=85735.2 interval_committed=17155 interval_s=0.200093
+[TAM sample] bench_s=57.455 active_threads=78
+[AdaTAM] active_threads=76 committed_txs=19989020 tput=81925 tx/s
+[TPS sample] bench_s=57.655 interval_tps=81923.8 interval_committed=16394 interval_s=0.200113
+[TAM sample] bench_s=57.655 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=20005973 tput=84737 tx/s
+[TPS sample] bench_s=57.855 interval_tps=84735.1 interval_committed=16953 interval_s=0.200071
+[TAM sample] bench_s=57.855 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=20023252 tput=86344 tx/s
+[TPS sample] bench_s=58.055 interval_tps=86346.9 interval_committed=17279 interval_s=0.200111
+[TAM sample] bench_s=58.055 active_threads=72
+[AdaTAM] active_threads=70 committed_txs=20040532 tput=86352 tx/s
+[TPS sample] bench_s=58.255 interval_tps=86353.3 interval_committed=17280 interval_s=0.200108
+[TAM sample] bench_s=58.255 active_threads=70
+[AdaTAM] active_threads=68 committed_txs=20057829 tput=86437 tx/s
+[TPS sample] bench_s=58.456 interval_tps=86434.6 interval_committed=17297 interval_s=0.200117
+[TAM sample] bench_s=58.456 active_threads=68
+[AdaTAM] active_threads=70 committed_txs=20074216 tput=81894 tx/s
+[TPS sample] bench_s=58.656 interval_tps=81892.7 interval_committed=16387 interval_s=0.200103
+[TAM sample] bench_s=58.656 active_threads=70
+[AdaTAM] active_threads=72 committed_txs=20091496 tput=86349 tx/s
+[TPS sample] bench_s=58.856 interval_tps=86350.7 interval_committed=17280 interval_s=0.200114
+[TAM sample] bench_s=58.856 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=20109389 tput=89414 tx/s
+[TPS sample] bench_s=59.056 interval_tps=89415.0 interval_committed=17893 interval_s=0.200112
+[TAM sample] bench_s=59.056 active_threads=74
+[AdaTAM] active_threads=72 committed_txs=20126526 tput=85637 tx/s
+[TPS sample] bench_s=59.256 interval_tps=85632.3 interval_committed=17137 interval_s=0.200123
+[TAM sample] bench_s=59.256 active_threads=72
+[AdaTAM] active_threads=74 committed_txs=20143343 tput=84031 tx/s
+[TPS sample] bench_s=59.456 interval_tps=84035.9 interval_committed=16817 interval_s=0.200117
+[TAM sample] bench_s=59.456 active_threads=74
+[AdaTAM] active_threads=76 committed_txs=20161037 tput=88415 tx/s
+[TPS sample] bench_s=59.656 interval_tps=88414.4 interval_committed=17694 interval_s=0.200126
+[TAM sample] bench_s=59.656 active_threads=76
+[AdaTAM] active_threads=74 committed_txs=20178336 tput=86445 tx/s
+[TPS sample] bench_s=59.856 interval_tps=86444.7 interval_committed=17299 interval_s=0.200116
+[TAM sample] bench_s=59.856 active_threads=74
+[TAM sample] bench_s=60.000 active_threads=74
+[AdaTAM] active_threads stats: count=299 mean=81.826 stddev=7.890

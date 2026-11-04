@@ -237,7 +237,7 @@ int main(int argc, char* argv[]) try {
   if (FLAGS_tpcc_fixed_active_workers > TotalThreadNum ||
       (FLAGS_tpcc_fixed_active_workers != 0 &&
        (FLAGS_metis_test_enable || FLAGS_metis_paper_enable ||
-        FLAGS_ada_tam_enable))) {
+        FLAGS_metis_v2_enable || FLAGS_ada_tam_enable))) {
     std::fprintf(stderr,
                  "tpcc_fixed_active_workers must be <= total workers and "
                  "cannot be combined with a TAM controller\n");

@@ -29,6 +29,12 @@ void chkArg() {
 
   TotalThreadNum = FLAGS_thread_num + FLAGS_batch_th_num;
 
+  if (TotalThreadNum > 64 * Version::kReaderWords) {
+    cout << "ERMIA supports at most " << 64 * Version::kReaderWords
+         << " workers (reader bitmap width)." << endl;
+    ERR;
+  }
+
   if (TotalThreadNum < 1) {
     cout << "1 is minimum thread number."
             "so exit."

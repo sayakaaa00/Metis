@@ -230,8 +230,9 @@ public:
   void finish() {
     if (tam_.enabled()) {
       tam_.print_stats();
-      if ((FLAGS_metis_paper_enable || FLAGS_metis_test_enable) &&
-          FLAGS_linucb_model_autosave &&
+      const bool v2_save = FLAGS_metis_v2_enable && FLAGS_metis_v2_learn;
+      if ((((FLAGS_metis_paper_enable || FLAGS_metis_test_enable) &&
+            FLAGS_linucb_model_autosave) || v2_save) &&
           !FLAGS_linucb_model_path.empty()) {
         if (tam_.save_model(FLAGS_linucb_model_path)) {
           std::cerr << "[LinUCB] model saved to: "

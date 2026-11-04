@@ -33,7 +33,7 @@ public:
     // 1の時はTID, 0の時はstamp
     verTmp->prev_ = nullptr;
     verTmp->status_.store(VersionStatus::committed, std::memory_order_release);
-    verTmp->readers_.store(0, std::memory_order_release);
+    for (auto& word : verTmp->readers_) word.store(0, std::memory_order_release);
     verTmp->body_ = std::move(body);
     body_ = std::ref(verTmp->body_);
   }

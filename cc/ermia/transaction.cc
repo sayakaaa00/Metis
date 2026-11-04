@@ -665,9 +665,11 @@ void TxExecutor::ssn_parallel_commit() {
                VersionStatus::committed &&
            ver->status_.load(memory_order_acquire) != VersionStatus::deleted)
       ver = ver->prev_;
-    uint64_t rdrs = ver->readers_.load(memory_order_acquire);
+    uint64_t rdrs[Version::kReaderWords];
+    for (unsigned int w = 0; w < Version::kReaderWords; ++w)
+      rdrs[w] = ver->readers_[w].load(memory_order_acquire);
     for (unsigned int worker = 0; worker < TotalThreadNum; ++worker) {
-      if ((rdrs & (one << worker)) ? 1 : 0) {
+      if ((rdrs[worker / 64] & (one << (worker % 64))) ? 1 : 0) {
         tmt = loadAcquire(TMT[worker]);
         /**
          * It can ignore if the reader is committing.

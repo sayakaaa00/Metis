@@ -1,0 +1,63 @@
+#FLAGS_clocks_per_us:	2900
+#FLAGS_epoch_time:	40
+#FLAGS_extime:		10
+#FLAGS_thread_num:	96
+TAM active_threads logs will be written to: "experiments/paper_replication/logs/tam_active_threads_20261103_084311.log"
+#FLAGS_tpcc_num_wh:	96
+#FLAGS_tpcc_num_items:	100000
+#FLAGS_tpcc_item_zipf_enable:	false
+#FLAGS_tpcc_active_warehouse_count:	16
+#FLAGS_tpcc_hot_item_count:	100
+#FLAGS_tpcc_hot_item_ratio:	0.000000
+#FLAGS_tpcc_home_warehouse_assignment:	random_per_transaction
+#FLAGS_tpcc_home_warehouse_seed:	1
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_hot_district_count:	10
+#FLAGS_tpcc_hot_transaction_mode:	false
+#FLAGS_tpcc_hot_transaction_ratio:	0.000000
+#FLAGS_tpcc_hot_warehouse_id:	1
+#FLAGS_tpcc_retry_same_type:	true
+[start] load.
+[end] load.
+#ShowOptParameters(): ADD_ANALYSIS 0: BACK_OFF 0: KEY_SIZE 8: MASSTREE_USE 1: NO_WAIT_LOCKING_IN_VALIDATION 1: PARTITION_TABLE 0: PROCEDURE_SORT 0: SLEEP_READ_PHASE 0: VAL_SIZE 4: WAL 0
+actual_extime:	10
+success_forwarding_:	0
+abort_counts_:	2466504
+batch_abort_counts_:	0
+commit_counts_:	3441716
+batch_commit_counts_:	0
+maxrss:	27205864 kB
+abort_rate:	0.4175
+batch_abort_rate:	-nan
+latency[ns]:	278931.1127
+throughput[tps]:	344171
+Details per transaction type:
+  Transaction type: NewOrder
+    commits: 1548539
+    aborts: 634765
+    abort rate: 0.2907
+    latency[us]: 0.00
+  Transaction type: Payment
+    commits: 1479800
+    aborts: 56729
+    abort rate: 0.0369
+    latency[us]: 0.00
+  Transaction type: OrderStatus
+    commits: 137751
+    aborts: 14
+    abort rate: 0.0001
+    latency[us]: 0.00
+  Transaction type: Delivery
+    commits: 138056
+    aborts: 1575673
+    abort rate: 0.9194
+    latency[us]: 0.00
+  Transaction type: StockLevel
+    commits: 137570
+    aborts: 199323
+    abort rate: 0.5917
+    latency[us]: 0.00
+  Summary: 1548539,634765,1479800,56729,137751,14,138056,1575673,137570,199323,
+  All transaction total latencies: 0,0,0,0,0,
