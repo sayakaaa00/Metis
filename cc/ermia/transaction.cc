@@ -884,7 +884,7 @@ void TxExecutor::mainte() {
       // gcRecord uses MinQueuedCstamp[] (published by every thread on
       // push to and pop from gcq_for_version_) to defer Tuple free
       // until no thread can still hold a reference.
-      if (!FLAGS_gc_defer_record_reclamation) gcobject_.gcRecord();
+      gcobject_.gcRecord();
       pre_gc_threshold_ = loadThreshold;
       gcstart_ = gcstop_;
 #if ADD_ANALYSIS

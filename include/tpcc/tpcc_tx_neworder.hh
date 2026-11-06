@@ -106,10 +106,8 @@ bool insert_order(TxExecutor& tx, uint32_t o_id, uint8_t d_id, uint16_t w_id,
   if (FLAGS_tpcc_interactive_ms) sleepMs(FLAGS_tpcc_interactive_ms);
   if (stat == Status::WARN_ALREADY_EXISTS ||
       tx.status_ == TransactionStatus::aborted) {
-#ifndef METIS_TEST
     if (FLAGS_tpcc_log_retry_conflicts)
       dump(tx.thid_, "insert order failed");
-#endif
     return false;
   }
   SimpleKey<16> o_sec_key;

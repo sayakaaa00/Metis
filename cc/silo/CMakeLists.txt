@@ -10,40 +10,33 @@ ccbench_add_protocol(silo
     WAL=${CCBENCH_WAL}
     INSERT_READ_DELAY_MS=${CCBENCH_INSERT_READ_DELAY_MS}
     INSERT_BATCH_DELAY_MS=${CCBENCH_INSERT_BATCH_DELAY_MS}
+    # Active-thread control (Metis / AdaTAM, include/tam.hh) in the Silo
+    # YCSB and TPC-C entry points.
+    ADAPTIVE_TAM=1
 )
 
-# Backward-compatible research binaries. They use the same current Silo
-# implementation and common runner as the standard targets; only BACK_OFF and
-# the adaptive-variant pinning policy differ. Keep the historical output path
-# so existing experiment scripts continue to work unchanged.
-function(add_silo_research_variant target source backoff)
+# Binaries used in the Metis paper. They build the same Silo implementation
+# and entry points as the standard targets and differ only in BACK_OFF:
+#   {ycsb,tpcc}_silo_nobackoff : Metis, AdaTAM, fixed-N sweeps, Silo without backoff
+#   {ycsb,tpcc}_silo_backoff   : Silo with adaptive exponential backoff
+# Output: ${CMAKE_BINARY_DIR}/silo/.
+function(add_silo_paper_binary target source backoff)
   add_executable(${target} ${source} transaction.cc util.cc)
   target_link_libraries(${target} PRIVATE
     ccbench_common ccbench::masstree ccbench::mimalloc)
-
   get_target_property(_defs ycsb_silo.exe COMPILE_DEFINITIONS)
   list(FILTER _defs EXCLUDE REGEX "^BACK_OFF=")
-  list(APPEND _defs BACK_OFF=${backoff} ADAPTIVE_VARIANT=1)
+  list(APPEND _defs BACK_OFF=${backoff})
   target_compile_definitions(${target} PRIVATE ${_defs})
   set_compile_options(${target})
   set_target_properties(${target} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/silo")
 endfunction()
 
-add_silo_research_variant(silo_with_TAM ycsb_silo.cc 0)
-add_silo_research_variant(ycsb_metis_paper ycsb_silo.cc 0)
-add_silo_research_variant(tpcc_with_TAM tpcc_silo.cc 0)
-add_silo_research_variant(tpcc_metis_paper tpcc_silo.cc 0)
-add_silo_research_variant(tpcc_metis_test tpcc_silo.cc 0)
-target_compile_definitions(tpcc_metis_test PRIVATE METIS_TEST=1)
-add_silo_research_variant(tpcc_metis_test_smt tpcc_silo.cc 0)
-target_compile_definitions(tpcc_metis_test_smt PRIVATE METIS_TEST=1 METIS_TEST_SMT=1)
-add_silo_research_variant(silo_with_backoff ycsb_silo.cc 1)
-add_silo_research_variant(silo_without_backoff ycsb_silo.cc 0)
-add_silo_research_variant(tpcc_silo_with_backoff tpcc_silo.cc 1)
-target_compile_definitions(tpcc_silo_with_backoff PRIVATE METIS_TEST=1)
-add_silo_research_variant(tpcc_silo_without_backoff tpcc_silo.cc 0)
-target_compile_definitions(tpcc_silo_without_backoff PRIVATE METIS_TEST=1)
+add_silo_paper_binary(ycsb_silo_nobackoff ycsb_silo.cc 0)
+add_silo_paper_binary(ycsb_silo_backoff   ycsb_silo.cc 1)
+add_silo_paper_binary(tpcc_silo_nobackoff tpcc_silo.cc 0)
+add_silo_paper_binary(tpcc_silo_backoff   tpcc_silo.cc 1)
 
 # Standalone replay test — not parameterized by workload. It still needs
 # the universal -DVAL_SIZE etc. that ccbench_add_protocol applies to the

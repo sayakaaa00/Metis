@@ -874,7 +874,7 @@ void TxExecutor::mainte() {
     ++result_->local_gc_counts_;
 #endif
     gc_versions();
-    if (!FLAGS_gc_defer_record_reclamation) gc_records();
+    gc_records();
 
     __atomic_store_n(&(GCExecuteFlag[thid_].obj_), 0, __ATOMIC_RELEASE);
   }

@@ -1,6 +1,0 @@
-method,run,tps,abort_rate,log
-silo_without_backoff,1,600892,0.2674,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_v1/logs/dynamic/silo_without_backoff_run1.log
-silo_with_backoff,1,611016,0.1596,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_v1/logs/dynamic/silo_with_backoff_run1.log
-cicada,1,,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_v1/logs/dynamic/cicada_run1.log
-ermia,1,,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_v1/logs/dynamic/ermia_run1.log
-observed_metis,1,602421,0.0748,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/protocol_comparison_mimalloc_dynamic_v1/logs/dynamic/observed_metis_run1.log

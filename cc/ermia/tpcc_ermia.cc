@@ -13,7 +13,6 @@
 #include "../../include/random.hh"
 #include "../../include/result.hh"
 #include "../../include/tpcc.hh"
-#include "../../include/tpcc/runtime_schedule.hh"
 #include "../../include/tsc.hh"
 #include "../../include/util.hh"
 #include "../../include/zipf.hh"
@@ -32,11 +31,6 @@ int main(int argc, char* argv[]) try {
   if (FLAGS_tpcc_pin_order != "socket0_first" &&
       FLAGS_tpcc_pin_order != "physical_first")
     throw std::invalid_argument("Invalid tpcc_pin_order");
-  const auto initial_warehouses = FLAGS_tpcc_active_warehouse_count == 0
-      ? FLAGS_tpcc_num_wh : FLAGS_tpcc_active_warehouse_count;
-  const auto warehouse_schedule = tpcc_runtime::parse_schedule(
-      FLAGS_tpcc_active_warehouse_schedule, initial_warehouses,
-      FLAGS_tpcc_num_wh, FLAGS_extime);
   TPCCWorkload<Tuple, void>::displayWorkloadParameter();
   TPCCWorkload<Tuple, void>::makeDB(nullptr);
 
@@ -62,9 +56,7 @@ int main(int argc, char* argv[]) try {
 #endif
         if (trans.isLeader()) trans.gcob.decideFirstRange();
         trans.gcstart_ = rdtscp();
-      }, ccbench::NoOpHook{}, nullptr, ccbench::AlwaysRunWorker{},
-      tpcc_runtime::ScheduledControlLoop<TPCCWorkload<Tuple, void>>(
-          warehouse_schedule, TotalThreadNum, FLAGS_extime));
+      });
 
   return 0;
 } catch (const bad_alloc&) { ERR; }

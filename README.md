@@ -17,6 +17,14 @@ See [docs/workloads_en.md](docs/workloads_en.md) for the workload specs (tables,
 
 [1]: http://www.vldb.org/pvldb/vol13/p3531-tanabe.pdf
 
+## Metis
+
+This branch adds **Metis**, a controller that learns how many worker threads
+should run transactions, on top of Silo, together with the hill-climbing
+baseline AdaTAM. The code, the experiment scripts, the recorded results, and
+the reproduction steps are described in
+[experiments/metis/README.md](experiments/metis/README.md).
+
 ## Quick start (devcontainer)
 
 The repo ships with a `linux/amd64` devcontainer at [.devcontainer/](.devcontainer/) that pulls a prebuilt image from GHCR. In VS Code, run **`Dev Containers: Reopen in Container`** — apt deps are set up automatically.

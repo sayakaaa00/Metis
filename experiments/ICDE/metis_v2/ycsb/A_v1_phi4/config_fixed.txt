@@ -1,4 +1,0 @@
-binary=/home/ubuntu/ccbench-adaTAM/build_release/silo/ycsb_metis_paper
-binary_sha256=4959f58ccf46fb6ad2c31469d0d4916fc98f50917e60d2a781be4d7c6d599121
-allocator_sha256=f88a9a5b65a452720342a370cdd815d88dff4dbffd62c2d44802a43321e5d73d
-args={'cmd': 'fixed', 'bench': 'ycsb', 'variant': 'A', 'states': '', 'runs': 2, 'extime': 10, 'alpha': 0.0, 'schedule': '', 'model': '', 'all_model': False}

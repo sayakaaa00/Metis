@@ -16,35 +16,32 @@
 
 #include "debug.hh"
 
-#define CPUID(INFO, LEAF, SUBLEAF) \
+#define CPUID(INFO, LEAF, SUBLEAF)                                             \
   __cpuid_count(LEAF, SUBLEAF, INFO[0], INFO[1], INFO[2], INFO[3])
 
-#define GETCPU(CPU)                                                 \
-  {                                                                 \
-    uint32_t CPUInfo[4];                                            \
-    CPUID(CPUInfo, 1, 0);                                           \
-    /* CPUInfo[1] is EBX, bits 24-31 are APIC ID */                 \
-    if ((CPUInfo[3] & (1 << 9)) == 0) {                             \
-      CPU = -1; /* no APIC on chip */                               \
-    } else {                                                        \
-      CPU = (unsigned)CPUInfo[1] >> 24;                             \
-      /*unsigned int cores = ((unsigned)CPUInfo[1] >> 16) & 0xff;*/ \
-      /*if ((CPUInfo[3] & (1 << 28)) == 1) printf("HTT\n");*/       \
-      /*printf("total core number : %d\n", cores);*/                \
-    }                                                               \
-    if (CPU < 0) CPU = 0;                                           \
+#define GETCPU(CPU)                                                            \
+  {                                                                            \
+    uint32_t CPUInfo[4];                                                       \
+    CPUID(CPUInfo, 1, 0);                                                      \
+    /* CPUInfo[1] is EBX, bits 24-31 are APIC ID */                            \
+    if ((CPUInfo[3] & (1 << 9)) == 0) {                                        \
+      CPU = -1; /* no APIC on chip */                                          \
+    } else {                                                                   \
+      CPU = (unsigned) CPUInfo[1] >> 24;                                       \
+      /*unsigned int cores = ((unsigned)CPUInfo[1] >> 16) & 0xff;*/            \
+      /*if ((CPUInfo[3] & (1 << 28)) == 1) printf("HTT\n");*/                  \
+      /*printf("total core number : %d\n", cores);*/                           \
+    }                                                                          \
+    if (CPU < 0) CPU = 0;                                                      \
   }
 
 #ifdef Linux
 
-// NUMA ソケットを跨がないように、まずソケット 0 を優先して埋め、
-// それを超えたスレッドは他ソケットの CPU を順に使う。
-//   - /sys/devices/system/cpu/cpu*/topology/physical_package_id から
-//     package_id を読み取り、socket0 とその他の CPU を分類する。
-//   - ordered_cpus = [socket0 の CPU 群] + [その他の CPU 群]
-//   - myid に対して ordered_cpus[myid % ordered_cpus.size()] を割り当てる。
-//   - /sys が読めない場合などは 0..N-1 を ordered_cpus として扱う。
-
+// Socket-aware CPU order (default pinning): fill the logical CPUs of socket 0
+// first, then the CPUs of the other sockets, so that a run with few workers
+// does not cross NUMA sockets. CPUs are classified by
+// /sys/devices/system/cpu/cpu*/topology/physical_package_id; if the topology
+// cannot be read, CPUs 0..N-1 are used in order.
 static int chooseSocketAwareCpu(const int myid) {
   static std::once_flag cpu_init_flag;
   static std::vector<int> ordered_cpus;
@@ -84,7 +81,7 @@ static int chooseSocketAwareCpu(const int myid) {
       ordered_cpus.insert(ordered_cpus.end(), other_cpus.begin(), other_cpus.end());
     }
 
-    // もし何も取れなければ、従来どおり 0..N-1 を候補とする
+    // Fall back to 0..N-1 when the topology is unavailable.
     if (ordered_cpus.empty()) {
       for (long cpu = 0; cpu < nprocs; ++cpu) {
         ordered_cpus.push_back(static_cast<int>(cpu));
@@ -94,15 +91,12 @@ static int chooseSocketAwareCpu(const int myid) {
   });
 
   if (!ordered_cpus.empty()) {
-    // スレッド ID に基づく決定的なマッピングで CPU を割り当てる。
-    // - ソケット0に属する CPU が存在する場合、myid が socket0_count 以下なら
-    //   ソケット0の CPU を優先的に利用する。
-    // - それ以降のスレッドは、残りの CPU 群（他ソケット）を round-robin で使う。
+    // Deterministic mapping by worker ID: the first socket0_count workers use
+    // socket 0, the rest use the other sockets round-robin.
 
     const int total = static_cast<int>(ordered_cpus.size());
     if (socket0_count > 0) {
       if (myid < socket0_count) {
-        // thread_num <= socket0_count の範囲では、ソケット0内で 1:1 に近い割り当て。
         int idx = myid % socket0_count;
         return ordered_cpus[idx];
       } else {
@@ -111,19 +105,19 @@ static int chooseSocketAwareCpu(const int myid) {
           int idx = socket0_count + ((myid - socket0_count) % other_cnt);
           return ordered_cpus[idx];
         } else {
-          // ソケット0しかない場合は、ソケット0内で round-robin。
+          // Only socket 0 exists: round-robin within it.
           int idx = myid % socket0_count;
           return ordered_cpus[idx];
         }
       }
     }
 
-    // ソケット0が存在しない場合は、全 CPU を対象に単純な round-robin を行う。
+    // No CPU on socket 0: round-robin over all CPUs.
     int idx = myid % total;
     return ordered_cpus[idx];
   }
 
-  // フォールバック（理論上ここには来ない想定）
+  // Unreachable fallback.
   return myid % static_cast<int>(nprocs);
 }
 
@@ -180,51 +174,7 @@ static int choosePhysicalFirstCpu(const int myid) {
   return ordered_cpus[myid % ordered_cpus.size()];
 }
 
-// プロセス全体の CPU アフィニティを、"ソケット0だけ" に制限するヘルパ。
-// TotalThreadNum がソケット0の論理 CPU 数以下のときだけ適用することで、
-// thread_num ≤ socket0 コア数なら必ず node0 だけを使うポリシーを実現する。
-[[maybe_unused]] static void setProcessAffinitySocket0IfFits(
-    int total_threads) {
-  static bool applied = false;
-  if (applied) return;
-
-  long nprocs = sysconf(_SC_NPROCESSORS_CONF);
-  if (nprocs < 1) nprocs = 1;
-
-  std::vector<int> socket0_cpus;
-
-  for (long cpu = 0; cpu < nprocs; ++cpu) {
-    char path[256];
-    std::snprintf(path, sizeof(path),
-                  "/sys/devices/system/cpu/cpu%ld/topology/physical_package_id",
-                  cpu);
-    FILE *fp = std::fopen(path, "r");
-    if (!fp) continue;
-    int pkg = -1;
-    if (std::fscanf(fp, "%d", &pkg) == 1 && pkg == 0) {
-      socket0_cpus.push_back(static_cast<int>(cpu));
-    }
-    std::fclose(fp);
-  }
-
-  if (socket0_cpus.empty()) return;
-
-  // thread_num ≤ ソケット0の論理 CPU 数のときだけ、node0 に閉じ込める
-  if (total_threads <= static_cast<int>(socket0_cpus.size())) {
-    cpu_set_t cpu_set;
-    CPU_ZERO(&cpu_set);
-    for (int cpu : socket0_cpus) {
-      CPU_SET(cpu, &cpu_set);
-    }
-
-    pid_t pid = getpid();
-    if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
-
-    applied = true;
-  }
-}
-
-// Diagnostic override: CCBENCH_PIN_CPU_LIST="0,1,24,25,..." pins worker i to
+// Override: CCBENCH_PIN_CPU_LIST="0,1,24,25,..." pins worker i to
 // the i-th listed CPU. Workers beyond the list use the remaining CPUs in
 // ascending order. Returns -1 when the variable is unset or empty.
 static int explicitPinCpu(const int myid) {
@@ -281,9 +231,9 @@ static void setThreadAffinity(const int myid) {
   CPU_SET(cpu >= 0 ? cpu : choosePhysicalFirstCpu(myid), &cpu_set);
   if (sched_setaffinity(pid, sizeof(cpu_set_t), &cpu_set) != 0) ERR;
 }
-#endif  // Linux
+#endif // Linux
 
 inline int cached_sched_getcpu() {
-    thread_local int value = ::sched_getcpu();
-    return value;
+  thread_local int value = ::sched_getcpu();
+  return value;
 }

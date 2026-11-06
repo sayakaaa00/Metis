@@ -1,7 +1,0 @@
-active_threads,run,tps,abort_rate,log
-16,1,473912,0.0140,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/diagnose_w16_fixed_threads_mimalloc_v1/logs/w16_n16_run1.log
-24,1,535729,0.0785,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/diagnose_w16_fixed_threads_mimalloc_v1/logs/w16_n24_run1.log
-72,1,527359,0.2788,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/diagnose_w16_fixed_threads_mimalloc_v1/logs/w16_n72_run1.log
-72,2,529900,0.2775,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/diagnose_w16_fixed_threads_mimalloc_v1/logs/w16_n72_run2.log
-24,2,535975,0.0786,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/diagnose_w16_fixed_threads_mimalloc_v1/logs/w16_n24_run2.log
-16,2,482546,0.0141,/home/ubuntu/ccbench-adaTAM/experiments/ICDE/tpcc/diagnose_w16_fixed_threads_mimalloc_v1/logs/w16_n16_run2.log

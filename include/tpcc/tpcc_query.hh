@@ -1,7 +1,6 @@
 #pragma once
 
 #include "tpcc_common.hh"
-#include "tpcc_item_zipf.hh"
 #include "tpcc_util.hh"
 // #include "../include/random.hh"
 // #include "../include/result.hh"
@@ -31,7 +30,6 @@ namespace TPCCQuery {
 
 class Option {
 public:
-  FastZipf* item_zipf = nullptr;
   std::uint32_t num_wh = FLAGS_tpcc_num_wh;
   std::uint32_t dist_per_ware = DIST_PER_WARE;
   std::uint32_t max_items = FLAGS_tpcc_num_items;
@@ -88,111 +86,27 @@ public:
   std::uint8_t rbk;
   bool remote;
   std::uint8_t ol_cnt;
-  bool hot_transaction;
-
-  static std::uint32_t generate_item_id(const Option& opt,
-                                        bool* selected_hot = nullptr) {
-    if (FLAGS_tpcc_item_zipf_enable) {
-      if (selected_hot != nullptr) *selected_hot = false;
-      if (FLAGS_tpcc_hot_item_stats)
-        g_tpcc_item_selections.fetch_add(1, std::memory_order_relaxed);
-      return g_tpcc_item_zipf_distribution.select(*opt.item_zipf);
-    }
-    constexpr std::uint64_t kRatioScale = 1000000;
-    const auto hot_threshold = static_cast<std::uint64_t>(
-        FLAGS_tpcc_hot_item_ratio * static_cast<double>(kRatioScale));
-    const bool select_hot =
-        hot_threshold > 0 && random_int(0, kRatioScale - 1) < hot_threshold;
-    if (selected_hot != nullptr) *selected_hot = select_hot;
-
-    if (FLAGS_tpcc_hot_item_stats ||
-        FLAGS_tpcc_hot_item_validation_samples > 0) {
-      g_tpcc_item_selections.fetch_add(1, std::memory_order_relaxed);
-      if (select_hot) {
-        g_tpcc_hot_branch_selections.fetch_add(1,
-                                                std::memory_order_relaxed);
-      }
-    }
-
-    if (select_hot) {
-      return static_cast<std::uint32_t>(
-          random_int(ID_START, FLAGS_tpcc_hot_item_count));
-    }
-    return static_cast<std::uint32_t>(
-        non_uniform_random<8191>(ID_START, opt.max_items));
-  }
-
-  std::uint32_t generate_unique_item_id(const Option& opt,
-                                        unsigned int item_index,
-                                        const bool select_hot) {
-    std::uint32_t item_id = 0;
-    bool duplicate = false;
-    do {
-      item_id = FLAGS_tpcc_item_zipf_enable
-                    ? g_tpcc_item_zipf_distribution.select(*opt.item_zipf)
-                    : select_hot
-                          ? static_cast<std::uint32_t>(random_int(
-                                ID_START, FLAGS_tpcc_hot_item_count))
-                          : static_cast<std::uint32_t>(non_uniform_random<8191>(
-                                ID_START, opt.max_items));
-      duplicate = false;
-      for (unsigned int previous = 0; previous < item_index; ++previous) {
-        if (items[previous].ol_i_id == item_id) {
-          duplicate = true;
-          break;
-        }
-      }
-    } while (duplicate);
-    if (FLAGS_tpcc_item_zipf_enable && FLAGS_tpcc_hot_item_stats)
-      g_tpcc_item_selections.fetch_add(1, std::memory_order_relaxed);
-    return item_id;
-  }
 
   void generate([[maybe_unused]] uint16_t w_id0, Option& opt) {
     w_id = w_id0;
-    constexpr std::uint64_t kRatioScale = 1000000;
-    const auto hot_threshold = static_cast<std::uint64_t>(
-        FLAGS_tpcc_hot_transaction_ratio * static_cast<double>(kRatioScale));
-    hot_transaction = FLAGS_tpcc_hot_transaction_mode && hot_threshold > 0 &&
-                      random_int(0, kRatioScale - 1) < hot_threshold;
-    const bool keep_tpcc_routing =
-        FLAGS_tpcc_hot_transaction_keep_tpcc_routing;
-    if (hot_transaction && !keep_tpcc_routing) {
-      w_id = static_cast<std::uint16_t>(FLAGS_tpcc_hot_warehouse_id);
-    }
-    d_id = hot_transaction && !keep_tpcc_routing
-               ? random_int(ID_START, FLAGS_tpcc_hot_district_count)
-               : random_int(ID_START, opt.dist_per_ware);
+    d_id = random_int(ID_START, opt.dist_per_ware);
     c_id = non_uniform_random<1023>(ID_START, opt.cust_per_dist);
     rbk = random_int(1, 100);
     ol_cnt = random_int(5, 15);
     remote = false;
 
-    if (FLAGS_tpcc_hot_transaction_stats) {
-      g_tpcc_neworder_transactions.fetch_add(1, std::memory_order_relaxed);
-      if (hot_transaction) {
-        g_tpcc_hot_neworder_transactions.fetch_add(1,
-                                                    std::memory_order_relaxed);
-        g_tpcc_hot_district_counts[d_id - ID_START].fetch_add(
-            1, std::memory_order_relaxed);
-      }
-      g_tpcc_neworder_lines.fetch_add(ol_cnt, std::memory_order_relaxed);
-    }
-
     for (unsigned int i = 0; i < ol_cnt; ++i) {
-      bool selected_hot = false;
-      if (FLAGS_tpcc_item_zipf_enable) {
-        items[i].ol_i_id = generate_unique_item_id(opt, i, false);
-      } else if (FLAGS_tpcc_hot_transaction_mode) {
-        selected_hot = hot_transaction;
-        items[i].ol_i_id = generate_unique_item_id(opt, i, hot_transaction);
-      } else {
-        items[i].ol_i_id = generate_item_id(opt, &selected_hot);
+#if 0 // ol_i_id is no need to be unique.
+      { redo1:
+        items[i].ol_i_id = non_uniform_random<8191>(ID_START, opt.max_items);
+        for (unsigned int j=0; j<i; ++j) {
+          if (items[i].ol_i_id == items[j].ol_i_id) goto redo1;
+        }
       }
-      if (!FLAGS_tpcc_hot_transaction_mode && selected_hot) {
-        items[i].ol_supply_w_id = static_cast<std::uint16_t>(
-            random_int(ID_START, FLAGS_tpcc_hot_supply_warehouse_count));
-      } else if (opt.num_wh == 1 || random_int(0, 99) != 0) {
+#else
+      items[i].ol_i_id = non_uniform_random<8191>(ID_START, opt.max_items);
+#endif
+      if (opt.num_wh == 1 || random_int(0, 99) != 0) {
         items[i].ol_supply_w_id = w_id;
       } else {
         do {
@@ -200,10 +114,6 @@ public:
         } while (items[i].ol_supply_w_id == w_id);
       }
       remote = remote || items[i].ol_supply_w_id != w_id;
-      if (FLAGS_tpcc_hot_transaction_stats &&
-          items[i].ol_supply_w_id != w_id) {
-        g_tpcc_neworder_remote_lines.fetch_add(1, std::memory_order_relaxed);
-      }
       items[i].ol_quantity = random_int(1, 10);
     }
     if (rbk ==

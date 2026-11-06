@@ -41,7 +41,6 @@
  */
 
 #include <atomic>
-#include <chrono>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
@@ -150,9 +149,12 @@ struct NoOpHook {
   void operator()(Tx&, std::size_t) const noexcept {}
 };
 
-/// Default per-transaction gate: every worker remains active.
+/// Default per-transaction gate: every worker remains active. A gate is
+/// called as `gate(trans, thid)` before each transaction; returning false
+/// skips the transaction (the gate itself waits).
 struct AlwaysRunWorker {
-  bool operator()(std::size_t) const noexcept { return true; }
+  template <typename Tx>
+  bool operator()(Tx&, std::size_t) const noexcept { return true; }
 };
 
 /// Default benchmark control loop used by non-adaptive binaries.
@@ -210,26 +212,8 @@ void worker_body(std::size_t thid, char& ready, const bool& start,
   while (!loadAcquire(start)) _mm_pause();
   worker_after_start(trans, thid);
   while (!loadAcquire(quit)) {
-    if (!worker_gate(thid)) {
-#ifdef ADAPTIVE_VARIANT
-      if constexpr (requires(Tx& parked) {
-                      parked.announce_quiescent_epoch();
-                    }) {
-        trans.announce_quiescent_epoch();
-      }
-      const auto sleep_us = FLAGS_metis_test_enable
-          ? FLAGS_metis_test_idle_sleep_us : FLAGS_tam_idle_sleep_us;
-      if (sleep_us != 0) {
-        std::this_thread::sleep_for(
-            std::chrono::microseconds(sleep_us));
-      } else {
-        _mm_pause();
-      }
-#else
-      _mm_pause();
-#endif
-      continue;
-    }
+    // An inactive worker parks inside the gate (see include/tam.hh).
+    if (!worker_gate(trans, thid)) continue;
     workload.template run<Tx, TransactionStatus>(trans);
   }
 }
