@@ -84,9 +84,7 @@ TPC-C and BoMB were contributed by [@jnmt](https://github.com/jnmt).
 - Original CCBench experimental data: <https://github.com/thawk105/ccdata>
 
 CCBench's binaries build with `cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j`
-and land at `build/cc/<protocol>/<workload>_<protocol>.exe`. A `linux/amd64`
-devcontainer is in [.devcontainer/](.devcontainer/). Under emulation, such as
-on Apple Silicon, it is fine for development but not for measurements.
+and land at `build/cc/<protocol>/<workload>_<protocol>.exe`.
 
 ## License
 
