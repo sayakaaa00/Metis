@@ -1,3 +1,6 @@
 [submodule "third_party/shirakami"]
 	path = third_party/shirakami
 	url = https://github.com/thawk105/shirakami.git
+[submodule "experiments/mysql"]
+	path = experiments/mysql
+	url = https://github.com/Tatzhiro/MySQL-Metis-experiments.git
