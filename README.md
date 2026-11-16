@@ -3,12 +3,16 @@
 This repository contains the code, experiment scripts, and figure scripts of the
 Metis paper.
 
-At high contention, in-memory databases run faster with fewer active worker
-threads, but the best count changes with the workload. **Metis** selects it at
-runtime without changing the concurrency control protocol. One linear model,
-trained offline, predicts the relative throughput of every candidate count from the
-abort rate and the current count. Metis jumps to the predicted best count,
-refines it with a few measurements, and holds it until the workload changes.
+**Metis** selects the best number of active worker threads at runtime for
+in-memory databases under high contention, without changing the concurrency
+control protocol.
+
+- One linear model, trained offline, predicts the relative throughput of every
+  candidate count from the abort rate and the current count.
+- The same model serves every contention level, including ones not seen in
+  training.
+- At runtime, Metis jumps to the predicted best count, refines it with a few
+  measurements, and holds it until the workload changes.
 
 Metis is implemented on Silo in [CCBench](#built-on-ccbench). It is evaluated on
 YCSB and TPC-C against Silo, Silo with adaptive backoff (Silo-BO), Cicada,
