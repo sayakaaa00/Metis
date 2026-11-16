@@ -73,7 +73,7 @@ build_release/silo/tpcc_silo_nobackoff --thread_num=96 --tpcc_num_wh=96 \
 This repository is a fork of [CCBench](https://github.com/thawk105/ccbench); the CCBench tree is in [ccbench/](ccbench).
 CCBench re-implements major in-memory concurrency control protocols on a common
 substrate so that they can be compared on identical workloads
-([Tanabe et al., VLDB 2020][1]). It includes Silo, MOCC, Cicada, ERMIA, TicToc,
+([Tanabe et al., VLDB 2020](https://doi.org/10.14778/3424573.3424575)). It includes Silo, MOCC, Cicada, ERMIA, TicToc,
 Oze, SI, SS2PL, MVTO, and D2PL, with the YCSB, TPC-C, and BoMB workloads.
 TPC-C and BoMB were contributed by [@jnmt](https://github.com/jnmt).
 
@@ -87,17 +87,6 @@ CCBench's binaries build with `cmake -S . -B build -DCMAKE_BUILD_TYPE=Release &&
 and land at `build/cc/<protocol>/<workload>_<protocol>.exe`. A `linux/amd64`
 devcontainer is in [.devcontainer/](.devcontainer/). Under emulation, such as
 on Apple Silicon, it is fine for development but not for measurements.
-
-### References
-
-```
-[1] Takayuki Tanabe, Takashi Hoshino, Hideyuki Kawashima, and Osamu Tatebe. 2020.
-    An analysis of concurrency control protocols for in-memory databases with CCBench.
-    Proc. VLDB Endow. 13, 13 (September 2020), 3531–3544.
-    https://doi.org/10.14778/3424573.3424575
-```
-
-[1]: http://www.vldb.org/pvldb/vol13/p3531-tanabe.pdf
 
 ## License
 
