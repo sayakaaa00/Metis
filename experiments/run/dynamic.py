@@ -53,6 +53,8 @@ def argv_for(bench, method, schedule, extime, model, min_count):
         argv += ["--ycsb_skew_change_enable=true", f"--ycsb_zipf_skew2={s1}",
                  f"--ycsb_skew_change_time_sec={t1}", "--ycsb_skew_change_enable2=true",
                  f"--ycsb_zipf_skew3={s2}", f"--ycsb_skew_change_time_sec2={t2}"]
+    if bench == "tpcc" and method in ("cicada", "ermia"):
+        return argv, env   # these log "[TPC-C interval]" every 200 ms when a schedule is set
     return argv + ["--benchmark_interval_tps_log_us=200000"], env
 
 

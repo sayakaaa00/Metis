@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Introduction: worker time on committed / aborted transactions and abort rate vs. YCSB skew
 (Silo, 96 worker threads, instrumented binary ycsb_silo_breakdown).
-Data: ycsb/breakdown/results.csv.  plot_e1_breakdown.py OUT.pdf"""
+Data: ycsb/breakdown/results.csv.  plot_breakdown_vs_skew.py OUT.pdf"""
 import csv, statistics, sys
 from collections import defaultdict
 import matplotlib

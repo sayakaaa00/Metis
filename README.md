@@ -22,10 +22,15 @@ ERMIA, and hill climbing on the active thread count.
 
 ```
 metis/          Metis: controller, thread throttling, control loop (see metis/README.md)
-experiments/    experiment scripts, trained models, figure scripts (see experiments/README.md)
+experiments/    reproducing the paper (see experiments/README.md)
+  run/          experiment scripts
+  figures/      figure scripts
+  models/       Metis models used in the paper
   data/         submodule Metis-data: measured results of the paper (per-run logs and CSVs)
+  paper_figures/  figures made from data/
   mysql/        submodule MySQL-Metis-experiments: Metis in MySQL (InnoDB)
 ccbench/        CCBench, the benchmark Metis is built on (Silo, Cicada, ERMIA, YCSB, TPC-C, ...)
+build.sh        builds the binaries used by the experiments
 ```
 
 | Start here | Contents |
@@ -42,7 +47,7 @@ Requirements: x86-64 Linux, GCC 13, CMake, and Python 3 with matplotlib
 ```sh
 git clone --recurse-submodules https://github.com/sayakaaa00/ccbench-Metis.git
 cd ccbench-Metis
-experiments/build.sh                 # build the binaries
+./build.sh                           # build the binaries
 experiments/figures/make_figures.sh  # paper figures from the measured results
 ```
 
@@ -83,6 +88,7 @@ git history of this repository:
 - `ccbench/cc/{d2pl,mocc,mvto,oze,si,ss2pl,tictoc}/transaction.cc`
 - `ccbench/common/`: `runner.hh`, `util.cc`
 - `ccbench/include/`: `backoff.hh`, `cpu.hh`, `tpcc.hh`, `ycsb.hh`, `tpcc/tpcc_common.hh`, `tpcc/tpcc_initializer.hh`, `tpcc/tpcc_query.hh`, `tpcc/tpcc_tx_delivery.hh`, `tpcc/tpcc_tx_neworder.hh`
+- Added: `ccbench/include/ycsb_skew_schedule.hh`, `ccbench/include/tpcc/warehouse_schedule.hh` (in-run workload changes for Cicada and ERMIA)
 
 ## Built on CCBench
 

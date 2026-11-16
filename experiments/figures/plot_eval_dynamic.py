@@ -2,7 +2,7 @@
 """Evaluation: active thread count of Metis and hill climbing on dynamic workloads (whole run and
 the first 60 control periods of each period). TPC-C D11 (W 2 -> 8 -> 1), YCSB Y4 (skew 0.99 -> 0.5
 -> 0.95; Metis with --metis_recheck_physical=false). Data: <bench>/dynamic_hill_climbing/logs.
-  plot_eval_zoom.py [RUN]   Output: OUT/eval_dynamic.pdf"""
+  plot_eval_dynamic.py [RUN]   Output: OUT/eval_dynamic.pdf"""
 import sys
 from collections import defaultdict
 from pathlib import Path

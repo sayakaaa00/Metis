@@ -12,9 +12,9 @@
 #include <utility>
 #include <vector>
 
-#include "../shared_state.hh"
-#include "../../ccbench/include/atomic_wrapper.hh"
-#include "../../ccbench/include/result.hh"
+#include "../../../metis/shared_state.hh"
+#include "../atomic_wrapper.hh"
+#include "../result.hh"
 
 namespace tpcc_runtime {
 

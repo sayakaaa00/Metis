@@ -18,7 +18,7 @@
 #include "../../include/zipf.hh"
 
 #include "../../common/runner.hh"
-#include "../../../metis/workload_change/ycsb_skew_schedule.hh"
+#include "../../include/ycsb_skew_schedule.hh"
 
 using namespace std;
 

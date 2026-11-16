@@ -20,9 +20,10 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
-OUT = Path(os.environ.get("METIS_OUT", HERE / "results"))
+EXPERIMENTS = HERE.parent
+OUT = Path(os.environ.get("METIS_OUT", EXPERIMENTS / "results"))
 BUILD = Path(os.environ.get("BUILD", ROOT / "build_release"))
 MIMALLOC = BUILD / "mimalloc_override/libmimalloc.so"
 SILO = {("tpcc", False): BUILD / "silo/tpcc_silo_nobackoff",
@@ -53,7 +54,7 @@ IDENTITY = ",".join(str(i) for i in range(min(WORKERS, os.cpu_count() or 1)))
 # data/<bench>/models). min8: candidates 8..96, min6: candidates 6..96; YCSB
 # min6 is trained on all nine skews. A model set trained by train.py is used
 # with --models <dir>.
-MODELS = HERE / "models"
+MODELS = EXPERIMENTS / "models"
 MIN_COUNT = {"min8": 8, "min6": 6}
 
 

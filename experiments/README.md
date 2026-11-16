@@ -14,20 +14,31 @@ overview of Metis, see the [top-level README](../README.md); for its implementat
 5. [Options of the baselines and workload changes](#5-options-of-the-baselines-and-workload-changes)
 6. [Known issue](#6-known-issue-cicada-stalls-under-extreme-contention)
 
+Layout of this directory:
+
+```
+run/            experiment scripts (write new runs to results/)
+figures/        one script per figure, make_figures.sh
+models/         the Metis models used in the paper
+data/           submodule Metis-data: the measured results of the paper
+paper_figures/  the figures made from data/
+mysql/          submodule MySQL-Metis-experiments: Metis in MySQL
+```
+
 ## 1. Setup
 
 **Machine.** The results were measured on AWS with 2 × Intel Xeon Platinum 8375C
 (48 physical cores, 96 logical CPUs, 185 GiB, Ubuntu 24.04, GCC 13). The scripts
 assume 96 worker threads and `--clocks_per_us=2900` (the TSC frequency of that
 machine). On another machine, change `WORKERS` and `--clocks_per_us` in
-[common.py](common.py). A Metis model records the worker and physical-core
+[run/common.py](run/common.py). A Metis model records the worker and physical-core
 counts, and Metis refuses a model trained on a different topology.
 
 **Build.**
 
 ```sh
 git submodule update --init experiments/data experiments/mysql
-experiments/build.sh   # Release build + mimalloc shared library (LD_PRELOAD)
+./build.sh   # Release build + mimalloc shared library (LD_PRELOAD)
 ```
 
 | Binary (`build_release/...`) | Used for |
@@ -51,13 +62,13 @@ paths and the oracle curves.
 |---|---|---|---|
 | `intro_fixed_nometis.pdf` | Introduction | `plot_intro_fixed_nometis.py` | `ycsb/fixed`, `ycsb/oracle` |
 | `tps_vs_threads_skew{0,0.9}.pdf` | Introduction | `plot_tps_vs_threads_lowhigh.py` | `ycsb/oracle/skew_0_0.5_0.9` |
-| `breakdown_vs_skew.pdf` | Introduction | `plot_e1_breakdown.py` | `ycsb/breakdown` |
+| `breakdown_vs_skew.pdf` | Introduction | `plot_breakdown_vs_skew.py` | `ycsb/breakdown` |
 | `backoff_sensitivity.pdf` | Background | `plot_backoff_sensitivity.py` | `ycsb/backoff_constant` |
-| `motivation_tps_vs_threads.pdf` | Background | `plot_motivation_variants.py` | `tpcc/oracle`, `ycsb/oracle` |
+| `motivation_tps_vs_threads.pdf` | Background | `plot_motivation_tps_vs_threads.py` | `tpcc/oracle`, `ycsb/oracle` |
 | `eval_static.pdf` | Evaluation, static workloads | `plot_eval_static.py` | `*/fixed`, `*/oracle`, `*/backoff_constant` |
 | `eval_dynamic_tps.pdf`, `eval_dynamic_tps_tpcc.pdf` | Evaluation, dynamic workloads | `plot_eval_dynamic_tps.py`, `plot_eval_dynamic_tps_tpcc.py` | `*/dynamic` |
 | `eval_static_time.pdf`, `eval_static_tps.pdf` | Evaluation, hill climbing (static) | `plot_eval_static_time.py`, `plot_eval_static_tps.py` | `*/fixed/logs`, `ycsb/hill_climbing_10ms_log` |
-| `eval_dynamic.pdf` | Evaluation, hill climbing (dynamic) | `plot_eval_zoom.py` | `*/dynamic_hill_climbing` |
+| `eval_dynamic.pdf` | Evaluation, hill climbing (dynamic) | `plot_eval_dynamic.py` | `*/dynamic_hill_climbing` |
 | `eval_backoff.pdf` | Evaluation, thread throttling vs. backoff | `plot_eval_backoff.py` | as `eval_static.pdf` |
 
 The paper splits some of these figures into one PDF per benchmark plus a
@@ -76,6 +87,8 @@ METIS_DATA=experiments/results experiments/figures/make_figures.sh
 Each run is appended to a results CSV. A script skips runs that are already
 recorded, so an interrupted script resumes where it stopped. The method order
 is reversed on even runs. TPC-C runs first load the 96-warehouse database.
+The scripts are in [run/](run) and run from any directory, e.g.
+`python3 experiments/run/fixed.py --bench ycsb`.
 
 | Step | Command | Output (`$METIS_OUT/...`) | Runs |
 |---|---|---|---|
@@ -94,9 +107,9 @@ Metis uses the paper's models in [models/](models) by default. To evaluate the
 models trained by `train.py`, pass `--models $METIS_OUT/<bench>/models/min6
 --model-set min6` to `fixed.py` or `dynamic.py`.
 
-Script files: [common.py](common.py) (binaries, contention levels, and the
-command line of every method), the experiment scripts above, and
-[merge_models.py](merge_models.py) (pools training runs into a model).
+Besides the experiment scripts, [run/](run) contains [common.py](run/common.py)
+(binaries, contention levels, and the command line of every method) and
+[merge_models.py](run/merge_models.py) (pools training runs into a model).
 
 ## 4. Paper settings
 

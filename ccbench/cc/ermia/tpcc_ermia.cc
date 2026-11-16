@@ -13,7 +13,7 @@
 #include "../../include/random.hh"
 #include "../../include/result.hh"
 #include "../../include/tpcc.hh"
-#include "../../../metis/workload_change/tpcc_warehouse_schedule.hh"
+#include "../../include/tpcc/warehouse_schedule.hh"
 #include "../../include/tsc.hh"
 #include "../../include/util.hh"
 #include "../../include/zipf.hh"

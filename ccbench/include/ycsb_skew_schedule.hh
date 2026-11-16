@@ -2,7 +2,7 @@
 
 // In-run YCSB skew schedule and interval-throughput log for the unthrottled
 // YCSB binaries (Cicada, ERMIA). Same flags and log format as ycsb_silo.cc /
-// ControlLoop::run_control_loop, so experiments/dynamic.py
+// ControlLoop::run_control_loop, so experiments/run/dynamic.py
 // can drive these binaries unchanged. Include from exactly one translation
 // unit per binary (it defines gflags), and never together with ycsb_silo.cc.
 // All flags default to off, in which case the loop only sleeps FLAGS_extime.
@@ -15,10 +15,10 @@
 
 #include "gflags/gflags.h"
 
-#include "../shared_state.hh"
-#include "../../ccbench/include/atomic_wrapper.hh"
-#include "../../ccbench/include/result.hh"
-#include "../../ccbench/include/tsc.hh"
+#include "../../metis/shared_state.hh"
+#include "atomic_wrapper.hh"
+#include "result.hh"
+#include "tsc.hh"
 
 DECLARE_uint64(clocks_per_us);
 DECLARE_uint64(extime);

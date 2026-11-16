@@ -23,7 +23,6 @@ controller (thread_throttling.hh) = Metis (metis.hh)
 | [thread_throttling.hh](thread_throttling.hh) | Chooses the controller (Metis, hill climbing, or a fixed N) and parks inactive worker threads |
 | [control_loop.hh](control_loop.hh) | Runs on the main thread: the per-transaction gate of the worker threads, the control loop, and the controller log |
 | [shared_state.hh](shared_state.hh) | State shared by the controllers, the control loop, and the workloads (active thread count, in-run workload changes) |
-| [workload_change/](workload_change) | In-run workload changes for the binaries without thread throttling: YCSB skew (`ycsb_skew_schedule.hh`) and TPC-C accessed warehouses (`tpcc_warehouse_schedule.hh`), used by Cicada and ERMIA |
 
 Changes inside CCBench that Metis relies on:
 
@@ -32,6 +31,8 @@ Changes inside CCBench that Metis relies on:
 - `ccbench/include/tpcc.hh`: the gate before every retry, and in-run changes of
   the accessed warehouses.
 - `ccbench/include/backoff.hh`: backoff of the baselines (Silo-BO, Cicada, ERMIA).
+- `ccbench/include/ycsb_skew_schedule.hh`, `ccbench/include/tpcc/warehouse_schedule.hh`:
+  in-run workload changes for Cicada and ERMIA (the baselines without thread throttling).
 
 An inactive worker thread sleeps 50 µs per check (`--throttle_idle_sleep_us`)
 and keeps announcing the current Silo epoch, so epoch advancement and garbage

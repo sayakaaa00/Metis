@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Build the binaries used in the Metis experiments and the mimalloc shared
 # library that the experiment scripts preload (LD_PRELOAD).
-#   experiments/build.sh [extra cmake arguments]
+#   ./build.sh [extra cmake arguments]
 # Output: $BUILD (default build_release)/silo/{ycsb,tpcc}_silo_{nobackoff,backoff},
 #         $BUILD/silo/ycsb_silo_breakdown,
 #         $BUILD/cc/{cicada,ermia}/{ycsb,tpcc}_*.exe,
 #         $BUILD/mimalloc_override/libmimalloc.so
 set -euo pipefail
-ROOT=$(cd "$(dirname "$0")/.." && pwd)
+ROOT=$(cd "$(dirname "$0")" && pwd)
 BUILD=${BUILD:-$ROOT/build_release}
 JOBS=${JOBS:-$(nproc)}
 
