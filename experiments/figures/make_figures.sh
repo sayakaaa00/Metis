@@ -8,6 +8,9 @@
 # The paper splits some figures into one PDF per benchmark plus a legend;
 # that layout is made in Tatzhiro/MySQL-Metis-experiments.
 set -euo pipefail
+# Relative METIS_DATA / METIS_FIG_OUT are relative to the caller's directory.
+if [ -n "${METIS_DATA:-}" ]; then export METIS_DATA=$(cd "$METIS_DATA" && pwd); fi
+if [ -n "${METIS_FIG_OUT:-}" ]; then mkdir -p "$METIS_FIG_OUT"; export METIS_FIG_OUT=$(cd "$METIS_FIG_OUT" && pwd); fi
 cd "$(dirname "$0")"
 OUT=${METIS_FIG_OUT:-$(cd .. && pwd)/results/figures}
 export METIS_FIG_OUT=$OUT

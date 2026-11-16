@@ -44,8 +44,9 @@ Requirements: x86-64 Linux, GCC 13, CMake, and Python 3 with matplotlib
 (Ubuntu 24.04; see [ccbench/docs/build_en.md](ccbench/docs/build_en.md)).
 
 ```sh
-git clone --recurse-submodules https://github.com/sayakaaa00/Metis.git
+git clone https://github.com/sayakaaa00/Metis.git
 cd Metis
+git submodule update --init experiments/data   # measured results (about 30 MB)
 ./build.sh                           # build the binaries
 experiments/figures/make_figures.sh  # paper figures from the measured results
 ```
@@ -56,7 +57,8 @@ experiments/figures/make_figures.sh  # paper figures from the measured results
 the data and script behind each, are listed in the
 [Metis-data README](https://github.com/sayakaaa00/Metis-data#figures-of-the-paper).
 
-A single run of Metis on TPC-C with 4 accessed warehouses (96 worker threads):
+A single run of Metis on TPC-C with 4 accessed warehouses (96 worker threads,
+30 s; run it from the repository root):
 
 ```sh
 LD_PRELOAD=build_release/mimalloc_override/libmimalloc.so \
@@ -67,6 +69,17 @@ build_release/silo/tpcc_silo_nobackoff --thread_num=96 --tpcc_num_wh=96 \
   --metis_enable=true \
   --metis_model_path=experiments/models/tpcc/min6/loo_4.txt
 ```
+
+The run prints the throughput and the abort rate. The decisions of Metis are
+written to the file named in the line `Controller logs will be written to:`
+(`logs/active_threads_<time>.log`): one `[Metis]` line per control period with
+the active thread count, the measured throughput, the abort rate, and the phase
+of the search, and a `[Throttle sample]` line with the active thread count over
+time.
+
+The submodule `experiments/mysql` (Metis in MySQL) is only needed for the MySQL
+experiments. Initialize it without `--recursive`; its own submodules contain
+the MySQL server source (several GB).
 
 ## Built on CCBench
 

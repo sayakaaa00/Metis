@@ -75,7 +75,8 @@ legend. That layout and the MySQL figures are made in
 
 ## 3. Running the experiments
 
-Every script writes to `$METIS_OUT` (default: `experiments/results/`) in the same layout as `data/`. To plot new runs:
+Every script writes to `$METIS_OUT` (default: `experiments/results/`) in the same layout as `data/`. To plot new runs
+(after all the runs a figure needs, see the [figure table](#2-figures-from-the-measured-results)):
 
 ```sh
 METIS_DATA=experiments/results experiments/figures/make_figures.sh
