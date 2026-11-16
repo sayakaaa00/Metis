@@ -45,8 +45,8 @@ Requirements: x86-64 Linux, GCC 13, CMake, and Python 3 with matplotlib
 (Ubuntu 24.04; see [ccbench/docs/build_en.md](ccbench/docs/build_en.md)).
 
 ```sh
-git clone --recurse-submodules https://github.com/sayakaaa00/ccbench-Metis.git
-cd ccbench-Metis
+git clone --recurse-submodules https://github.com/sayakaaa00/Metis.git
+cd Metis
 ./build.sh                           # build the binaries
 experiments/figures/make_figures.sh  # paper figures from the measured results
 ```

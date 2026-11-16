@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(ccbench-metis LANGUAGES CXX)
+project(metis LANGUAGES CXX)
 
 # Metis (metis/) is built into the Silo binaries of CCBench (ccbench/). The
 # CCBench tree keeps its own layout; its binaries land in the build tree as if
