@@ -90,7 +90,7 @@ The scripts are in [run/](run) and run from any directory, e.g.
 | Step | Command | Output (`$METIS_OUT/...`) | Runs |
 |---|---|---|---|
 | Oracle: every fixed active thread count | `oracle.py --bench ycsb`, `oracle.py --bench tpcc` | `<bench>/oracle/` | levels × N × 2 × 10 s |
-| Train Metis | `train.py run --bench B`, then `train.py merge --bench B` | `<bench>/train/min6/`, `<bench>/models/min6/` | levels × 2 × 30 s |
+| Train Metis | `train.py run --bench B`, then `train.py merge --bench B` | `<bench>/train/`, `<bench>/models/` | levels × 2 × 30 s |
 | Static workloads, all methods | `fixed.py --bench ycsb`, `fixed.py --bench tpcc` | `<bench>/fixed/` | 6 methods × levels × 2 × 10 s (YCSB) / 30 s (TPC-C) |
 | Hill climbing, per-period samples | `fixed.py --bench ycsb --hill-climbing-trace --states 0,0.8,0.9,0.95,0.99,0.999` | `ycsb/hill_climbing_10ms_log/` | 6 × 2 × 10 s |
 | Dynamic workloads D1 / Y1 | `dynamic.py throughput --bench tpcc`, `--bench ycsb` | `<bench>/dynamic/` | 5 methods × 2 × 60 s |
@@ -136,12 +136,10 @@ skew 0, 0.5, 0.7, 0.8, 0.85, 0.9, 0.95, 0.99, 0.999. Control period: 200 ms
 | ERMIA | CCBench's adaptive backoff, doubled per consecutive abort; 3-s runs on TPC-C |
 | Oracle | Silo with the best fixed active thread count of each level |
 
-**Models.** The paper's Metis runs used two model sets in [models/](models)
-(converted from `data/<bench>/models`). The scripts pick the right one and pass
-the matching `--metis_min_count`.
-
-- `min8`: candidates 8 to 96. Used for static TPC-C and for D1 / Y1.
-- `min6`: candidates 6 to 96 (YCSB trained on all nine skews). Used for static YCSB and for D11 / Y4.
+**Models.** [models/](models) holds the models used in the paper (converted
+from `data/<bench>/models`). The scripts pick the model of each experiment; the
+model behind each figure is listed in the
+[Metis-data README](data/README.md#figures-of-the-paper).
 
 ## 5. Options of the baselines and workload changes
 

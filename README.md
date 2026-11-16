@@ -64,8 +64,8 @@ build_release/silo/tpcc_silo_nobackoff --thread_num=96 --tpcc_num_wh=96 \
   --tpcc_active_warehouse_count=4 --tpcc_home_warehouse_assignment=random_per_transaction \
   --tpcc_pin_workers=true --tpcc_pin_order=physical_first --extime=30 --clocks_per_us=2900 \
   --throttle_period_us=200000 --throttle_log_active_threads=true \
-  --metis_enable=true --metis_min_count=8 \
-  --metis_model_path=experiments/models/tpcc/min8/loo_4.txt
+  --metis_enable=true \
+  --metis_model_path=experiments/models/tpcc/min6/loo_4.txt
 ```
 
 ## License
