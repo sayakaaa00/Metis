@@ -10,14 +10,14 @@ ccbench_add_protocol(silo
     WAL=${CCBENCH_WAL}
     INSERT_READ_DELAY_MS=${CCBENCH_INSERT_READ_DELAY_MS}
     INSERT_BATCH_DELAY_MS=${CCBENCH_INSERT_BATCH_DELAY_MS}
-    # Active-thread control (Metis / AdaTAM, include/tam.hh) in the Silo
+    # Active-thread control (Metis / hill climbing, include/tam.hh) in the Silo
     # YCSB and TPC-C entry points.
     ADAPTIVE_TAM=1
 )
 
 # Binaries used in the Metis paper. They build the same Silo implementation
 # and entry points as the standard targets and differ only in BACK_OFF:
-#   {ycsb,tpcc}_silo_nobackoff : Metis, AdaTAM, fixed-N sweeps, Silo without backoff
+#   {ycsb,tpcc}_silo_nobackoff : Metis, hill climbing, fixed-N sweeps, Silo without backoff
 #   {ycsb,tpcc}_silo_backoff   : Silo with backoff (adaptive or fixed, include/backoff.hh)
 #   ycsb_silo_breakdown        : as ycsb_silo_nobackoff, plus the time breakdown of
 #                                committed / aborted transactions (METIS_BREAKDOWN)

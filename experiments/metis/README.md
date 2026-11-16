@@ -145,7 +145,7 @@ the matching `--metis_min_count`.
 | `--metis_recheck`, `--metis_recheck_intervals` | 3, 3 | Before holding, re-measure the best 3 counts for 3 control periods each |
 | `--metis_recheck_physical` | true | When the best count uses SMT siblings, also re-measure the physical-core count |
 | `--metis_change_tps`, `--metis_change_abort`, `--metis_change_intervals` | 0.20, 0.10, 2 | Workload-change detection while holding |
-| `--ada_tam_enable`, `--ada_tam_step` | false, 2 | Hill climbing and its step |
+| `--hill_climbing_enable`, `--hill_climbing_step` | false, 2 | Hill climbing and its step |
 | `--tam_fixed_threads` | 0 | Run only the first N worker threads (oracle) |
 | `--tam_update_period_us` | 100000 | Control period |
 | `--tam_log_active_threads` | false | Write the controller log (`[Metis]` decisions, `[TAM sample]` active thread counts) to `logs/`; the scripts move it next to the run log as `*.trace.log` |

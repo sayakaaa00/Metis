@@ -22,7 +22,7 @@ YMAX = {"tpcc": 100, "ycsb": 100}
 PAT = r"\[TAM sample\] bench_s=([\d.]+) active_threads=(\d+)"
 BLOCKS = [("tpcc", "TPC-C", "D11", 0.2, 0.2, [(0, "2"), (20, "8"), (40, "1")], "$W$="),
           ("ycsb", "YCSB", "Y4", 0.01, 0.05, [(0, "0.99"), (20, "0.5"), (40, "0.95")], "skew=")]
-MC = {"metis_v2": ("Metis", "#2a78d6", 1.4, 3), "adatam": ("Hill climbing", "#1baf7a", 0.9, 2)}
+MC = {"metis_v2": ("Metis", "#2a78d6", 1.4, 3), "hill_climbing": ("Hill climbing", "#1baf7a", 0.9, 2)}
 
 
 def binned(x, y, w):
@@ -48,7 +48,7 @@ def main(run="1"):
         cur = curves(bench)
         d = P.DATA / bench / "dynamic_hill_climbing" / "logs"
         # YCSB: Metis run without the physical-core re-measurement (E12, user decision 2026-11-10).
-        mfile = {"metis_v2": "metis_v2_norephys" if bench == "ycsb" else "metis_v2", "adatam": "adatam"}
+        mfile = {"metis_v2": "metis_v2_norephys" if bench == "ycsb" else "metis_v2", "hill_climbing": "hill_climbing"}
         tr = {m: series(P.first(d / f"{name}_{mfile[m]}_run{run}.trace.log",
                                 d / f"{name}_{mfile[m].replace('metis_v2', 'metis')}_run{run}.trace.log"), PAT)
               for m in MC}

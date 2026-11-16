@@ -39,7 +39,7 @@ PERIOD_US = {"tpcc": 200000, "ycsb": 10000}
 WORKERS = 96
 # Hill climbing on the active thread count: best step of a short sweep
 # (TPC-C 8 of {2, 4, 8}; YCSB 4 of {1, 2, 4, 8}).
-ADATAM_STEP = {"tpcc": 8, "ycsb": 4}
+HILL_CLIMBING_STEP = {"tpcc": 8, "ycsb": 4}
 # Silo-BO: Silo with the adaptive backoff of Cicada (randomized wait in
 # [0, duration], hill climbing on the duration). Update period (us) and step
 # (us) chosen by backoff.py tune (paper: data/<bench>/backoff_adaptive_tuning).
@@ -103,7 +103,7 @@ def command(bench, method, state, extime, model=None, min_count=6):
     """Return (argv, extra_env) of one method on one contention level.
 
     metis:          Metis with the given model (fixed loads: leave-one-out model).
-    adatam:         hill climbing on the active thread count from 96, tuned step.
+    hill_climbing:  hill climbing on the active thread count from 96, tuned step.
     silo_nobo:      Silo, all 96 worker threads, no backoff.
     silo_cbo_tuned: Silo-BO (Silo with the tuned adaptive backoff of Cicada).
     silo_bo:        Silo with backoff, flags given by the caller (backoff.py).
@@ -114,8 +114,8 @@ def command(bench, method, state, extime, model=None, min_count=6):
     silo = [str(SILO[(bench, False)])] + workload_args(bench, state, extime) + silo_pin_args(bench)
     if method == "metis":
         return metis_command(bench, state, extime, model, min_count), {}
-    if method == "adatam":
-        return silo + tam_args(bench) + ["--ada_tam_enable=true", f"--ada_tam_step={ADATAM_STEP[bench]}"], {}
+    if method == "hill_climbing":
+        return silo + tam_args(bench) + ["--hill_climbing_enable=true", f"--hill_climbing_step={HILL_CLIMBING_STEP[bench]}"], {}
     if method.startswith("fixed_"):
         return silo + ["--tam_idle_sleep_us=50", f"--tam_fixed_threads={method[6:]}"], {}
     if method == "silo_nobo":

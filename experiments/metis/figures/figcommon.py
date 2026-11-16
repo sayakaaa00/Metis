@@ -20,7 +20,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 INK, INK2, GRID, SURFACE = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
 METIS, ORACLE = "#2a78d6", "#eb6834"
-ADATAM = "#1baf7a"
+HILL_CLIMBING = "#1baf7a"
 
 YCSB_ORACLE = DATA / "ycsb/oracle/skew_0.7-0.999/results.csv"   # oracle of skew 0.7-0.999
 YCSB_ORACLE_LOW = DATA / "ycsb/oracle/skew_0_0.5_0.9/results.csv"  # skew 0, 0.5 (and 0.9)

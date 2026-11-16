@@ -13,7 +13,7 @@ import figcommon as P
 D_ = P.DATA
 OUT = P.OUT / "eval_static.pdf"
 SER = [("oracle", "Oracle", "#eb6834", "*", "-"), ("metis", "Metis", "#2a78d6", "o", "-"),
-       ("adatam", "Hill climbing", "#1baf7a", "s", "-"),
+       ("hill_climbing", "Hill climbing", "#1baf7a", "s", "-"),
        ("bfb", "Silo (best fixed backoff)", "#8c6d00", "D", "-"),
        ("silo_cbo_tuned", "Silo (adaptive backoff)", "#eda100", "^", "-"),
        ("silo_nobo", "Silo", "#e87ba4", "v", "-"),
@@ -33,7 +33,7 @@ def data(bench):
          ["0", "0.5", "0.7", "0.8", "0.85", "0.9", "0.95", "0.99", "0.999"])
     D = defaultdict(dict)
     base = mean_by(D_ / bench / "fixed/results.csv", lambda r: (r["method"], r["state"]))
-    for m in ("adatam", "silo_cbo_tuned", "silo_nobo", "cicada", "ermia"):
+    for m in ("hill_climbing", "silo_cbo_tuned", "silo_nobo", "cicada", "ermia"):
         if bench == "tpcc" and m == "ermia":   # TPC-C ERMIA: tpcc/fixed/ermia_3s (below)
             continue
         for s in S:
@@ -66,7 +66,7 @@ def main():
         S, D = data(bench)
         x = range(len(S))
         for k, lab, c, mk, ls in SER:
-            if k in ("adatam", "silo_cbo_tuned", "bfb", "oracle"):
+            if k in ("hill_climbing", "silo_cbo_tuned", "bfb", "oracle"):
                 continue
             if k == "metis":   # emphasize Metis: thicker line, larger markers, drawn on top
                 ax.plot(x, [D[k][s] / 1e6 for s in S], color=c, marker=mk, ls=ls, lw=1.2, ms=3.8,

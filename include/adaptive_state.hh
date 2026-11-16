@@ -5,7 +5,7 @@
 #include <limits>
 #include <vector>
 
-// Runtime state shared between the active-thread controllers (Metis, AdaTAM),
+// Runtime state shared between the active-thread controllers (Metis, hill climbing),
 // the benchmark control loop, and the workload code executed by workers.
 // Inline variables keep every benchmark binary self-contained.
 

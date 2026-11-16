@@ -3,19 +3,12 @@
 This repository contains the code, experiment scripts, and figure scripts of the
 Metis paper.
 
-In-memory databases lose throughput at high contention, where many transactions
-access the same records. Thread throttling limits how many worker threads run
-transactions. The best active thread count, however, depends on the contention
-level and changes with the workload. **Metis** selects the best active thread
-count at runtime without changing the concurrency control protocol.
-
-- Metis treats the choice as a contextual bandit problem. The context is the
-  abort rate and the current active thread count.
-- One linear model, shared by all candidate counts and trained offline,
-  predicts the throughput ratio of every candidate. One model therefore serves
-  all contention levels, including ones not seen in training.
-- At runtime, Metis jumps to the predicted best count, refines it with a few
-  averaged measurements, and holds it until the workload changes.
+At high contention, in-memory databases run faster with fewer active worker
+threads, but the best count changes with the workload. **Metis** selects it at
+runtime without changing the concurrency control protocol. One linear model,
+trained offline, predicts the relative throughput of every candidate count from the
+abort rate and the current count. Metis jumps to the predicted best count,
+refines it with a few measurements, and holds it until the workload changes.
 
 Metis is implemented on Silo in [CCBench](#built-on-ccbench). It is evaluated on
 YCSB and TPC-C against Silo, Silo with adaptive backoff (Silo-BO), Cicada,
@@ -57,7 +50,7 @@ To re-run the paper's experiments, see
 | Path | Contents |
 |---|---|
 | [include/metis.hh](include/metis.hh) | Metis: features, linear model (ridge regression), offline training, and the runtime search (jump, local refinement, re-measurement, hold, workload-change detection) |
-| [include/adatam.hh](include/adatam.hh) | Hill climbing on the active thread count (baseline) |
+| [include/hill_climbing.hh](include/hill_climbing.hh) | Hill climbing on the active thread count (baseline) |
 | [include/tam.hh](include/tam.hh), [include/adaptive_control.hh](include/adaptive_control.hh) | Thread throttling: controller selection, the control loop, and parking of inactive worker threads |
 | [include/backoff.hh](include/backoff.hh) | Backoff of the baselines (Silo-BO, Cicada, ERMIA) |
 | [cc/silo/](cc/silo) | Silo, with the YCSB and TPC-C entry points used for Metis |

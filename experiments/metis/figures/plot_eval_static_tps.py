@@ -13,7 +13,9 @@ from figcommon import curves
 OUT = P.OUT / "eval_static_tps.pdf"
 NP = 150
 MET = re.compile(r"\[MetisV2\] t=([\d.]+) active=\d+ tps=([\d.]+)")
-ADA = re.compile(r"\[AdaTAM\] active_threads=\d+ committed_txs=\d+ tput=([\d.]+)")
+# Hill-climbing decision lines. The logs recorded for the paper (data/) carry
+# the controller's earlier tag "[AdaTAM]"; current builds write "[HillClimbing]".
+ADA = re.compile(r"\[(?:HillClimbing|AdaTAM)\] active_threads=\d+ committed_txs=\d+ tput=([\d.]+)")
 
 
 def metis_series(path, per):

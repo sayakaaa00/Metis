@@ -23,7 +23,7 @@ import subprocess
 
 import common as C
 
-METHODS = ["metis", "adatam", "silo_nobo", "silo_cbo_tuned", "cicada", "ermia"]
+METHODS = ["metis", "hill_climbing", "silo_nobo", "silo_cbo_tuned", "cicada", "ermia"]
 PAPER_MODELS = {"tpcc": "min8", "ycsb": "min6"}
 HEADER = ["method", "state", "run", "tps", "abort_rate", "mode_threads", "mean_threads"]
 ERMIA_TPCC_EXTIME = 3
@@ -73,15 +73,15 @@ def run_hill_climbing_trace(args, states):
     res = d / "results.csv"
     for run in range(1, args.runs + 1):
         for s in states:
-            if ("adatam", s, str(run)) in C.done_keys(res, ["method", "state", "run"]):
+            if ("hill_climbing", s, str(run)) in C.done_keys(res, ["method", "state", "run"]):
                 continue
-            argv, env = C.command("ycsb", "adatam", s, args.extime)
+            argv, env = C.command("ycsb", "hill_climbing", s, args.extime)
             argv += ["--tam_log_period_us=10000"]
             if run == 1 and s == states[0]:
                 C.write_config(d, args, argv)
-            tps, abort, _ = C.run_one(argv, env, d / "logs" / f"adatam_{s}_run{run}.log")
-            C.append(res, ["method", "state", "run", "tps", "abort_rate"], ["adatam", s, run, f"{tps:.0f}", abort])
-            print(f"ycsb adatam (10-ms log) state={s} run={run} tps={tps:,.0f}", flush=True)
+            tps, abort, _ = C.run_one(argv, env, d / "logs" / f"hill_climbing_{s}_run{run}.log")
+            C.append(res, ["method", "state", "run", "tps", "abort_rate"], ["hill_climbing", s, run, f"{tps:.0f}", abort])
+            print(f"ycsb hill_climbing (10-ms log) state={s} run={run} tps={tps:,.0f}", flush=True)
 
 
 def main():

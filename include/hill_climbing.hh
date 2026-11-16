@@ -1,8 +1,8 @@
 #pragma once
 
-// AdaTAM: hill-climbing control of the number of active worker threads
+// Hill climbing: control of the number of active worker threads
 // (baseline). Every control period it compares the committed throughput with
-// the previous period and moves the active count by --ada_tam_step in the
+// the previous period and moves the active count by --hill_climbing_step in the
 // direction that improved throughput (a random direction when the gradient is
 // zero).
 
@@ -17,12 +17,12 @@
 #include "tsc.hh"
 
 #ifdef GLOBAL_VALUE_DEFINE
-DEFINE_bool(ada_tam_enable, false, "Enable the AdaTAM active-thread controller");
-DEFINE_double(ada_tam_step, 2.0,
-              "Threads added or removed per AdaTAM update");
+DEFINE_bool(hill_climbing_enable, false, "Enable hill climbing on the active thread count");
+DEFINE_double(hill_climbing_step, 2.0,
+              "Threads added or removed per hill-climbing update");
 #else
-DECLARE_bool(ada_tam_enable);
-DECLARE_double(ada_tam_step);
+DECLARE_bool(hill_climbing_enable);
+DECLARE_double(hill_climbing_step);
 #endif
 
 DECLARE_uint64(tam_min_threads);
@@ -31,7 +31,7 @@ DECLARE_uint64(tam_update_period_us);
 DECLARE_uint64(tam_log_period_us);
 DECLARE_bool(tam_log_active_threads);
 
-class AdaTAM {
+class HillClimbing {
  public:
   void init(uint64_t total_threads, uint64_t clocks_per_us) {
     total_threads_ = total_threads;
@@ -57,7 +57,7 @@ class AdaTAM {
     const double mean = stats_sum_ / n;
     const double var = std::max(0.0, stats_sq_sum_ / n - mean * mean);
     std::fprintf(stderr,
-                 "[AdaTAM] active_threads stats: count=%llu mean=%.3f stddev=%.3f\n",
+                 "[HillClimbing] active_threads stats: count=%llu mean=%.3f stddev=%.3f\n",
                  static_cast<unsigned long long>(stats_count_), mean,
                  std::sqrt(var));
   }
@@ -87,7 +87,7 @@ class AdaTAM {
     const double gradient =
         threads_diff != 0 ? committed_tput_diff / static_cast<double>(threads_diff)
                           : 0.0;
-    double step = FLAGS_ada_tam_step;
+    double step = FLAGS_hill_climbing_step;
     if (step <= 0.0) step = 1.0;
 
     int64_t next = current_threads;
@@ -118,7 +118,7 @@ class AdaTAM {
       if (log_period == 0) log_period = period_clocks;
       if (now - last_log_time_ >= log_period) {
         std::fprintf(stderr,
-                     "[AdaTAM] active_threads=%llu committed_txs=%llu tput=%.0f tx/s\n",
+                     "[HillClimbing] active_threads=%llu committed_txs=%llu tput=%.0f tx/s\n",
                      static_cast<unsigned long long>(active_threads()),
                      static_cast<unsigned long long>(committed_txs),
                      committed_tput);

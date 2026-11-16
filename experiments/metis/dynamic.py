@@ -30,7 +30,7 @@ SETS = {
     "throughput": {"dir": "dynamic", "models": "min8", "sched": {"tpcc": "D1", "ycsb": "Y1"},
                    "methods": ["metis", "silo_cbo_tuned", "silo_nobo", "cicada", "ermia"]},
     "hill_climbing": {"dir": "dynamic_hill_climbing", "models": "min6", "sched": {"tpcc": "D11", "ycsb": "Y4"},
-                      "methods": ["metis", "adatam"]},
+                      "methods": ["metis", "hill_climbing"]},
 }
 HEADER = ["schedule", "method", "run", "tps", "abort_rate"]
 

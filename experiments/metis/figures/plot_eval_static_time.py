@@ -18,12 +18,12 @@ H = P.DATA
 def paths(bench, s, run="1"):
     if bench == "tpcc":
         return (P.first(H / f"tpcc/fixed/logs/metis_v2_{s}_run{run}.trace.log", H / f"tpcc/fixed/logs/metis_{s}_run{run}.trace.log"),
-                H / f"tpcc/fixed/logs/adatam_{s}_run{run}.trace.log")
+                H / f"tpcc/fixed/logs/hill_climbing_{s}_run{run}.trace.log")
     if s in ("0", "0.5"):
         return (H / f"ycsb/fixed/logs/metis_{s}_run{run}.trace.log",
-                H / f"ycsb/hill_climbing_10ms_log/logs/adatam_{s}_run{run}.trace.log")
+                H / f"ycsb/hill_climbing_10ms_log/logs/hill_climbing_{s}_run{run}.trace.log")
     return (H / f"ycsb/fixed/logs/metis_{s}_run{run}.trace.log",
-            H / f"ycsb/hill_climbing_10ms_log/logs/adatam_{s}_run{run}.trace.log")
+            H / f"ycsb/hill_climbing_10ms_log/logs/hill_climbing_{s}_run{run}.trace.log")
 
 
 def main(run="1"):

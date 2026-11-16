@@ -4,7 +4,7 @@
 // workers (--thread_num) and only workers with thid < N execute transactions.
 // N is chosen by one of
 //   - Metis      (--metis_enable, include/metis.hh),
-//   - AdaTAM     (--ada_tam_enable, include/adatam.hh, hill-climbing baseline),
+//   - hill climbing (--hill_climbing_enable, include/hill_climbing.hh, baseline),
 //   - a fixed N  (--tam_fixed_threads, used for the oracle sweeps),
 // or all workers run when none is selected.
 
@@ -21,7 +21,7 @@
 
 #include "gflags/gflags.h"
 #include "adaptive_state.hh"
-#include "adatam.hh"
+#include "hill_climbing.hh"
 #include "metis.hh"
 
 #ifdef GLOBAL_VALUE_DEFINE
@@ -66,10 +66,10 @@ inline void park_worker(Tx& tx) {
 class TamController {
  public:
   void init(uint64_t total_threads, uint64_t clocks_per_us) {
-    if (static_cast<int>(FLAGS_metis_enable) + static_cast<int>(FLAGS_ada_tam_enable) +
+    if (static_cast<int>(FLAGS_metis_enable) + static_cast<int>(FLAGS_hill_climbing_enable) +
             static_cast<int>(FLAGS_tam_fixed_threads != 0) > 1) {
       std::fprintf(stderr,
-                   "Use at most one of --metis_enable, --ada_tam_enable, "
+                   "Use at most one of --metis_enable, --hill_climbing_enable, "
                    "--tam_fixed_threads\n");
       std::abort();
     }
@@ -90,28 +90,28 @@ class TamController {
         std::abort();
       }
     }
-    if (FLAGS_ada_tam_enable) adatam_.init(total_threads, clocks_per_us);
+    if (FLAGS_hill_climbing_enable) hill_climbing_.init(total_threads, clocks_per_us);
     if (FLAGS_tam_fixed_threads != 0)
       g_active_threads.store(FLAGS_tam_fixed_threads, std::memory_order_release);
   }
 
   // A controller updates the active count every control period.
-  bool controlled() const { return FLAGS_metis_enable || FLAGS_ada_tam_enable; }
+  bool controlled() const { return FLAGS_metis_enable || FLAGS_hill_climbing_enable; }
 
   // Some workers may be parked (controller or fixed N).
   bool gated() const { return controlled() || FLAGS_tam_fixed_threads != 0; }
 
   uint64_t active_threads() const {
     if (FLAGS_metis_enable) return metis_.active_threads();
-    if (FLAGS_ada_tam_enable) return adatam_.active_threads();
+    if (FLAGS_hill_climbing_enable) return hill_climbing_.active_threads();
     return FLAGS_tam_fixed_threads;
   }
 
   void update(uint64_t committed_txs, uint64_t abort_txs) {
     if (FLAGS_metis_enable) {
       metis_.update(committed_txs, abort_txs);
-    } else if (FLAGS_ada_tam_enable) {
-      adatam_.update(committed_txs, abort_txs);
+    } else if (FLAGS_hill_climbing_enable) {
+      hill_climbing_.update(committed_txs, abort_txs);
     }
   }
 
@@ -128,12 +128,12 @@ class TamController {
                        FLAGS_metis_model_path.c_str());
         }
       }
-    } else if (FLAGS_ada_tam_enable) {
-      adatam_.print_stats();
+    } else if (FLAGS_hill_climbing_enable) {
+      hill_climbing_.print_stats();
     }
   }
 
  private:
   Metis metis_;
-  AdaTAM adatam_;
+  HillClimbing hill_climbing_;
 };
