@@ -141,5 +141,21 @@ int main(int argc, char* argv[]) try {
       },
       [&adaptive]() { adaptive.finish(); });
 
+#if METIS_BREAKDOWN
+  {
+    uint64_t c = 0, a = 0, wc = 0, wa = 0, nc = 0, na = 0, span = 0;
+    for (size_t t = 0; t < TotalThreadNum; ++t) {
+      const auto& b = YcsbWorkload::breakdown()[t];
+      c += b.committed; a += b.aborted; wc += b.wait_committed; wa += b.wait_aborted;
+      nc += b.n_committed; na += b.n_aborted;
+      if (b.last > b.first) span += b.last - b.first;
+    }
+    std::cout << "[BREAKDOWN] committed_cycles=" << c << " aborted_cycles=" << a
+              << " wait_committed_cycles=" << wc << " wait_aborted_cycles=" << wa
+              << " n_committed=" << nc << " n_aborted=" << na
+              << " span_cycles=" << span << " threads=" << TotalThreadNum << std::endl;
+  }
+#endif
+
   return 0;
 } catch (const bad_alloc&) { ERR; }

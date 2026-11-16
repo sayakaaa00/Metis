@@ -3,7 +3,7 @@
 This directory holds the experiment scripts, trained models, recorded results,
 and figures of the Metis paper. Metis runs on CCBench's Silo. The benchmark
 spawns a fixed set of workers (96 here), and only the first N of them run
-transactions. Metis picks N from {8, 10, ..., 96} using one linear model of the
+transactions. Metis picks N from {6, 8, ..., 96} (`--metis_min_count`) using one linear model of the
 throughput ratio log(T(a)/T(c)). The model's inputs are the observed abort rate
 and the CPU resources that a thread count uses (cross-socket share and SMT
 share, read from the CPU topology). It gets no benchmark-specific input.
@@ -19,7 +19,8 @@ share, read from the CPU topology). It gets no benchmark-specific input.
 | [common/runner.hh](../../common/runner.hh) | Worker loop with the per-transaction gate |
 | [include/tpcc.hh](../../include/tpcc.hh) | TPC-C workload: gate before every retry, in-run change of the active warehouse count |
 | [cc/silo/ycsb_silo.cc](../../cc/silo/ycsb_silo.cc), [cc/silo/tpcc_silo.cc](../../cc/silo/tpcc_silo.cc) | Silo entry points (CPU pinning order, in-run workload changes) |
-| [include/backoff.hh](../../include/backoff.hh) | Adaptive exponential backoff (Silo with backoff baseline) |
+| [include/backoff.hh](../../include/backoff.hh) | Backoff of the Silo, Cicada, and ERMIA baselines: adaptive (hill climbing on the duration, optionally randomized as in Cicada) or fixed, with optional doubling per consecutive abort |
+| [include/ycsb_skew_schedule.hh](../../include/ycsb_skew_schedule.hh) | In-run skew changes and throughput log for the Cicada and ERMIA YCSB binaries |
 
 An inactive worker sleeps 50 µs per check (`--tam_idle_sleep_us`). While it
 waits, it keeps announcing the current Silo epoch so that epoch advancement and
@@ -46,6 +47,7 @@ experiments/metis/build.sh      # Release build + mimalloc shared library for LD
 |---|---|
 | `silo/{ycsb,tpcc}_silo_nobackoff` | Metis, AdaTAM, fixed-N sweeps, Silo without backoff |
 | `silo/{ycsb,tpcc}_silo_backoff` | Silo with backoff |
+| `silo/ycsb_silo_breakdown` | Silo without backoff, plus a `[BREAKDOWN]` line: worker time on committed and aborted transactions and time spent waiting on locked records (`METIS_BREAKDOWN`) |
 | `cc/{cicada,ermia}/{ycsb,tpcc}_*.exe` | Cicada, ERMIA |
 
 ## Reproducing the experiments
@@ -96,11 +98,17 @@ scripts move this log next to the run log as `*.trace.log`.
 | `--metis_enable` | false | Run Metis |
 | `--metis_learn` | false | Training run: random thread counts, save the model to `--metis_model_path` |
 | `--metis_model_path` | | Model to load (evaluation) or write (training) |
-| `--metis_recheck`, `--metis_recheck_intervals` | 3, 3 | Before committing, re-measure the best 3 measured counts for 3 intervals each. When the best count uses SMT siblings, the physical-core count is re-measured too |
+| `--metis_min_count` | 6 | Smallest candidate count (candidates: even counts from this to 96) |
+| `--metis_recheck`, `--metis_recheck_intervals` | 3, 3 | Before committing, re-measure the best 3 measured counts for 3 intervals each |
+| `--metis_recheck_physical` | true | When the best count uses SMT siblings, also re-measure the physical-core count |
 | `--metis_model_moves`, `--metis_refine_moves` | 5, 4 | Budget of model-predicted moves and of local-refinement moves after a (re)start |
 | `--metis_change_tps`, `--metis_change_abort`, `--metis_change_intervals` | 0.20, 0.10, 2 | Workload-change detection while holding |
 | `--ada_tam_enable`, `--ada_tam_step` | false, 2 | AdaTAM and its step (paper: TPC-C 8, YCSB 4) |
 | `--tam_fixed_threads` | 0 | Run only the first N workers (oracle) |
+| `--backoff_update_period_us`, `--backoff_step_us` | 5000, 0.5 | Adaptive backoff: update period and step of the duration |
+| `--backoff_randomized` | false | Wait a random duration in [0, current duration] and pick a random direction when the gradient is zero (Cicada) |
+| `--backoff_adaptive_exponential` | false | Adaptive backoff: double the wait per consecutive abort |
+| `--backoff_fixed_enable`, `--backoff_fixed_us`, `--backoff_fixed_exponential` | false, 0, true | Fixed backoff duration, doubled per consecutive abort unless `--backoff_fixed_exponential=false` |
 | `--tam_update_period_us` | 100000 | Control period |
 | `--tpcc_active_warehouse_schedule` | | In-run W changes, e.g. `0:16,20:1,40:4` |
 | `--ycsb_skew_change_*`, `--ycsb_zipf_skew2/3` | | In-run skew changes (two at most) |

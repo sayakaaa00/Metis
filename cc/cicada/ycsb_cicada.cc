@@ -17,6 +17,7 @@
 #include "../../include/zipf.hh"
 
 #include "../../common/runner.hh"
+#include "../../include/ycsb_skew_schedule.hh"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ int main(int argc, char* argv[]) try {
   YcsbWorkload::makeDB<Tuple, TupleInitParam>(param);
   MinWts.store(param->initial_wts + 2, memory_order_release);
 
+  g_current_ycsb_skew.store(FLAGS_ycsb_zipf_skew, std::memory_order_release);
   initResult(TotalThreadNum);
 
   ccbench::RunnerOptions opts;
@@ -49,7 +51,9 @@ int main(int argc, char* argv[]) try {
 #ifdef Linux
         setThreadAffinity(thid);
 #endif
-      });
+      },
+      ccbench::NoOpHook{}, nullptr, ccbench::AlwaysRunWorker{},
+      YcsbSkewScheduleLoop{TotalThreadNum});
 
   return 0;
 } catch (const bad_alloc&) { ERR; }

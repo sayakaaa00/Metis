@@ -48,6 +48,9 @@ public:
 
   TransactionStatus status_;
   size_t thid_;
+#if METIS_BREAKDOWN
+  uint64_t bd_wait_ = 0;  // cycles spent spinning on locked records
+#endif
   /* lock_num_ ...
    * the number of locks in local write set.
    */

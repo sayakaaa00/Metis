@@ -26,7 +26,7 @@
 //      (at most --metis_refine_moves moves),
 //   3. re-measure the best --metis_recheck measured counts for
 //      --metis_recheck_intervals intervals each (plus the physical-core count
-//      when the best count uses SMT siblings),
+//      when the best count uses SMT siblings and --metis_recheck_physical),
 //   4. commit to the best measured count and hold it.
 // While holding, a throughput or abort-rate deviation that lasts
 // --metis_change_intervals intervals restarts the search. While searching,
@@ -67,6 +67,8 @@ DEFINE_uint64(metis_physical_cores, 0,
               "Physical cores used for the SMT feature (0 = read CPU topology)");
 DEFINE_uint64(metis_settle_intervals, 1,
               "Control intervals discarded after changing the active count");
+DEFINE_uint64(metis_min_count, 6,
+              "Smallest candidate active thread count (candidates: even counts from this to 96)");
 DEFINE_double(metis_min_gain, 0.02,
               "Minimum predicted log-throughput gain needed to leave the current count");
 DEFINE_uint64(metis_model_moves, 5,
@@ -83,6 +85,9 @@ DEFINE_uint64(metis_recheck, 3,
               "Before committing, re-measure the best K measured counts (0 disables)");
 DEFINE_uint64(metis_recheck_intervals, 3,
               "Intervals averaged per re-measurement of a top candidate");
+DEFINE_bool(metis_recheck_physical, true,
+            "When the best measured count exceeds the physical cores, also "
+            "re-measure the physical-core count before committing");
 DEFINE_uint64(metis_hold_base_intervals, 3,
               "Intervals averaged for the reference throughput after committing");
 DEFINE_double(metis_change_tps, 0.20,
@@ -99,6 +104,7 @@ DECLARE_double(metis_lambda);
 DECLARE_uint64(metis_seed);
 DECLARE_uint64(metis_physical_cores);
 DECLARE_uint64(metis_settle_intervals);
+DECLARE_uint64(metis_min_count);
 DECLARE_double(metis_min_gain);
 DECLARE_uint64(metis_model_moves);
 DECLARE_uint64(metis_refine_moves);
@@ -106,6 +112,7 @@ DECLARE_uint64(metis_memory_ms);
 DECLARE_double(metis_surprise);
 DECLARE_uint64(metis_recheck);
 DECLARE_uint64(metis_recheck_intervals);
+DECLARE_bool(metis_recheck_physical);
 DECLARE_uint64(metis_hold_base_intervals);
 DECLARE_double(metis_change_tps);
 DECLARE_double(metis_change_abort);
@@ -140,7 +147,7 @@ class Metis {
     // other sockets' physical cores, then SMT siblings.
     socket_cores_ = std::clamp<uint64_t>(count_socket0_physical_cores(), 1, physical_);
     actions_.clear();
-    for (uint64_t n = 8; n <= 96; n += 2) {
+    for (uint64_t n = FLAGS_metis_min_count; n <= 96; n += 2) {
       const uint64_t a = std::clamp(n, min_, max_);
       if (actions_.empty() || actions_.back() != a) actions_.push_back(a);
     }
@@ -383,7 +390,8 @@ class Metis {
         recheck_queue_.push_back(ranked[i].second);
       // Anchor: the physical-core count is the usual optimum at the SMT
       // boundary; always compare against it when the leader uses SMT siblings.
-      if (!ranked.empty() && ranked.front().second > physical_ &&
+      if (FLAGS_metis_recheck_physical && !ranked.empty() &&
+          ranked.front().second > physical_ &&
           std::find(recheck_queue_.begin(), recheck_queue_.end(), physical_) ==
               recheck_queue_.end())
         recheck_queue_.push_back(physical_);

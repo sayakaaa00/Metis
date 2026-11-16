@@ -25,11 +25,26 @@ DEFINE_bool(backoff_fixed_enable, false,
             "Disable adaptive updates and use a fixed base backoff");
 DEFINE_double(backoff_fixed_us, 0.0,
               "Fixed base backoff in microseconds when backoff_fixed_enable=true");
+DEFINE_bool(backoff_randomized, false,
+            "Cicada-style backoff (Lim et al., SIGMOD 2017, Sec. 3.9): wait a duration drawn "
+            "uniformly from [0, coordinated maximum], and choose a random direction when the "
+            "hill-climbing gradient is zero or undefined");
+DEFINE_bool(backoff_adaptive_exponential, false,
+            "Adaptive backoff only: if true, the wait is the coordinated duration * "
+            "2^(consecutive aborts) (capped); if false (CCBench default), every wait "
+            "is the coordinated duration itself");
+DEFINE_bool(backoff_fixed_exponential, true,
+            "With backoff_fixed_enable=true: if true, the wait is backoff_fixed_us * "
+            "2^(consecutive aborts) (capped); if false, every wait is exactly "
+            "backoff_fixed_us");
 #else
 DECLARE_uint64(backoff_update_period_us);
 DECLARE_double(backoff_step_us);
 DECLARE_bool(backoff_fixed_enable);
 DECLARE_double(backoff_fixed_us);
+DECLARE_bool(backoff_randomized);
+DECLARE_bool(backoff_adaptive_exponential);
+DECLARE_bool(backoff_fixed_exponential);
 #endif
 
 class Backoff {
@@ -103,7 +118,14 @@ public:
     else if (gradient > 0)
       new_backoff += step;
     else {
-      if ((committed_txs & 1) == 0 ||
+      if (FLAGS_backoff_randomized) {
+        // Cicada: choose a direction at random (stay inside [min, max]).
+        const bool go_down = uniform01() < 0.5;
+        if ((go_down && new_backoff > kMinBackoff) || new_backoff >= kMaxBackoff)
+          new_backoff -= step;
+        else
+          new_backoff += step;
+      } else if ((committed_txs & 1) == 0 ||
           new_backoff == kMaxBackoff) // 確率はおよそ 1/2, すなわちランダム．
         new_backoff -= step;
       else if ((committed_txs & 1) == 1 || new_backoff == kMinBackoff)
@@ -113,9 +135,16 @@ public:
     Backoff_.store(clamp_backoff(new_backoff), std::memory_order_release);
   }
 
+  static double uniform01() {
+    static thread_local uint64_t x = rdtscp() | 1;
+    x ^= x << 13; x ^= x >> 7; x ^= x << 17;  // xorshift64
+    return static_cast<double>(x >> 11) * (1.0 / 9007199254740992.0);
+  }
+
   static void backoff(size_t clocks_per_us) {
     uint64_t start(rdtscp()), stop;
     double now_backoff = current_backoff_us();
+    if (FLAGS_backoff_randomized) now_backoff *= uniform01();
     if (ConsecutiveAborts_ != std::numeric_limits<uint32_t>::max()) {
       ++ConsecutiveAborts_;
     }
@@ -141,11 +170,16 @@ public:
     return backoff_us;
   }
 
-  // Exponential backoff: base * 2^(consecutive aborts), capped at kMaxBackoff.
+  // The coordinated base backoff, or, if exponential growth is enabled
+  // (backoff_adaptive_exponential / backoff_fixed_exponential),
+  // base * 2^(consecutive aborts), capped at kMaxBackoff.
   static double current_backoff_us() {
     const double base_backoff =
         clamp_backoff(Backoff_.load(std::memory_order_acquire));
     if (base_backoff <= 0.0) return 0.0;
+    if (FLAGS_backoff_fixed_enable ? !FLAGS_backoff_fixed_exponential
+                                   : !FLAGS_backoff_adaptive_exponential)
+      return base_backoff;
 
     double exp_backoff = std::ldexp(base_backoff, ConsecutiveAborts_);
     return clamp_backoff(exp_backoff);

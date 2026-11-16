@@ -179,6 +179,9 @@ void TxExecutor::lockWriteSet() {
       : for (auto itr = write_set_.begin(); itr != write_set_.end(); ++itr) {
     if (itr->op_ == OpType::INSERT) continue;
     expected.obj_ = loadAcquire((*itr).rcdptr_->tidword_.obj_);
+#if METIS_BREAKDOWN
+    uint64_t bd_lock_start = 0;
+#endif
     for (;;) {
       if (loadAcquire(quit_)) {
         this->status_ = TransactionStatus::aborted;
@@ -186,6 +189,9 @@ void TxExecutor::lockWriteSet() {
         return;
       }
       if (expected.lock) {
+#if METIS_BREAKDOWN
+        if (!bd_lock_start) bd_lock_start = rdtscp();
+#endif
 #if NO_WAIT_LOCKING_IN_VALIDATION
         this->status_ = TransactionStatus::aborted;
         if (itr != write_set_.begin()) unlockWriteSet(itr);
@@ -204,6 +210,9 @@ void TxExecutor::lockWriteSet() {
           break;
       }
     }
+#if METIS_BREAKDOWN
+    if (bd_lock_start) bd_wait_ += rdtscp() - bd_lock_start;
+#endif
     if (expected.absent) {
       unlockWriteSet(itr + 1);
       this->status_ = TransactionStatus::aborted;
@@ -279,6 +288,9 @@ Status TxExecutor::read_internal(Storage s, std::string_view key,
       status_ = TransactionStatus::aborted;
       return Status::ERROR_PREEMPTIVE_ABORT;
     }
+#if METIS_BREAKDOWN
+    const uint64_t bd_spin_start = expected.lock ? rdtscp() : 0;
+#endif
     while (expected.lock) {
       // Uncommitted INSERTs are owned before validation, so waiting here
       // can prevent their owning transactions from making progress.
@@ -293,6 +305,9 @@ Status TxExecutor::read_internal(Storage s, std::string_view key,
       _mm_pause();
       expected.obj_ = loadAcquire(tuple->tidword_.obj_);
     }
+#if METIS_BREAKDOWN
+    if (bd_spin_start) bd_wait_ += rdtscp() - bd_spin_start;
+#endif
 
     //(b) checks whether the record is the latest version
     // omit. because this is implemented by single version

@@ -3,6 +3,7 @@
 # library that the experiment scripts preload (LD_PRELOAD).
 #   experiments/metis/build.sh [extra cmake arguments]
 # Output: $BUILD (default build_release)/silo/{ycsb,tpcc}_silo_{nobackoff,backoff},
+#         $BUILD/silo/ycsb_silo_breakdown,
 #         $BUILD/cc/{cicada,ermia}/{ycsb,tpcc}_*.exe,
 #         $BUILD/mimalloc_override/libmimalloc.so
 set -euo pipefail
@@ -13,6 +14,7 @@ JOBS=${JOBS:-$(nproc)}
 cmake -S "$ROOT" -B "$BUILD" -DCMAKE_BUILD_TYPE=Release "$@"
 cmake --build "$BUILD" -j "$JOBS" --target \
   ycsb_silo_nobackoff ycsb_silo_backoff tpcc_silo_nobackoff tpcc_silo_backoff \
+  ycsb_silo_breakdown \
   ycsb_cicada.exe tpcc_cicada.exe ycsb_ermia.exe tpcc_ermia.exe
 
 # mimalloc as a shared library, from the same source that CMake fetched.

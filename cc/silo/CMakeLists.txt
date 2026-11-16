@@ -18,7 +18,9 @@ ccbench_add_protocol(silo
 # Binaries used in the Metis paper. They build the same Silo implementation
 # and entry points as the standard targets and differ only in BACK_OFF:
 #   {ycsb,tpcc}_silo_nobackoff : Metis, AdaTAM, fixed-N sweeps, Silo without backoff
-#   {ycsb,tpcc}_silo_backoff   : Silo with adaptive exponential backoff
+#   {ycsb,tpcc}_silo_backoff   : Silo with backoff (adaptive or fixed, include/backoff.hh)
+#   ycsb_silo_breakdown        : as ycsb_silo_nobackoff, plus the time breakdown of
+#                                committed / aborted transactions (METIS_BREAKDOWN)
 # Output: ${CMAKE_BINARY_DIR}/silo/.
 function(add_silo_paper_binary target source backoff)
   add_executable(${target} ${source} transaction.cc util.cc)
@@ -37,6 +39,8 @@ add_silo_paper_binary(ycsb_silo_nobackoff ycsb_silo.cc 0)
 add_silo_paper_binary(ycsb_silo_backoff   ycsb_silo.cc 1)
 add_silo_paper_binary(tpcc_silo_nobackoff tpcc_silo.cc 0)
 add_silo_paper_binary(tpcc_silo_backoff   tpcc_silo.cc 1)
+add_silo_paper_binary(ycsb_silo_breakdown ycsb_silo.cc 0)
+target_compile_definitions(ycsb_silo_breakdown PRIVATE METIS_BREAKDOWN=1)
 
 # Standalone replay test — not parameterized by workload. It still needs
 # the universal -DVAL_SIZE etc. that ccbench_add_protocol applies to the

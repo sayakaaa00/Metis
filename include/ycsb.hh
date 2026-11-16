@@ -98,6 +98,19 @@ public:
     zipf_ = zipf;
   }
 
+#if METIS_BREAKDOWN
+  // Per-worker time breakdown (cycles). Attempt time includes the spin time
+  // recorded in tx.bd_wait_; the analysis subtracts it.
+  struct alignas(64) Breakdown {
+    uint64_t committed = 0, aborted = 0, wait_committed = 0, wait_aborted = 0;
+    uint64_t n_committed = 0, n_aborted = 0, first = 0, last = 0;
+  };
+  static Breakdown* breakdown() {
+    static Breakdown b[1024];
+    return b;
+  }
+#endif
+
   template <typename TxExecutor, typename TransactionStatus>
   void run(TxExecutor& tx) {
     const double requested_skew =
@@ -121,6 +134,22 @@ public:
 
     if (loadAcquire(tx.quit_)) return;
 
+#if METIS_BREAKDOWN
+    Breakdown& bd = breakdown()[tx.thid_];
+    const uint64_t bd_t0 = rdtscp();
+    const uint64_t bd_w0 = tx.bd_wait_;
+    if (!bd.first) bd.first = bd_t0;
+#define METIS_BD_END(ok)                                   \
+  do {                                                     \
+    const uint64_t bd_t1 = rdtscp();                       \
+    const uint64_t bd_w = tx.bd_wait_ - bd_w0;             \
+    if (ok) { bd.committed += bd_t1 - bd_t0; bd.wait_committed += bd_w; ++bd.n_committed; } \
+    else    { bd.aborted += bd_t1 - bd_t0; bd.wait_aborted += bd_w; ++bd.n_aborted; }       \
+    bd.last = bd_t1;                                       \
+  } while (0)
+#else
+#define METIS_BD_END(ok) do { } while (0)
+#endif
     tx.begin();
     SimpleKey<8> key[tx.pro_set_.size()];
     HeapObject obj[tx.pro_set_.size()];
@@ -159,6 +188,7 @@ public:
 
       if (tx.status_ == TransactionStatus::aborted) {
         tx.abort();
+        METIS_BD_END(false);
         ++tx.result_->local_abort_counts_;
 #if ADD_ANALYSIS
         ++tx.result_->local_early_aborts_;
@@ -171,9 +201,12 @@ public:
 
     if (!tx.commit()) {
       tx.abort();
+      METIS_BD_END(false);
       ++tx.result_->local_abort_counts_;
       goto RETRY;
     }
+    METIS_BD_END(true);
+#undef METIS_BD_END
     storeRelease(tx.result_->local_commit_counts_,
                  loadAcquire(tx.result_->local_commit_counts_) + 1);
 
