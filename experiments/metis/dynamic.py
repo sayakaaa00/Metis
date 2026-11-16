@@ -1,51 +1,51 @@
 #!/usr/bin/env python3
-"""Dynamic-load comparison: Metis (all-state model), adaTAM, Silo with and
-without backoff, under in-run workload changes.
+"""Dynamic workloads: the contention level changes twice during a 60-s run.
 
-  dynamic.py --bench tpcc|ycsb [--schedules D1,D2] [--runs 2] [--extime 60]
+  dynamic.py throughput    --bench tpcc|ycsb [--schedules D1] [--methods ...] [--runs 2]
+  dynamic.py hill_climbing --bench tpcc|ycsb [--schedules D11] [--runs 2]
+  (both: [--model-set min8|min6] [--models DIR] [--extime 60])
 
-TPC-C schedules change the active home-warehouse count W (seconds:W);
-YCSB schedules change the Zipf skew (skew0,t1:skew1,t2:skew2). Each run lasts
-60 s; 2 runs, method order reversed on run 2. Interval TPS is logged every
-200 ms. Output: <bench>/dynamic/results.csv and logs/.
+TPC-C schedules change the number of accessed warehouses W ("seconds:W,...");
+YCSB schedules change the Zipf skew ("skew0,t1:skew1,t2:skew2"). Metis uses the
+model trained on all levels (all.txt). Every run logs the throughput of each
+200-ms interval. The method order is reversed on even runs.
+
+throughput:    Metis, Silo-BO, Silo, Cicada, ERMIA on D1 (TPC-C) / Y1 (YCSB).
+               Paper models: min8.  -> $METIS_OUT/<bench>/dynamic/
+               (results.csv; Metis in results_metis.csv; logs/)
+hill_climbing: Metis and hill climbing on D11 (TPC-C) / Y4 (YCSB). Paper models:
+               min6. On YCSB, the active thread count is sampled every 10-ms
+               control period and Metis runs without the physical-core
+               re-measurement (--metis_recheck_physical=false, method
+               metis_norephys).  -> $METIS_OUT/<bench>/dynamic_hill_climbing/
 """
 import argparse
-import csv
 import subprocess
 
 import common as C
 
-TPCC_SCHEDULES = {
-    "D1": "0:16,20:1,40:4",
-    "D2": "0:2,20:96,40:3",
-    "D3": "0:1,10:32,20:3,30:96,40:4,50:16",
-    "D4_5s": ",".join(f"{t}:{1 if (t // 5) % 2 == 0 else 32}" for t in range(0, 60, 5)),
-    "D4_2s": ",".join(f"{t}:{1 if (t // 2) % 2 == 0 else 32}" for t in range(0, 60, 2)),
-    # No W=96; best N alternates far: 48 -> 6 -> 48 -> 16 -> 48 -> 20.
-    "D5": "0:32,10:1,20:16,30:2,40:8,50:3",
+TPCC_SCHEDULES = {"D1": "0:16,20:1,40:4", "D11": "0:2,20:8,40:1"}
+YCSB_SCHEDULES = {"Y1": "0.7,20:0.95,40:0.8", "Y4": "0.99,20:0.5,40:0.95"}
+SETS = {
+    "throughput": {"dir": "dynamic", "models": "min8", "sched": {"tpcc": "D1", "ycsb": "Y1"},
+                   "methods": ["metis", "silo_cbo_tuned", "silo_nobo", "cicada", "ermia"]},
+    "hill_climbing": {"dir": "dynamic_hill_climbing", "models": "min6", "sched": {"tpcc": "D11", "ycsb": "Y4"},
+                      "methods": ["metis", "adatam"]},
 }
-YCSB_SCHEDULES = {"Y1": "0.7,20:0.95,40:0.8", "Y2": "0.99,20:0.7,40:0.9"}
-METHODS = ["metis", "adatam", "silo_bo", "silo_nobo"]
-
-
-def schedules(bench):
-    return TPCC_SCHEDULES if bench == "tpcc" else YCSB_SCHEDULES
+HEADER = ["schedule", "method", "run", "tps", "abort_rate"]
 
 
 def phases(bench, sched):
-    """[(start second, state)] of a schedule."""
+    """[(start second, level)] of a schedule."""
     if bench == "tpcc":
         return [(int(x.split(":")[0]), x.split(":")[1]) for x in sched.split(",")]
     p = sched.split(",")
     return [(0, p[0])] + [(int(x.split(":")[0]), x.split(":")[1]) for x in p[1:]]
 
 
-def argv_for(bench, method, schedule, extime):
+def argv_for(bench, method, schedule, extime, model, min_count):
     ph = phases(bench, schedule)
-    argv, env = C.command(bench, method, ph[0][1], extime)
-    if method == "metis":
-        argv = [f"--metis_model_path={C.HERE / bench / 'models' / 'all.txt'}"
-                if a.startswith("--metis_model_path=") else a for a in argv]
+    argv, env = C.command(bench, method, ph[0][1], extime, model, min_count)
     if bench == "tpcc":
         argv += [f"--tpcc_active_warehouse_schedule={schedule}"]
     else:
@@ -58,45 +58,46 @@ def argv_for(bench, method, schedule, extime):
 
 def main():
     p = argparse.ArgumentParser()
+    p.add_argument("set", choices=list(SETS))
     p.add_argument("--bench", choices=["tpcc", "ycsb"], required=True)
     p.add_argument("--runs", type=int, default=2)
     p.add_argument("--extime", type=int, default=60)
     p.add_argument("--schedules", default="")
-    p.add_argument("--methods", default=",".join(METHODS))
+    p.add_argument("--methods", default="")
+    p.add_argument("--model-set", choices=list(C.MIN_COUNT), default=None)
+    p.add_argument("--models", default=None, help="directory with all.txt (default: paper models)")
     args = p.parse_args()
-    table = schedules(args.bench)
-    names = args.schedules.split(",") if args.schedules else list(table)
-    methods = args.methods.split(",")
-    out = C.HERE / args.bench / "dynamic"
-    out.mkdir(parents=True, exist_ok=True)
-    with (out / "config.txt").open("a") as f:
-        f.write(f"extime={args.extime} runs={args.runs} methods={methods}\n")
-        for n in names:
-            f.write(f"{n}={table[n]}\n")
-    res = out / "results.csv"
-    done = set()
-    if res.exists():
-        with res.open() as f:
-            done = {(r["schedule"], r["method"], r["run"]) for r in csv.DictReader(f)}
-    else:
-        res.write_text("schedule,method,run,tps,abort_rate\n")
+    cfg = SETS[args.set]
+    table = TPCC_SCHEDULES if args.bench == "tpcc" else YCSB_SCHEDULES
+    names = args.schedules.split(",") if args.schedules else [cfg["sched"][args.bench]]
+    methods = args.methods.split(",") if args.methods else cfg["methods"]
+    model_set = args.model_set or cfg["models"]
+    model = C.model_path(args.bench, model_set, "all", args.models)
+    out = C.OUT / args.bench / cfg["dir"]
+    for m in methods:
+        C.write_config(out, args, argv_for(args.bench, m, table[names[0]], args.extime, model,
+                                           C.MIN_COUNT[model_set])[0])
     for run in range(1, args.runs + 1):
         order = methods if run % 2 else list(reversed(methods))
         for n in names:
             for m in order:
-                if (n, m, str(run)) in done:
+                name = m
+                argv, env = argv_for(args.bench, m, table[n], args.extime, model, C.MIN_COUNT[model_set])
+                if args.set == "hill_climbing" and args.bench == "ycsb":
+                    argv += ["--tam_log_period_us=10000"]
+                    if m == "metis":
+                        argv += ["--metis_recheck_physical=false"]
+                        name = "metis_norephys"
+                res = out / ("results_metis.csv" if m == "metis" and args.set == "throughput" else "results.csv")
+                if (n, name, str(run)) in C.done_keys(res, ["schedule", "method", "run"]):
                     continue
-                argv, env = argv_for(args.bench, m, table[n], args.extime)
-                log = out / "logs" / f"{n}_{m}_run{run}.log"
                 try:
-                    tps, abort, _ = C.run_one(argv, env, log)
+                    tps, abort, _ = C.run_one(argv, env, out / "logs" / f"{n}_{name}_run{run}.log")
                 except subprocess.CalledProcessError as e:
-                    with res.open("a") as f:
-                        f.write(f"{n},{m},{run},,failed_rc{e.returncode}\n")
+                    C.append(res, HEADER, [n, name, run, "", f"failed_rc{e.returncode}"])
                     continue
-                with res.open("a") as f:
-                    f.write(f"{n},{m},{run},{tps:.0f},{abort}\n")
-                print(f"{args.bench} {n} {m} run={run} tps={tps:,.0f}", flush=True)
+                C.append(res, HEADER, [n, name, run, f"{tps:.0f}", abort])
+                print(f"{args.bench} {n} {name} run={run} tps={tps:,.0f}", flush=True)
 
 
 if __name__ == "__main__":

@@ -105,7 +105,8 @@ __pycache__/
 /third_party/spdlog/
 
 # Controller logs written by the benchmarks (moved next to the run logs by the
-# experiment scripts), and intermediate plots of the experiment scripts.
+# experiment scripts), and new runs of the experiment scripts ($METIS_OUT).
 /logs/
-/experiments/metis/*/compare_fixed/*.png
-/experiments/metis/*/dynamic/*.png
+/results/
+__pycache__/
+/experiments/metis/paper_figures/*.png

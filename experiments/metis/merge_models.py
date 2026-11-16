@@ -15,6 +15,10 @@ from pathlib import Path
 def read(path):
     lines = Path(path).read_text().split("\n")
     head = lines[0].split()
+    # Files recorded before the code cleanup (Metis-data) start with
+    # "metis_v2_model 1 A 1"; the rest of the header is the same.
+    if head[:4] == ["metis_v2_model", "1", "A", "1"]:
+        head = ["metis_model", "1"] + head[4:]
     if head[:2] != ["metis_model", "1"]:
         raise SystemExit(f"not a Metis model: {path}")
     dim = int(head[2])
