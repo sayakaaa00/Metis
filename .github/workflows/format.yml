@@ -1,20 +1,11 @@
 name: format
 
+# Manual only (Actions tab -> format -> Run workflow). This repository is the
+# code release of the Metis paper; the Metis code was not formatted with the
+# pinned clang-format 14, and the style check does not affect the build or
+# the results, so it no longer runs on every push or pull request.
 on:
-  push:
-    # Keep paths-ignore in sync with build.yml: a docs-only or
-    # devcontainer-only change should not spin up CI.
-    paths-ignore:
-      - 'README.md'
-      - 'docs/**'
-      - '.devcontainer/**'
-      - '.github/workflows/devcontainer-image.yml'
-  pull_request:
-    paths-ignore:
-      - 'README.md'
-      - 'docs/**'
-      - '.devcontainer/**'
-      - '.github/workflows/devcontainer-image.yml'
+  workflow_dispatch:
 
 jobs:
   # Independent of build.yml's `build` job on purpose: a formatting
