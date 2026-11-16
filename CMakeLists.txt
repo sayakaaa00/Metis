@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(ccbench LANGUAGES CXX)
+project(ccbench-metis LANGUAGES CXX)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+# Metis (metis/) is built into the Silo binaries of CCBench (ccbench/). The
+# CCBench tree keeps its own layout; its binaries land in the build tree as if
+# ccbench/ were the source root (build/cc/<protocol>/...).
+set(CCBENCH_DIR "${CMAKE_SOURCE_DIR}/ccbench")
+list(APPEND CMAKE_MODULE_PATH "${CCBENCH_DIR}/cmake")
 
 # set_compile_options() — applied to ccbench_common here and to every
 # protocol binary via ccbench_add_protocol() (see cmake/CompileOptions.cmake).
@@ -53,8 +57,8 @@ include(ThirdParty)
 # Protocols just `target_link_libraries(<bin> PRIVATE ccbench_common)`.
 # ---------------------------------------------------------------------------
 add_library(ccbench_common STATIC
-  common/result.cc
-  common/util.cc
+  ${CCBENCH_DIR}/common/result.cc
+  ${CCBENCH_DIR}/common/util.cc
 )
 target_compile_features(ccbench_common PUBLIC cxx_std_20)
 # ccbench_common compiles common/result.cc, which defines and resize()s the
@@ -70,7 +74,7 @@ ccbench_universal_definitions(_common_universal_defs)
 target_compile_definitions(ccbench_common PRIVATE ${_common_universal_defs})
 set_compile_options(ccbench_common)
 target_include_directories(ccbench_common PUBLIC
-  ${CMAKE_SOURCE_DIR}
+  ${CCBENCH_DIR}
 )
 target_link_libraries(ccbench_common PUBLIC
   Threads::Threads
@@ -83,7 +87,7 @@ target_link_libraries(ccbench_common PUBLIC
 # CMakeLists.txt is just a single ccbench_add_protocol(...) call.
 include(ProtocolHelpers)
 foreach(_proto cicada d2pl ermia mocc mvto oze si silo ss2pl tictoc)
-  add_subdirectory(cc/${_proto})
+  add_subdirectory(${CCBENCH_DIR}/cc/${_proto} cc/${_proto})
 endforeach()
 
 # Dump the protocol × workload support matrix into the build dir, so the
@@ -95,5 +99,5 @@ ccbench_write_protocol_matrix("${CMAKE_BINARY_DIR}/PROTOCOL_MATRIX.md")
 # with `cmake -S . -B build -DCCBENCH_BUILD_MICROBENCH=ON`.
 option(CCBENCH_BUILD_MICROBENCH "build instruction-cost microbenchmarks" OFF)
 if(CCBENCH_BUILD_MICROBENCH)
-  add_subdirectory(microbench)
+  add_subdirectory(${CCBENCH_DIR}/microbench microbench)
 endif()

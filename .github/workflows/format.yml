@@ -41,6 +41,6 @@ jobs:
       - name: clang-format dry-run
         run: |
           clang-format --version
-          git ls-files -- cc include common \
+          git ls-files -- ccbench/cc ccbench/include ccbench/common metis \
             | grep -E '\.(cc|hh|cpp)$' \
             | xargs clang-format --dry-run --Werror

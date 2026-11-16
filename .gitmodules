@@ -1,9 +1,9 @@
 [submodule "third_party/shirakami"]
-	path = third_party/shirakami
+	path = ccbench/third_party/shirakami
 	url = https://github.com/thawk105/shirakami.git
 [submodule "experiments/mysql"]
 	path = experiments/mysql
 	url = https://github.com/Tatzhiro/MySQL-Metis-experiments.git
 [submodule "data"]
-	path = data
+	path = experiments/data
 	url = https://github.com/sayakaaa00/Metis-data.git

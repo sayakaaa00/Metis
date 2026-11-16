@@ -99,14 +99,14 @@ __pycache__/
 *.pyc
 
 # Sources populated locally by CMake FetchContent
-/third_party/googletest/
-/third_party/masstree/
-/third_party/mimalloc/
-/third_party/spdlog/
+/ccbench/third_party/googletest/
+/ccbench/third_party/masstree/
+/ccbench/third_party/mimalloc/
+/ccbench/third_party/spdlog/
 
 # Controller logs written by the benchmarks (moved next to the run logs by the
 # experiment scripts), and new runs of the experiment scripts ($METIS_OUT).
 /logs/
-/results/
+/experiments/results/
 __pycache__/
-/experiments/metis/paper_figures/*.png
+/experiments/paper_figures/*.png
