@@ -63,16 +63,10 @@ paths and the oracle curves.
 
 | Output (`results/figures/`) | Paper | Script | Data (`data/`) |
 |---|---|---|---|
-| `intro_fixed_nometis.pdf` | Introduction | `plot_intro_fixed_nometis.py` | `ycsb/fixed`, `ycsb/oracle` |
-| `tps_vs_threads_skew{0,0.9}.pdf` | Introduction | `plot_tps_vs_threads_lowhigh.py` | `ycsb/oracle/skew_0_0.5_0.9` |
-| `breakdown_vs_skew.pdf` | Introduction | `plot_breakdown_vs_skew.py` | `ycsb/breakdown` |
-| `backoff_sensitivity.pdf` | Background | `plot_backoff_sensitivity.py` | `ycsb/backoff_constant` |
-| `motivation_tps_vs_threads.pdf` | Background | `plot_motivation_tps_vs_threads.py` | `tpcc/oracle`, `ycsb/oracle` |
 | `eval_static.pdf` | Evaluation, static workloads | `plot_eval_static.py` | `*/fixed`, `*/oracle`, `*/backoff_constant` |
 | `eval_dynamic_tps.pdf`, `eval_dynamic_tps_tpcc.pdf` | Evaluation, dynamic workloads | `plot_eval_dynamic_tps.py`, `plot_eval_dynamic_tps_tpcc.py` | `*/dynamic` |
 | `eval_static_time.pdf`, `eval_static_tps.pdf` | Evaluation, hill climbing (static) | `plot_eval_static_time.py`, `plot_eval_static_tps.py` | `*/fixed/logs`, `ycsb/hill_climbing_10ms_log` |
 | `eval_dynamic.pdf` | Evaluation, hill climbing (dynamic) | `plot_eval_dynamic.py` | `*/dynamic_hill_climbing` |
-| `eval_backoff.pdf` | Evaluation, thread throttling vs. backoff | `plot_eval_backoff.py` | as `eval_static.pdf` |
 
 The paper splits some of these figures into one PDF per benchmark plus a
 legend. That layout and the MySQL figures are made in
