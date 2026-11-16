@@ -62,6 +62,28 @@ build_release/silo/tpcc_silo_nobackoff --thread_num=96 --tpcc_num_wh=96 \
   --metis_model_path=experiments/models/tpcc/min8/loo_4.txt
 ```
 
+## License
+
+- **Metis** (everything outside `ccbench/`): Apache License 2.0,
+  Copyright 2026 Sayaka Tayama. See [LICENSE](LICENSE).
+- **CCBench** (`ccbench/`): Apache License 2.0, Copyright 2019 Takayuki Tanabe.
+  See [ccbench/LICENSE](ccbench/LICENSE).
+- The submodules [experiments/data](experiments/data) and
+  [experiments/mysql](experiments/mysql) are separate repositories with their
+  own terms.
+
+The following CCBench files were modified for Metis (thread throttling in the
+Silo entry points, in-run workload changes, the backoff of the baselines, the
+TPC-C and YCSB workloads, and the benchmark runner); the changes are in the
+git history of this repository:
+
+- `ccbench/cc/silo/`: `CMakeLists.txt`, `include/transaction.hh`, `transaction.cc`, `tpcc_silo.cc`, `ycsb_silo.cc`
+- `ccbench/cc/cicada/`: `transaction.cc`, `tpcc_cicada.cc`, `ycsb_cicada.cc`
+- `ccbench/cc/ermia/`: `include/transaction.hh`, `include/tuple.hh`, `include/version.hh`, `transaction.cc`, `util.cc`, `tpcc_ermia.cc`, `ycsb_ermia.cc`
+- `ccbench/cc/{d2pl,mocc,mvto,oze,si,ss2pl,tictoc}/transaction.cc`
+- `ccbench/common/`: `runner.hh`, `util.cc`
+- `ccbench/include/`: `backoff.hh`, `cpu.hh`, `tpcc.hh`, `ycsb.hh`, `tpcc/tpcc_common.hh`, `tpcc/tpcc_initializer.hh`, `tpcc/tpcc_query.hh`, `tpcc/tpcc_tx_delivery.hh`, `tpcc/tpcc_tx_neworder.hh`
+
 ## Built on CCBench
 
 This repository is a fork of [CCBench](https://github.com/thawk105/ccbench); the CCBench tree is in [ccbench/](ccbench).
