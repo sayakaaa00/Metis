@@ -20,8 +20,7 @@ Layout of this directory:
 run/            experiment scripts (write new runs to results/)
 figures/        one script per figure, make_figures.sh
 models/         the Metis models used in the paper
-data/           submodule Metis-data: the measured results of the paper
-paper_figures/  the figures made from data/
+data/           submodule Metis-data: the measured results and the figures of the paper
 mysql/          submodule MySQL-Metis-experiments: Metis in MySQL
 ```
 
@@ -51,14 +50,18 @@ git submodule update --init experiments/data experiments/mysql
 ## 2. Figures from the measured results
 
 ```sh
-experiments/figures/make_figures.sh   # experiments/data/ -> experiments/paper_figures/
+experiments/figures/make_figures.sh   # experiments/data/ -> experiments/results/figures/
 ```
 
-The output matches the figures in the paper pixel for pixel. Each figure has one script in
+The scripts plot the data of the paper's figures. The paper versions were redrawn
+afterwards (one PDF per benchmark, a separate legend; Fig. 7 also draws Oracle
+and Silo-BO). They are in [data/figures/](data/figures), and the
+[Metis-data README](data/README.md#figures-of-the-paper) shows each one with its
+data and script. Each figure has one script in
 [figures/](figures). [figures/figcommon.py](figures/figcommon.py) holds the data
 paths and the oracle curves.
 
-| Figure (`paper_figures/`) | Paper | Script | Data (`data/`) |
+| Output (`results/figures/`) | Paper | Script | Data (`data/`) |
 |---|---|---|---|
 | `intro_fixed_nometis.pdf` | Introduction | `plot_intro_fixed_nometis.py` | `ycsb/fixed`, `ycsb/oracle` |
 | `tps_vs_threads_skew{0,0.9}.pdf` | Introduction | `plot_tps_vs_threads_lowhigh.py` | `ycsb/oracle/skew_0_0.5_0.9` |

@@ -26,8 +26,7 @@ experiments/    reproducing the paper (see experiments/README.md)
   run/          experiment scripts
   figures/      figure scripts
   models/       Metis models used in the paper
-  data/         submodule Metis-data: measured results of the paper (per-run logs and CSVs)
-  paper_figures/  figures made from data/
+  data/         submodule Metis-data: measured results and the figures of the paper
   mysql/        submodule MySQL-Metis-experiments: Metis in MySQL (InnoDB)
 ccbench/        CCBench, the benchmark Metis is built on (Silo, Cicada, ERMIA, YCSB, TPC-C, ...)
 build.sh        builds the binaries used by the experiments
@@ -53,7 +52,9 @@ experiments/figures/make_figures.sh  # paper figures from the measured results
 
 `make_figures.sh` reads the measured results in
 [experiments/data/](experiments/data) and writes the figures to
-`experiments/paper_figures/`. They match the figures in the paper pixel for pixel.
+`experiments/results/figures/`. The figures as they appear in the paper, with
+the data and script behind each, are listed in the
+[Metis-data README](https://github.com/sayakaaa00/Metis-data#figures-of-the-paper).
 
 A single run of Metis on TPC-C with 4 accessed warehouses (96 worker threads):
 

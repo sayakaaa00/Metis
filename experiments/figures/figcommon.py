@@ -3,7 +3,7 @@
 DATA: measured results, laid out as in Metis-data (default: the submodule
       experiments/data/; override with METIS_DATA, e.g. to plot
       the results of a new run written to METIS_OUT by the experiment scripts).
-OUT:  output directory of the figures (default experiments/paper_figures,
+OUT:  output directory of the figures (default experiments/results/figures,
       override with METIS_FIG_OUT).
 """
 import csv
@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = Path(os.environ.get("METIS_DATA", Path(__file__).resolve().parents[1] / "data"))
-OUT = Path(os.environ.get("METIS_FIG_OUT", Path(__file__).resolve().parents[1] / "paper_figures"))
+OUT = Path(os.environ.get("METIS_FIG_OUT", Path(__file__).resolve().parents[1] / "results" / "figures"))
 OUT.mkdir(parents=True, exist_ok=True)
 
 INK, INK2, GRID, SURFACE = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"

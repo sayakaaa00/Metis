@@ -3,12 +3,13 @@
 #   experiments/figures/make_figures.sh
 # Data: $METIS_DATA (default: experiments/data/, the Metis-data submodule; set it to
 # $METIS_OUT to plot new runs). Output: $METIS_FIG_OUT (default:
-# experiments/paper_figures). Needs python3 with matplotlib and numpy.
+# experiments/results/figures). Needs python3 with matplotlib and numpy.
+# The figures as they appear in the paper are in Metis-data (experiments/data/figures).
 # The paper splits some figures into one PDF per benchmark plus a legend;
 # that layout is made in Tatzhiro/MySQL-Metis-experiments.
 set -euo pipefail
 cd "$(dirname "$0")"
-OUT=${METIS_FIG_OUT:-$(cd .. && pwd)/paper_figures}
+OUT=${METIS_FIG_OUT:-$(cd .. && pwd)/results/figures}
 export METIS_FIG_OUT=$OUT
 mkdir -p "$OUT"
 python3 plot_intro_fixed_nometis.py "$OUT/intro_fixed_nometis.pdf"       # Introduction
