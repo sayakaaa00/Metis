@@ -1,71 +1,91 @@
-# CCBench: Concurrency Control Protocol Workbench
+# Metis: Machine Learning Based Dynamic Thread Control for High-Contention Transaction Processing
 
-![build](https://github.com/thawk105/ccbench/workflows/build/badge.svg)
+This repository contains the code, experiment scripts, and figure scripts of the
+Metis paper.
 
-CCBench re-implements major in-memory concurrency-control protocols on a common substrate so they can be compared on identical workloads. The original analysis paper is [Tanabe et al., VLDB 2020][1].
+In-memory databases lose throughput at high contention, where many transactions
+access the same records. Thread throttling limits how many worker threads run
+transactions. The best active thread count, however, depends on the contention
+level and changes with the workload. **Metis** selects the best active thread
+count at runtime without changing the concurrency control protocol.
 
-The repository now also bundles the **TPC-C** and **BoMB** workloads, and several additional protocols, contributed by [@jnmt](https://github.com/jnmt) on the [`vldb-paper`](https://github.com/jnmt/ccbench/tree/vldb-paper) branch and merged here.
+- Metis treats the choice as a contextual bandit problem. The context is the
+  abort rate and the current active thread count.
+- One linear model, shared by all candidate counts and trained offline,
+  predicts the throughput ratio of every candidate. One model therefore serves
+  all contention levels, including ones not seen in training.
+- At runtime, Metis jumps to the predicted best count, refines it with a few
+  averaged measurements, and holds it until the workload changes.
 
-| Protocol | YCSB | TPC-C | BoMB |
-|---|:-:|:-:|:-:|
-| Silo, MOCC, Cicada, ERMIA, TicToc, Oze, SI | ✓ | ✓ | ✓ |
-| SS2PL | ✓ | ✓ | ✓ |
-| MVTO | — | ✓ | ✓ |
-| D2PL | — | — | ✓ |
+Metis is implemented on Silo in [CCBench](#built-on-ccbench). It is evaluated on
+YCSB and TPC-C against Silo, Silo with adaptive backoff (Silo-BO), Cicada,
+ERMIA, and hill climbing on the active thread count.
 
-See [docs/workloads_en.md](docs/workloads_en.md) for the workload specs (tables, transactions, parameters) and [docs/protocols_en.md](docs/protocols_en.md) for the full protocol matrix.
+## Quick start
 
-[1]: http://www.vldb.org/pvldb/vol13/p3531-tanabe.pdf
+Requirements: x86-64 Linux, GCC 13, CMake, and Python 3 with matplotlib
+(Ubuntu 24.04; see [docs/build_en.md](docs/build_en.md)).
 
-## Metis
+```sh
+git clone --recurse-submodules https://github.com/sayakaaa00/ccbench-Metis.git
+cd ccbench-Metis
+experiments/metis/build.sh                 # build the binaries
+experiments/metis/figures/make_figures.sh  # paper figures from the measured results
+```
 
-This branch adds **Metis**, a controller that learns how many worker threads
-should run transactions, on top of Silo, together with the hill-climbing
-baseline AdaTAM. The code, the experiment scripts, the recorded results, and
-the reproduction steps are described in
+`make_figures.sh` reads the measured results in [data/](data) and writes the
+figures to `experiments/metis/paper_figures/`. They match the figures in the
+paper pixel for pixel.
+
+A single run of Metis on TPC-C with 4 accessed warehouses (96 worker threads):
+
+```sh
+LD_PRELOAD=build_release/mimalloc_override/libmimalloc.so \
+build_release/silo/tpcc_silo_nobackoff --thread_num=96 --tpcc_num_wh=96 \
+  --tpcc_active_warehouse_count=4 --tpcc_home_warehouse_assignment=random_per_transaction \
+  --tpcc_pin_workers=true --tpcc_pin_order=physical_first --extime=30 --clocks_per_us=2900 \
+  --tam_update_period_us=200000 --tam_log_active_threads=true \
+  --metis_enable=true --metis_min_count=8 \
+  --metis_model_path=experiments/metis/models/tpcc/min8/loo_4.txt
+```
+
+To re-run the paper's experiments, see
 [experiments/metis/README.md](experiments/metis/README.md).
 
-## Quick start (devcontainer)
+## Repository layout
 
-The repo ships with a `linux/amd64` devcontainer at [.devcontainer/](.devcontainer/) that pulls a prebuilt image from GHCR. In VS Code, run **`Dev Containers: Reopen in Container`** — apt deps are set up automatically.
+| Path | Contents |
+|---|---|
+| [include/metis.hh](include/metis.hh) | Metis: features, linear model (ridge regression), offline training, and the runtime search (jump, local refinement, re-measurement, hold, workload-change detection) |
+| [include/adatam.hh](include/adatam.hh) | Hill climbing on the active thread count (baseline) |
+| [include/tam.hh](include/tam.hh), [include/adaptive_control.hh](include/adaptive_control.hh) | Thread throttling: controller selection, the control loop, and parking of inactive worker threads |
+| [include/backoff.hh](include/backoff.hh) | Backoff of the baselines (Silo-BO, Cicada, ERMIA) |
+| [cc/silo/](cc/silo) | Silo, with the YCSB and TPC-C entry points used for Metis |
+| [experiments/metis/](experiments/metis) | Experiment scripts, the trained models, and the figure scripts |
+| [data/](data) | Submodule [Metis-data](https://github.com/sayakaaa00/Metis-data): measured results (per-run logs and CSVs) |
+| [experiments/mysql/](experiments/mysql) | Submodule [MySQL-Metis-experiments](https://github.com/Tatzhiro/MySQL-Metis-experiments): Metis in MySQL (InnoDB) |
 
-Then inside the container:
+## Built on CCBench
 
-```sh
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j
-```
+This repository is a fork of [CCBench](https://github.com/thawk105/ccbench).
+CCBench re-implements major in-memory concurrency control protocols on a common
+substrate so that they can be compared on identical workloads
+([Tanabe et al., VLDB 2020][1]). It includes Silo, MOCC, Cicada, ERMIA, TicToc,
+Oze, SI, SS2PL, MVTO, and D2PL, with the YCSB, TPC-C, and BoMB workloads.
+TPC-C and BoMB were contributed by [@jnmt](https://github.com/jnmt).
 
-CMake's FetchContent fetches and builds the third-party dependencies
-(`masstree`, `mimalloc`, `googletest`) at configure time.
-
-> On Apple Silicon the container runs under QEMU emulation: fine for development, **not** for benchmark numbers. Use a real x86_64 Linux host for measurements. See [docs/build_en.md](docs/build_en.md) for the full host setup.
-
-## Run
-
-Binaries land at `build/cc/<protocol>/<workload>_<protocol>.exe`. Examples:
-
-```sh
-./build/cc/silo/tpcc_silo.exe     -thread_num=8 -tpcc_num_wh=8
-./build/cc/cicada/ycsb_cicada.exe -thread_num=8 -ycsb_rratio=50
-./build/cc/silo/bomb_silo.exe     -thread_num=8 -bomb_mixed_mode -bomb_mixed_short_rate=1000
-```
-
-See `--help` for workload-specific flags, or [docs/runtime-args_en.md](docs/runtime-args_en.md) for the full reference.
-
-## Documentation
-
-- [docs/architecture_en.md](docs/architecture_en.md) — repo overview, TxExecutor API contract, GC rules
-- [docs/build_en.md](docs/build_en.md) — host & devcontainer build instructions
-- [docs/workloads_en.md](docs/workloads_en.md) — TPC-C / YCSB / BoMB specs
-- [docs/protocols_en.md](docs/protocols_en.md) — protocol matrix and references
-- [docs/runtime-args_en.md](docs/runtime-args_en.md) — runtime flag reference
-- [docs/coding-conventions_en.md](docs/coding-conventions_en.md) — per-file-type conventions
-- [docs/contributing_en.md](docs/contributing_en.md) — how to open issues / PRs / commits, doc-language rules
-- [CLAUDE_en.md](CLAUDE_en.md) — repo-level context for AI assistants
+- [docs/architecture_en.md](docs/architecture_en.md): repository overview, TxExecutor API, GC rules
+- [docs/build_en.md](docs/build_en.md): host and devcontainer build
+- [docs/workloads_en.md](docs/workloads_en.md), [docs/protocols_en.md](docs/protocols_en.md): workloads and protocols
+- [docs/runtime-args_en.md](docs/runtime-args_en.md): runtime flags
 - Original CCBench experimental data: <https://github.com/thawk105/ccdata>
 
-## Acknowledgments
+CCBench's binaries build with `cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j`
+and land at `build/cc/<protocol>/<workload>_<protocol>.exe`. A `linux/amd64`
+devcontainer is in [.devcontainer/](.devcontainer/). Under emulation, such as
+on Apple Silicon, it is fine for development but not for measurements.
+
+### Acknowledgments (CCBench)
 
 Takayuki Tanabe extends thanks to:
 
@@ -73,7 +93,7 @@ Takayuki Tanabe extends thanks to:
 - Takashi Hoshino, advisor at Cybozu Labs Youth.
 - Hideyuki Kawashima and Osamu Tatebe, supervisors.
 
-## References
+### References
 
 ```
 [1] Takayuki Tanabe, Takashi Hoshino, Hideyuki Kawashima, and Osamu Tatebe. 2020.
@@ -81,3 +101,5 @@ Takayuki Tanabe extends thanks to:
     Proc. VLDB Endow. 13, 13 (September 2020), 3531–3544.
     https://doi.org/10.14778/3424573.3424575
 ```
+
+[1]: http://www.vldb.org/pvldb/vol13/p3531-tanabe.pdf
